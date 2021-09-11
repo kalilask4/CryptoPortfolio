@@ -11,7 +11,7 @@ namespace portfolio.Domain.Interfaces
     {
         IRepository<Coin> CoinRepository { get; }
         IRepository<Buying> BuyingRepository { get; }
-        IRepository<Selling> SelliRepository { get; }
+        IRepository<Selling> SellingRepository { get; }
 
         void SaveChanges();
     }

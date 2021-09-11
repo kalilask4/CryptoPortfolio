@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace portfolio.Domain.Entities
 {
-    abstract class Transaction
+    public abstract class Transaction
     {
         public string TransactionId { get; set; }
         public string Side { get; set; }
@@ -17,7 +17,7 @@ namespace portfolio.Domain.Entities
         public decimal Prise { get; set; }
         public DateTime DateAdd { get; set; }
 
-        protected Transaction()
+        public Transaction()
         {
         }
 

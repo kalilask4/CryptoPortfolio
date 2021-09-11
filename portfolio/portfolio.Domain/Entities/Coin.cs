@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace portfolio.Domain.Entities
 {
-    class Coin
+    public class Coin
     {
         public int CoinId { get; set; }
         public string Symbol { get; set; }

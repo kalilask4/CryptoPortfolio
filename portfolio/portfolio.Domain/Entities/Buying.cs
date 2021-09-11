@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace portfolio.Domain.Entities
 {
-    class Buying:Transaction
+    public class Buying : Transaction
     {
         public Buying()
         {
