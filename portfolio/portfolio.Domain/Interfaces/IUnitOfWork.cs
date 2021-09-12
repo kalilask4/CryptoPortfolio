@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace portfolio.Domain.Interfaces
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork
     {
         IRepository<Coin> CoinRepository { get; }
         IRepository<BuyTransaction> BuyingRepository { get; }
