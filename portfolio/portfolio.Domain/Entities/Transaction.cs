@@ -8,17 +8,18 @@ namespace portfolio.Domain.Entities
 {
     public abstract class Transaction
     {
-        public string TransactionId { get; set; }
+        public int TransactionId { get; set; }
         public string Side { get; set; }
-        public string Symbol { get; set; }
         public Coin DebetCoin { get; set; }
         public Coin CreditCoin { get; set; }
         public decimal Amount { get; set; }
         public decimal Prise { get; set; }
-        public DateTime DateAdd { get; set; }
+        public DateTime TradeDate { get; set; }
+        public string Symbol { get; set; }
 
         public Transaction()
         {
+            Symbol = DebetCoin.Symbol + CreditCoin.Symbol;
         }
 
         public override string ToString()

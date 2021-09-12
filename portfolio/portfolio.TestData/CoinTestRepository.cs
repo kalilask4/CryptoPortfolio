@@ -10,6 +10,7 @@ namespace portfolio.TestData
 {
     /// <summary>
     /// Test repository for Coin
+    /// Find implementation is sufficient
     /// </summary>
     class CoinTestRepository : IRepository<Coin>
     {
@@ -33,7 +34,6 @@ namespace portfolio.TestData
         {
             Func<Coin, bool> filter = predicate.Compile();
             return coins.Where(filter).AsQueryable();
-
         }
 
         public Coin Get(int id, params string[] includes)

@@ -25,5 +25,12 @@ namespace portfolio.Domain.Entities
             Buyings = new List<Buying>();
             Sellings = new List<Selling>();
         }
+
+        public Coin(string name)
+        {
+            CoinName = name;
+            Buyings = new List<Buying>();
+            Sellings = new List<Selling>();
+        }
     }
 }
