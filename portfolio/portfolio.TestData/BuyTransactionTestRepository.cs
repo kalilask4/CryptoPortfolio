@@ -13,10 +13,10 @@ namespace portfolio.TestData
     /// Test repository for Buying
     /// Get, GetAll implementations are sufficient
     /// </summary>
-    class BuyingTestRepository : IRepository<Buying>
+    class BuyTransactionTestRepository : IRepository<BuyTransaction>
     {
-        private readonly List<Buying> buyings;
-        public BuyingTestRepository(List<Buying> buyings)
+        private readonly List<BuyTransaction> buyings;
+        public BuyTransactionTestRepository(List<BuyTransaction> buyings)
         {
             this.buyings = buyings;
             SetupData(); //generate test data
@@ -37,7 +37,7 @@ namespace portfolio.TestData
 
             for (var i = 1; i <= 5; i++)
             {
-                var buying = new Buying
+                var buying = new BuyTransaction
                 {
                     DebetCoin = coins[r.Next(0, 10)],
                     CreditCoin = coins[r.Next(0, 10)],
@@ -50,7 +50,7 @@ namespace portfolio.TestData
             }
         }
 
-        public void Create(Buying entity)
+        public void Create(BuyTransaction entity)
         {
             throw new NotImplementedException();
         }
@@ -60,22 +60,22 @@ namespace portfolio.TestData
             throw new NotImplementedException();
         }
 
-        public IQueryable<Buying> Find(Expression<Func<Buying, bool>> predicate)
+        public IQueryable<BuyTransaction> Find(Expression<Func<BuyTransaction, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public Buying Get(int id, params string[] includes)
+        public BuyTransaction Get(int id, params string[] includes)
         {
             return buyings.FirstOrDefault(b => b.TransactionId == id);
         }
 
-        public IQueryable<Buying> GetAll()
+        public IQueryable<BuyTransaction> GetAll()
         {
             return buyings.AsQueryable();
         }
 
-        public void Update(Buying entity)
+        public void Update(BuyTransaction entity)
         {
             throw new NotImplementedException();
         }

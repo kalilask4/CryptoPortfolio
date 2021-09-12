@@ -17,20 +17,20 @@ namespace portfolio.Domain.Entities
         public decimal CurrentPrice { get; set; }
         public string PictureName { get; set; }
         public DateTime DateUpdate { get; set; }
-        public List<Buying> Buyings { get; set; }
-        public List<Selling> Sellings { get; set; }
+        public List<BuyTransaction> Buyings { get; set; }
+        public List<SellTransaction> Sellings { get; set; }
 
         public Coin()
         {
-            Buyings = new List<Buying>();
-            Sellings = new List<Selling>();
+            Buyings = new List<BuyTransaction>();
+            Sellings = new List<SellTransaction>();
         }
 
         public Coin(string name)
         {
             CoinName = name;
-            Buyings = new List<Buying>();
-            Sellings = new List<Selling>();
+            Buyings = new List<BuyTransaction>();
+            Sellings = new List<SellTransaction>();
         }
     }
 }

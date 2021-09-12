@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace portfolio.Domain.Entities
 {
-    public class Buying : Transaction
+    public class BuyTransaction : Transaction
     {
-        public Buying()
+        public BuyTransaction()
         {
             Side = "Buy";
         }

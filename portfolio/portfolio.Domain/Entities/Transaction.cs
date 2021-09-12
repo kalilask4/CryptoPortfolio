@@ -26,6 +26,5 @@ namespace portfolio.Domain.Entities
         {
             return $"Transaction {this.Side}: {this.Symbol}  {this.Amount}  {this.Prise} Total: {this.Amount}*{this.Prise}";
         }
-
     }
 }
