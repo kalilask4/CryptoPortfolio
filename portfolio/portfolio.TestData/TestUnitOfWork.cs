@@ -29,6 +29,12 @@ namespace portfolio.TestData
             {
                 coins.Add(buyTransaction.CreditCoin);
                 coins.Add(buyTransaction.DebetCoin);
+            }          
+            sellTransactionsRepository = new SellTransactionTestRepository(sellTransactions);
+            foreach (var sellTransaction in buyTransactions)
+            {
+                coins.Add(sellTransaction.CreditCoin);
+                coins.Add(sellTransaction.DebetCoin);
             }
              
             coinsRepository = new CoinTestRepository(coins);
