@@ -10,8 +10,8 @@ namespace portfolio.Domain.Interfaces
     public interface IUnitOfWork
     {
         IRepository<Coin> CoinRepository { get; }
-        IRepository<BuyTransaction> BuyingRepository { get; }
-        IRepository<SellTransaction> SellingRepository { get; }
+        IRepository<BuyTransaction> BuyTransactioRepository { get; }
+        IRepository<SellTransaction> SellTransactioRepository { get; }
         
         void SaveChanges();
     }

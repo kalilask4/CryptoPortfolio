@@ -42,9 +42,9 @@ namespace portfolio.TestData
 
         public IRepository<Coin> CoinRepository => coinsRepository;
 
-        public IRepository<BuyTransaction> BuyingRepository => buyTransactionsRepository;
+        public IRepository<BuyTransaction> BuyTransactioRepository => buyTransactionsRepository;
 
-        public IRepository<SellTransaction> SellingRepository => sellTransactionsRepository;
+        public IRepository<SellTransaction> SellTransactioRepository => sellTransactionsRepository;
 
         public void SaveChanges()
         {
