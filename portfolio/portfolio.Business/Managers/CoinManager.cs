@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace portfolio.Business.Managers
 {
-    class CoinManager : BaseManager
+    public class CoinManager : BaseManager
     {
         public CoinManager(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
@@ -23,7 +23,6 @@ namespace portfolio.Business.Managers
             unitOfWork.SaveChanges();
             return true;
         }
-
 
         public IEnumerable<Coin>FindCoin(Expression<Func<Coin, bool>> predicate) => 
             coinRepository.Find(predicate);
@@ -41,4 +40,5 @@ namespace portfolio.Business.Managers
         #endregion
     }
 }
+
 

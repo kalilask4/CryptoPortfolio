@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace portfolio.Business.Managers
 {
-    class BaseManager
+    public class BaseManager
     {
         protected readonly IUnitOfWork unitOfWork;
         protected readonly IRepository<Coin> coinRepository;
@@ -26,12 +26,3 @@ namespace portfolio.Business.Managers
 }
 
 
-protected readonly IUnitOfWork unitOfWork;
-protected readonly IRepository<Student> studentRepository;
-protected readonly IRepository<Group> groupRepository;
-public BaseManager(IUnitOfWork unitOfWork)
-{
-    this.unitOfWork = unitOfWork;
-    studentRepository = unitOfWork.StudentsRepository;
-    groupRepository = unitOfWork.GroupsRepository;
-}
