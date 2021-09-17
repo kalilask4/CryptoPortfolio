@@ -21,7 +21,7 @@ propertyName=null)
         }
 
         /// <summary>
-        /// Метод изменения свойства с вызовом события PropertyChanged
+        /// Method for changing property (event PropertyChanged)
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="prop">property for changing</param>

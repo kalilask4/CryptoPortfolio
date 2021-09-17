@@ -27,7 +27,7 @@ namespace portfolio.Business.Infrastructure
                 ?? new CoinManager(unitOfWork);
         }
 
-        public BuyTransactionManager GetTransactionManager()
+        public BuyTransactionManager GetBuyTransactionManager()
         {
             return buyTransactionManager
                 ?? new BuyTransactionManager(unitOfWork);
