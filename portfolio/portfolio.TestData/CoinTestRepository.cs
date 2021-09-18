@@ -18,6 +18,20 @@ namespace portfolio.TestData
         public CoinTestRepository(List<Coin> coins)
         {
             this.coins = coins;
+            SetupData();
+        }
+
+        private void SetupData()
+        {
+            Random r = new Random();
+            var coins = new List<Coin>();
+            for (var i = 0; i < 10; i++)
+            {
+                coins.Add(new Coin
+                {
+                    CoinName = $"Coin {i}"
+                });
+            }
         }
 
         public void Create(Coin entity)
@@ -43,7 +57,7 @@ namespace portfolio.TestData
 
         public IQueryable<Coin> GetAll()
         {
-            throw new NotImplementedException();
+            return coins.AsQueryable();
         }
 
         public void Update(Coin entity)

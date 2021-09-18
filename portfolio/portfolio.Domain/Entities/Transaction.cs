@@ -19,7 +19,8 @@ namespace portfolio.Domain.Entities
 
         public Transaction()
         {
-            Symbol = DebetCoin.Symbol + CreditCoin.Symbol;
+            Symbol = "symbol";
+                //DebetCoin.Symbol + CreditCoin.Symbol;
         }
 
         public override string ToString()

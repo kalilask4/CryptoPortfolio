@@ -15,6 +15,14 @@ namespace portfolio.Business.Managers
         {
         }
 
+        // <summary>
+        /// general list of buy transactions
+        /// </summary>
+        public IEnumerable<Coin> coins
+        {
+            get => coinRepository.GetAll();
+        }
+
         #region basic CRUD operations
         public bool DeleteCoin(int id)
         {

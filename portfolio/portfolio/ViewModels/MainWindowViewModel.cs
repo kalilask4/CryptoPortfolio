@@ -19,6 +19,11 @@ namespace portfolio.ViewModels
 
         #region Public properties
         /// <summary>
+        /// Coin list
+        /// </summary>
+        public ObservableCollection<Coin> Coins { get; set; }
+
+        /// <summary>
         /// Buy transaction list
         /// </summary>
         public ObservableCollection<BuyTransaction> buyTransactions { get; set; }
@@ -28,14 +33,25 @@ namespace portfolio.ViewModels
         /// </summary>
         public ObservableCollection<SellTransaction> sellTransactions { get; set; }
 
-
         /// <summary>
         /// Coin from transaction
         /// </summary>
-        public ObservableCollection<Coin> Coins { get; set; }
-        public string CoinName { get => CoinName; set => CoinName = value; }
+        //public ObservableCollection<Coin> Coins { get; set; }
+        //public string CoinName { get => CoinName; set => CoinName = value; }
 
-        #region transaction
+        /// <summary>
+        /// Buy transactions for coin 
+        /// </summary>
+        public ObservableCollection<BuyTransaction> BuyTransactions { get; set; }
+        public string BuyTransactionId { get => BuyTransactionId; set => BuyTransactionId = value; }
+
+        /// <summary>
+        /// Sell transactions for coin 
+        /// </summary>
+        public ObservableCollection<BuyTransaction> SellTransactions { get; set; }
+        public string SellTransactionId { get => SellTransactionId; set => SellTransactionId = value; }
+
+        #region sealected buy transaction 
         private BuyTransaction _selectedBuyTransaction;
         public BuyTransaction SelectedBuyTransaction
         {
@@ -46,17 +62,30 @@ namespace portfolio.ViewModels
             }
         }
         #endregion
+
+        #region sealected sell transaction 
+        private SellTransaction _selectedSellTransaction;
+        public SellTransaction SelectedSellTransaction
+        {
+            get => _selectedSellTransaction;
+            set
+            {
+                Set(ref _selectedSellTransaction, value);
+            }
+        }
+        #endregion
         #endregion
 
-        private string title = "BuyTransaction Window";
+        private string title = "BuyTransactions Window";
         public MainWindowViewModel()
         {
             factory = new ManagersFactory();
-            buyTransactionManager = factory.GetBuyTransactionManager();
             coinManager = factory.GetCoinManager();
+            buyTransactionManager = factory.GetBuyTransactionManager();
+            sellTransactionManager = factory.GetSellTransactionManager();
             buyTransactions = new ObservableCollection<BuyTransaction>(buyTransactionManager.buyTransactions);
-            Coins = new ObservableCollection<Coin>();
+            sellTransactions = new ObservableCollection<SellTransaction>(sellTransactionManager.sellTransactions);
+            Coins = new ObservableCollection<Coin>(coinManager.coins);
         }
-
     }
 }

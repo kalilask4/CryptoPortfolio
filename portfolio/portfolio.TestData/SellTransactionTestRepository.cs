@@ -73,7 +73,7 @@ namespace portfolio.TestData
 
         public IQueryable<SellTransaction> GetAll()
         {
-            throw new NotImplementedException();
+            return sellTransactions.AsQueryable();
         }
 
         public void Update(SellTransaction entity)
