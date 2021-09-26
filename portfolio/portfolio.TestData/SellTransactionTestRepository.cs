@@ -39,11 +39,14 @@ namespace portfolio.TestData
             {
                 var sellTransaction = new SellTransaction
                 {
-                    DebetCoin = coins[r.Next(0, 10)],
-                    CreditCoin = coins[r.Next(0, 10)],
+                   transactionCoins = new Dictionary<string, Coin>
+                   {
+                       {"debet", coins[r.Next(0,10)]},
+                       {"credit", coins[r.Next(0,10)]}
+                   },
                     Amount = r.Next(1, 500),
-                    Prise = r.Next(1, 100000),
-                    TradeDate = DateTime.Now + TimeSpan.FromDays(r.Next(10, 20)),
+                    Priсe = r.Next(1, 100000),
+                    AddDate = DateTime.Now + TimeSpan.FromDays(r.Next(10, 20)),
                     TransactionId = i,
                 };
                 sellTransactions.Add(sellTransaction);

@@ -42,7 +42,7 @@ namespace portfolio.TestData
                     transactionCoins = new Dictionary<string, Coin>
                     {
                         {"debet", coins[r.Next(0, 10)]},
-                        { "credit", coins[r.Next(0, 10)] }
+                        {"credit", coins[r.Next(0, 10)] }
                     },
                     Amount = r.Next(1, 500),
                     Priсe = r.Next(1, 100000),

@@ -14,7 +14,7 @@ namespace portfolio.Domain.Entities
             Side = "Buy";
         }
 
-        public BuyTransaction(): base ()
+        public BuyTransaction() //: base ()
         {
             Side = "Buy";
         }

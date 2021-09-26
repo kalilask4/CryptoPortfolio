@@ -27,14 +27,14 @@ namespace portfolio.TestData
             buyTransactionsRepository = new BuyTransactionTestRepository(buyTransactions);
             foreach (var buyTransaction in buyTransactions)
             {
-                coins.Add(buyTransaction.coins["credit"]);
-                coins.Add(buyTransaction.coins["debet"]);
+                coins.Add(buyTransaction.transactionCoins["credit"]);
+                coins.Add(buyTransaction.transactionCoins["debet"]);
             }          
             sellTransactionsRepository = new SellTransactionTestRepository(sellTransactions);
             foreach (var sellTransaction in buyTransactions)
             {
-                coins.Add(sellTransaction.coins["credit"]);
-                coins.Add(sellTransaction.coins["debet"]);
+                coins.Add(sellTransaction.transactionCoins["credit"]);
+                coins.Add(sellTransaction.transactionCoins["debet"]);
             }
              
             coinsRepository = new CoinTestRepository(coins);
