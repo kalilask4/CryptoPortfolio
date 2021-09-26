@@ -8,7 +8,13 @@ namespace portfolio.Domain.Entities
 {
     public class BuyTransaction : Transaction
     {
-        public BuyTransaction()
+
+        public BuyTransaction(Coin debetCoin, Coin creditCoin, decimal amount, decimal price): base (debetCoin, creditCoin, amount, price)
+        {
+            Side = "Buy";
+        }
+
+        public BuyTransaction(): base ()
         {
             Side = "Buy";
         }
