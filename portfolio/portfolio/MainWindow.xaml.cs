@@ -24,8 +24,6 @@ namespace portfolio
         {
             InitializeComponent();
 
-
-
         }
 
 

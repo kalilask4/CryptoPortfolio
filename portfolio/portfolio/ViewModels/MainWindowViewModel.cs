@@ -89,6 +89,7 @@ namespace portfolio.ViewModels
         #endregion
 
         private string title = "BuyTransactions Window";
+
         public MainWindowViewModel()
         {
             factory = new ManagersFactory();

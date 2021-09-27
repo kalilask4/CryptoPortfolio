@@ -9,9 +9,75 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    <Grid>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontFamily" Value="Brevia"/>
+            <Setter Property="Background" Value="BlanchedAlmond"/>
+            <Setter Property="Opacity" Value="0.78"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontFamily" Value="Brevia Light"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontFamily" Value="Brevia"/>
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+    </Window.Resources>
 
+
+    <Grid x:Name="gridGeneral" Margin="8. 8. 8. 8.">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.55*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid x:Name="gridCoin" Grid.RowSpan="2">
+            <Border>
+                <ListBox x:Name="listBoxCoin" Margin="5, 5, 0, 5" ItemsSource="{Binding}" Height="Auto">
+                </ListBox>
+            </Border>
+
+        </Grid>
+        <Grid x:Name="gridStatistic" Grid.Column="1" Grid.Row="0">
+
+            <Border>
+                <ListBox x:Name="listStatistic" Margin="15, 5, 5, 5" Height="Auto">
+                </ListBox>
+            </Border>
+        </Grid>
+        <Grid x:Name="gridPanel" Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel x:Name="st1" Grid.Column="0" Margin="0 100 15 3" VerticalAlignment="Bottom">
+                <Button Background="Aqua" Name="btnInsert" Content="сurrent" Margin="0,5,5,0" />
+                <Button Background="Yellow" Name="btnFind" Content="by bought price" Margin="0,5,5,0"/>
+                <Button Background="Orchid" Name="btnUpdate"  Content="ratio" Margin="0,5,5,5"/>
+            </StackPanel>
+            <StackPanel x:Name="st2" Grid.Column="1" Margin="30,15,10,100">
+
+
+                <Button Name="AddTransaction" Content="AddTransaction" />
+                <Button Name="Find" Content="Find"/>
+                <Button Name="Update"  Content="Update"/>
+
+            </StackPanel>
+        </Grid>
+
+        <!--<Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
@@ -33,7 +99,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </GroupBox>
-        </DockPanel>
+        </DockPanel>-->
 
 
 

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "portfolio.Domain", "portfol
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "portfolio.TestData", "portfolio.TestData\portfolio.TestData.csproj", "{0C2F0B54-B79D-473D-ACFF-BFF2400F7841}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "portfolio.Business", "portfolio.Business\portfolio.Business.csproj", "{135A57E0-1527-494A-92E9-0AE7ADD5321D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "portfolio.Business", "portfolio.Business\portfolio.Business.csproj", "{135A57E0-1527-494A-92E9-0AE7ADD5321D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
