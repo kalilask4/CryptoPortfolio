@@ -29,6 +29,7 @@ namespace portfolio.Domain.Entities
         public Coin(string name)
         {
             CoinName = name;
+            Symbol = name.Substring(0, 3);
             Buyings = new List<BuyTransaction>();
             Sellings = new List<SellTransaction>();
         }

@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:portfolio"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
     </Application.Resources>
+    
 </Application>
+         
+         
+    

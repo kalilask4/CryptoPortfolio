@@ -23,6 +23,11 @@ namespace portfolio
         public MainWindow()
         {
             InitializeComponent();
+
+
+
         }
+
+
     }
 }

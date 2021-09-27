@@ -34,7 +34,7 @@ namespace portfolio.ViewModels
         public ObservableCollection<SellTransaction> sellTransactions { get; set; }
 
         /// <summary>
-        /// Coin from transaction
+        /// Coin 
         /// </summary>
         //public ObservableCollection<Coin> Coins { get; set; }
         //public string CoinName { get => CoinName; set => CoinName = value; }
@@ -50,6 +50,18 @@ namespace portfolio.ViewModels
         /// </summary>
         public ObservableCollection<BuyTransaction> SellTransactions { get; set; }
         public string SellTransactionId { get => SellTransactionId; set => SellTransactionId = value; }
+
+        #region sealected coin 
+        private Coin _selectedCoin;
+        public Coin SelectedCoin
+        {
+            get => _selectedCoin;
+            set
+            {
+                Set(ref _selectedCoin, value);
+            }
+        }
+        #endregion
 
         #region sealected buy transaction 
         private BuyTransaction _selectedBuyTransaction;

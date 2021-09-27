@@ -5,37 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:portfolio.ViewModels" 
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Overview" Height="450" Width="800">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    
+    <Grid>
 
-    
-        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
 
         <DockPanel >
             <GroupBox Header="Coins" Margin="2" Padding="2" MinWidth="200">
-                <ListView x:Name="Coins" ItemsSource="{Binding Coins}">
-                    <!--ItemsSource="{Binding coins}-->
-                    <!--ItemsSource="{Binding BuyTransactions}"-->
-                    <!--SelectedValue="{Binding SelectedBuyTransaction}" SelectedIndex="0">-->
+                <ListView x:Name="Coins" 
+                          ItemsSource="{Binding Coins}"
+                          SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <!--<TextBlock Text="{Binding Symbol}"/>-->
+                            <TextBlock Text="{Binding CoinName}"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </GroupBox>
-
         </DockPanel>
 
 
