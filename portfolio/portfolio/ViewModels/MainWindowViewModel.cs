@@ -1,5 +1,6 @@
 ﻿using portfolio.Business.Infrastructure;
 using portfolio.Business.Managers;
+using portfolio.Command;
 using portfolio.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace portfolio.ViewModels
 {
@@ -104,8 +106,27 @@ namespace portfolio.ViewModels
         private string title = "BuyTransactions Window";
 
 
-
-
        
+
+        #region Commands
+        #region Выбор группы в списке
+        private ICommand _getBuyTransactionCommand;
+        public ICommand GetBuyTransactionCommand =>
+            _getBuyTransactionCommand
+            ??= new RelayCommand(OnGetBuyTransactionExecuted);
+        /// <summary>
+        /// делегат для метода Execute команды GetStudentsCommand
+        /// </summary>
+        /// <param name="id">Id группы</param>
+        private void OnGetBuyTransactionExecuted(object id)
+        {
+            
+        }
+        #endregion
+        #endregion
+
+
+
+
     }
 }
