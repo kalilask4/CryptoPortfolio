@@ -22,6 +22,7 @@ namespace portfolio.Domain.Entities
 
         public Coin()
         {
+            Symbol = "defaultSymbol";
             Buyings = new List<BuyTransaction>();
             Sellings = new List<SellTransaction>();
         }

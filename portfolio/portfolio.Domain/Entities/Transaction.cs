@@ -17,7 +17,7 @@ namespace portfolio.Domain.Entities
         public decimal Amount { get; set; }
         public decimal Priсe { get; set; }
         public DateTime AddDate { get; set; }
-        public string Symbol { get; set; }
+        public string TransactionSymbol { get; set; }
 
         public Transaction()
         {
@@ -33,13 +33,13 @@ namespace portfolio.Domain.Entities
             Amount = amount;
             Priсe = priсe;
             AddDate = DateTime.Now;
-            Symbol = debetCoin.CoinName + creditCoin.CoinName;
+            TransactionSymbol = debetCoin.CoinName + creditCoin.CoinName;
             //"default_symbol"; //DebetCoin.Symbol + CreditCoin.Symbol;
         }
 
         public override string ToString()
         {
-            return $"Transaction {this.Side}: {this.Symbol}  {this.Amount}  {this.Priсe} Total: {this.Amount}*{this.Priсe}";
+            return $"Transaction {this.Side}: {this.TransactionSymbol}  {this.Amount}  {this.Priсe} Total: {this.Amount}*{this.Priсe}";
         }
     }
 }

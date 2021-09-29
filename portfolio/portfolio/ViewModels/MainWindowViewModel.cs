@@ -17,6 +17,19 @@ namespace portfolio.ViewModels
         BuyTransactionManager buyTransactionManager;
         SellTransactionManager sellTransactionManager;
 
+        public MainWindowViewModel()
+        {
+            factory = new ManagersFactory();
+            coinManager = factory.GetCoinManager();
+            buyTransactionManager = factory.GetBuyTransactionManager();
+            sellTransactionManager = factory.GetSellTransactionManager();
+            buyTransactions = new ObservableCollection<BuyTransaction>(buyTransactionManager.buyTransactions);
+            sellTransactions = new ObservableCollection<SellTransaction>(sellTransactionManager.sellTransactions);
+            Coins = new ObservableCollection<Coin>(coinManager.coins);
+
+      
+        }
+
         #region Public properties
         /// <summary>
         /// Coin list
@@ -90,15 +103,9 @@ namespace portfolio.ViewModels
 
         private string title = "BuyTransactions Window";
 
-        public MainWindowViewModel()
-        {
-            factory = new ManagersFactory();
-            coinManager = factory.GetCoinManager();
-            buyTransactionManager = factory.GetBuyTransactionManager();
-            sellTransactionManager = factory.GetSellTransactionManager();
-            buyTransactions = new ObservableCollection<BuyTransaction>(buyTransactionManager.buyTransactions);
-            sellTransactions = new ObservableCollection<SellTransaction>(sellTransactionManager.sellTransactions);
-            Coins = new ObservableCollection<Coin>(coinManager.coins);
-        }
+
+
+
+       
     }
 }

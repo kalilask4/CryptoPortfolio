@@ -44,11 +44,11 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="1.25*"></RowDefinition>
+            <RowDefinition Height="1.1*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid x:Name="gridData" Grid.RowSpan="2">
-            <TabControl Margin="10" BorderBrush="Gainsboro">
+            <TabControl Margin="5,0,5,5" BorderBrush="Gainsboro">
                 <TabControl.Background>
                     <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.75"></ImageBrush>
                 </TabControl.Background>
@@ -147,21 +147,69 @@
                 </TabControl.Resources>
 
 
+                <TabItem Header="Desc">
+                    <Grid DataContext="{Binding SelectedCoin}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.4*"></RowDefinition>
+                            <RowDefinition Height="0.4*" ></RowDefinition>
+                            <RowDefinition Height="3*" ></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>                            
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                  
+                        <!--<TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left">Symbol: </TextBlock>-->
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Symbol}"/>
+                        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left">Amount: </TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Amount}"/>                     
+                        <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left">Current price: </TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding CurrentPrice, StringFormat={}{0:# ###.00}$}"/> 
+                        <!--<TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left">Value: </TextBlock>
+                        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding ValueUSD, StringFormat={}{0:# ###.00}$}"/>-->
+
+                        <GroupBox Grid.Row="5" Grid.ColumnSpan="2" Header="Last buy transaction" Margin="2" Padding="2">
+                            <ListView x:Name="Transaction" ItemsSource="{Binding Buyings}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding TransactionSymbol}"/>
+                                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Amount}"/>
+                                            <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Priсe}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </GroupBox>
+                        <!--<TextBlock HorizontalAlignment="Right">Name:</TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CoinName}"/>
+                        
+                        <TextBlock HorizontalAlignment="Right">Symbol:</TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Symbol}"/>
 
 
-
-                <!--<TabControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <
-                    </ItemsPanelTemplate>
-
-
-                    <SolidColorBrush Color="Aqua"></SolidColorBrush>
-                </TabControl.ItemsPanel>-->
-
-                <TabItem Header="First">
-                    <TextBlock>test1</TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right">Начало занятий:</TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Commence, StringFormat={}{0:dd.MM.yyyy}}"/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right">Стоимость:</TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding BasePrice, StringFormat={}{0:# ###.00}
+рублей}"/>-->
+                    </Grid>
+                    
                 </TabItem> 
+                
+                
                 <TabItem Header="Second">
                     <TextBlock>test2</TextBlock>
                 </TabItem> 
@@ -185,15 +233,18 @@
             <StackPanel x:Name="st1" Grid.Column="0" Margin="0 100 15 3" VerticalAlignment="Bottom">
                 <Button Background="Aqua" Name="btnInsert" Content="сurrent" Margin="0,5,5,0" />
                 <Button Background="Yellow" Name="btnFind" Content="by bought price" Margin="0,5,5,0"/>
-                <Button Background="Orchid" Name="btnUpdate"  Content="ratio" Margin="0,5,5,5"/>
+                <!--<Button Background="Orchid" Name="btnUpdate"  Content="ratio" Margin="0,5,5,5"/>-->
             </StackPanel>
-            <StackPanel x:Name="st2" Grid.Column="1" Margin="30,15,10,100">
-
-
+            <StackPanel x:Name="st2" Grid.Column="1" Margin="30,15,10,80">
                 <Button Name="AddTransaction" Content="AddTransaction" />
                 <Button Name="Find" Content="Find"/>
-                <Button Name="Update"  Content="Update"/>
-
+                
+                
+                <Button Content="Simple Command" Command="{Binding SimpleCommand}" />
+                
+                
+                
+                <!--<Button Name="Update"  Content="Update"/>-->
             </StackPanel>
         </Grid>
     </Grid>
