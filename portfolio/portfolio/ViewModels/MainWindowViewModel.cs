@@ -19,6 +19,43 @@ namespace portfolio.ViewModels
         BuyTransactionManager buyTransactionManager;
         SellTransactionManager sellTransactionManager;
 
+        private string titleCoins = "Coin Window";
+        private string titleTransactions = "Transaction Window";
+        #region Public properties
+        /// <summary>
+        /// Coin list
+        /// </summary>
+        public ObservableCollection<Coin> Coins { get; set; }
+        /// <summary>
+        /// Buy transaction list for coin
+        /// </summary>
+        public ObservableCollection<BuyTransaction> buyTransactionsForCoin { get; set; }
+        public string Title { get => titleCoins; set => titleCoins = value; }
+
+        /// <summary>
+        /// Buy transaction list
+        /// </summary>
+        public ObservableCollection<BuyTransaction> buyTransactions { get; set; }
+        public string TitleTransactions { get => titleTransactions; set => titleTransactions = value; }
+
+        /// <summary>
+        /// Sell transaction list
+        /// </summary>
+        public ObservableCollection<SellTransaction> sellTransactions { get; set; }
+       // public string TitleTransactions { get => titleTransactions; set => titleTransactions = value; }
+
+        #region sealected coin 
+        private Coin _selectedCoin;
+        public Coin SelectedCoin
+        {
+            get => _selectedCoin;
+            set
+            {
+                Set(ref _selectedCoin, value);
+            }
+        }
+        #endregion
+
         public MainWindowViewModel()
         {
             factory = new ManagersFactory();
@@ -28,31 +65,8 @@ namespace portfolio.ViewModels
             buyTransactions = new ObservableCollection<BuyTransaction>(buyTransactionManager.buyTransactions);
             sellTransactions = new ObservableCollection<SellTransaction>(sellTransactionManager.sellTransactions);
             Coins = new ObservableCollection<Coin>(coinManager.coins);
-
-      
         }
 
-        #region Public properties
-        /// <summary>
-        /// Coin list
-        /// </summary>
-        public ObservableCollection<Coin> Coins { get; set; }
-
-        /// <summary>
-        /// Buy transaction list
-        /// </summary>
-        public ObservableCollection<BuyTransaction> buyTransactions { get; set; }
-        
-        /// <summary>
-        /// Sell transaction list
-        /// </summary>
-        public ObservableCollection<SellTransaction> sellTransactions { get; set; }
-
-        /// <summary>
-        /// Coin 
-        /// </summary>
-        //public ObservableCollection<Coin> Coins { get; set; }
-        //public string CoinName { get => CoinName; set => CoinName = value; }
 
         /// <summary>
         /// Buy transactions for coin 
@@ -66,17 +80,7 @@ namespace portfolio.ViewModels
         public ObservableCollection<BuyTransaction> SellTransactions { get; set; }
         public string SellTransactionId { get => SellTransactionId; set => SellTransactionId = value; }
 
-        #region sealected coin 
-        private Coin _selectedCoin;
-        public Coin SelectedCoin
-        {
-            get => _selectedCoin;
-            set
-            {
-                Set(ref _selectedCoin, value);
-            }
-        }
-        #endregion
+
 
         #region sealected buy transaction 
         private BuyTransaction _selectedBuyTransaction;
@@ -103,30 +107,25 @@ namespace portfolio.ViewModels
         #endregion
         #endregion
 
-        private string title = "BuyTransactions Window";
-
-
-       
-
         #region Commands
-        #region Выбор группы в списке
-        private ICommand _getBuyTransactionCommand;
+        #region Выбор монеты в списке
+        private ICommand _getBuyTransactionsCommand;
         public ICommand GetBuyTransactionCommand =>
-            _getBuyTransactionCommand
+            _getBuyTransactionsCommand
             ??= new RelayCommand(OnGetBuyTransactionExecuted);
         /// <summary>
-        /// делегат для метода Execute команды GetStudentsCommand
+        /// делегат для метода Execute команды GetBuyTransactionsCommand
         /// </summary>
-        /// <param name="id">Id группы</param>
+        /// <param name="id">Id монеты</param>
         private void OnGetBuyTransactionExecuted(object id)
         {
-            
+            BuyTransactions.Clear();
+            var buyTransactions = coinManager.GetBuyTransactionsOfCoin((int)id);
+            foreach (var buyTransaction in buyTransactions)
+                BuyTransactions.Add(buyTransaction);
         }
         #endregion
         #endregion
-
-
-
-
     }
+
 }

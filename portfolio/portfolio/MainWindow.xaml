@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:portfolio.ViewModels" 
         mc:Ignorable="d"
-        Title="Overview" Height="450" Width="800">
+        Title="Crypto portfolio" Height="450" Width="800">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
@@ -48,7 +48,7 @@
         </Grid.RowDefinitions>
 
         <Grid x:Name="gridData" Grid.RowSpan="2">
-            <TabControl Margin="5,0,5,5" BorderBrush="Gainsboro">
+            <TabControl Margin="5,0,0,5" BorderBrush="Gainsboro">
                 <TabControl.Background>
                     <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.75"></ImageBrush>
                 </TabControl.Background>
@@ -192,7 +192,8 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
-                        </GroupBox>
+                        </GroupBox>
+
                         <!--<TextBlock HorizontalAlignment="Right">Name:</TextBlock>
                         <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CoinName}"/>
                         
@@ -204,7 +205,8 @@
                         <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Commence, StringFormat={}{0:dd.MM.yyyy}}"/>
                         <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right">Стоимость:</TextBlock>
                         <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding BasePrice, StringFormat={}{0:# ###.00}
-рублей}"/>-->
+рублей}"/>-->
+
                     </Grid>
                     
                 </TabItem> 
@@ -233,7 +235,7 @@
             <StackPanel x:Name="st1" Grid.Column="0" Margin="0 100 15 3" VerticalAlignment="Bottom">
                 <Button Background="Aqua" Name="btnInsert" Content="сurrent" Margin="0,5,5,0" />
                 <Button Background="Yellow" Name="btnFind" Content="by bought price" Margin="0,5,5,0"/>
-                <!--<Button Background="Orchid" Name="btnUpdate"  Content="ratio" Margin="0,5,5,5"/>-->
+                <Button Background="Orchid" Name="btnUpdate"  Content="ratio" Margin="0,5,5,5"/>
             </StackPanel>
             <StackPanel x:Name="st2" Grid.Column="1" Margin="30,15,10,80">
                 <Button Name="AddTransaction" Content="AddTransaction" />
