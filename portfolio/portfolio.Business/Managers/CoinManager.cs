@@ -16,7 +16,7 @@ namespace portfolio.Business.Managers
         }
 
         // <summary>
-        /// general list of buy transactions
+        /// general list of coins
         /// </summary>
         public IEnumerable<Coin> coins
         {
@@ -24,7 +24,16 @@ namespace portfolio.Business.Managers
         }
 
         #region basic CRUD operations
-        public bool DeleteCoin(int id)
+        public Coin Create(string name)
+        {
+            Coin coin = new Coin(name); 
+            unitOfWork.SaveChanges();
+            return coin;
+        }
+
+        public Coin GetById(int id) => coinRepository.Get(id);
+
+        public bool Delete(int id)
         {
             var result = coinRepository.Delete(id);
             if (!result) return false;
@@ -32,20 +41,64 @@ namespace portfolio.Business.Managers
             return true;
         }
 
-        public IEnumerable<Coin>FindCoin(Expression<Func<Coin, bool>> predicate) => 
+        public IEnumerable<Coin>Find(Expression<Func<Coin, bool>> predicate) => 
             coinRepository.Find(predicate);
 
-        public Coin GetCoinById(int id) => coinRepository.Get(id);
-
-        public IEnumerable<Coin> GetAllCoins() =>
-            coinRepository.GetAll();
-
-        public void UpdateCoin(Coin coin)
+        /// <summary>
+        /// Редактирование монеты
+        /// </summary>
+        /// <param name="coin">Обновленный объект монеты</param>
+        public void Update(Coin coin)
         {
             coinRepository.Update(coin);
             unitOfWork.SaveChanges();
         }
         #endregion
+        
+        /// <summary>
+        /// Добавление транзакции покупки к монете
+        /// </summary>
+        /// <param name="buyTransaction">Добавляемый объект</param>
+        /// <param name="coinId">Id монеты</param>
+        /// <returns></returns>
+        public void AddBuyTransactionToCoin(BuyTransaction buyTransaction, int debetCoinId, int creditCoinId)
+        {
+            var debetCoin = coinRepository.Get(debetCoinId);
+            var creditCoin = coinRepository.Get(creditCoinId);
+            debetCoin.Buyings.Add(buyTransaction);
+            creditCoin.Buyings.Add(buyTransaction);
+            if (debetCoin.CoinId <= 0)
+                coinRepository.Create(debetCoin);
+            else coinRepository.Update(debetCoin);
+            if (creditCoin.CoinId <= 0)
+                coinRepository.Create(creditCoin);
+            else coinRepository.Update(creditCoin);
+
+            unitOfWork.SaveChanges();
+        }
+
+        /// <summary>
+        /// Удаление транзакции покупки к монете
+        /// </summary>
+        /// <param name="buyTransaction">Удаляемая транзакция</param>
+        /// <param name="coinId">Id монеты</param>
+        /// <returns></returns>
+        public void RemoveBuyTransactionFromCoin(BuyTransaction buyTransaction, int coinId)
+        {
+            var coin = coinRepository.Get(coinId, "Buyings");
+            coin.Buyings.Remove(buyTransaction);
+            coinRepository.Update(coin);
+            unitOfWork.SaveChanges();
+        }
+
+        /// <summary>
+        /// Получение списка транзакций покупки
+        /// </summary>
+        /// <param name="coinId">Id монеты</param>
+        /// <returns></returns>
+        public ICollection<BuyTransaction> GetBuyTransactionsOfCoin(int coinId) => buyTransactionRepository
+       .Find(b => b.transactionCoins["debet"].CoinId == coinId)
+       .ToList();
     }
 }
 

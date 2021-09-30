@@ -27,6 +27,14 @@ namespace portfolio.Business.Managers
         public BuyTransaction CreateBuyTransaction(BuyTransaction buyTransaction)
         {
             buyTransactionRepository.Create(buyTransaction);
+            Coin coinDebet = buyTransaction.transactionCoins["debet"];
+            decimal newAmountDebetCoin = coinDebet.Amount + buyTransaction.Amount;
+            coinDebet.Amount = newAmountDebetCoin;
+            Coin coinCredit = buyTransaction.transactionCoins["credit"];
+            decimal newAmountCreditCoin = coinCredit.Amount - buyTransaction.Amount * buyTransaction.Priсe;
+            coinCredit.Amount = newAmountCreditCoin;
+            coinRepository.Update(coinDebet);
+            coinRepository.Update(coinCredit);
             unitOfWork.SaveChanges();
             return buyTransaction;
         }
