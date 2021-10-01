@@ -24,9 +24,9 @@ namespace portfolio.Business.Managers
         }
 
         #region basic CRUD operations
-        public Coin Create(string name)
+        public Coin Create()
         {
-            Coin coin = new Coin(name); 
+            Coin coin = new Coin(); 
             unitOfWork.SaveChanges();
             return coin;
         }

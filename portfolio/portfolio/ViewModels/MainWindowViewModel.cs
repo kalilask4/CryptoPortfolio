@@ -113,16 +113,23 @@ namespace portfolio.ViewModels
         public ICommand GetBuyTransactionCommand =>
             _getBuyTransactionsCommand
             ??= new RelayCommand(OnGetBuyTransactionExecuted);
+
         /// <summary>
         /// делегат для метода Execute команды GetBuyTransactionsCommand
         /// </summary>
         /// <param name="id">Id монеты</param>
         private void OnGetBuyTransactionExecuted(object id)
         {
-            BuyTransactions.Clear();
+            //if (BuyTransactions != null){
+            //    BuyTransactions.Clear();
+            //}
+            BuyTransactions?.Clear();
             var buyTransactions = coinManager.GetBuyTransactionsOfCoin((int)id);
             foreach (var buyTransaction in buyTransactions)
-                BuyTransactions.Add(buyTransaction);
+            { 
+                BuyTransactions?.Add(buyTransaction);
+            }
+                
         }
         #endregion
         #endregion

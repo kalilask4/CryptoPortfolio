@@ -25,13 +25,14 @@ namespace portfolio.TestData
         {
             Random r = new Random();
             var coins = new List<Coin>();
+            BuyTransaction buyTransaction = new BuyTransaction(new Coin("coinfortrans1"), new Coin("coinfortrans1"), 10, 100);
             for (var i = 0; i < 10; i++)
             {
-                coins.Add(new Coin
-                {
-                    CoinName = $"Coin {i}"
-                });
+                coins.Add(new Coin("Coin {i}", buyTransaction));
+                    //, buyTransaction));
             }
+            
+            
         }
 
         public void Create(Coin entity)

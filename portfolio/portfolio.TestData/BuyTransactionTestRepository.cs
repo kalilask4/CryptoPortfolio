@@ -65,7 +65,8 @@ namespace portfolio.TestData
 
         public IQueryable<BuyTransaction> Find(Expression<Func<BuyTransaction, bool>> predicate)
         {
-            throw new NotImplementedException();
+            Func<BuyTransaction, bool> filter = predicate.Compile();
+            return buyTransactions.Where(filter).AsQueryable();
         }
 
         public BuyTransaction Get(int id, params string[] includes)
