@@ -16,8 +16,4 @@
     <ProjectReference Include="..\portfolio.Domain\portfolio.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>

@@ -14,8 +14,8 @@ namespace portfolio.DAL.Data
         { }
 
         public DbSet<Coin> Coins { get; set; }
-        public DbSet<BuyTransaction> buyTransactions { get; set; }
-        public DbSet<SellTransaction> sellTransactions { get; set; }
+        public DbSet<BuyTransaction> BuyTransactions { get; set; }
+        public DbSet<SellTransaction> SellTransactions { get; set; }
         
     }
 }
