@@ -17,14 +17,14 @@ namespace portfolio.Domain.Entities
         public decimal CurrentPrice { get; set; }
         public string PictureName { get; set; }
         public DateTime DateUpdate { get; set; }
-        public List<BuyTransaction> Buyings { get; set; }
-        public List<SellTransaction> Sellings { get; set; }
+        public List<BuyTransaction> BuyTransactions { get; set; }
+        public List<SellTransaction> SellTransactions { get; set; }
 
         public Coin()
         {
             Symbol = "defaultSymbol";
-            Buyings = new List<BuyTransaction>();
-            Sellings = new List<SellTransaction>();
+            BuyTransactions = new List<BuyTransaction>();
+            SellTransactions = new List<SellTransaction>();
         }
 
         public Coin(string name)
@@ -32,8 +32,8 @@ namespace portfolio.Domain.Entities
             CoinName = name;
             Symbol = "defaultSymbol2";
             //Symbol = name.Substring(0, 3);
-            Buyings = new List<BuyTransaction>();
-            Sellings = new List<SellTransaction>();
+            BuyTransactions = new List<BuyTransaction>();
+            SellTransactions = new List<SellTransaction>();
         }
 
         //for test!!
@@ -44,9 +44,9 @@ namespace portfolio.Domain.Entities
             //Symbol = name.Substring(0, 3);
             Amount = 3; //test
             CurrentPrice = 10000; //test
-            Buyings = new List<BuyTransaction>();
-            Buyings.Add(buyTransaction);
-            Sellings = new List<SellTransaction>();
+            BuyTransactions = new List<BuyTransaction>();
+            BuyTransactions.Add(buyTransaction);
+            SellTransactions = new List<SellTransaction>();
         }
 
         public override string ToString()

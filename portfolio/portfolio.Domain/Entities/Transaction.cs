@@ -11,6 +11,10 @@ namespace portfolio.Domain.Entities
         public int TransactionId { get; set; }
         public string Side { get; set; }
         public Dictionary<String, Coin> transactionCoins { get; set; }
+        public int CoinId { get; set; } // debit coin reference
+        public Coin Coin { get; set; }
+
+
 
         //public Coin DebetCoin { get; set; }
         //public Coin CreditCoin { get; set; }

@@ -73,8 +73,8 @@ namespace portfolio.Business.Managers
         {
             var debetCoin = coinRepository.Get(debetCoinId);
             var creditCoin = coinRepository.Get(creditCoinId);
-            debetCoin.Buyings.Add(buyTransaction);
-            creditCoin.Buyings.Add(buyTransaction);
+            debetCoin.BuyTransactions.Add(buyTransaction);
+            creditCoin.BuyTransactions.Add(buyTransaction);
             if (debetCoin.CoinId <= 0)
                 coinRepository.Create(debetCoin);
             else coinRepository.Update(debetCoin);
@@ -94,7 +94,7 @@ namespace portfolio.Business.Managers
         public void RemoveBuyTransactionFromCoin(BuyTransaction buyTransaction, int coinId)
         {
             var coin = coinRepository.Get(coinId, "Buyings");
-            coin.Buyings.Remove(buyTransaction);
+            coin.BuyTransactions.Remove(buyTransaction);
             coinRepository.Update(coin);
             unitOfWork.SaveChanges();
         }

@@ -14,7 +14,7 @@ namespace portfolio.DAL.Repositories
 {
     class EFCoinsRepository : IRepository<Coin>
     {
-        PortfolioContext context;
+        private readonly PortfolioContext context;
         private readonly DbSet<Coin> coins;
 
         public EFCoinsRepository(PortfolioContext context)
@@ -22,9 +22,9 @@ namespace portfolio.DAL.Repositories
             coins = context.Coins;
         }
 
-        public void Create(Coin entity)
+        public void Create(Coin coin)
         {
-            context.Add(entity);
+            context.Add(coin);
         }
 
         public bool Delete(int id)
@@ -37,7 +37,7 @@ namespace portfolio.DAL.Repositories
 
         public IQueryable<Coin> Find(Expression<Func<Coin, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return coins.Where(predicate);
         }
 
         public Coin Get(int id, params string[] includes)
@@ -55,9 +55,9 @@ namespace portfolio.DAL.Repositories
             return coins.AsQueryable();
         }
 
-        public void Update(Coin entity)
+        public void Update(Coin coin)
         {
-            coins.Update(entity);
+            coins.Update(coin);
         }
     }
 }
