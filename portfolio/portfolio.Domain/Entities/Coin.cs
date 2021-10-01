@@ -35,13 +35,21 @@ namespace portfolio.Domain.Entities
             Sellings = new List<SellTransaction>();
         }
 
+        //for test!!
         public Coin(string name, BuyTransaction buyTransaction)
         {
             CoinName = name;
             Symbol = name.Substring(0, 3);
+            Amount = 3; //test
+            CurrentPrice = 10000; //test
             Buyings = new List<BuyTransaction>();
             Buyings.Add(buyTransaction);
             Sellings = new List<SellTransaction>();
+        }
+
+        public override string ToString()
+        {
+            return $"Coin name: {this.CoinName} amout = {this.Amount} ";
         }
     }
 }

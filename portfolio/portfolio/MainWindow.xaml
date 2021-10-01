@@ -197,7 +197,7 @@
                                                 <ColumnDefinition></ColumnDefinition>
                                                 <ColumnDefinition></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding TransactionSymbol}"/>
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding TransactionId}"/>
                                             <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Amount}"/>
                                             <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Priсe}"/>
                                         </Grid>

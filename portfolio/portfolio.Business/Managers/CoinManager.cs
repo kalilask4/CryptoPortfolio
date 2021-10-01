@@ -31,6 +31,14 @@ namespace portfolio.Business.Managers
             return coin;
         }
 
+        public Coin Create(string name, BuyTransaction buyTransaction)
+        {
+            Coin coin = new Coin(name, buyTransaction);
+            unitOfWork.SaveChanges();
+            return coin;
+        }
+
+
         public Coin GetById(int id) => coinRepository.Get(id);
 
         public bool Delete(int id)
