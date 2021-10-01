@@ -30,11 +30,10 @@ namespace portfolio.TestData
             for (var i = 0; i < 10; i++)
             {
                 var coin = new Coin($"Coin {i}", buyTransaction);
-                //coin.Amount = 5 + i;
                 coins.Add(coin);
                 Trace.WriteLine($"Test setup coin in \"for\": {coin}"); 
             }
-
+  
             Trace.WriteLine("Test setup coin " + coins[0].Buyings[0].transactionCoins["debet"].ToString());
             Trace.WriteLine("Test setup coin " + coins[0].Buyings[0].transactionCoins["credit"].ToString());
         }

@@ -30,7 +30,8 @@ namespace portfolio.Domain.Entities
         public Coin(string name)
         {
             CoinName = name;
-            Symbol = name.Substring(0, 3);
+            Symbol = "defaultSymbol2";
+            //Symbol = name.Substring(0, 3);
             Buyings = new List<BuyTransaction>();
             Sellings = new List<SellTransaction>();
         }
@@ -39,7 +40,8 @@ namespace portfolio.Domain.Entities
         public Coin(string name, BuyTransaction buyTransaction)
         {
             CoinName = name;
-            Symbol = name.Substring(0, 3);
+            Symbol = "defaultSymbol3";
+            //Symbol = name.Substring(0, 3);
             Amount = 3; //test
             CurrentPrice = 10000; //test
             Buyings = new List<BuyTransaction>();
@@ -49,7 +51,7 @@ namespace portfolio.Domain.Entities
 
         public override string ToString()
         {
-            return $"Coin name: {this.CoinName} amout = {this.Amount} ";
+            return $"id {this.CoinId} Coin name: {this.CoinName} amout = {this.Amount} symbol: {this.Symbol} ";
         }
     }
 }

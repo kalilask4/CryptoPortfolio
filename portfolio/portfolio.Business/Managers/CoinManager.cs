@@ -33,7 +33,7 @@ namespace portfolio.Business.Managers
 
         public Coin Create(string name, BuyTransaction buyTransaction)
         {
-            Coin coin = new Coin(name, buyTransaction);
+            Coin coin = new Coin("name2", buyTransaction);
             unitOfWork.SaveChanges();
             return coin;
         }
