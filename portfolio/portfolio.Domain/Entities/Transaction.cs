@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace portfolio.Domain.Entities
 {
     public abstract class Transaction
     {
+        [Key]
         public int TransactionId { get; set; }
         public string Side { get; set; }
         public Dictionary<String, Coin> transactionCoins { get; set; }

@@ -58,13 +58,19 @@ namespace portfolio.ViewModels
 
         public MainWindowViewModel()
         {
-            factory = new ManagersFactory();
+            factory = new ManagersFactory("DefaultConnection");
             coinManager = factory.GetCoinManager();
             buyTransactionManager = factory.GetBuyTransactionManager();
             sellTransactionManager = factory.GetSellTransactionManager();
+            //db init
+            if (coinManager.coins.Count() == 0)
+                DbTestData.SetupData(coinManager);
             buyTransactions = new ObservableCollection<BuyTransaction>(buyTransactionManager.buyTransactions);
             sellTransactions = new ObservableCollection<SellTransaction>(sellTransactionManager.sellTransactions);
             Coins = new ObservableCollection<Coin>(coinManager.coins);
+            //Get transaction for first coin
+            if (Coins.Count > 0)
+                OnGetBuyTransactionExecuted(Coins[0].CoinId);
         }
 
 
