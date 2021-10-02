@@ -19,18 +19,21 @@ namespace portfolio.Business.Infrastructure
         private readonly CoinManager coinManager;
         private readonly BuyTransactionManager buyTransactionManager;
         private readonly SellTransactionManager sellTransactionManager;
-       
+        private readonly IConfiguration configuration;
 
-
-        public ManagersFactory(string connStringName)
+        public ManagersFactory()
         {
-            //unitOfWork = new TestUnitOfWork();
-            IConfiguration configuration = new ConfigurationBuilder()
+            unitOfWork = new TestUnitOfWork();
+        }
+
+            public ManagersFactory(string connStringName)
+        {
+            configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json")
             .Build();
             var connString = configuration
-            .GetConnectionString(connStringName);
+                .GetConnectionString(connStringName);
             unitOfWork = new EFUnitOfWork(connString);
         }
 
