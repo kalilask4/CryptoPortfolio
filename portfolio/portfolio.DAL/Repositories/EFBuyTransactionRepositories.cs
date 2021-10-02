@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace portfolio.DAL.Repositories
 {
-    class EFBuyTransactionRepositories : IRepository<BuyTransaction>
+    public class EFBuyTransactionRepositories : IRepository<BuyTransaction>
     {
         private readonly PortfolioContext context;
         private readonly DbSet<BuyTransaction> buyTransactions;

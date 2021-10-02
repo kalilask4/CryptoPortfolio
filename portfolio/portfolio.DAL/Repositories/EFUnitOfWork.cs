@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace portfolio.DAL.Repositories
 {
-    class UnitOfWork: IUnitOfWork
+    public class EFUnitOfWork: IUnitOfWork
     {
         private readonly PortfolioContext context;
         private IRepository<Coin> coinRepository;
         private IRepository<BuyTransaction> buyRepository;
 
-        public UnitOfWork(string connectionString)
+        public EFUnitOfWork(string connectionString)
         {
             var options = new DbContextOptionsBuilder<PortfolioContext>()
                 .UseSqlServer(connectionString)
