@@ -38,8 +38,25 @@ namespace portfolio.Business.Managers
             return coin;
         }
 
+        internal void AddBuyTransactionToCoin(BuyTransaction buyTransaction, int coinId, bool v)
+        {
+            throw new NotImplementedException();
+        }
 
         public Coin GetById(int id) => coinRepository.Get(id);
+
+        ///<summary>
+        /// Add coins from list
+        /// </summary>
+        /// <param name = "coins"></param>
+        public void AddRange(List<Coin> coin)
+        {
+            coin.ForEach(c => coinRepository.Create(c));
+            unitOfWork.SaveChanges();
+        }
+
+
+
 
         public bool Delete(int id)
         {
@@ -62,7 +79,7 @@ namespace portfolio.Business.Managers
             unitOfWork.SaveChanges();
         }
         #endregion
-        
+       
         /// <summary>
         /// Добавление транзакции покупки к монете
         /// </summary>
