@@ -20,7 +20,7 @@ namespace portfolio.Business.Infrastructure
                     CoinName = "CoinOne",
                     Symbol = "ONE",
                     Amount = 100,
-                    ValueUSD = 2342,
+                    ValueUSD = 1342,
                 },
                 new Coin
                 {
@@ -28,7 +28,14 @@ namespace portfolio.Business.Infrastructure
                     Symbol = "TWO",
                     Amount = 2300,
                     ValueUSD = 220,
-                } 
+                },
+                new Coin
+                {
+                    CoinName = "CoinThird",
+                    Symbol = "Third",
+                    Amount = 3000,
+                    ValueUSD = 3,
+                }
             });
 
             var coins = coinManager.coins.ToArray();
@@ -36,18 +43,33 @@ namespace portfolio.Business.Infrastructure
             //add transactions
             coinManager.AddBuyTransactionToCoin(
                 new BuyTransaction
-                { },
-                coins[0].CoinId, false
+                {
+                    Amount = 100,
+                    Priсe = 12092,
+                    CoinId = coins[0].CoinId
+                },
+                coins[0].CoinId,
+                coins[1].CoinId
                 );
             coinManager.AddBuyTransactionToCoin(
                 new BuyTransaction
-                { },
-                coins[0].CoinId, false
+                {
+                    Amount = 200,
+                    Priсe = 92,
+                    CoinId = coins[0].CoinId
+                },
+                coins[0].CoinId,
+                coins[1].CoinId
                 );
             coinManager.AddBuyTransactionToCoin(
                 new BuyTransaction
-                { },
-                coins[1].CoinId, false
+                {
+                    Amount = 200,
+                    Priсe = 92,
+                    CoinId = coins[0].CoinId
+                },
+                coins[1].CoinId, 
+                coins[2].CoinId
                 );
         }
     }

@@ -41,6 +41,8 @@ namespace portfolio.Domain.Entities
             //"default_symbol"; //DebetCoin.Symbol + CreditCoin.Symbol;
         }
 
+
+
         public override string ToString()
         {
             return $"Transaction {this.Side}: {this.TransactionSymbol}  {this.Amount}  {this.Priсe} Total: {this.Amount}*{this.Priсe}";

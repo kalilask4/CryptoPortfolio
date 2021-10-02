@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace portfolio.DAL.Data
 {
-    class PortfolioContext : DbContext
+    public class PortfolioContext : DbContext
     {
         public PortfolioContext(DbContextOptions<PortfolioContext> options) : base(options)
         { }

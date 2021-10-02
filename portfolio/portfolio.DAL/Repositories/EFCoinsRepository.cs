@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace portfolio.DAL.Repositories
 
 {
-    class EFCoinsRepository : IRepository<Coin>
+    public class EFCoinsRepository : IRepository<Coin>
     {
         private readonly PortfolioContext context;
         private readonly DbSet<Coin> coins;

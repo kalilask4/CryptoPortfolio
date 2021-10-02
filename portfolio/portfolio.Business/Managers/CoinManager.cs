@@ -38,10 +38,7 @@ namespace portfolio.Business.Managers
             return coin;
         }
 
-        internal void AddBuyTransactionToCoin(BuyTransaction buyTransaction, int coinId, bool v)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public Coin GetById(int id) => coinRepository.Get(id);
 
@@ -88,19 +85,27 @@ namespace portfolio.Business.Managers
         /// <returns></returns>
         public void AddBuyTransactionToCoin(BuyTransaction buyTransaction, int debetCoinId, int creditCoinId)
         {
+
             var debetCoin = coinRepository.Get(debetCoinId);
             var creditCoin = coinRepository.Get(creditCoinId);
             debetCoin.BuyTransactions.Add(buyTransaction);
-            creditCoin.BuyTransactions.Add(buyTransaction);
+            creditCoin.BuyTransactions.Add(buyTransaction);  // !!!!сделать обратную привязку - sell transaction
             if (debetCoin.CoinId <= 0)
                 coinRepository.Create(debetCoin);
             else coinRepository.Update(debetCoin);
             if (creditCoin.CoinId <= 0)
                 coinRepository.Create(creditCoin);
             else coinRepository.Update(creditCoin);
+            buyTransaction.CoinId = debetCoinId;
 
             unitOfWork.SaveChanges();
         }
+
+        //internal void AddBuyTransactionToCoin(BuyTransaction buyTransaction, int coinId, bool v)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
 
         /// <summary>
         /// Удаление транзакции покупки к монете
