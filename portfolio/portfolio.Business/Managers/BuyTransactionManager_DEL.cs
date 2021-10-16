@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace portfolio.Business.Managers
 {
-    public class BuyTransactionManager : BaseManager
+    public class BuyTransactionManager_DEL : BaseManager
     {
-        public BuyTransactionManager(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public BuyTransactionManager_DEL(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
 

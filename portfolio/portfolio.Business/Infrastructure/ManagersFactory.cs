@@ -16,9 +16,9 @@ namespace portfolio.Business.Infrastructure
     {
 
         private readonly IUnitOfWork unitOfWork;
-        private readonly CoinManager coinManager;
-        private readonly BuyTransactionManager buyTransactionManager;
-        private readonly SellTransactionManager sellTransactionManager;
+        private readonly CoinManager_DEL coinManager;
+        private readonly BuyTransactionManager_DEL buyTransactionManager;
+        private readonly SellTransactionManager_DEL sellTransactionManager;
         private readonly IConfiguration configuration;
 
         public ManagersFactory()
@@ -37,22 +37,22 @@ namespace portfolio.Business.Infrastructure
             unitOfWork = new EFUnitOfWork(connString);
         }
 
-        public CoinManager GetCoinManager()
+        public CoinManager_DEL GetCoinManager()
         {
             return coinManager
-                ?? new CoinManager(unitOfWork);
+                ?? new CoinManager_DEL(unitOfWork);
         }
 
-        public BuyTransactionManager GetBuyTransactionManager()
+        public BuyTransactionManager_DEL GetBuyTransactionManager()
         {
             return buyTransactionManager
-                ?? new BuyTransactionManager(unitOfWork);
+                ?? new BuyTransactionManager_DEL(unitOfWork);
         }
 
-        public SellTransactionManager GetSellTransactionManager()
+        public SellTransactionManager_DEL GetSellTransactionManager()
         {
             return sellTransactionManager
-                ?? new SellTransactionManager(unitOfWork);
+                ?? new SellTransactionManager_DEL(unitOfWork);
         }
     }
 }

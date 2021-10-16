@@ -10,7 +10,7 @@ namespace portfolio.Business.Infrastructure
 {
     public static class DbTestData
     {
-        public static void SetupData(CoinManager coinManager)
+        public static void SetupData(CoinManager_DEL coinManager)
         {
             //Add coins
             coinManager.AddRange(new List<Coin_DEL>

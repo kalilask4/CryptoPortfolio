@@ -15,9 +15,9 @@ namespace portfolio.ViewModels
     class MainWindowViewModel : ViewModelBase
     {
         ManagersFactory factory;
-        CoinManager coinManager;
-        BuyTransactionManager buyTransactionManager;
-        SellTransactionManager sellTransactionManager;
+        CoinManager_DEL coinManager;
+        BuyTransactionManager_DEL buyTransactionManager;
+        SellTransactionManager_DEL sellTransactionManager;
 
         private string titleCoins = "Coin_DEL Window";
         private string titleTransactions = "Transaction_DEL Window";
