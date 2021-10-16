@@ -16,7 +16,7 @@ namespace portfolio.TestData
         public TransactionTestRepository(List<Transaction> transactions)
         {
             this.transactions = transactions;
-            SetupData();
+            SetupData(); //generate test data
         }
 
         private void SetupData()

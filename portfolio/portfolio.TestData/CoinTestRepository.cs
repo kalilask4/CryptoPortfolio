@@ -21,7 +21,7 @@ namespace portfolio.TestData
         public CoinTestRepository(List<Coin> coins)
         {
             this.coins = coins;
-            SetupData();
+            SetupData(); //generate test data
         }
 
         private static void SetupData()
