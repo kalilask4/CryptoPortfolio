@@ -14,7 +14,7 @@ namespace portfolio.Domain.Entities
         [Required]
         public string Name { get; set; }
         [Required]
-        public string Symbol { get; set; }
+        public string ShortName { get; set; }
         [Required]
         public decimal Amount { get; set; }
         [Required]
@@ -25,5 +25,13 @@ namespace portfolio.Domain.Entities
         public DateTime DateUpdate { get; set; }
         // навигационное свойство
         public List<Transaction> Transactions { get; set; }
+
+
+        public override string ToString()
+        {
+            return $"Id{CoinId} - {ShortName}, amout = {Amount}";
+        }
     }
+
+
 }

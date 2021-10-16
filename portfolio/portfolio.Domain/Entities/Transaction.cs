@@ -8,8 +8,9 @@ namespace portfolio.Domain.Entities
     {
         [Key]
         public int TransactionId { get; set; }
+        public string TransactionSymbol { get; set; } //like Name exs BTNBTC
         [Required]
-        string side;
+        private string side;
         static List<string> SideType = new List<string> { "buy", "sell", "transfer" };
         public string Side
         {
@@ -21,13 +22,19 @@ namespace portfolio.Domain.Entities
             }
         }
 
-        public string TransactionSymbol { get; set; }
+        
         public decimal Amount { get; set; }
         public decimal Priсe { get; set; }
         public decimal Sum { get; set; }
         public DateTime DateUpdate { get; set; }
         // навигационное свойство
         public List<Coin> TransactionCoins { get; set; }
+
+
+        public override string ToString()
+        {
+            return $"Id {TransactionId} {TransactionSymbol} {Side}";
+        }
 
     }
 }
