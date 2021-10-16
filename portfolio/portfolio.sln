@@ -11,7 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "portfolio.TestData", "portf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "portfolio.Business", "portfolio.Business\portfolio.Business.csproj", "{135A57E0-1527-494A-92E9-0AE7ADD5321D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "portfolio.DAL", "portfolio.DAL\portfolio.DAL.csproj", "{0D7224FB-59E0-4ED9-A9AC-A8E2257BCA58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "portfolio.DAL", "portfolio.DAL\portfolio.DAL.csproj", "{0D7224FB-59E0-4ED9-A9AC-A8E2257BCA58}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7A84BCC1-9B61-4D5E-A3F9-1494FC17BF1B}"
+	ProjectSection(SolutionItems) = preProject
+		descprj.txt = descprj.txt
+		ToDo.txt = ToDo.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

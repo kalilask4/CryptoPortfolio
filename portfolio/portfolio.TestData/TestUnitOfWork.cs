@@ -11,18 +11,18 @@ namespace portfolio.TestData
     public class TestUnitOfWork: IUnitOfWork
 
     {
-        private IRepository<Coin> coinsRepository;
-        private IRepository<BuyTransaction> buyTransactionsRepository;
-        private IRepository<SellTransaction> sellTransactionsRepository;
-        private List<Coin> coins;
-        private List<BuyTransaction> buyTransactions;
-        private List<SellTransaction> sellTransactions;
+        private IRepository<Coin_DEL> coinsRepository;
+        private IRepository<BuyTransaction_DEL> buyTransactionsRepository;
+        private IRepository<SellTransaction_DEL> sellTransactionsRepository;
+        private List<Coin_DEL> coins;
+        private List<BuyTransaction_DEL> buyTransactions;
+        private List<SellTransaction_DEL> sellTransactions;
 
         public TestUnitOfWork()
         {
-            coins = new List<Coin>();
-            buyTransactions = new List<BuyTransaction>();
-            sellTransactions = new List<SellTransaction>();
+            coins = new List<Coin_DEL>();
+            buyTransactions = new List<BuyTransaction_DEL>();
+            sellTransactions = new List<SellTransaction_DEL>();
             
             buyTransactionsRepository = new BuyTransactionTestRepository(buyTransactions);
             foreach (var buyTransaction in buyTransactions)
@@ -40,11 +40,11 @@ namespace portfolio.TestData
             coinsRepository = new CoinTestRepository(coins);
         }
 
-        public IRepository<Coin> CoinRepository => coinsRepository;
+        public IRepository<Coin_DEL> CoinRepository => coinsRepository;
 
-        public IRepository<BuyTransaction> BuyTransactioRepository => buyTransactionsRepository;
+        public IRepository<BuyTransaction_DEL> BuyTransactioRepository => buyTransactionsRepository;
 
-        public IRepository<SellTransaction> SellTransactioRepository => sellTransactionsRepository;
+        public IRepository<SellTransaction_DEL> SellTransactioRepository => sellTransactionsRepository;
 
         public void SaveChanges()
         {

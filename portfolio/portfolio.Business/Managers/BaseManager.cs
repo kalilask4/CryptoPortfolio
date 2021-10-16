@@ -11,9 +11,9 @@ namespace portfolio.Business.Managers
     public class BaseManager
     {
         protected readonly IUnitOfWork unitOfWork;
-        protected readonly IRepository<Coin> coinRepository;
-        protected readonly IRepository<BuyTransaction> buyTransactionRepository;
-        protected readonly IRepository<SellTransaction> sellTransactionRepository;
+        protected readonly IRepository<Coin_DEL> coinRepository;
+        protected readonly IRepository<BuyTransaction_DEL> buyTransactionRepository;
+        protected readonly IRepository<SellTransaction_DEL> sellTransactionRepository;
 
         public BaseManager(IUnitOfWork unitOfWork)
         {

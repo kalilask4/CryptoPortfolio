@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 namespace portfolio.TestData
 {
     /// <summary>
-    /// Test repository for Coin
+    /// Test repository for Coin_DEL
     /// Find implementation is sufficient
     /// </summary>
-    class CoinTestRepository : IRepository<Coin>
+    class CoinTestRepository : IRepository<Coin_DEL>
     {
-        private readonly List<Coin> coins;
-        public CoinTestRepository(List<Coin> coins)
+        private readonly List<Coin_DEL> coins;
+        public CoinTestRepository(List<Coin_DEL> coins)
         {
             this.coins = coins;
             SetupData();
@@ -25,11 +25,11 @@ namespace portfolio.TestData
         private void SetupData()
         {
             Random r = new Random();
-            var coins = new List<Coin>();
-            BuyTransaction buyTransaction = new BuyTransaction(new Coin("coinfortrans1"), new Coin("coinfortrans2"), 10, 100);
+            var coins = new List<Coin_DEL>();
+            BuyTransaction_DEL buyTransaction = new BuyTransaction_DEL(new Coin_DEL("coinfortrans1"), new Coin_DEL("coinfortrans2"), 10, 100);
             for (var i = 0; i < 10; i++)
             {
-                var coin = new Coin($"Coin {i}", buyTransaction);
+                var coin = new Coin_DEL($"Coin_DEL {i}", buyTransaction);
                 coins.Add(coin);
                 Trace.WriteLine($"Test setup coin in \"for\": {coin}"); 
             }
@@ -38,7 +38,7 @@ namespace portfolio.TestData
             Trace.WriteLine("Test setup coin " + coins[0].BuyTransactions[0].transactionCoins["credit"].ToString());
         }
 
-        public void Create(Coin entity)
+        public void Create(Coin_DEL entity)
         {
             throw new NotImplementedException();
         }
@@ -48,23 +48,23 @@ namespace portfolio.TestData
             throw new NotImplementedException();
         }
 
-        public IQueryable<Coin> Find(System.Linq.Expressions.Expression<Func<Coin, bool>> predicate)
+        public IQueryable<Coin_DEL> Find(System.Linq.Expressions.Expression<Func<Coin_DEL, bool>> predicate)
         {
-            Func<Coin, bool> filter = predicate.Compile();
+            Func<Coin_DEL, bool> filter = predicate.Compile();
             return coins.Where(filter).AsQueryable();
         }
 
-        public Coin Get(int id, params string[] includes)
+        public Coin_DEL Get(int id, params string[] includes)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Coin> GetAll()
+        public IQueryable<Coin_DEL> GetAll()
         {
             return coins.AsQueryable();
         }
 
-        public void Update(Coin entity)
+        public void Update(Coin_DEL entity)
         {
             throw new NotImplementedException();
         }

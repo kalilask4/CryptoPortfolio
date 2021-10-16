@@ -18,42 +18,37 @@ namespace portfolio.Business.Managers
         // <summary>
         /// general list of coins
         /// </summary>
-        public IEnumerable<Coin> coins
+        public IEnumerable<Coin_DEL> coins
         {
             get => coinRepository.GetAll();
         }
 
         #region basic CRUD operations
-        public Coin Create()
+        public Coin_DEL Create()
         {
-            Coin coin = new Coin(); 
+            Coin_DEL coin = new Coin_DEL(); 
             unitOfWork.SaveChanges();
             return coin;
         }
 
-        public Coin Create(string name, BuyTransaction buyTransaction)
+        public Coin_DEL Create(string name, BuyTransaction_DEL buyTransaction)
         {
-            Coin coin = new Coin("name2", buyTransaction);
+            Coin_DEL coin = new Coin_DEL("name2", buyTransaction);
             unitOfWork.SaveChanges();
             return coin;
         }
 
-
-
-        public Coin GetById(int id) => coinRepository.Get(id);
+        public Coin_DEL GetById(int id) => coinRepository.Get(id);
 
         ///<summary>
         /// Add coins from list
         /// </summary>
         /// <param name = "coins"></param>
-        public void AddRange(List<Coin> coin)
+        public void AddRange(List<Coin_DEL> coin)
         {
             coin.ForEach(c => coinRepository.Create(c));
             unitOfWork.SaveChanges();
         }
-
-
-
 
         public bool Delete(int id)
         {
@@ -63,27 +58,44 @@ namespace portfolio.Business.Managers
             return true;
         }
 
-        public IEnumerable<Coin>Find(Expression<Func<Coin, bool>> predicate) => 
+        public IEnumerable<Coin_DEL>Find(Expression<Func<Coin_DEL, bool>> predicate) => 
             coinRepository.Find(predicate);
 
         /// <summary>
         /// Редактирование монеты
         /// </summary>
         /// <param name="coin">Обновленный объект монеты</param>
-        public void Update(Coin coin)
+        public void Update(Coin_DEL coin)
         {
             coinRepository.Update(coin);
             unitOfWork.SaveChanges();
         }
         #endregion
-       
+
+        //simplified. could later be transformed as another hereditary transaction entity 
+        public void Transfer(int coinId, decimal amount, bool isAddition)
+        {
+            var coin = coinRepository.Get(coinId);
+            if (isAddition)
+            {
+                coin.Amount += amount;
+            }
+            else
+            {
+                coin.Amount -= amount;
+
+            }
+            coinRepository.Update(coin);
+            unitOfWork.SaveChanges();
+        }
+
         /// <summary>
         /// Добавление транзакции покупки к монете
         /// </summary>
         /// <param name="buyTransaction">Добавляемый объект</param>
         /// <param name="coinId">Id монеты</param>
         /// <returns></returns>
-        public void AddBuyTransactionToCoin(BuyTransaction buyTransaction, int debetCoinId, int creditCoinId)
+        public void AddBuyTransactionToCoin(BuyTransaction_DEL buyTransaction, int debetCoinId, int creditCoinId)
         {
 
             var debetCoin = coinRepository.Get(debetCoinId);
@@ -101,7 +113,7 @@ namespace portfolio.Business.Managers
             unitOfWork.SaveChanges();
         }
 
-        //internal void AddBuyTransactionToCoin(BuyTransaction buyTransaction, int coinId, bool v)
+        //internal void AddBuyTransactionToCoin(BuyTransaction_DEL buyTransaction, int coinId, bool v)
         //{
         //    throw new NotImplementedException();
         //}
@@ -113,7 +125,7 @@ namespace portfolio.Business.Managers
         /// <param name="buyTransaction">Удаляемая транзакция</param>
         /// <param name="coinId">Id монеты</param>
         /// <returns></returns>
-        public void RemoveBuyTransactionFromCoin(BuyTransaction buyTransaction, int coinId)
+        public void RemoveBuyTransactionFromCoin(BuyTransaction_DEL buyTransaction, int coinId)
         {
             var coin = coinRepository.Get(coinId, "Buyings");
             coin.BuyTransactions.Remove(buyTransaction);
@@ -126,10 +138,11 @@ namespace portfolio.Business.Managers
         /// </summary>
         /// <param name="coinId">Id монеты</param>
         /// <returns></returns>
-        public ICollection<BuyTransaction> GetBuyTransactionsOfCoin(int coinId) => buyTransactionRepository
+        public ICollection<BuyTransaction_DEL> GetBuyTransactionsOfCoin(int coinId) => buyTransactionRepository
        .Find(b => b.transactionCoins["debet"].CoinId == coinId)
        .ToList();
     }
+
 }
 
 

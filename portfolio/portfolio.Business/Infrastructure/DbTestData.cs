@@ -13,23 +13,23 @@ namespace portfolio.Business.Infrastructure
         public static void SetupData(CoinManager coinManager)
         {
             //Add coins
-            coinManager.AddRange(new List<Coin>
+            coinManager.AddRange(new List<Coin_DEL>
             {
-                new Coin
+                new Coin_DEL
                 {
                     CoinName = "CoinOne",
                     Symbol = "ONE",
                     Amount = 100,
                     ValueUSD = 1342,
                 },
-                new Coin
+                new Coin_DEL
                 {
                     CoinName = "CoinTwo",
                     Symbol = "TWO",
                     Amount = 2300,
                     ValueUSD = 220,
                 },
-                new Coin
+                new Coin_DEL
                 {
                     CoinName = "CoinThird",
                     Symbol = "Third",
@@ -42,7 +42,7 @@ namespace portfolio.Business.Infrastructure
 
             //add transactions
             coinManager.AddBuyTransactionToCoin(
-                new BuyTransaction
+                new BuyTransaction_DEL
                 {
                     Amount = 100,
                     Priсe = 12092,
@@ -52,7 +52,7 @@ namespace portfolio.Business.Infrastructure
                 coins[1].CoinId
                 );
             coinManager.AddBuyTransactionToCoin(
-                new BuyTransaction
+                new BuyTransaction_DEL
                 {
                     Amount = 200,
                     Priсe = 92,
@@ -62,7 +62,7 @@ namespace portfolio.Business.Infrastructure
                 coins[1].CoinId
                 );
             coinManager.AddBuyTransactionToCoin(
-                new BuyTransaction
+                new BuyTransaction_DEL
                 {
                     Amount = 200,
                     Priсe = 92,

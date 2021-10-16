@@ -13,8 +13,8 @@ namespace portfolio.DAL.Repositories
     public class EFUnitOfWork: IUnitOfWork
     {
         private readonly PortfolioContext context;
-        private IRepository<Coin> coinRepository;
-        private IRepository<BuyTransaction> buyRepository;
+        private IRepository<Coin_DEL> coinRepository;
+        private IRepository<BuyTransaction_DEL> buyRepository;
 
         public EFUnitOfWork(string connectionString)
         {
@@ -25,13 +25,13 @@ namespace portfolio.DAL.Repositories
             context.Database.EnsureCreated();
         }
 
-        public IRepository<Coin> CoinRepository =>
+        public IRepository<Coin_DEL> CoinRepository =>
             coinRepository ?? new EFCoinsRepository(context);
 
-        public IRepository<BuyTransaction> BuyTransactioRepository =>
+        public IRepository<BuyTransaction_DEL> BuyTransactioRepository =>
             buyRepository ?? new EFBuyTransactionRepositories(context);
 
-        public IRepository<SellTransaction> SellTransactioRepository => throw new NotImplementedException();
+        public IRepository<SellTransaction_DEL> SellTransactioRepository => throw new NotImplementedException();
 
         public void SaveChanges()
         {

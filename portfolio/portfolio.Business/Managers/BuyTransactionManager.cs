@@ -17,20 +17,20 @@ namespace portfolio.Business.Managers
         /// <summary>
         /// general list of buy transactions
         /// </summary>
-        public IEnumerable<BuyTransaction> buyTransactions
+        public IEnumerable<BuyTransaction_DEL> buyTransactions
         {
             get => buyTransactionRepository.GetAll();
         }
 
-        public BuyTransaction GetById(int id) => buyTransactionRepository.Get(id);
+        public BuyTransaction_DEL GetById(int id) => buyTransactionRepository.Get(id);
 
-        public BuyTransaction CreateBuyTransaction(BuyTransaction buyTransaction)
+        public BuyTransaction_DEL CreateBuyTransaction(BuyTransaction_DEL buyTransaction)
         {
             buyTransactionRepository.Create(buyTransaction);
-            Coin coinDebet = buyTransaction.transactionCoins["debet"];
+            Coin_DEL coinDebet = buyTransaction.transactionCoins["debet"];
             decimal newAmountDebetCoin = coinDebet.Amount + buyTransaction.Amount;
             coinDebet.Amount = newAmountDebetCoin;
-            Coin coinCredit = buyTransaction.transactionCoins["credit"];
+            Coin_DEL coinCredit = buyTransaction.transactionCoins["credit"];
             decimal newAmountCreditCoin = coinCredit.Amount - buyTransaction.Amount * buyTransaction.Priсe;
             coinCredit.Amount = newAmountCreditCoin;
             coinRepository.Update(coinDebet);
@@ -43,7 +43,7 @@ namespace portfolio.Business.Managers
         /// Add buy transactions from list
         /// </summary>
         /// <param name = "buyTransactions"></param>
-        public void AddRange(List<BuyTransaction> buyTransactions)
+        public void AddRange(List<BuyTransaction_DEL> buyTransactions)
         {
             buyTransactions.ForEach(b => buyTransactionRepository.Create(b));
             unitOfWork.SaveChanges();
@@ -66,7 +66,7 @@ namespace portfolio.Business.Managers
         /// Update buy transaction
         /// </summary>
         /// <param name="buyTransaction"></param>
-        public void UpdateBuyTransaction(BuyTransaction buyTransaction)
+        public void UpdateBuyTransaction(BuyTransaction_DEL buyTransaction)
         {
             buyTransactionRepository.Update(buyTransaction);
             unitOfWork.SaveChanges();

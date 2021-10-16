@@ -12,17 +12,17 @@ using System.Threading.Tasks;
 namespace portfolio.DAL.Repositories
 
 {
-    public class EFCoinsRepository : IRepository<Coin>
+    public class EFCoinsRepository : IRepository<Coin_DEL>
     {
         private readonly PortfolioContext context;
-        private readonly DbSet<Coin> coins;
+        private readonly DbSet<Coin_DEL> coins;
 
         public EFCoinsRepository(PortfolioContext context)
         {
             coins = context.Coins;
         }
 
-        public void Create(Coin coin)
+        public void Create(Coin_DEL coin)
         {
             context.Add(coin);
         }
@@ -35,14 +35,14 @@ namespace portfolio.DAL.Repositories
             return true;
         }
 
-        public IQueryable<Coin> Find(Expression<Func<Coin, bool>> predicate)
+        public IQueryable<Coin_DEL> Find(Expression<Func<Coin_DEL, bool>> predicate)
         {
             return coins.Where(predicate);
         }
 
-        public Coin Get(int id, params string[] includes)
+        public Coin_DEL Get(int id, params string[] includes)
         {
-            IQueryable<Coin> query = coins;
+            IQueryable<Coin_DEL> query = coins;
 
             foreach (var include in includes)
                 query = query.Include(include);
@@ -50,12 +50,12 @@ namespace portfolio.DAL.Repositories
             return query.First(c => c.CoinId == id);
         }
 
-        public IQueryable<Coin> GetAll()
+        public IQueryable<Coin_DEL> GetAll()
         {
             return coins.AsQueryable();
         }
 
-        public void Update(Coin coin)
+        public void Update(Coin_DEL coin)
         {
             coins.Update(coin);
         }

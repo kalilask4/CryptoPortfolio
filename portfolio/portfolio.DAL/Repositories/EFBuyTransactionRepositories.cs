@@ -11,17 +11,17 @@ using System.Threading.Tasks;
 
 namespace portfolio.DAL.Repositories
 {
-    public class EFBuyTransactionRepositories : IRepository<BuyTransaction>
+    public class EFBuyTransactionRepositories : IRepository<BuyTransaction_DEL>
     {
         private readonly PortfolioContext context;
-        private readonly DbSet<BuyTransaction> buyTransactions;
+        private readonly DbSet<BuyTransaction_DEL> buyTransactions;
 
         public EFBuyTransactionRepositories(PortfolioContext context)
         {
             buyTransactions = context.BuyTransactions;
         }
 
-        public void Create(BuyTransaction buyTransaction)
+        public void Create(BuyTransaction_DEL buyTransaction)
         {
             context.AddAsync(buyTransaction);
         }
@@ -41,26 +41,26 @@ namespace portfolio.DAL.Repositories
             return true;
         }
 
-        public IQueryable<BuyTransaction> Find(Expression<Func<BuyTransaction, bool>> predicate)
+        public IQueryable<BuyTransaction_DEL> Find(Expression<Func<BuyTransaction_DEL, bool>> predicate)
         {
             return buyTransactions.Where(predicate);
         }
 
-        public BuyTransaction Get(int id, params string[] includes)
+        public BuyTransaction_DEL Get(int id, params string[] includes)
         {
-            IQueryable<BuyTransaction> query = buyTransactions;
+            IQueryable<BuyTransaction_DEL> query = buyTransactions;
 
             foreach (var include in includes)
                 query = query.Include(include);
             return query.First(b => b.TransactionId == id);
         }
 
-        public IQueryable<BuyTransaction> GetAll()
+        public IQueryable<BuyTransaction_DEL> GetAll()
         {
             return buyTransactions.AsQueryable();
         }
 
-        public void Update(BuyTransaction buyTransaction)
+        public void Update(BuyTransaction_DEL buyTransaction)
         {
             buyTransactions.Update(buyTransaction);
         }

@@ -17,14 +17,14 @@ namespace portfolio.Business.Managers
         // <summary>
         /// general list of sell transactions
         /// </summary>
-        public IEnumerable<SellTransaction> sellTransactions
+        public IEnumerable<SellTransaction_DEL> sellTransactions
         {
             get => sellTransactionRepository.GetAll();
         }
 
-        public SellTransaction GetById(int id) => sellTransactionRepository.Get(id);
+        public SellTransaction_DEL GetById(int id) => sellTransactionRepository.Get(id);
 
-        public SellTransaction CreateSellTransaction(SellTransaction sellTransaction)
+        public SellTransaction_DEL CreateSellTransaction(SellTransaction_DEL sellTransaction)
         {
             sellTransactionRepository.Create(sellTransaction);
             unitOfWork.SaveChanges();
@@ -35,7 +35,7 @@ namespace portfolio.Business.Managers
         /// Add sell transactions from list
         /// </summary>
         /// <param name = "sellTransactions"></param>
-        public void AddRange(List<SellTransaction> sellTransactions)
+        public void AddRange(List<SellTransaction_DEL> sellTransactions)
         {
             sellTransactions.ForEach(s => sellTransactionRepository.Create(s));
             unitOfWork.SaveChanges();
@@ -58,7 +58,7 @@ namespace portfolio.Business.Managers
         /// Update sell transaction
         /// </summary>
         /// <param name="sellTransaction"></param>
-        public void UpdateSellTransaction(SellTransaction sellTransaction)
+        public void UpdateSellTransaction(SellTransaction_DEL sellTransaction)
         {
             sellTransactionRepository.Update(sellTransaction);
             unitOfWork.SaveChanges();

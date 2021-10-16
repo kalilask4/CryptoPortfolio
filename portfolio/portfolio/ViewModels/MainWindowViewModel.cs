@@ -19,34 +19,34 @@ namespace portfolio.ViewModels
         BuyTransactionManager buyTransactionManager;
         SellTransactionManager sellTransactionManager;
 
-        private string titleCoins = "Coin Window";
-        private string titleTransactions = "Transaction Window";
+        private string titleCoins = "Coin_DEL Window";
+        private string titleTransactions = "Transaction_DEL Window";
         #region Public properties
         /// <summary>
-        /// Coin list
+        /// Coin_DEL list
         /// </summary>
-        public ObservableCollection<Coin> Coins { get; set; }
+        public ObservableCollection<Coin_DEL> Coins { get; set; }
         /// <summary>
         /// Buy transaction list for coin
         /// </summary>
-        public ObservableCollection<BuyTransaction> buyTransactionsForCoin { get; set; }
+        public ObservableCollection<BuyTransaction_DEL> buyTransactionsForCoin { get; set; }
         public string Title { get => titleCoins; set => titleCoins = value; }
 
         /// <summary>
         /// Buy transaction list
         /// </summary>
-        public ObservableCollection<BuyTransaction> buyTransactions { get; set; }
+        public ObservableCollection<BuyTransaction_DEL> buyTransactions { get; set; }
         public string TitleTransactions { get => titleTransactions; set => titleTransactions = value; }
 
         /// <summary>
         /// Sell transaction list
         /// </summary>
-        public ObservableCollection<SellTransaction> sellTransactions { get; set; }
+        public ObservableCollection<SellTransaction_DEL> sellTransactions { get; set; }
        // public string TitleTransactions { get => titleTransactions; set => titleTransactions = value; }
 
         #region sealected coin 
-        private Coin _selectedCoin;
-        public Coin SelectedCoin
+        private Coin_DEL _selectedCoin;
+        public Coin_DEL SelectedCoin
         {
             get => _selectedCoin;
             set
@@ -65,9 +65,9 @@ namespace portfolio.ViewModels
             //db init
             if (coinManager.coins.Count() == 0)
                 DbTestData.SetupData(coinManager);
-            buyTransactions = new ObservableCollection<BuyTransaction>(buyTransactionManager.buyTransactions);
-            sellTransactions = new ObservableCollection<SellTransaction>(sellTransactionManager.sellTransactions);
-            Coins = new ObservableCollection<Coin>(coinManager.coins);
+            buyTransactions = new ObservableCollection<BuyTransaction_DEL>(buyTransactionManager.buyTransactions);
+            sellTransactions = new ObservableCollection<SellTransaction_DEL>(sellTransactionManager.sellTransactions);
+            Coins = new ObservableCollection<Coin_DEL>(coinManager.coins);
             //Get transaction for first coin
             if (Coins.Count > 0)
                 OnGetBuyTransactionExecuted(Coins[0].CoinId);
@@ -77,20 +77,20 @@ namespace portfolio.ViewModels
         /// <summary>
         /// Buy transactions for coin 
         /// </summary>
-        public ObservableCollection<BuyTransaction> BuyTransactions { get; set; }
+        public ObservableCollection<BuyTransaction_DEL> BuyTransactions { get; set; }
         public string BuyTransactionId { get => BuyTransactionId; set => BuyTransactionId = value; }
 
         /// <summary>
         /// Sell transactions for coin 
         /// </summary>
-        public ObservableCollection<BuyTransaction> SellTransactions { get; set; }
+        public ObservableCollection<BuyTransaction_DEL> SellTransactions { get; set; }
         public string SellTransactionId { get => SellTransactionId; set => SellTransactionId = value; }
 
 
 
         #region sealected buy transaction 
-        private BuyTransaction _selectedBuyTransaction;
-        public BuyTransaction SelectedBuyTransaction
+        private BuyTransaction_DEL _selectedBuyTransaction;
+        public BuyTransaction_DEL SelectedBuyTransaction
         {
             get => _selectedBuyTransaction;
             set
@@ -101,8 +101,8 @@ namespace portfolio.ViewModels
         #endregion
 
         #region sealected sell transaction 
-        private SellTransaction _selectedSellTransaction;
-        public SellTransaction SelectedSellTransaction
+        private SellTransaction_DEL _selectedSellTransaction;
+        public SellTransaction_DEL SelectedSellTransaction
         {
             get => _selectedSellTransaction;
             set

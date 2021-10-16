@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace portfolio.Domain.Entities
 {
-    public class SellTransaction : Transaction
+    public class SellTransaction_DEL : Transaction_DEL
     {
-        public SellTransaction(Coin debetCoin, Coin creditCoin, decimal amount, decimal priсe): base (debetCoin, creditCoin, amount, priсe)
+        public SellTransaction_DEL(Coin_DEL debetCoin, Coin_DEL creditCoin, decimal amount, decimal priсe): base (debetCoin, creditCoin, amount, priсe)
         {
             Side = "Sell";
         }
 
-        public SellTransaction()
+        public SellTransaction_DEL()
         {
             Side = "Sell";
         }

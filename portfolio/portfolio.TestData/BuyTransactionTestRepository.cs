@@ -13,10 +13,10 @@ namespace portfolio.TestData
     /// Test repository for Buying
     /// Get, GetAll implementations are sufficient
     /// </summary>
-    class BuyTransactionTestRepository : IRepository<BuyTransaction>
+    class BuyTransactionTestRepository : IRepository<BuyTransaction_DEL>
     {
-        private readonly List<BuyTransaction> buyTransactions;
-        public BuyTransactionTestRepository(List<BuyTransaction> buyTransactions)
+        private readonly List<BuyTransaction_DEL> buyTransactions;
+        public BuyTransactionTestRepository(List<BuyTransaction_DEL> buyTransactions)
         {
             this.buyTransactions = buyTransactions;
             SetupData(); //generate test data
@@ -26,20 +26,20 @@ namespace portfolio.TestData
         {
             
             Random r = new Random();
-            var coins = new List<Coin>();
+            var coins = new List<Coin_DEL>();
             for (var i = 0; i < 10; i++)
             {
-                coins.Add(new Coin
+                coins.Add(new Coin_DEL
                 {
-                    CoinName = $"Coin {i}"
+                    CoinName = $"Coin_DEL {i}"
                 });
             }
 
             for (var i = 1; i <= 5; i++)
             {
-                var buyTransaction = new BuyTransaction
+                var buyTransaction = new BuyTransaction_DEL
                 {
-                    transactionCoins = new Dictionary<string, Coin>
+                    transactionCoins = new Dictionary<string, Coin_DEL>
                     {
                         {"debet", coins[r.Next(0, 10)]},
                         {"credit", coins[r.Next(0, 10)] }
@@ -53,7 +53,7 @@ namespace portfolio.TestData
             }
         }
 
-        public void Create(BuyTransaction entity)
+        public void Create(BuyTransaction_DEL entity)
         {
             throw new NotImplementedException();
         }
@@ -63,23 +63,23 @@ namespace portfolio.TestData
             throw new NotImplementedException();
         }
 
-        public IQueryable<BuyTransaction> Find(Expression<Func<BuyTransaction, bool>> predicate)
+        public IQueryable<BuyTransaction_DEL> Find(Expression<Func<BuyTransaction_DEL, bool>> predicate)
         {
-            Func<BuyTransaction, bool> filter = predicate.Compile();
+            Func<BuyTransaction_DEL, bool> filter = predicate.Compile();
             return buyTransactions.Where(filter).AsQueryable();
         }
 
-        public BuyTransaction Get(int id, params string[] includes)
+        public BuyTransaction_DEL Get(int id, params string[] includes)
         {
             return buyTransactions.FirstOrDefault(b => b.TransactionId == id);
         }
 
-        public IQueryable<BuyTransaction> GetAll()
+        public IQueryable<BuyTransaction_DEL> GetAll()
         {
             return buyTransactions.AsQueryable();
         }
 
-        public void Update(BuyTransaction entity)
+        public void Update(BuyTransaction_DEL entity)
         {
             throw new NotImplementedException();
         }
