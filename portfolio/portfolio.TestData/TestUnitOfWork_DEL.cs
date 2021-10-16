@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace portfolio.TestData
 {
-    public class TestUnitOfWork: IUnitOfWork
+    public class TestUnitOfWork_DEL: IUnitOfWork
 
     {
         private IRepository<Coin_DEL> coinsRepository;
@@ -18,26 +18,26 @@ namespace portfolio.TestData
         private List<BuyTransaction_DEL> buyTransactions;
         private List<SellTransaction_DEL> sellTransactions;
 
-        public TestUnitOfWork()
+        public TestUnitOfWork_DEL()
         {
             coins = new List<Coin_DEL>();
             buyTransactions = new List<BuyTransaction_DEL>();
             sellTransactions = new List<SellTransaction_DEL>();
             
-            buyTransactionsRepository = new BuyTransactionTestRepository(buyTransactions);
+            buyTransactionsRepository = new BuyTransactionTestRepository_DEL(buyTransactions);
             foreach (var buyTransaction in buyTransactions)
             {
                 coins.Add(buyTransaction.transactionCoins["credit"]);
                 coins.Add(buyTransaction.transactionCoins["debet"]);
             }          
-            sellTransactionsRepository = new SellTransactionTestRepository(sellTransactions);
+            sellTransactionsRepository = new SellTransactionTestRepository_DEL(sellTransactions);
             foreach (var sellTransaction in buyTransactions)
             {
                 coins.Add(sellTransaction.transactionCoins["credit"]);
                 coins.Add(sellTransaction.transactionCoins["debet"]);
             }
              
-            coinsRepository = new CoinTestRepository(coins);
+            coinsRepository = new CoinTestRepository_DEL(coins);
         }
 
         public IRepository<Coin_DEL> CoinRepository => coinsRepository;

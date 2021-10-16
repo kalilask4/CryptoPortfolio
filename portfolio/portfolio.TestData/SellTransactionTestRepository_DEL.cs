@@ -13,11 +13,11 @@ namespace portfolio.TestData
     /// Test repository for Buying
     /// Get, GetAll implementations are sufficient
     /// </summary>
-    class SellTransactionTestRepository : IRepository<SellTransaction_DEL>
+    class SellTransactionTestRepository_DEL : IRepository<SellTransaction_DEL>
     {
         private readonly List<SellTransaction_DEL> sellTransactions;
 
-        public SellTransactionTestRepository(List<SellTransaction_DEL> sellTransactions)
+        public SellTransactionTestRepository_DEL(List<SellTransaction_DEL> sellTransactions)
         {
             this.sellTransactions = sellTransactions;
             SetupData(); //generate test data

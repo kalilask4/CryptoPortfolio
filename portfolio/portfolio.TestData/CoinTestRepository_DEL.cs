@@ -13,10 +13,10 @@ namespace portfolio.TestData
     /// Test repository for Coin_DEL
     /// Find implementation is sufficient
     /// </summary>
-    class CoinTestRepository : IRepository<Coin_DEL>
+    class CoinTestRepository_DEL : IRepository<Coin_DEL>
     {
         private readonly List<Coin_DEL> coins;
-        public CoinTestRepository(List<Coin_DEL> coins)
+        public CoinTestRepository_DEL(List<Coin_DEL> coins)
         {
             this.coins = coins;
             SetupData();

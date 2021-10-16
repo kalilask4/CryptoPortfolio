@@ -23,7 +23,7 @@ namespace portfolio.Business.Infrastructure
 
         public ManagersFactory()
         {
-            unitOfWork = new TestUnitOfWork();
+            unitOfWork = new TestUnitOfWork_DEL();
         }
 
             public ManagersFactory(string connStringName)
