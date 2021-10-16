@@ -17,7 +17,6 @@ namespace portfolio.Domain.Entities
         public string ShortName { get; set; }
         [Required]
         public decimal Amount { get; set; }
-        [Required]
         public decimal CurrentPrice { get; set; }
         public decimal ValueUSD { get; set; }
         public decimal AveragePurchasePrice { get; set; }
@@ -25,6 +24,16 @@ namespace portfolio.Domain.Entities
         public DateTime DateUpdate { get; set; }
         // навигационное свойство
         public List<Transaction> Transactions { get; set; }
+
+        public Coin()
+        {
+            Name = "DefaultCoinName";
+            ShortName = "DN";
+            Amount = 0;
+            PictureName = ShortName + ".png";
+            DateUpdate = DateTime.Now;
+            Transactions = new List<Transaction>();
+        }
 
 
         public override string ToString()
