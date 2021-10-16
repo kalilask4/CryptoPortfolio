@@ -38,7 +38,35 @@ namespace portfolio.Business.Managers
         }
         #endregion
 
+        public void AddTransactionToCoin(Transaction transaction, int debetCoinId, int creditCoinId)
+        {
+            var debetCoin = coinRepository.Get(debetCoinId);
+            var creditCoin = coinRepository.Get(creditCoinId);
+            debetCoin.Transactions.Add(transaction);
+            creditCoin.Transactions.Add(transaction);
+            if (debetCoin.CoinId <= 0)
+                coinRepository.Create(debetCoin);
+            else coinRepository.Update(debetCoin);
+            if (creditCoin.CoinId <= 0)
+                coinRepository.Create(creditCoin);
+            else coinRepository.Update(creditCoin);
+            transaction.TransactionCoins.Add(debetCoin);
+            transaction.TransactionCoins.Add(creditCoin);
+            unitOfWork.SaveChanges();
+        }
 
+        public void DeleteTransactionFromCoin(Transaction transaction, int coinId)
+        {
+            var coin = coinRepository.Get(coinId);
+            coin.Transactions.Remove(transaction);
+            coinRepository.Update(coin);
+            unitOfWork.SaveChanges();
+        }
+
+        public ICollection<Transaction> GetTransactionsOfCoin(int coinId)
+            => transactionRepository
+            .Find(transaction => transaction.TransactionCoins.Contains(GetCoinById(coinId)))
+            .ToList();
 
         public void AddRange(List<Coin> coins)
         {
