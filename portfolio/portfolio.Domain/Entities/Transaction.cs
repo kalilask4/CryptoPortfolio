@@ -8,7 +8,7 @@ namespace portfolio.Domain.Entities
     {
         [Key]
         public int TransactionId { get; set; }
-        public string TransactionSymbol { get; set; } //like Name exs BTNBTC
+        public string Symbol { get; set; } //like Name exs BTNBTC
         [Required]
         private string side;
         static List<string> SideType = new List<string> { "buy", "sell", "transfer" };
@@ -33,7 +33,7 @@ namespace portfolio.Domain.Entities
 
         public override string ToString()
         {
-            return $"Id {TransactionId} {TransactionSymbol} {Side}";
+            return $"Id {TransactionId} {Symbol} {Side}";
         }
 
     }
