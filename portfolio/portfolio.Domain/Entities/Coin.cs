@@ -27,12 +27,24 @@ namespace portfolio.Domain.Entities
 
         public Coin()
         {
-            Name = "DefaultCoinName";
+            Name = "DefName";
             ShortName = "DN";
             Amount = 0;
             PictureName = ShortName + ".png";
             DateUpdate = DateTime.Now;
             Transactions = new List<Transaction>();
+        }
+
+        //for SetupData for test
+        public Coin(String name, Transaction transaction)
+        {
+            Name = name +"T";
+            ShortName = "DNT";
+            Amount = 0;
+            PictureName = ShortName + ".png";
+            DateUpdate = DateTime.Now;
+            Transactions = new List<Transaction>();
+            Transactions.Add(transaction);
         }
 
 

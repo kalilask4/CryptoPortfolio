@@ -40,6 +40,18 @@ namespace portfolio.Domain.Entities
             TransactionCoins = new List<Coin>(2);
         }
 
+        //for SetupData for test
+        public Transaction(Coin coin)
+        {
+            Symbol = coin.ShortName;
+            Side = "transfer";
+            Amount = 0;
+            Priсe = 0;
+            DateUpdate = DateTime.Now;
+            TransactionCoins = new List<Coin>(2);
+            TransactionCoins.Add(coin);
+        }
+
         public override string ToString()
         {
             return $"Id {TransactionId} {Symbol} {Side}";
