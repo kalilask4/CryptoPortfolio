@@ -14,7 +14,7 @@ namespace portfolio.ViewModels
 {
     class MainWindowViewModel : ViewModelBase
     {
-        ManagersFactory factory;
+        ManagersFactory_DEL factory;
         CoinManager_DEL coinManager;
         BuyTransactionManager_DEL buyTransactionManager;
         SellTransactionManager_DEL sellTransactionManager;
@@ -58,13 +58,13 @@ namespace portfolio.ViewModels
 
         public MainWindowViewModel()
         {
-            factory = new ManagersFactory("DefaultConnection");
+            factory = new ManagersFactory_DEL("DefaultConnection");
             coinManager = factory.GetCoinManager();
             buyTransactionManager = factory.GetBuyTransactionManager();
             sellTransactionManager = factory.GetSellTransactionManager();
             //db init
             if (coinManager.coins.Count() == 0)
-                DbTestData.SetupData(coinManager);
+                DbTestData_DEL.SetupData(coinManager);
             buyTransactions = new ObservableCollection<BuyTransaction_DEL>(buyTransactionManager.buyTransactions);
             sellTransactions = new ObservableCollection<SellTransaction_DEL>(sellTransactionManager.sellTransactions);
             Coins = new ObservableCollection<Coin_DEL>(coinManager.coins);

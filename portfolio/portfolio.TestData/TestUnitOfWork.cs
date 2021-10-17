@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace portfolio.TestData
 {
-    class TestUnitOfWork : IUnitOfWork
+    public class TestUnitOfWork : IUnitOfWork
     {
         public IRepository<Coin> coinRepository;
         public IRepository<Transaction> transactioRepository;

@@ -1,32 +1,30 @@
 ﻿using Microsoft.Extensions.Configuration;
 using portfolio.Business.Managers;
-using portfolio.Domain.Interfaces;
 using portfolio.DAL.Repositories;
-using portfolio.TestData;
+using portfolio.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using portfolio.TestData;
 
 namespace portfolio.Business.Infrastructure
-{
+{   
     public class ManagersFactory
     {
-
         private readonly IUnitOfWork unitOfWork;
-        private readonly CoinManager_DEL coinManager;
-        private readonly BuyTransactionManager_DEL buyTransactionManager;
-        private readonly SellTransactionManager_DEL sellTransactionManager;
+        private readonly CoinManager coinManager;
+        private readonly TransactionManager transactionManager;
         private readonly IConfiguration configuration;
 
         public ManagersFactory()
         {
-            unitOfWork = new TestUnitOfWork_DEL();
+            unitOfWork = new TestUnitOfWork();
         }
 
-            public ManagersFactory(string connStringName)
+        public ManagersFactory(string connStringName)
         {
             configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
@@ -37,22 +35,16 @@ namespace portfolio.Business.Infrastructure
             unitOfWork = new EFUnitOfWork(connString);
         }
 
-        public CoinManager_DEL GetCoinManager()
+        public CoinManager GetCoinManager()
         {
             return coinManager
-                ?? new CoinManager_DEL(unitOfWork);
+                ?? new CoinManager(unitOfWork);
         }
 
-        public BuyTransactionManager_DEL GetBuyTransactionManager()
+        public TransactionManager GetTransactionManager()
         {
-            return buyTransactionManager
-                ?? new BuyTransactionManager_DEL(unitOfWork);
-        }
-
-        public SellTransactionManager_DEL GetSellTransactionManager()
-        {
-            return sellTransactionManager
-                ?? new SellTransactionManager_DEL(unitOfWork);
+            return transactionManager
+                ?? new TransactionManager(unitOfWork);
         }
     }
 }

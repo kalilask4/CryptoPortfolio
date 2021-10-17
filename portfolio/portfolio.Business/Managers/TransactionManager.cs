@@ -9,7 +9,7 @@ using portfolio.Domain.Entities;
 
 namespace portfolio.Business.Managers
 {
-    class TransactionManager : BaseManager
+    public class TransactionManager : BaseManager
     {
         public TransactionManager(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
