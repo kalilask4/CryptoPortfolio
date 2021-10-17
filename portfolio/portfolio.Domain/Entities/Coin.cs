@@ -36,7 +36,7 @@ namespace portfolio.Domain.Entities
         }
 
         //for SetupData for test
-        public Coin(String name, Transaction transaction)
+        public Coin(string name, Transaction transaction)
         {
             Name = name +"T";
             ShortName = "DNT";

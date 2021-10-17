@@ -55,7 +55,7 @@ namespace portfolio.Business.Managers
             unitOfWork.SaveChanges();
         }
 
-        public void DeleteTransactionFromCoin(Transaction transaction, int coinId)
+        public void RemoveTransactionOnCoin(Transaction transaction, int coinId)
         {
             var coin = coinRepository.Get(coinId);
             coin.Transactions.Remove(transaction);

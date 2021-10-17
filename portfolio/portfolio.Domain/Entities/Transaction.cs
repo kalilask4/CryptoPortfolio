@@ -11,7 +11,7 @@ namespace portfolio.Domain.Entities
         public string Symbol { get; set; } //like Name exs BTNBTC
         [Required]
         private string side;
-        static readonly List<string> SideType = new List<string> { "buy", "sell", "transfer" };
+        private static readonly List<string> sideType = new() { "buy", "sell", "transfer" };
         
         public decimal Amount { get; set; }
         public decimal Priсe { get; set; }
@@ -25,7 +25,7 @@ namespace portfolio.Domain.Entities
             get { return side; }
             set
             {
-                if (SideType.Contains(value))
+                if (sideType.Contains(value))
                     side = value;
             }
         }
