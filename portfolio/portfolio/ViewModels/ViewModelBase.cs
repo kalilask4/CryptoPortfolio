@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace portfolio.ViewModels
 {
     //In order to be able to bind the markup and model data two-way
-    class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Crypto portfolio" Height="450" Width="800">
     <Window.DataContext>
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel_DEL/>
     </Window.DataContext>
     <Window.Resources>
         <Style TargetType="Button">

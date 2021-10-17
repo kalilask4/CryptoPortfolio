@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace portfolio.Business.Managers
 {
-    class CoinManager : BaseManager
+    public class CoinManager : BaseManager
     {
         public CoinManager(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
