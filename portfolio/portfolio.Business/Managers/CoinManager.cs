@@ -15,7 +15,7 @@ namespace portfolio.Business.Managers
         {
         }
 
-        public IEnumerable<Coin> coins
+        public IEnumerable<Coin> Coins
         {
             get => coinRepository.GetAll();
         }
