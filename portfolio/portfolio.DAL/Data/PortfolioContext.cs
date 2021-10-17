@@ -13,9 +13,8 @@ namespace portfolio.DAL.Data
         public PortfolioContext(DbContextOptions<PortfolioContext> options) : base(options)
         { }
 
-        public DbSet<Coin_DEL> Coins { get; set; }
-        public DbSet<BuyTransaction_DEL> BuyTransactions { get; set; }
-        public DbSet<SellTransaction_DEL> SellTransactions { get; set; }
+        public DbSet<Coin> Coins { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
         
     }
 }
