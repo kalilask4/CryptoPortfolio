@@ -31,6 +31,7 @@ namespace portfolio.DAL.Repositories
         {
             var coin = coins.Find(id);
             if (coin == null) return false;
+            
             coins.Remove(coin);
             return true;
         }

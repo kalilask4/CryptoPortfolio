@@ -29,7 +29,7 @@ namespace portfolio.DAL.Repositories
             coinRepository ?? new EFCoinsRepository(context);
 
         public IRepository<BuyTransaction_DEL> BuyTransactioRepository =>
-            buyRepository ?? new EFBuyTransactionRepositories(context);
+            buyRepository ?? new EFTransactionRepositories(context);
 
         public IRepository<SellTransaction_DEL> SellTransactioRepository => throw new NotImplementedException();
 
