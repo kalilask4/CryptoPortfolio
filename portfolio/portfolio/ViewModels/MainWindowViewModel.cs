@@ -1,5 +1,6 @@
 ﻿using portfolio.Business.Infrastructure;
 using portfolio.Business.Managers;
+using portfolio.Command;
 using portfolio.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace portfolio.ViewModels
 {
@@ -59,5 +61,43 @@ namespace portfolio.ViewModels
         }
         #endregion
         #endregion
+
+        #region Command
+        #region Choose coin from list
+        private ICommand _getTransactionCommand;
+        public ICommand GetTransactionCommand =>
+            _getTransactionCommand
+            ??= new RelayCommand(OnGetTransactionExecuted);
+
+        private void OnGetTransactionExecuted(object id)
+        {
+            Transactions?.Clear();
+            var transactions = coinManager.GetTransactionsOfCoin((int)id);
+            foreach (var transaction in transactions)
+            {
+                Transactions?.Add(transaction);
+            }
+        }
+        #endregion
+
+        #region Choose transaction from list
+        private ICommand _getCoinCommand;
+        public ICommand GetCoinCommand =>
+            _getCoinCommand
+            ??= new RelayCommand(OnGetCoinExecuted);
+
+        private void OnGetCoinExecuted(object id)
+        {
+            Coins?.Clear();
+            var coins = transactionManager.GetCoinsOfTransaction((int)id);
+            foreach (var coin in coins)
+            {
+                Coins?.Add(coin);
+            }
+        }
+        #endregion
+        #endregion
+
+
     }
 }
