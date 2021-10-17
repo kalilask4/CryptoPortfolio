@@ -92,14 +92,16 @@
                         <ListView x:Name="Coins" 
                           ItemsSource="{Binding Coins}"
                           SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
+                            <!--#region Обработка события Selection Canged -->
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
                                     <i:InvokeCommandAction
-                                        Command="{Binding GetBuyTransactionCommand}"
+                                        Command="{Binding GetTransactionCommand}"
                                         CommandParameter="{Binding SelectedCoin.CoinId}">
                                     </i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
+                            <!--#endregion-->
                             
                             <ListView.Background>
                                 <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
