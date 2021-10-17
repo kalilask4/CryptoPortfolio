@@ -17,17 +17,20 @@ namespace portfolio.Business.Infrastructure
                 new Coin
                 {
                     Name = "Litecoin",
-                    ShortName = "LTC"
+                    ShortName = "LTC",
+                    PictureName = "LTC.png"
                 },
                 new Coin
                 {
                     Name = "Tron",
-                    ShortName = "TRX"
+                    ShortName = "TRX",
+                    PictureName = "TRX.png"
                 },
                 new Coin
                 {
                     Name = "Chainlink",
-                    ShortName = "LINK"
+                    ShortName = "LINK",
+                    PictureName = "LINK.png"
                 }
             });
 
