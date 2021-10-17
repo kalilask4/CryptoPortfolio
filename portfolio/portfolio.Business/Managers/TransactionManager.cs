@@ -40,11 +40,6 @@ namespace portfolio.Business.Managers
             return true;
         }
         #endregion
-        
-        public IEnumerable<Transaction> transactions
-        {
-            get => transactionRepository.GetAll();
-        }
 
         public void AddRange(List<Transaction> transactions)
         {
@@ -52,8 +47,36 @@ namespace portfolio.Business.Managers
             unitOfWork.SaveChanges();
         }
 
-        
+        public IEnumerable<Transaction> transactions
+        {
+            get => transactionRepository.GetAll();
+        }
 
+        //only for test - transaction should not change like that after creation 
+        public void AddCoinToTransaction(Coin coin, int transactionId)
+        {
+            var transaction = transactionRepository.Get(transactionId);
+            coin.Transactions.Add(transaction);
+            if (coin.CoinId <= 0)
+                coinRepository.Create(coin);
+            else coinRepository.Update(coin);
+            unitOfWork.SaveChanges();
+        }
+
+        public void RemoveCoinFromTransaction(Coin coin, int transactionId)
+        {
+            var transaction = transactionRepository.Get(transactionId);
+            transaction.TransactionCoins.Remove(coin);
+            coin.Transactions.Remove(transaction);   //Check it!!
+            transactionRepository.Update(transaction);
+            coinRepository.Update(coin);
+            unitOfWork.SaveChanges();
+        }
+
+        public ICollection<Coin> GetCoinsOfTransaction(int transactionId) =>
+            coinRepository
+            .Find(coin => coin.Transactions.Contains(GetById(transactionId)))
+            .ToList();
        
     }
 }
