@@ -15,19 +15,35 @@ namespace portfolio.Business.Managers
         {
         }
 
-        public IEnumerable<Transaction> transactions
-        {
-            get => transactionRepository.GetAll();
-        }
-
-        public Transaction GetById(int id)
-            => transactionRepository.Get(id);
-
+        #region bacic CRUD operations
         public Transaction CreateTransaction(Transaction transaction)
         {
             transactionRepository.Create(transaction);
             unitOfWork.SaveChanges();
             return transaction;
+        }
+        
+        public Transaction GetById(int id)
+            => transactionRepository.Get(id);
+        
+        public void UpdateTransaction(Transaction transaction)
+        {
+            transactionRepository.Update(transaction);
+            unitOfWork.SaveChanges();
+        }
+        
+        public bool DeleteTransaction(int id)
+        {
+            var result = transactionRepository.Delete(id);
+            if (!result) return false;
+            unitOfWork.SaveChanges();
+            return true;
+        }
+        #endregion
+        
+        public IEnumerable<Transaction> transactions
+        {
+            get => transactionRepository.GetAll();
         }
 
         public void AddRange(List<Transaction> transactions)
@@ -36,19 +52,7 @@ namespace portfolio.Business.Managers
             unitOfWork.SaveChanges();
         }
 
-        public bool DeleteTransaction(int id)
-        {
-            var resulr = transactionRepository.Delete(id);
-            if (!resulr) return false;
-            unitOfWork.SaveChanges();
-            return true;
-        }
-
-        public void UpdateTransaction(Transaction transaction)
-        {
-            transactionRepository.Update(transaction);
-            unitOfWork.SaveChanges();
-        }
+        
 
        
     }
