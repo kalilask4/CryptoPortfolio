@@ -15,6 +15,11 @@ namespace portfolio.Business.Managers
         {
         }
 
+        public IEnumerable<Transaction> transactions
+        {
+            get => transactionRepository.GetAll();
+        }
+
         #region bacic CRUD operations
         public Transaction CreateTransaction(Transaction transaction)
         {
@@ -45,11 +50,6 @@ namespace portfolio.Business.Managers
         {
             transactions.ForEach(transaction => transactionRepository.Create(transaction));
             unitOfWork.SaveChanges();
-        }
-
-        public IEnumerable<Transaction> transactions
-        {
-            get => transactionRepository.GetAll();
         }
 
         //only for test - transaction should not change like that after creation 

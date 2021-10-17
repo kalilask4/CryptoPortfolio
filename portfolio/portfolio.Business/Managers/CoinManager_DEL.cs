@@ -9,25 +9,13 @@ using System.Threading.Tasks;
 
 namespace portfolio.Business.Managers
 {
-    class CoinManager : BaseManager
+    public class CoinManager_DEL : BaseManager
     {
-        public CoinManager(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public CoinManager_DEL(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
 
-        public IEnumerable<Coin> coins
-        {
-            get => coinRepository.GetAll();
-        }
-
-        #region basic CRUD operations
-        public Coin Create()
-        {
-            Coin coin = new Coin();
-            unitOfWork.SaveChanges();
-            return coin;
-        }
-        
+        #region bacic CRUD operations
         public bool Delete(int id)
         {
             var result = coinRepository.Delete(id);
@@ -36,25 +24,19 @@ namespace portfolio.Business.Managers
             return true;
         }
 
-        public Coin GetById(int id) => coinRepository.Get(id);
+        public IEnumerable<Coin> FindCoin(Expression<Func<Coin, bool>> predicate) 
+            => coinRepository.Find(predicate);
 
-        public void Update(Coin coin)
+        public Coin GetCoinById(int id) => coinRepository.Get(id);
+
+        public IEnumerable<Coin> GetALLCoins() => coinRepository.GetAll();
+
+        public void UpdateCoin(Coin coin)
         {
             coinRepository.Update(coin);
             unitOfWork.SaveChanges();
         }
         #endregion
-
-
-        public void AddRange(List<Coin> coin)
-        {
-            coin.ForEach(c => coinRepository.Create(c));
-            unitOfWork.SaveChanges();
-        }
-        
-        public IEnumerable<Coin> Find(Expression<Func<Coin, bool>> predicate) =>
-            coinRepository.Find(predicate);
-
 
         public void AddTransactionToCoin(Transaction transaction, int debetCoinId, int creditCoinId)
         {
@@ -75,16 +57,21 @@ namespace portfolio.Business.Managers
 
         public void RemoveTransactionFromCoin(Transaction transaction, int coinId)
         {
-            var coin = coinRepository.Get(coinId, "Buyings");
+            var coin = coinRepository.Get(coinId);
             coin.Transactions.Remove(transaction);
             coinRepository.Update(coin);
-            transaction.TransactionCoins.Remove(coin);
-            transactionRepository.Update(transaction);
             unitOfWork.SaveChanges();
         }
 
-        public ICollection<Transaction> GetTransactionsOfCoin(int coinId) => transactionRepository
-            .Find(transaction => transaction.TransactionCoins.Contains(GetById(coinId)))
+        public ICollection<Transaction> GetTransactionsOfCoin(int coinId)
+            => transactionRepository
+            .Find(transaction => transaction.TransactionCoins.Contains(GetCoinById(coinId)))
             .ToList();
+
+        public void AddRange(List<Coin> coins)
+        {
+            coins.ForEach(coin => coinRepository.Create(coin));
+            unitOfWork.SaveChanges();
+        }
     }
 }
