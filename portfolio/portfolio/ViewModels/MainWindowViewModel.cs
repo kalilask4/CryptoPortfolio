@@ -33,8 +33,16 @@ namespace portfolio.ViewModels
             factory = new ManagersFactory("DefaultConnection");
             coinManager = factory.GetCoinManager();
             transactionManager = factory.GetTransactionManager();
-            Coins = new ObservableCollection<Coin>(coinManager.coins);
+
+            if (coinManager.Coins.Count() == 0)
+                DbTestData.SetupData(coinManager);
+
+            Coins = new ObservableCollection<Coin>(coinManager.Coins);
             Transactions = new ObservableCollection<Transaction>(transactionManager.transactions);
+
+            //get list transaction for first coin
+            if (Coins.Count > 0)
+                OnGetTransactionExecuted(Coins[0].CoinId);
         }
 
         #region selected coin 

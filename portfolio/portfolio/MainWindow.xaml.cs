@@ -1,4 +1,5 @@
-﻿using System;
+﻿using portfolio.Business.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,7 @@ namespace portfolio
         public MainWindow()
         {
             InitializeComponent();
-
+            
         }
 
 
