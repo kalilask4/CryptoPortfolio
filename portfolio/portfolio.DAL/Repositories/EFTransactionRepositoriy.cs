@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace portfolio.DAL.Repositories
 {
-    public class EFTransactionRepositories : IRepository<Transaction>
+    public class EFTransactionRepositoriy : IRepository<Transaction>
     {
         private readonly PortfolioContext context;
         private readonly DbSet<Transaction> transactions;
 
-        public EFTransactionRepositories(PortfolioContext context)
+        public EFTransactionRepositoriy(PortfolioContext context)
         {
             transactions = context.Transactions;
         }
