@@ -100,7 +100,16 @@
                                           AutoGenerateColumns = "False">
                                     <!--SelectionChanged="transactionsOnCoinToList">-->
                                     <DataGrid.Columns>
+                                        <DataGridTemplateColumn >
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Image Source="pack://application:,,,/Images/CRV.png"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+
+                                        </DataGridTemplateColumn>
                                         
+                                   
                                         <DataGridTextColumn Header="Coin" Width="35"
                                                             Binding="{Binding Path=ShortName}"></DataGridTextColumn>
                                         <DataGridTextColumn Header="Amount"
