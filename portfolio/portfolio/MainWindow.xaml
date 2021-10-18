@@ -4,15 +4,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="clr-namespace:portfolio.ViewModels" 
+        xmlns:vm="clr-namespace:portfolio.ViewModels"
+        xmlns:inf="clr-namespace:portfolio.Infrastructure"
         mc:Ignorable="d"
         Title="Crypto portfolio" Height="450" Width="800">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
 
-
     <Window.Resources>
+        <inf:ImageSourceConverter x:Key="ImageSourceConverter"/>
+        
         <Style TargetType="Button">
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Padding" Value="5"/>
@@ -34,6 +36,7 @@
             <Setter Property="Background" Value="LightBlue"/>
             <Setter Property="FontSize" Value="13"/>
         </Style>
+        
 
     </Window.Resources>
     <Window.Background>
@@ -95,16 +98,31 @@
 
                         <DockPanel Grid.Row="1">
                             <GroupBox Header="Coin list" Width="500" DockPanel.Dock="Left">
-                                <DataGrid Margin="5 5 5 5" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1" 
+                                
+                                
+                                <!--<DataGrid Margin="5 5 5 5" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1" 
                                           ItemsSource="{Binding Coins}"
                                           AutoGenerateColumns = "False">
-                                    <!--SelectionChanged="transactionsOnCoinToList">-->
+                                    --><!--SelectionChanged="transactionsOnCoinToList">--><!--
                                     <DataGrid.Columns>
                                         <DataGridTemplateColumn >
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Image Source="pack://application:,,,/Images/CRV.png"/>
-                                                </DataTemplate>
+                                                    <Image Stretch="None" 
+                                                           Source="{Binding Path=PictureName}"/>
+
+                                                    --><!--Converter={StaticResource ImagePathConverter}"/>-->
+
+
+                                                    <!--<Image Source="{Binding Path=PictureName}"/>-->
+
+                                                    <!--, Converter=
+                                                        
+                                                        Converter={StaticResource ImagePathConverter}}"/>-->
+                                                    <!--Source="pack://application:,,,/Images/CRV.png"/>--><!--
+
+                                                   
+                                                    </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
 
                                         </DataGridTemplateColumn>
@@ -119,8 +137,12 @@
                                         <DataGridTextColumn Header="Current price"
                                                             Binding="{Binding Path=CurrentPrice, StringFormat={}{0:C}}"></DataGridTextColumn>
                                     </DataGrid.Columns>
-                                </DataGrid>
-                                <!--<ListView x:Name="Coins"
+                                </DataGrid>-->
+
+
+
+
+                                <ListView x:Name="Coins"
                                           ItemsSource="{Binding Coins}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
@@ -129,7 +151,11 @@
                                                     <ColumnDefinition Width="auto"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <Image Width="50" Source="{Binding PictureName}"/>
+                                                
+                                                <Image Width="20" 
+                                                       Source="{Binding PictureName, Converter={StaticResource ImageSourceConverter}}"/>
+                                                      
+
                                                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                                                     <TextBlock Text="{Binding ShortName}" HorizontalAlignment="Left" Margin="30,0,0,0"/>
                                                     <TextBlock Text="{Binding Amount}" HorizontalAlignment="Left" Margin="30,0,0,0"/>
@@ -140,7 +166,7 @@
                                             </Grid>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
-                                </ListView>-->
+                                </ListView>
                             </GroupBox>
                         </DockPanel>
 
