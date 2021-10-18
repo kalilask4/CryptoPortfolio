@@ -100,7 +100,7 @@
                                           AutoGenerateColumns = "False">
                                     <!--SelectionChanged="transactionsOnCoinToList">-->
                                     <DataGrid.Columns>
-
+                                        
                                         <DataGridTextColumn Header="Coin" Width="35"
                                                             Binding="{Binding Path=ShortName}"></DataGridTextColumn>
                                         <DataGridTextColumn Header="Amount"
