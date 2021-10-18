@@ -23,9 +23,9 @@ namespace portfolio.DAL.Repositories
             coins = context.Coins;
         }
 
-        public void Create(Coin coin)
+        public void Create(Coin entity)
         {
-            context.AddAsync(coin);
+            context.AddAsync(entity);
         }
 
         public bool Delete(int id)

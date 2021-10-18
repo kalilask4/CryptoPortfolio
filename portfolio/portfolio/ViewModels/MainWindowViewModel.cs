@@ -23,10 +23,11 @@ namespace portfolio.ViewModels
 
         #region Public properties
         public ObservableCollection<Coin> Coins { get; set; }
+        public ObservableCollection<Transaction> Transactions { get; set; }
         public ObservableCollection<Transaction> TransactionsForCoin { get; set; }
         public string Title { get => titleCoins; set => titleCoins = value; }
         public string TitleTransactions { get => titleTransactions; set => titleTransactions = value; }
-        public ObservableCollection<Transaction> Transactions { get; set; }
+        
         
         public MainWindowViewModel()
         {

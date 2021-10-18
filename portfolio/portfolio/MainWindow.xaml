@@ -10,6 +10,8 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
+
+
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="5"/>
@@ -89,10 +91,44 @@
                             
                             <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
                         </Border.Background>
-                        <ListView x:Name="Coins" 
+
+
+                        <DockPanel Grid.Row="1">
+                            <GroupBox Header="Coin list" Width="500" DockPanel.Dock="Left">
+
+                                <ListView x:Name="Coins"
+                                          ItemsSource="{Binding Coins}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="10">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Image Width="50" Source="{Binding PictureName}"/>
+                                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding ShortName}" HorizontalAlignment="Left" Margin="30,0,0,0"/>
+                                                    <TextBlock Text="{Binding Amount}" HorizontalAlignment="Left" Margin="30,0,0,0"/>
+                                                    <TextBlock Text="{Binding AveragePurchasePrice, StringFormat={}{0:0.00 $}}" Margin="5,0,0,0"/>
+                                                    <TextBlock Text="{Binding CurrentPrice, StringFormat={}{0:0.00 $}}" Margin="5,0,0,0"/>
+                                                    <TextBlock Text="{Binding DateUpdate, StringFormat={}{0:dd.MM.yyyy г.р.}}" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                                                </StackPanel>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </GroupBox>
+                        </DockPanel>
+
+
+
+
+
+                        <!--<ListView x:Name="Coins" 
+                                  
                           ItemsSource="{Binding Coins}"
                           SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
-                            <!--#region Обработка события Selection Canged -->
+                            --><!--#region Обработка события Selection Canged --><!--
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
                                     <i:InvokeCommandAction
@@ -101,7 +137,7 @@
                                     </i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
-                            <!--#endregion-->
+                            --><!--#endregion--><!--
                             
                             <ListView.Background>
                                 <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
@@ -111,7 +147,10 @@
                                     <TextBlock Text="{Binding CoinName}"/>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                        </ListView>
+                        </ListView>-->
+                        
+                        
+                        
                     </Border>
                 </TabItem>
                 

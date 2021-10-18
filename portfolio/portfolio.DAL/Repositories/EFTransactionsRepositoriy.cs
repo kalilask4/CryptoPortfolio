@@ -22,9 +22,9 @@ namespace portfolio.DAL.Repositories
             transactions = context.Transactions;
         }
 
-        public void Create(Transaction transaction)
+        public void Create(Transaction entity)
         {
-            context.AddAsync(transaction);
+            context.AddAsync(entity);
         }
 
         public bool Delete(int id)
