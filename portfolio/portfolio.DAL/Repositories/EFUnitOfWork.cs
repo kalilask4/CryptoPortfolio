@@ -30,7 +30,7 @@ namespace portfolio.DAL.Repositories
             coinRepository ?? new EFCoinsRepository(context);
 
         public IRepository<Transaction> TransactioRepository =>
-            transactionRepository ?? new EFTransactionRepositoriy(context);
+            transactionRepository ?? new EFTransactionsRepositoriy(context);
 
 
         public void SaveChanges()

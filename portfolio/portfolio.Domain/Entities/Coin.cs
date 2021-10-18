@@ -38,7 +38,7 @@ namespace portfolio.Domain.Entities
         //for SetupData for test
         public Coin(string name, Transaction transaction)
         {
-            Name = name +"T";
+            Name = name + "T";
             ShortName = "DNT";
             Amount = 0;
             PictureName = ShortName + ".png";

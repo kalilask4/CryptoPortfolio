@@ -34,10 +34,10 @@ namespace portfolio.TestData
             {
                 var coin = new Coin($"C{i}", transaction);
                 coins.Add(coin);
-                //Trace.WriteLine($"Test setup coin in \"for\": {coin}");
+                Trace.WriteLine($"Test setup coin in \"for\": {coin}");
             }
-            //Trace.WriteLine("Test setup coin " + coins[0].Transactions[0].ToString());
-            //Trace.WriteLine("Test setup coin " + coins[0].Transactions[0].ToString());
+            Trace.WriteLine("Test setup coin " + coins[0].Transactions[0].ToString());
+            Trace.WriteLine("Test setup coin " + coins[0].Transactions[0].ToString());
         }
 
         public void Create(Coin entity)

@@ -35,7 +35,7 @@ namespace portfolio.ViewModels
             transactionManager = factory.GetTransactionManager();
 
             if (coinManager.Coins.Count() == 0)
-                DbTestData.SetupData(coinManager);
+                DbTestData.SetupData(coinManager, transactionManager);
 
             Coins = new ObservableCollection<Coin>(coinManager.Coins);
             Transactions = new ObservableCollection<Transaction>(transactionManager.transactions);

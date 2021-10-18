@@ -11,13 +11,14 @@ using System.Threading.Tasks;
 
 namespace portfolio.DAL.Repositories
 {
-    public class EFTransactionRepositoriy : IRepository<Transaction>
+    public class EFTransactionsRepositoriy : IRepository<Transaction>
     {
         private readonly PortfolioContext context;
         private readonly DbSet<Transaction> transactions;
 
-        public EFTransactionRepositoriy(PortfolioContext context)
+        public EFTransactionsRepositoriy(PortfolioContext context)
         {
+            this.context = context;
             transactions = context.Transactions;
         }
 
@@ -53,8 +54,10 @@ namespace portfolio.DAL.Repositories
         public Transaction Get(int id, params string[] includes)
         {
             IQueryable<Transaction> query = transactions;
+            
             foreach (var include in includes)
                 query = query.Include(include);
+            
             return query.First(t => t.TransactionId == id);
         }
 

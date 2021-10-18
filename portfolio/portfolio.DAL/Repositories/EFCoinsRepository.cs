@@ -19,12 +19,13 @@ namespace portfolio.DAL.Repositories
 
         public EFCoinsRepository(PortfolioContext context)
         {
+            this.context = context;
             coins = context.Coins;
         }
 
         public void Create(Coin coin)
         {
-            context.Add(coin);
+            context.AddAsync(coin);
         }
 
         public bool Delete(int id)

@@ -10,8 +10,20 @@ namespace portfolio.Business.Infrastructure
 {
     public class DbTestData
     {
-        public static void SetupData(CoinManager coinManager)
+        public static void SetupData(CoinManager coinManager, TransactionManager transactionManager)
         {
+
+            transactionManager.AddRange(new List<Transaction> {
+                new Transaction {
+                    Symbol = "LTCTRX",
+                    Side = "sell"
+                },
+                new Transaction {
+
+                }
+                });
+
+
             coinManager.AddRange(new List<Coin>
             {
                 new Coin
@@ -31,15 +43,36 @@ namespace portfolio.Business.Infrastructure
                     Name = "Chainlink",
                     ShortName = "LINK",
                     PictureName = "LINK.png"
+                },
+                new Coin
+                {
                 }
             });
 
             var coins = coinManager.Coins.ToArray();
 
+            transactionManager.AddCoinToTransaction(coins[2], 0);
+
             coinManager.AddTransactionToCoin(
                 new Transaction
                 {
                     Symbol = "LTCTRX",
+                    Side = "sell"
+                },
+                0,
+                1
+                );
+
+            
+            //coinManager.AddTransactionToCoin(
+            //    new Transaction{}, 0, 1);
+
+
+            /*coinManager.AddTransactionToCoin(
+                new Transaction
+                {
+                    Symbol = "LTCTRX",
+                    Side = "sell"
                 },
                 0,
                 1
@@ -48,10 +81,11 @@ namespace portfolio.Business.Infrastructure
                 new Transaction
                 {
                     Symbol = "LTCLINK",
+                    Side = "buy"
                 },
                 0,
                 2
-                );
+                );*/
         }
     }
 }
