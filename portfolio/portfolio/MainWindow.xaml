@@ -95,8 +95,23 @@
 
                         <DockPanel Grid.Row="1">
                             <GroupBox Header="Coin list" Width="500" DockPanel.Dock="Left">
+                                <DataGrid Margin="5 5 5 5" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1" 
+                                          ItemsSource="{Binding Coins}"
+                                          AutoGenerateColumns = "False">
+                                    <!--SelectionChanged="transactionsOnCoinToList">-->
+                                    <DataGrid.Columns>
 
-                                <ListView x:Name="Coins"
+                                        <DataGridTextColumn Header="Coin" Width="35"
+                                                            Binding="{Binding Path=ShortName}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Amount"
+                                                            Binding="{Binding Path=Amount}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Purchase price"
+                                                            Binding="{Binding Path=AveragePurchasePrice, StringFormat={}{0:C}}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Current price"
+                                                            Binding="{Binding Path=CurrentPrice, StringFormat={}{0:C}}"></DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <!--<ListView x:Name="Coins"
                                           ItemsSource="{Binding Coins}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
@@ -116,7 +131,7 @@
                                             </Grid>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
-                                </ListView>
+                                </ListView>-->
                             </GroupBox>
                         </DockPanel>
 
