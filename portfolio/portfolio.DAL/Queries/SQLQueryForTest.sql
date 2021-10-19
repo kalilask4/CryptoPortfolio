@@ -59,11 +59,11 @@ insert into Coins
 
 insert into Transactions
 (Symbol, Amount, Priñe, Sum, DateUpdate, Side) values
-(N'AAACCC', 100, 5, 500, GETDATE(), N'buy')
+(N'3kkk', 100, 5, 500, GETDATE(), N'buy')
 
 insert into CoinTransaction
 (TransactionCoinsCoinId, TransactionsTransactionId) values
-(1,2)
+(0,5)
 
 drop database portfoliotest0
 

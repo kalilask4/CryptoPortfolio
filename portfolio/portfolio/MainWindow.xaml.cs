@@ -26,42 +26,10 @@ namespace portfolio
     public partial class MainWindow : Window
     {
 
-        //ObservableCollection<GroupViewModel> groups;
-
-        /* ObservableCollection<GroupViewModel> groups;
-         IGroupService groupService;
-
-         public MainWindow()
-         {
-
-             InitializeComponent();
-             groupService = new GroupService("db10");
-             groups = groupService.GetAll();
-             cBoxGroup.DataContext = groups;
-
-         }
-        */
-
-
         public MainWindow()
         {
             InitializeComponent();
-
-            /*db = new EntityContext();
-
-
-
-            db = new EntityContext();
-            db.Coins.Load();
-            db.Transactions.Load();
-            grCoinsData.ItemsSource = db.Coins.Local.ToBindingList();
-            grTransactionsData.ItemsSource = db.Transactions.Local.ToBindingList();
-
-            coins = new ObservableCollection<Coin>();
-            coins = db.Coins.Local;
-            allRelationsCoinsTransactions();*/
-
-
+                       
         }
 
        

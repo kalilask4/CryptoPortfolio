@@ -45,7 +45,11 @@ namespace portfolio.ViewModels
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
 
-            
+            /*//get list transaction for first coin
+            if (Transactions.Count > 0)
+                OnGetTransactionExecuted(Transactions[0].TransactionId);*/
+
+
 
 
         }
