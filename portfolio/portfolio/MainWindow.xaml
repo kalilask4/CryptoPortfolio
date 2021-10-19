@@ -410,9 +410,9 @@
                 <Button Height="26" Margin="0,1,15,1" Background="LightSalmon" Name="btnUpdate" Content="ratio"/>
             </StackPanel>
             <StackPanel x:Name="st2" Grid.Column="1" Margin="30,15,10,80">
-                <Button Name="AddCoin" Content="Add coin" />
-                <Button Name="AddTransaction" Content="Add transaction" />
-                <Button Visibility="Hidden" Name="Find" Content="Find"/>
+                <Button x:Name="AddCoin" Content="Add coin" Command="{Binding NewCoinCommand}"/>
+                <Button x:Name="AddTransaction" Content="Add transaction"/>
+                <Button Visibility="Hidden" x:Name="Find" Content="Find"/>
 
                 <!--<Button Content="Simple Command" Command="{Binding SimpleCommand}" />-->
                 <!--<Button Name="Update"  Content="Update"/>-->

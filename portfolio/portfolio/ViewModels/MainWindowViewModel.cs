@@ -80,6 +80,31 @@ namespace portfolio.ViewModels
         #endregion
 
         #region Command
+        #region Add coin
+        private ICommand _newCoinCommand;
+        public ICommand NewCoinCommand =>
+        _newCoinCommand ??= new
+       RelayCommand(OnNewCoinExecuted);
+        private void OnNewCoinExecuted(object id)
+        {
+            var dialog = new EditCoinWindow
+            {
+                //Date = DateTime.Now
+            };
+
+            if (dialog.ShowDialog() != true) return;
+            var coin = new Coin
+            {
+                Name = dialog.Name,
+                //Date = dialog.DateOfBirth
+            };
+            
+
+            Coins.Add(coin);
+        }
+        #endregion
+
+
         #region Choose coin from list
         private ICommand _getTransactionCommand;
         public ICommand GetTransactionCommand =>

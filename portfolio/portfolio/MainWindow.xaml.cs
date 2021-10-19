@@ -32,6 +32,9 @@ namespace portfolio
                        
         }
 
-       
+        private void AddCoin_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
