@@ -211,6 +211,18 @@
                             </ListView.ItemTemplate>
                         </ListView>-->
                     </Border>
+
+                        <DockPanel Grid.Row="1">
+                            <GroupBox Header="Coin transactions" Margin="0" Padding="0">
+                                <ListView x:Name="Transactions" ItemsSource="{Binding Transactions}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Symbol}"/>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </GroupBox>
+                        </DockPanel>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Transaction">
