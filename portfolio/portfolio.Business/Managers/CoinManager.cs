@@ -73,6 +73,7 @@ namespace portfolio.Business.Managers
             unitOfWork.SaveChanges();
         }
 
+        //!! need fix - Buyings
         public void RemoveTransactionFromCoin(Transaction transaction, int coinId)
         {
             var coin = coinRepository.Get(coinId, "Buyings");

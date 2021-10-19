@@ -80,21 +80,35 @@
                     </Style>
                 </TabControl.Resources>
                 <TabItem Header="Coins">
+                    <!--<TabItem.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
+                    </TabItem.Background>-->
                     <Border>
-                        <Border.Background>
+                        <!--<Border.Background>
                             <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
-                        </Border.Background>
+                        </Border.Background>-->
                         <DockPanel Grid.Row="1">
-                            <GroupBox Header="Coin list" Width="500" DockPanel.Dock="Left">
-                                <DataGrid Margin="5 5 5 5" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1" 
+                            
+                            <!--<DockPanel.Background>
+                                <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
+                            </DockPanel.Background>-->
+                            
+                            <GroupBox Header="Coin list" Width="464" DockPanel.Dock="Left">
+                                <DataGrid Margin="5,0,5,0" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1" 
                                           ItemsSource="{Binding Coins}"
                                           AutoGenerateColumns = "False"
                                     SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
                                     <!--SelectionChanged="transactionsOnCoinToList">-->
+                                    
+                                    <!--<DataGrid.Background>
+                                        <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
+                                    </DataGrid.Background>-->
+                                    
                                     <DataGrid.Columns>
                                         <DataGridTemplateColumn >
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
+                                                    
                                                     <Image 
                                                         Stretch="Fill" 
                                                         Width="20" Height="20" 
@@ -169,12 +183,10 @@
                         </ListView>-->
                     </Border>
                 </TabItem>
-                <TabItem Header="Buy transaction">
-                    <TextBlock>Buy transaction</TextBlock>
+                <TabItem Header="Transaction">
+                    <!--<TextBlock>Transaction</TextBlock>-->
                 </TabItem>
-                <TabItem Header="Sell transaction">
-                    <TextBlock>Sell transaction</TextBlock>
-                </TabItem>
+                
             </TabControl>
         </Grid>
 
@@ -299,14 +311,15 @@
                 <ColumnDefinition Width="0.5*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel x:Name="st1" Grid.Column="0" Margin="0 100 15 3" VerticalAlignment="Bottom">
-                <Button Background="Aqua" Name="btnInsert" Content="сurrent" Margin="0,5,5,0" />
-                <Button Background="Yellow" Name="btnFind" Content="by bought price" Margin="0,5,5,0"/>
-                <Button Background="Orchid" Name="btnUpdate"  Content="ratio" Margin="0,5,5,5"/>
+            <StackPanel x:Name="st1" Grid.Column="0" Margin="0 100 15 10" VerticalAlignment="Bottom">
+                <Button Height="26" Margin="0,1,15,1" Background="Aqua" Name="btnInsert" Content="сurrent"/>
+                <Button Height="26" Margin="0,1,15,1" Background="Yellow" Name="btnFind" Content="by bought price"/>
+                <Button Height="26" Margin="0,1,15,1" Background="Orchid" Name="btnUpdate" Content="ratio"/>
             </StackPanel>
             <StackPanel x:Name="st2" Grid.Column="1" Margin="30,15,10,80">
-                <Button Name="AddTransaction" Content="AddTransaction" />
-                <Button Name="Find" Content="Find"/>
+                <Button Name="AddCoin" Content="Add coin" />
+                <Button Name="AddTransaction" Content="Add transaction" />
+                <Button Visibility="Hidden" Name="Find" Content="Find"/>
                 
                 
                 <!--<Button Content="Simple Command" Command="{Binding SimpleCommand}" />-->
