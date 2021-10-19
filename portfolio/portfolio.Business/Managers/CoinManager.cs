@@ -36,7 +36,7 @@ namespace portfolio.Business.Managers
             return true;
         }
 
-        public Coin GetById(int id) => coinRepository.Get(id);
+        public Coin GetById(int id) => coinRepository?.Get(id);
 
         public void Update(Coin coin)
         {

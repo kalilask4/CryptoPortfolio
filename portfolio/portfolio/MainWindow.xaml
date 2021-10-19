@@ -105,7 +105,6 @@
                         </Grid.RowDefinitions>
                         
                     
-                    
                     <Border Grid.Row="0">
                         <DockPanel >
 
@@ -118,7 +117,6 @@
                                     SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
                                 <!--SelectionChanged="transactionsOnCoinToList">-->
                                 
-                                
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="SelectionChanged">
                                         <i:InvokeCommandAction
@@ -127,8 +125,6 @@
                                         </i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-
-                                
                                 
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn>
@@ -156,8 +152,6 @@
                                 </DataGrid.Columns>
                                 
                             </DataGrid>
-                    
-
                             
                             <!--<ListView x:Name="Coins"
                                           ItemsSource="{Binding Coins}">
@@ -200,7 +194,6 @@
                             -->
                         <!--#endregion-->
                         <!--
-                            
                             <ListView.Background>
                                 <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
                             </ListView.Background>
@@ -211,10 +204,9 @@
                             </ListView.ItemTemplate>
                         </ListView>-->
                     </Border>
-
                         <DockPanel Grid.Row="1">
                             <GroupBox Header="Coin transactions" Margin="0" Padding="0">
-                                <ListView x:Name="Transactions" ItemsSource="{Binding Transactions}">
+                                <ListView x:Name="lvTransactions" ItemsSource="{Binding Transactions}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding Symbol}"/>
@@ -230,10 +222,9 @@
                         <DockPanel Grid.Row="1">
                             <DataGrid
                                     Margin="5,5,5,5" x:Name="grTransactionData" Grid.Row="0" Grid.Column="1" 
-                                          ItemsSource="{Binding Transactions}"
-                                          AutoGenerateColumns = "False"
-                                    SelectedValue="{Binding SelectedTransaction}" SelectedIndex="0">
-                                
+                                          ItemsSource="{Binding AllTransactions}"
+                                          AutoGenerateColumns = "False">
+                                <!--SelectedValue="{Binding SelectedTransaction}" SelectedIndex="0">-->
                                 <!--<i:Interaction.Triggers>
                                     <i:EventTrigger EventName="SelectionChanged">
                                         <i:InvokeCommandAction
@@ -254,13 +245,8 @@
                                                             Binding="{Binding Path=Sum, StringFormat={}{0:C}}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="side" Width="35"
                                                             Binding="{Binding Path=Side}"></DataGridTextColumn>
-
                                 </DataGrid.Columns>
-                                
-
-                                
                             </DataGrid>
-
                         </DockPanel>
                         <!--<ListView x:Name="Coins" 
                           ItemsSource="{Binding Coins}"
@@ -310,7 +296,6 @@
                                         HorizontalAlignment="Center"
                                         ContentSource="Header"
                                         Margin="10,2"/>
-
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsSelected" Value="True">
@@ -328,9 +313,7 @@
                     </Style>
                 </TabControl.Resources>
 
-
                 <TabItem Header="Desc">
-                    
                     <Grid >
                         <!--DataContext="{Binding SelectedCoin}"-->
                         <Grid.RowDefinitions>
@@ -356,7 +339,7 @@
                         <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding ValueUSD, StringFormat={}{0:# ###.00}$}"/>-->
 
                         <GroupBox Grid.Row="2" Grid.ColumnSpan="3" Header="Last buy transaction" Margin="2,2,2,2" Padding="2">
-                            <ListView x:Name="Transaction" >
+                            <ListView x:Name="lvTransaction" >
                                 <!--ItemsSource="{Binding Buyings}"-->
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -427,11 +410,7 @@
                 <Button Name="AddTransaction" Content="Add transaction" />
                 <Button Visibility="Hidden" Name="Find" Content="Find"/>
 
-
                 <!--<Button Content="Simple Command" Command="{Binding SimpleCommand}" />-->
-
-
-
                 <!--<Button Name="Update"  Content="Update"/>-->
             </StackPanel>
         </Grid>

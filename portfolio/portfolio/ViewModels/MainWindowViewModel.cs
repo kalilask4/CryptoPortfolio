@@ -25,6 +25,7 @@ namespace portfolio.ViewModels
         public ObservableCollection<Coin> Coins { get; set; }
         public ObservableCollection<Transaction> Transactions { get; set; }
         public ObservableCollection<Transaction> TransactionsForCoin { get; set; }
+        public ObservableCollection<Transaction> AllTransactions { get; set; }
         public string Title { get => titleCoins; set => titleCoins = value; }
         public string TitleTransactions { get => titleTransactions; set => titleTransactions = value; }
         
@@ -39,6 +40,7 @@ namespace portfolio.ViewModels
                 DbTestData.SetupData(coinManager, transactionManager);
 
             Coins = new ObservableCollection<Coin>(coinManager.Coins);
+            AllTransactions = new ObservableCollection<Transaction>(transactionManager.Transactions);
             Transactions = new ObservableCollection<Transaction>(transactionManager.Transactions);
 
             //get list transaction for first coin
@@ -48,8 +50,6 @@ namespace portfolio.ViewModels
             /*//get list transaction for first coin
             if (Transactions.Count > 0)
                 OnGetTransactionExecuted(Transactions[0].TransactionId);*/
-
-
 
 
         }
