@@ -12,6 +12,26 @@
         <vm:MainWindowViewModel/>
     </Window.DataContext>
     <Window.Resources>
+        
+        <Style TargetType="DataGrid">
+            <Setter Property="RowBackground" Value="Beige"></Setter>
+            <Setter Property="Background" Value="LightGoldenrodYellow"/>
+            <Setter Property="Foreground" Value="DimGray"/>
+            <Setter Property="BorderBrush" Value="LightSteelBlue"></Setter>
+            <Setter Property="BorderThickness" Value="1"/>
+            <!--Setter Property="TabIndex" Value="Red"/>-->
+            
+        </Style>
+        
+        <!--<Style TargetName="Bb" TargetType="DataGridColumnHeader">
+            <Setter TargetName="Bb" Property="Background" Value="DarkKhaki" />
+            <Setter TargetName="Bb" Property="Opacity" Value="0.6" />
+        </Style>-->
+        
+
+
+
+
         <inf:ImageSourceConverter x:Key="ImageSourceConverter"/>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="5"/>
@@ -19,7 +39,7 @@
             <Setter Property="FontFamily" Value="Brevia"/>
             <Setter Property="Background" Value="BlanchedAlmond"/>
             <Setter Property="Opacity" Value="0.78"/>
-            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="12"/>
         </Style>
         <Style TargetType="Label">
             <Setter Property="Margin" Value="5"/>
@@ -48,7 +68,11 @@
             <RowDefinition Height="1.1*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid x:Name="gridData" Grid.RowSpan="2">
-            <TabControl Margin="5,0,0,5" BorderBrush="Gainsboro">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="172*"/>
+                <ColumnDefinition Width="305*"/>
+            </Grid.ColumnDefinitions>
+            <TabControl Margin="5,0,0,5" BorderBrush="Gainsboro" Grid.ColumnSpan="2">
                 <TabControl.Background>
                     <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.75"></ImageBrush>
                 </TabControl.Background>
@@ -80,42 +104,56 @@
                     </Style>
                 </TabControl.Resources>
                 <TabItem Header="Coins">
-                    <!--<TabItem.Background>
-                        <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
-                    </TabItem.Background>-->
                     <Border>
-                        <!--<Border.Background>
-                            <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
-                        </Border.Background>-->
                         <DockPanel Grid.Row="1">
-                            
-                            <!--<DockPanel.Background>
-                                <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
-                            </DockPanel.Background>-->
-                            
-                            <GroupBox Header="Coin list" Width="448" DockPanel.Dock="Left">
-                                <GroupBox.Background>
-                                    <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
-                                </GroupBox.Background>
-                                <DataGrid Margin="5,0,5,0" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1" 
+
+                            <!--<GroupBox  Width="448" DockPanel.Dock="Left">-->
+                                <!--Header="Coin list"-->
+                                <DataGrid
+                                    Margin="5,5,5,5" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1" 
                                           ItemsSource="{Binding Coins}"
                                           AutoGenerateColumns = "False"
                                     SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
-                                    <!--SelectionChanged="transactionsOnCoinToList">-->
-                                    
-                                    <!--<DataGrid.Background>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell" >
+                                        <Style.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="Background" Value="LightSkyBlue"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGrid.CellStyle>
+
+
+
+                                <!--SelectionChanged="transactionsOnCoinToList">-->
+
+                                    <!--<DataGrid.RowBackground>
                                         <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
-                                    </DataGrid.Background>-->
-                                    
+                                    </DataGrid.RowBackground>-->
+
+
+                                    <!--<Style TargetType="DataGrid">
+                                        <Setter Property="RowBackground" Value="Yellow"></Setter>
+                                        <Setter Property="Opacity" Value="0.32"/>
+                                    </Style>-->
+
+
+
+
+
+
+
+
                                     <DataGrid.Columns>
-                                        <DataGridTemplateColumn >
+                                        <DataGridTemplateColumn>
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Image 
                                                         Stretch="Fill" 
                                                         Width="20" Height="20" 
                                                         Source="{Binding PictureName, Converter={StaticResource ImageSourceConverter}, Mode=TwoWay}"/>
-                                                    </DataTemplate>
+                                                </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
                                         <DataGridTextColumn Header="Coin" Width="35"
@@ -164,12 +202,14 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>-->
-                            </GroupBox>
+                            <!--</GroupBox>-->
                         </DockPanel>
                         <!--<ListView x:Name="Coins" 
                           ItemsSource="{Binding Coins}"
                           SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
-                            --><!--#region Обработка события Selection Canged --><!--
+                            -->
+                        <!--#region Обработка события Selection Canged -->
+                        <!--
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
                                     <i:InvokeCommandAction
@@ -178,7 +218,9 @@
                                     </i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
-                            --><!--#endregion--><!--
+                            -->
+                        <!--#endregion-->
+                        <!--
                             
                             <ListView.Background>
                                 <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
@@ -237,7 +279,7 @@
                                         HorizontalAlignment="Center"
                                         ContentSource="Header"
                                         Margin="10,2"/>
-                                        
+
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsSelected" Value="True">
@@ -264,24 +306,25 @@
                             <RowDefinition Height="3*" ></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>                            
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="33*"/>
+                            <ColumnDefinition Width="35*"></ColumnDefinition>
+                            <ColumnDefinition Width="35*"></ColumnDefinition>
+                            <ColumnDefinition Width="35*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                  
+
                         <!--<TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left">Symbol: </TextBlock>-->
                         <!--<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Symbol}"/>-->
-                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CoinName}"/>
-                        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left">Amount: </TextBlock>
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Amount}"/>                     
-                        <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left">Current price: </TextBlock>
-                        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding CurrentPrice, StringFormat={}{0:# ###.00}$}"/> 
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CoinName}" Grid.ColumnSpan="3" Margin="66,0,70,16" Grid.RowSpan="2"/>
+                        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="0,0,0,119" Grid.RowSpan="2">Amount:</TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Amount}" Grid.ColumnSpan="3" Margin="66,0,70,119" Grid.RowSpan="2"/>
+                        <TextBlock Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" Margin="0,0,0,119" Grid.RowSpan="2">Current price:</TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding CurrentPrice, StringFormat={}{0:# ###.00}$}" Grid.ColumnSpan="2" Margin="70,0,0,119" Grid.RowSpan="2"/>
                         <!--<TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left">Value: </TextBlock>
                         <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding ValueUSD, StringFormat={}{0:# ###.00}$}"/>-->
 
-                        <GroupBox Grid.Row="5" Grid.ColumnSpan="2" Header="Last buy transaction" Margin="2" Padding="2">
+                        <GroupBox Grid.Row="2" Grid.ColumnSpan="3" Header="Last buy transaction" Margin="2,2,2,2" Padding="2">
                             <ListView x:Name="Transaction" ItemsSource="{Binding Buyings}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -318,16 +361,16 @@
 рублей}"/>-->
 
                     </Grid>
-                    
-                </TabItem> 
-                
-                
+
+                </TabItem>
+
+
                 <TabItem Header="Second">
                     <TextBlock>test2</TextBlock>
-                </TabItem> 
+                </TabItem>
             </TabControl>
-           
-           <!--<Border>
+
+            <!--<Border>
                     <ListBox x:Name="listStatistic" Margin="15, 5, 5, 5" Height="Auto">
                         <ListBox.Background>
                             <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.75"></ImageBrush>
@@ -343,20 +386,20 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="st1" Grid.Column="0" Margin="0 100 15 10" VerticalAlignment="Bottom">
-                <Button Height="26" Margin="0,1,15,1" Background="Aqua" Name="btnInsert" Content="сurrent"/>
-                <Button Height="26" Margin="0,1,15,1" Background="Yellow" Name="btnFind" Content="by bought price"/>
-                <Button Height="26" Margin="0,1,15,1" Background="Orchid" Name="btnUpdate" Content="ratio"/>
+                <Button Height="26" Margin="0,1,15,1" Background="LightGreen" Name="btnInsert" Content="сurrent"/>
+                <Button Height="26" Margin="0,1,15,1" Background="Moccasin" Name="btnFind" Content="by bought price"/>
+                <Button Height="26" Margin="0,1,15,1" Background="LightSalmon" Name="btnUpdate" Content="ratio"/>
             </StackPanel>
             <StackPanel x:Name="st2" Grid.Column="1" Margin="30,15,10,80">
                 <Button Name="AddCoin" Content="Add coin" />
                 <Button Name="AddTransaction" Content="Add transaction" />
                 <Button Visibility="Hidden" Name="Find" Content="Find"/>
-                
-                
+
+
                 <!--<Button Content="Simple Command" Command="{Binding SimpleCommand}" />-->
-                
-                
-                
+
+
+
                 <!--<Button Name="Update"  Content="Update"/>-->
             </StackPanel>
         </Grid>
