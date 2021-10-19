@@ -10,26 +10,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\ADA.png" />
+    <None Remove="Images\AXS.png" />
     <None Remove="Images\CRV.png" />
+    <None Remove="Images\DOT.png" />
+    <None Remove="Images\ETH.png" />
     <None Remove="Images\FLOW.png" />
+    <None Remove="Images\ICP.png" />
     <None Remove="Images\LINK.png" />
     <None Remove="Images\LTC.png" />
     <None Remove="Images\NEO.png" />
     <None Remove="Images\THETA.png" />
     <None Remove="Images\TRX.png" />
+    <None Remove="Images\UNI.png" />
     <None Remove="Images\XTZ.png" />
     <None Remove="Resources\light-yellow.jpg" />
     <None Remove="Resources\pastelAbstraction.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Remove="del.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="del.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -43,11 +39,26 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Images\ADA.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\AXS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\CRV.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\DOT.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ETH.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\FLOW.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ICP.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\LINK.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -63,6 +74,9 @@
     </Content>
     <Content Include="Images\TRX.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\UNI.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\XTZ.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -24,9 +24,6 @@ SELECT TOP (1000) [TransactionCoinsCoinId]
   FROM [portfoliotest0].[dbo].[CoinTransaction]
 
 
-
-
-
 select * 
 from Coins 
 join CoinTransaction
@@ -55,11 +52,20 @@ where t.TransactionId=1
 
 insert into Coins
 (Name, ShortName, Amount, CurrentPrice, ValueUSD, AveragePurchasePrice, PictureName, DateUpdate) values
+(N'ICP', N'ICP', 100, 2, 200, 2, N'ICP.png', GETDATE())
+
+insert into Coins
+(Name, ShortName, Amount, CurrentPrice, ValueUSD, AveragePurchasePrice, PictureName, DateUpdate) values
 (N'AAA', N'A0', 100, 2, 200, 2, N'AO.png', GETDATE())
 
 insert into Transactions
 (Symbol, Amount, Priñe, Sum, DateUpdate, Side) values
 (N'3kkk', 100, 5, 500, GETDATE(), N'buy')
+
+insert into Transactions
+(Symbol, Amount, Priñe, Sum, DateUpdate, Side) values
+(N'ICPAAA', 20, 15, 300, GETDATE(), N'transfer')
+
 
 insert into CoinTransaction
 (TransactionCoinsCoinId, TransactionsTransactionId) values

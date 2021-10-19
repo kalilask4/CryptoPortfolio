@@ -28,7 +28,7 @@ namespace portfolio.Domain.Entities
         public Coin()
         {
             Name = "DefName";
-            ShortName = "DN";
+            ShortName = "AXS";
             Amount = 0;
             PictureName = ShortName + ".png";
             DateUpdate = DateTime.Now;
@@ -38,7 +38,7 @@ namespace portfolio.Domain.Entities
         //for SetupData for test
         public Coin(string name, Transaction transaction)
         {
-            Name = name + "T";
+            Name = name + "Tww";
             ShortName = "DNT";
             Amount = 0;
             PictureName = ShortName + ".png";

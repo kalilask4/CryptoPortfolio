@@ -21,11 +21,11 @@
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
         <Style TargetType="DataGridCell" >
-                <Style.Triggers>
-                    <Trigger Property="IsSelected" Value="True">
-                        <Setter Property="Background" Value="MediumPurple"/>
-                    </Trigger>
-                </Style.Triggers>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="MediumPurple"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="5"/>
@@ -99,61 +99,65 @@
                 </TabControl.Resources>
                 <TabItem Header="Coins">
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="105*"/>
+                            <ColumnDefinition Width="361*"/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition Height="80"></RowDefinition>
                         </Grid.RowDefinitions>
-                        
-                    
-                    <Border Grid.Row="0">
-                        <DockPanel >
 
-                            <!--<GroupBox  Width="448" DockPanel.Dock="Left">-->
-                            <!--Header="Coin list"-->
-                            <DataGrid
+
+                        <Border Grid.Row="0" Grid.ColumnSpan="2">
+                            <DockPanel >
+
+                                <!--<GroupBox  Width="448" DockPanel.Dock="Left">-->
+                                <!--Header="Coin list"-->
+                                <DataGrid
                                     Margin="5,5,5,5" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1" 
                                           ItemsSource="{Binding Coins}"
                                           AutoGenerateColumns = "False"
                                     SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
-                                <!--SelectionChanged="transactionsOnCoinToList">-->
-                                
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="SelectionChanged">
-                                        <i:InvokeCommandAction
+                                    <!--SelectionChanged="transactionsOnCoinToList">-->
+
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction
                                         Command="{Binding GetTransactionCommand}"
                                         CommandParameter="{Binding SelectedCoin.CoinId}">
-                                        </i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                                
-                                <DataGrid.Columns>
-                                    <DataGridTemplateColumn>
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <Image 
+                                            </i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn>
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Image 
                                                         Stretch="Fill" 
                                                         Width="20" Height="20" 
                                                         Source="{Binding PictureName, Converter={StaticResource ImageSourceConverter}, Mode=TwoWay}"/>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn Header="Coin" Width="35"
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn Header="Coin" Width="35"
                                                             Binding="{Binding Path=ShortName}"></DataGridTextColumn>
-                                    <DataGridTextColumn Header="Amount"
+                                        <DataGridTextColumn Header="Amount"
                                                             Binding="{Binding Path=Amount}"></DataGridTextColumn>
-                                    <DataGridTextColumn Header="Purchase price"
+                                        <DataGridTextColumn Header="Purchase price"
                                                             Binding="{Binding Path=AveragePurchasePrice, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                    <DataGridTextColumn Header="Current price"
+                                        <DataGridTextColumn Header="Current price"
                                                             Binding="{Binding Path=CurrentPrice, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                    <DataGridTextColumn Width="75" Header="Sum"
+                                        <DataGridTextColumn Width="75" Header="Sum"
                                                             Binding="{Binding Path=Sum, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                    <DataGridTextColumn Width="75" Header="Diff"
+                                        <DataGridTextColumn Width="75" Header="Diff"
                                                             Binding="{Binding Path=Diff, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                </DataGrid.Columns>
-                                
-                            </DataGrid>
-                            
-                            <!--<ListView x:Name="Coins"
+                                    </DataGrid.Columns>
+
+                                </DataGrid>
+
+                                <!--<ListView x:Name="Coins"
                                           ItemsSource="{Binding Coins}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
@@ -175,14 +179,14 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>-->
-                            <!--</GroupBox>-->
-                        </DockPanel>
-                        <!--<ListView x:Name="Coins" 
+                                <!--</GroupBox>-->
+                            </DockPanel>
+                            <!--<ListView x:Name="Coins" 
                           ItemsSource="{Binding Coins}"
                           SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
                             -->
-                        <!--#region Обработка события Selection Canged -->
-                        <!--
+                            <!--#region Обработка события Selection Canged -->
+                            <!--
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
                                     <i:InvokeCommandAction
@@ -192,8 +196,8 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                             -->
-                        <!--#endregion-->
-                        <!--
+                            <!--#endregion-->
+                            <!--
                             <ListView.Background>
                                 <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
                             </ListView.Background>
@@ -203,8 +207,8 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>-->
-                    </Border>
-                        <DockPanel Grid.Row="1">
+                        </Border>
+                        <DockPanel Grid.ColumnSpan="2" Margin="0,305,0,0" Grid.RowSpan="2">
                             <GroupBox Header="Coin transactions" Margin="0" Padding="0">
                                 <ListView x:Name="lvTransactions" ItemsSource="{Binding Transactions}">
                                     <ListView.ItemTemplate>
@@ -233,7 +237,7 @@
                                         </i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>-->
-                                
+
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Transaction" Width="35"
                                                             Binding="{Binding Path=Symbol}"></DataGridTextColumn>

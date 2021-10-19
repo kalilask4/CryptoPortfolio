@@ -20,8 +20,14 @@ namespace portfolio.Business.Infrastructure
                 },
                 new Transaction {
 
-                }
-                });
+
+                },
+                new Transaction
+                {
+                    Symbol = "LINKBNB",
+                    Side = "sell"
+                }}
+                );
 
 
             coinManager.AddRange(new List<Coin>
@@ -46,24 +52,54 @@ namespace portfolio.Business.Infrastructure
                 },
                 new Coin
                 {
-                }
+                },
+                new Coin
+                {
+                    Name = "Cardano",
+                    ShortName = "ADA",
+                    PictureName = "ADA.png"
+                },
+                new Coin
+                {
+                    Name = "CRV",
+                    ShortName = "CRV",
+                    PictureName = "CRV.png"
+                },
+                new Coin
+                {
+                    Name = "BNB",
+                    ShortName = "BNB",
+                    PictureName = "BNB.png"
+                },
             });
 
             var coins = coinManager.Coins.ToArray();
 
             transactionManager.AddCoinToTransaction(coins[2], 0);
+            transactionManager.AddCoinToTransaction(coins[0], 0);
+            transactionManager.AddCoinToTransaction(coins[5], 3);
 
             coinManager.AddTransactionToCoin(
                 new Transaction
                 {
-                    Symbol = "LTCTRX",
+                    Symbol = "LLLXXX",
                     Side = "sell"
                 },
                 0,
                 1
                 );
 
-            
+            coinManager.AddTransactionToCoin(
+                new Transaction
+                {
+                    Symbol = "AAA",
+                    Side = "transfer"
+                },
+                2,
+                2
+                );
+
+
             //coinManager.AddTransactionToCoin(
             //    new Transaction{}, 0, 1);
 
