@@ -15,7 +15,7 @@ namespace portfolio.Business.Managers
         {
         }
 
-        public IEnumerable<Transaction> transactions
+        public IEnumerable<Transaction> Transactions
         {
             get => transactionRepository.GetAll();
         }

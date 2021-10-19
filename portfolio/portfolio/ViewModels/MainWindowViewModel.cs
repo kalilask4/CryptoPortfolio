@@ -39,11 +39,15 @@ namespace portfolio.ViewModels
                 DbTestData.SetupData(coinManager, transactionManager);
 
             Coins = new ObservableCollection<Coin>(coinManager.Coins);
-            Transactions = new ObservableCollection<Transaction>(transactionManager.transactions);
+            Transactions = new ObservableCollection<Transaction>(transactionManager.Transactions);
 
             //get list transaction for first coin
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
+
+            
+
+
         }
 
         #region selected coin 

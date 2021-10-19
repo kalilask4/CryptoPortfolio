@@ -93,7 +93,10 @@
                                 <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
                             </DockPanel.Background>-->
                             
-                            <GroupBox Header="Coin list" Width="464" DockPanel.Dock="Left">
+                            <GroupBox Header="Coin list" Width="448" DockPanel.Dock="Left">
+                                <GroupBox.Background>
+                                    <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
+                                </GroupBox.Background>
                                 <DataGrid Margin="5,0,5,0" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1" 
                                           ItemsSource="{Binding Coins}"
                                           AutoGenerateColumns = "False"
@@ -108,7 +111,6 @@
                                         <DataGridTemplateColumn >
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    
                                                     <Image 
                                                         Stretch="Fill" 
                                                         Width="20" Height="20" 
@@ -124,6 +126,12 @@
                                                             Binding="{Binding Path=AveragePurchasePrice, StringFormat={}{0:C}}"></DataGridTextColumn>
                                         <DataGridTextColumn Header="Current price"
                                                             Binding="{Binding Path=CurrentPrice, StringFormat={}{0:C}}"></DataGridTextColumn>
+
+
+                                        <DataGridTextColumn Width="75" Header="Sum"
+                                                            Binding="{Binding Path=Sum, StringFormat={}{0:C}}"></DataGridTextColumn>
+                                        <DataGridTextColumn Width="75" Header="Diff"
+                                                            Binding="{Binding Path=Diff, StringFormat={}{0:C}}"></DataGridTextColumn>
                                     </DataGrid.Columns>
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="SelectionChanged">
@@ -184,9 +192,32 @@
                     </Border>
                 </TabItem>
                 <TabItem Header="Transaction">
-                    <!--<TextBlock>Transaction</TextBlock>-->
+                    <GroupBox Header="Transaction list" Width="448" DockPanel.Dock="Left">
+                        <GroupBox.Background>
+                            <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
+                        </GroupBox.Background>
+                        <DataGrid Margin="5,0,5,0" x:Name="grTransactionData" Grid.Row="0" Grid.Column="1" 
+                                          ItemsSource="{Binding Transaction}"
+                                          AutoGenerateColumns = "False">
+                            <DataGrid.Background>
+                                <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
+                            </DataGrid.Background>
+                            <DataGrid.Columns>
+
+                                <DataGridTextColumn Header="Transaction" Width="35"
+                                                            Binding="{Binding Path=Symbol}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Amount"
+                                                            Binding="{Binding Path=Amount}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Price"
+                                                            Binding="{Binding Path=Prise, StringFormat={}{0:C}}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Sum"
+                                                            Binding="{Binding Path=Sum, StringFormat={}{0:C}}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Side"
+                                                            Binding="{Binding Path=Side}"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
                 </TabItem>
-                
             </TabControl>
         </Grid>
 
