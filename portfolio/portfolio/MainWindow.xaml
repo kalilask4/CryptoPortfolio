@@ -11,10 +11,8 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-
     <Window.Resources>
         <inf:ImageSourceConverter x:Key="ImageSourceConverter"/>
-        
         <Style TargetType="Button">
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Padding" Value="5"/>
@@ -36,13 +34,10 @@
             <Setter Property="Background" Value="LightBlue"/>
             <Setter Property="FontSize" Value="13"/>
         </Style>
-        
-
     </Window.Resources>
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/Resources/pastelAbstraction.jpg" Opacity="0.9"></ImageBrush>
     </Window.Background>
-
     <Grid x:Name="gridGeneral" Margin="8. 8. 8. 8.">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.55*"></ColumnDefinition>
@@ -52,7 +47,6 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="1.1*"></RowDefinition>
         </Grid.RowDefinitions>
-
         <Grid x:Name="gridData" Grid.RowSpan="2">
             <TabControl Margin="5,0,0,5" BorderBrush="Gainsboro">
                 <TabControl.Background>
@@ -69,7 +63,6 @@
                                         HorizontalAlignment="Center"
                                         ContentSource="Header"
                                         Margin="10,2"/>
-
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsSelected" Value="True">
@@ -86,21 +79,18 @@
                         </Setter>
                     </Style>
                 </TabControl.Resources>
-
-
                 <TabItem Header="Coins">
                     <Border>
                         <Border.Background>
-                            
                             <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.65"></ImageBrush>
                         </Border.Background>
-
-
                         <DockPanel Grid.Row="1">
                             <GroupBox Header="Coin list" Width="500" DockPanel.Dock="Left">
                                 <DataGrid Margin="5 5 5 5" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1" 
                                           ItemsSource="{Binding Coins}"
-                                          AutoGenerateColumns = "False">
+                                          AutoGenerateColumns = "False"
+                                    SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
+                                    <!--SelectionChanged="transactionsOnCoinToList">-->
                                     <DataGrid.Columns>
                                         <DataGridTemplateColumn >
                                             <DataGridTemplateColumn.CellTemplate>
@@ -121,8 +111,15 @@
                                         <DataGridTextColumn Header="Current price"
                                                             Binding="{Binding Path=CurrentPrice, StringFormat={}{0:C}}"></DataGridTextColumn>
                                     </DataGrid.Columns>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction
+                                        Command="{Binding GetTransactionCommand}"
+                                        CommandParameter="{Binding SelectedCoin.CoinId}">
+                                            </i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
                                 </DataGrid>
-
                                 <!--<ListView x:Name="Coins"
                                           ItemsSource="{Binding Coins}">
                                     <ListView.ItemTemplate>
@@ -145,13 +142,9 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>-->
-                                
                             </GroupBox>
                         </DockPanel>
-
-
                         <!--<ListView x:Name="Coins" 
-                                  
                           ItemsSource="{Binding Coins}"
                           SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
                             --><!--#region Обработка события Selection Canged --><!--
@@ -174,13 +167,8 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>-->
-                        
-                        
-                        
                     </Border>
                 </TabItem>
-                
-                
                 <TabItem Header="Buy transaction">
                     <TextBlock>Buy transaction</TextBlock>
                 </TabItem>
