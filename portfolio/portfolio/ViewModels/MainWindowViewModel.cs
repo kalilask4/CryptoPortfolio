@@ -115,6 +115,11 @@ namespace portfolio.ViewModels
                 MessageBox.Show("The picture already exists. Choose another one.");
                 
             }
+            catch (ArgumentNullException e)
+            {
+                MessageBox.Show("The field for picture cannot be null. Choose one.");
+                
+            }
             
 
 
