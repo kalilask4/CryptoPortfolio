@@ -103,10 +103,7 @@ namespace portfolio
         }
 
 
-
-
         #endregion
-
 
         public EditCoinWindow()
         {

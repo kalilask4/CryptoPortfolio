@@ -37,7 +37,7 @@ namespace portfolio.Domain.Entities
         public Coin()
         {
             Name = "DefName";
-            ShortName = "AXS";
+            ShortName = "DEF";
             Amount = 0;
             PictureName = ShortName + ".png";
             DateUpdate = DateTime.Now;
