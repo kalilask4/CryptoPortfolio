@@ -12,7 +12,8 @@
         <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,7,0,0" 
                    Text="Edit coin" FontWeight="Bold" FontSize="15"/>
             <UniformGrid DockPanel.Dock="Bottom" Rows="1" HorizontalAlignment="Right" Margin="0,0,0,10">
-            <Button Content="Ok" Margin="10,0" Padding="35,5" IsDefault="True" FontWeight="Bold"/>
+            <Button Content="Ok" Margin="10,0" Padding="35,5" IsDefault="True" FontWeight="Bold"
+                    Command="{Binding OkCommand}"/>
             <Button Content="Cancel" Margin="10,0" IsCancel="True"/>
         </UniformGrid>
             
@@ -57,7 +58,6 @@
                    HorizontalAlignment="Left" Source="{Binding PictureName}"/>
 
 
-          
       
         </Grid>
     </DockPanel>

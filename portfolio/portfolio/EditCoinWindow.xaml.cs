@@ -76,7 +76,19 @@ namespace portfolio
             }
         }
 
-    
+        private ICommand _okCommand;
+        public ICommand OkCommand =>
+        _okCommand
+        ?? new RelayCommand(OnOkExecuted);
+        public void OnOkExecuted(object param)
+        {
+            this.DialogResult = true;
+            this.Close();
+        }
+
+
+
+
         #endregion
 
 
@@ -86,4 +98,3 @@ namespace portfolio
         }
     }
 }
-
