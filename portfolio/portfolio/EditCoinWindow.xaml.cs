@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using portfolio.Command;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -61,7 +63,20 @@ namespace portfolio
 
 
 
+        private ICommand _selectPictureNameCommand;
+        public ICommand SelectPictureNameCommand =>
+        _selectPictureNameCommand
+        ?? new RelayCommand(OnSelectPictureNameExecuted);
+        public void OnSelectPictureNameExecuted(object param)
+        {
+            var dialog = new OpenFileDialog();
+            if (dialog.ShowDialog() == true)
+            {
+                PictureName = dialog.FileName;
+            }
+        }
 
+    
         #endregion
 
 
@@ -71,3 +86,4 @@ namespace portfolio
         }
     }
 }
+

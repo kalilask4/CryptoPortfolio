@@ -103,6 +103,8 @@ namespace portfolio.ViewModels
             transactionManager.AddCoinToTransaction(coin);
             var target = Path.Combine(Directory.GetCurrentDirectory(), "Images", fileName);
             File.Copy(dialog.PictureName, target);
+
+
             Coins.Add(coin);
         }
         #endregion
