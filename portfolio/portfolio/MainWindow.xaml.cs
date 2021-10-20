@@ -25,6 +25,9 @@ namespace portfolio
     /// </summary>
     public partial class MainWindow : Window
     {
+        [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
+        static extern int MessageBoxTimeout(IntPtr hwnd, String text, String title,
+                                     uint type, Int16 wLanguageId, Int32 milliseconds);
 
         public MainWindow()
         {
@@ -37,6 +40,12 @@ namespace portfolio
 
         }
 
-      
+        
+
+        private void rightClickUpdate(object sender, ContextMenuEventArgs e)
+        {
+            MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 2000);
+  
+        }
     }
 }

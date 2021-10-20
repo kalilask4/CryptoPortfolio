@@ -53,7 +53,6 @@ namespace portfolio.ViewModels
             if (Transactions.Count > 0)
                 OnGetTransactionExecuted(Transactions[0].TransactionId);*/
 
-
         }
 
         #region selected coin 
@@ -117,14 +116,10 @@ namespace portfolio.ViewModels
                 var target = Path.Combine(Directory.GetCurrentDirectory(), "Images", fileName);
                 File.Copy(dialog.PictureName, target);
             }
-
             
             Coins.Add(coin);
-
-            
         }
         #endregion
-
 
         #region Choose coin from list
         private ICommand _getTransactionCommand;
@@ -160,7 +155,6 @@ namespace portfolio.ViewModels
         }
         #endregion
         #endregion
-
 
     }
 }
