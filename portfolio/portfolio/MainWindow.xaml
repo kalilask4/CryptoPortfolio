@@ -415,7 +415,7 @@
             <StackPanel x:Name="st2" Grid.Column="1" Margin="30,15,10,60">
                 <Button x:Name="AddCoin" Content="Add coin" Command="{Binding NewCoinCommand}"/>
                 <Button x:Name="AddTransaction" Content="Add transaction"/>
-                <Button x:Name="Edit" Content="Edit"/>
+                <Button x:Name="Edit" Content="Edit" Command="{Binding EditCoinCommand}"/>
                 <Button x:Name="Delete" Content="Delete"/>
                 <Button Visibility="Hidden" x:Name="Find" Content="Find"/>
 

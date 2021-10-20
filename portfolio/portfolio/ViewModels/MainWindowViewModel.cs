@@ -30,8 +30,8 @@ namespace portfolio.ViewModels
         public ObservableCollection<Transaction> AllTransactions { get; set; }
         public string Title { get => titleCoins; set => titleCoins = value; }
         public string TitleTransactions { get => titleTransactions; set => titleTransactions = value; }
-        
-        
+
+
         public MainWindowViewModel()
         {
             factory = new ManagersFactory("DefaultConnection");
@@ -85,10 +85,10 @@ namespace portfolio.ViewModels
         #region Add coin
         private ICommand _newCoinCommand;
         public ICommand NewCoinCommand => _newCoinCommand ??= new RelayCommand(OnNewCoinExecuted);
-        
+
         private void OnNewCoinExecuted(object id)
-        {  
-            
+        {
+
             var dialog = new EditCoinWindow
             {
                 DateUpdate = DateTime.Now
@@ -105,7 +105,7 @@ namespace portfolio.ViewModels
                 DateUpdate = dialog.DateUpdate
             };
             var fileName = Path.GetFileName(dialog.PictureName);
-            if(fileName != null)
+            if (fileName != null)
             {
                 coin.PictureName = fileName;
             }
@@ -113,15 +113,15 @@ namespace portfolio.ViewModels
             {
                 coin.PictureName = "no.png";
             }
-            
+
             transactionManager.AddCoinToTransaction(coin);
 
-            if(dialog.PictureName != null)
+            if (dialog.PictureName != null)
             {
                 var target = Path.Combine(Directory.GetCurrentDirectory(), "Images", fileName);
                 File.Copy(dialog.PictureName, target);
             }
-            
+
             Coins.Add(coin);
         }
         #endregion
@@ -134,6 +134,7 @@ namespace portfolio.ViewModels
 
         private void OnGetTransactionExecuted(object id)
         {
+
             Transactions?.Clear();
             var transactions = coinManager.GetTransactionsOfCoin((int)id);
             foreach (var transaction in transactions)
@@ -160,7 +161,69 @@ namespace portfolio.ViewModels
         }
         #endregion
 
+
+        #region Edit coin
+        private ICommand _editCoinCommand;
+        public ICommand EditCoinCommand =>
+        _editCoinCommand ??= new RelayCommand(OnEditCoinExecuted, EditCoinCanExecute);
+
+
+        // check if can edit
+        private bool EditCoinCanExecute(object p) =>
+        _selectedCoin != null;
+
+        private void OnEditCoinExecuted(object id)
+        {
+            var dialog = new EditCoinWindow
+            {
+                Name = _selectedCoin.Name,
+                ShortName = _selectedCoin.ShortName,
+                Amount = _selectedCoin.Amount,
+                CurrentPrice = _selectedCoin.CurrentPrice,
+                ValueUSD = _selectedCoin.ValueUSD,
+                DateUpdate = _selectedCoin.DateUpdate
+            };
+            if (dialog.ShowDialog() != true) return;
+
+            // to Images
+            var imageFolderPass =
+            Path.Combine(Directory.GetCurrentDirectory(), "Images");
+            // for new picture
+            try
+            {
+
+                if (!_selectedCoin.PictureName.Equals(dialog?.PictureName))
+            {
+
+                // delete old picture
+                File.Delete(Path.Combine(imageFolderPass,
+                _selectedCoin.PictureName));
+                // get new picture
+                var newImage = Path.GetFileName(dialog.PictureName);
+                // copy file to Images
+                File.Copy(dialog.PictureName, Path.Combine(imageFolderPass,
+                newImage));
+
+                _selectedCoin.PictureName = newImage;
+            }
+
+        }
+            catch
+            {
+                _selectedCoin.PictureName = "no.png";
+            }
         
+            _selectedCoin.Name = dialog.Name;
+            _selectedCoin.ShortName = dialog.ShortName;
+            _selectedCoin.Amount = dialog.Amount;
+            _selectedCoin.CurrentPrice = dialog.CurrentPrice;
+            _selectedCoin.ValueUSD = dialog.ValueUSD;
+            _selectedCoin.DateUpdate = _selectedCoin.DateUpdate;
+
+            //OnGetCoinExecuted(_selectedTransaction.TransactionId);
+            
+        }
+        #endregion
         #endregion
 
     }
