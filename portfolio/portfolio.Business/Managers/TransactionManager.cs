@@ -63,6 +63,16 @@ namespace portfolio.Business.Managers
             unitOfWork.SaveChanges();
         }
 
+        public void AddCoinToTransaction(Coin coin)
+        {
+            var transaction = new Transaction(coin);
+            coin.Transactions.Add(transaction);
+            if (coin.CoinId <= 0)
+                coinRepository.Create(coin);
+            else coinRepository.Update(coin);
+            unitOfWork.SaveChanges();
+        }
+
         public void RemoveCoinFromTransaction(Coin coin, int transactionId)
         {
             var transaction = transactionRepository.Get(transactionId);

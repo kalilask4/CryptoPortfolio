@@ -5,6 +5,7 @@ using portfolio.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,24 +83,26 @@ namespace portfolio.ViewModels
         #region Command
         #region Add coin
         private ICommand _newCoinCommand;
-        public ICommand NewCoinCommand =>
-        _newCoinCommand ??= new
-       RelayCommand(OnNewCoinExecuted);
+        public ICommand NewCoinCommand => _newCoinCommand ??= new RelayCommand(OnNewCoinExecuted);
+        
         private void OnNewCoinExecuted(object id)
         {
             var dialog = new EditCoinWindow
             {
-                //Date = DateTime.Now
+                DateUpdate = DateTime.Now
             };
 
             if (dialog.ShowDialog() != true) return;
             var coin = new Coin
             {
                 Name = dialog.Name,
-                //Date = dialog.DateOfBirth
+                DateUpdate = dialog.DateUpdate
             };
-            
-
+            var fileName = Path.GetFileName(dialog.PictureName);
+            coin.PictureName = fileName;
+            transactionManager.AddCoinToTransaction(coin);
+            var target = Path.Combine(Directory.GetCurrentDirectory(), "Images", fileName);
+            File.Copy(dialog.PictureName, target);
             Coins.Add(coin);
         }
         #endregion

@@ -10,7 +10,7 @@ namespace portfolio.Domain.Entities
         public int TransactionId { get; set; }
         public string Symbol { get; set; } //like Name exs BTNBTC
         [Required]
-        private string side;
+        private string side = "transfer";
         private static readonly List<string> sideType = new() { "buy", "sell", "transfer" };
         
         public decimal Amount { get; set; }
@@ -30,6 +30,17 @@ namespace portfolio.Domain.Entities
             }
         }
 
+        public Transaction(Coin coin)
+        {
+            Symbol = coin.ShortName;
+            Side = this.Side;
+            Amount = 0;
+            Priсe = 0;
+            DateUpdate = DateTime.Now;
+            TransactionCoins = new List<Coin>(2);
+            TransactionCoins.Add(coin);
+        }
+
         public Transaction()
         {
             Symbol = "DefaultSymbol";
@@ -41,7 +52,7 @@ namespace portfolio.Domain.Entities
         }
 
         //for SetupData for test
-        public Transaction(Coin coin)
+        /*public Transaction(Coin coin)
         {
             Symbol = coin.ShortName;
             Side = "transfer";
@@ -50,7 +61,7 @@ namespace portfolio.Domain.Entities
             DateUpdate = DateTime.Now;
             TransactionCoins = new List<Coin>(2);
             TransactionCoins.Add(coin);
-        }
+        }*/
 
         public override string ToString()
         {

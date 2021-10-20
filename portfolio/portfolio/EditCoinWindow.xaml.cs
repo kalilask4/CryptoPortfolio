@@ -33,6 +33,35 @@ namespace portfolio
             typeof(EditCoinWindow),
             new PropertyMetadata(default(string)));
 
+
+        public string PictureName
+        {
+            get { return (string)GetValue(PictureNameProperty); }
+            set { SetValue(PictureNameProperty, value); }
+        }
+        // Using a DependencyProperty as the backing store for
+        // ImagePass.This enables animation, styling, binding, etc.
+        public static readonly DependencyProperty PictureNameProperty = DependencyProperty
+            .Register("PictureName", typeof(string), 
+            typeof(EditCoinWindow), 
+            new PropertyMetadata(default(string)));
+
+
+        public DateTime DateUpdate
+        {
+            get { return (DateTime)GetValue(DateUpdateProperty); }
+            set { SetValue(DateUpdateProperty, value); }
+        }
+        // Using a DependencyProperty as the backing store for
+        //DateUpdate.This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DateUpdateProperty = DependencyProperty
+            .Register("DateUpdate", typeof(DateTime),
+            typeof(EditCoinWindow), 
+            new PropertyMetadata(default(DateTime)));
+
+
+
+
         #endregion
 
 
@@ -42,4 +71,3 @@ namespace portfolio
         }
     }
 }
-

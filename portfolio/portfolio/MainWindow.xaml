@@ -239,7 +239,7 @@
                                 </i:Interaction.Triggers>-->
 
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Transaction" Width="35"
+                                    <DataGridTextColumn Header="Transaction" Width="95"
                                                             Binding="{Binding Path=Symbol}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Amount"
                                                             Binding="{Binding Path=Amount}"></DataGridTextColumn>
@@ -332,16 +332,7 @@
                             <ColumnDefinition Width="35*"></ColumnDefinition>
                             <ColumnDefinition Width="35*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <!--<TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left">Symbol: </TextBlock>-->
-                        <!--<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Symbol}"/>-->
-                        <!--<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CoinName}" Grid.ColumnSpan="3" Margin="66,0,70,16" Grid.RowSpan="2"/>
-                        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="0,0,0,119" Grid.RowSpan="2">Amount:</TextBlock>
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Amount}" Grid.ColumnSpan="3" Margin="66,0,70,119" Grid.RowSpan="2"/>
-                        <TextBlock Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" Margin="0,0,0,119" Grid.RowSpan="2">Current price:</TextBlock>
-                        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding CurrentPrice, StringFormat={}{0:# ###.00}$}" Grid.ColumnSpan="2" Margin="70,0,0,119" Grid.RowSpan="2"/>-->
-                        <!--<TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left">Value: </TextBlock>
-                        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding ValueUSD, StringFormat={}{0:# ###.00}$}"/>-->
-
+                       
                         <GroupBox Grid.Row="2" Grid.ColumnSpan="3" Header="Last buy transaction" Margin="2,2,2,2" Padding="2">
                             <ListView x:Name="lvTransaction" >
                                 <!--ItemsSource="{Binding Buyings}"-->
@@ -366,19 +357,7 @@
                             </ListView>
                         </GroupBox>
 
-                        <!--<TextBlock HorizontalAlignment="Right">Name:</TextBlock>
-                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CoinName}"/>
-                        
-                        <TextBlock HorizontalAlignment="Right">Symbol:</TextBlock>
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Symbol}"/>
-
-
-                        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right">Начало занятий:</TextBlock>
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Commence, StringFormat={}{0:dd.MM.yyyy}}"/>
-                        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right">Стоимость:</TextBlock>
-                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding BasePrice, StringFormat={}{0:# ###.00}
-рублей}"/>-->
-
+                      
                     </Grid>
 
                 </TabItem>
