@@ -38,6 +38,7 @@ namespace portfolio.ViewModels
             coinManager = factory.GetCoinManager();
             transactionManager = factory.GetTransactionManager();
 
+            //init db
             if (coinManager.Coins.Count() == 0)
                 DbTestData.SetupData(coinManager, transactionManager);
 
@@ -67,7 +68,7 @@ namespace portfolio.ViewModels
         }
         #endregion
 
-        #region sealected transaction 
+        #region selected transaction 
         private Transaction _selectedTransaction;
         public Transaction SelectedTransaction
         {
@@ -97,6 +98,10 @@ namespace portfolio.ViewModels
             var coin = new Coin
             {
                 Name = dialog.Name,
+                ShortName = dialog.ShortName,
+                Amount = dialog.Amount,
+                CurrentPrice = dialog.CurrentPrice,
+                ValueUSD = dialog.ValueUSD,
                 DateUpdate = dialog.DateUpdate
             };
             var fileName = Path.GetFileName(dialog.PictureName);
@@ -154,6 +159,8 @@ namespace portfolio.ViewModels
             }
         }
         #endregion
+
+        
         #endregion
 
     }

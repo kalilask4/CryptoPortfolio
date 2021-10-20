@@ -249,10 +249,9 @@
                     <Border>
                         <DockPanel Grid.Row="0">
                             <!--<Button Grid.Row="0" x:Name="btnUpdate" Click="btnUpdate_Click" >Update</Button>-->
-                            <DataGrid
-                                    Margin="5,5,5,5" x:Name="grTransactionData" Grid.Row="0" Grid.Column="1" 
-                                          ItemsSource="{Binding AllTransactions}"
-                                          AutoGenerateColumns = "False">
+                            <DataGrid Margin="5,5,5,5" x:Name="grTransactionData" Grid.Row="0" Grid.Column="1" 
+                                      ItemsSource="{Binding AllTransactions}" AutoGenerateColumns = "False"
+                                      SelectedItem="{Binding SelectedCoin}">
                                 <!--SelectedValue="{Binding SelectedTransaction}" SelectedIndex="0">-->
                                 <!--<i:Interaction.Triggers>
                                     <i:EventTrigger EventName="SelectionChanged">
@@ -413,9 +412,11 @@
                 <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="Moccasin" Name="btnFind" Content="by bought price"/>
                 <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightSalmon" Name="btnUpd" Content="ratio"/>
             </StackPanel>
-            <StackPanel x:Name="st2" Grid.Column="1" Margin="30,15,10,80">
+            <StackPanel x:Name="st2" Grid.Column="1" Margin="30,15,10,60">
                 <Button x:Name="AddCoin" Content="Add coin" Command="{Binding NewCoinCommand}"/>
                 <Button x:Name="AddTransaction" Content="Add transaction"/>
+                <Button x:Name="Edit" Content="Edit"/>
+                <Button x:Name="Delete" Content="Delete"/>
                 <Button Visibility="Hidden" x:Name="Find" Content="Find"/>
 
                 <!--<Button Content="Simple Command" Command="{Binding SimpleCommand}" />-->
