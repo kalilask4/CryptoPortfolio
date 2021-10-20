@@ -76,3 +76,13 @@ drop database portfoliotest0
 SELECT * FROM Coins
 SELECT * FROM Transactions
 SELECT * FROM CoinTransaction
+
+SELECT * FROM Coins WHERE PictureName is NULL;
+
+SELECT * FROM Coins WHERE Name = 'qq';
+
+SELECT * FROM Coins WHERE PictureName = 'BLOW.png';
+
+UPDATE Coins
+SET PictureName=N'AO.png'
+WHERE PictureName is NULL;
