@@ -13,8 +13,7 @@ namespace portfolio.Domain.Entities
         public int CoinId { get; set; }
         [Required]
         public string Name { get; set; }
-        [Required]
-        public string ShortName { get; set; }
+        private string shortName = "OOO";
         [Required]
         public decimal Amount { get; set; }
         public decimal CurrentPrice { get; set; }
@@ -29,15 +28,27 @@ namespace portfolio.Domain.Entities
                 pictureName = value;
             }
         }
+        public string ShortName
+        //{ get; set; }
+        {
+            get { return shortName; }
+            set
+            {
+                shortName = value;
+            }
+        }
+
 
         public DateTime DateUpdate { get; set; }
         // навигационное свойство
         public List<Transaction> Transactions { get; set; }
 
+
+
         public Coin()
         {
             Name = "DefName";
-            ShortName = "DEF";
+            //ShortName = "DEF";
             Amount = 0;
             PictureName = ShortName + ".png";
             DateUpdate = DateTime.Now;
@@ -56,6 +67,18 @@ namespace portfolio.Domain.Entities
             Transactions.Add(transaction);
         }
 
+        public Coin(string name, string shortName, decimal amount, decimal currentPrice, decimal valueUSD, string pictureName, DateTime dateUpdate)
+        {
+            Name = name;
+            ShortName = shortName;
+            Amount = amount;
+            CurrentPrice = currentPrice;
+            ValueUSD = valueUSD;
+            PictureName = pictureName;
+            DateUpdate = dateUpdate;
+            Transactions = new List<Transaction>();
+
+        }
 
         public override string ToString()
         {

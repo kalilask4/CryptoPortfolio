@@ -51,6 +51,46 @@ namespace portfolio
 
 
 
+        public decimal Amount
+        {
+            get { return (decimal)GetValue(AmountProperty); }
+            set { SetValue(AmountProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for
+        //Name.This enables animation, styling, binding, etc.
+        public static readonly DependencyProperty AmountProperty = DependencyProperty
+            .Register("Amount", typeof(decimal),
+            typeof(EditCoinWindow),
+            new PropertyMetadata(default(decimal)));
+
+        public decimal CurrentPrice
+        {
+            get { return (decimal)GetValue(CurrentPriceProperty); }
+            set { SetValue(CurrentPriceProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for
+        //Name.This enables animation, styling, binding, etc.
+        public static readonly DependencyProperty CurrentPriceProperty = DependencyProperty
+            .Register("CurrentPrice", typeof(decimal),
+            typeof(EditCoinWindow),
+            new PropertyMetadata(default(decimal)));
+
+
+        public decimal ValueUSD
+        {
+            get { return (decimal)GetValue(ValueUSDProperty); }
+            set { SetValue(ValueUSDProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for
+        //Name.This enables animation, styling, binding, etc.
+        public static readonly DependencyProperty ValueUSDProperty = DependencyProperty
+            .Register("ValueUSD", typeof(decimal),
+            typeof(EditCoinWindow),
+            new PropertyMetadata(default(decimal)));
+
 
         public string PictureName
         {
@@ -115,6 +155,8 @@ namespace portfolio
             try
             {
                 tboxShortName.Text = tboxName.Text.Substring(0, 3).ToUpper();
+                //var d = Convert.ToDecimal(textBoxAmount.Text) * Convert.ToDecimal(textBoxPrice.Text);
+                textBoxValueUSD.Text = (Convert.ToDecimal(textBoxAmount.Text) * Convert.ToDecimal(textBoxPrice.Text)).ToString();
             }
             catch
             {

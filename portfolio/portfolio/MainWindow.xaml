@@ -142,7 +142,9 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTextColumn Header="Coin" Width="35"
+                                        <DataGridTextColumn Header="Coin" Width="55"
+                                                            Binding="{Binding Path=Name}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="" Width="35" 
                                                             Binding="{Binding Path=ShortName}"></DataGridTextColumn>
                                         <DataGridTextColumn Header="Amount"
                                                             Binding="{Binding Path=Amount}"></DataGridTextColumn>
