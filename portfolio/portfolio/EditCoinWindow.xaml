@@ -6,17 +6,20 @@
         xmlns:local="clr-namespace:portfolio"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="EditCoinWindow" Height="500" Width="400"
+        Title="EditCoinWindow" Height="450" Width="350"
         WindowStartupLocation="CenterOwner">
-        <DockPanel Background="Beige">
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/Resources/pastelAbstraction.jpg" Opacity="0.8"></ImageBrush>
+    </Window.Background>
+    <DockPanel Background="Beige">
         <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,7,0,0" 
                    Text="Edit coin" FontWeight="Bold" FontSize="15"/>
-            <UniformGrid DockPanel.Dock="Bottom" Rows="1" HorizontalAlignment="Right" Margin="0,0,0,10">
+        <UniformGrid DockPanel.Dock="Bottom" Rows="1" HorizontalAlignment="Right" Margin="0,0,0,10">
             <Button Content="Ok" Margin="10,0" Padding="35,5" IsDefault="True" FontWeight="Bold"
                     Command="{Binding OkCommand}"/>
             <Button Content="Cancel" Margin="10,0" IsCancel="True"/>
         </UniformGrid>
-            
+
         <Grid Margin="3">
             <Grid.Resources>
                 <Style TargetType="TextBlock">
@@ -34,9 +37,9 @@
                 </Style>
             </Grid.Resources>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
@@ -45,42 +48,44 @@
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
             <TextBlock  x:Name="tbName" Grid.Column="0" Grid.Row="0" Text="Coin name:"/>
             <TextBox  x:Name="tboxName" Grid.Column="1" Grid.Row="0" Text="{Binding Name}"/>
-            <TextBlock x:Name="tbShortName" Grid.Column="0" Grid.Row="2" Text="Short name:"/>
-            <TextBox x:Name="tboxShortName" Grid.Column="1" Grid.Row="2" Text="{Binding ShortName}"/>
-            <Button x:Name="btnFill" Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Margin="5,5,5,2" 
-                    Click="btnFill_Click">Fill</Button>
+            <TextBlock x:Name="tbShortName" Grid.Column="1" Grid.Row="2" Text="Short name:" HorizontalAlignment="Right"/>
+            <TextBox x:Name="tboxShortName" Grid.Column="2" Grid.Row="2" 
+                     Text="{Binding ShortName}" Background="MistyRose" Opacity="0.75"/>
+            <Button x:Name="btnFill" Grid.Row="6" Grid.RowSpan="2" Grid.Column="2" Margin="5,0,5,12" Height="30"
+                    Click="btnFill_Click" Background="MistyRose" Opacity="1">Fill</Button>
 
-            <Label Grid.Row="4" Grid.Column="0" Content="Amount" />
-            <TextBox Grid.Column="1" Grid.Row="4" Height="35" x:Name="textBoxAmount" 
+            <Label Grid.Row="3" Grid.Column="0" Content="Amount" />
+            <TextBox Grid.Column="1" Grid.Row="3" Height="28" x:Name="textBoxAmount" 
                      Text="{Binding Path=Amount, FallbackValue='0'}"/>
-            <Label Grid.Column="0" Grid.Row="5" Content="Price, $"/>
-            <TextBox Grid.Column="1" Grid.Row="5" Height="35" x:Name="textBoxPrice" 
+            <Label Grid.Column="0" Grid.Row="4" Content="Price, $"/>
+            <TextBox Grid.Column="1" Grid.Row="4" Height="28" x:Name="textBoxPrice" 
                      Text="{Binding Path=Price, FallbackValue='0'}"/>
-            <Label Grid.Column="0" Grid.Row="6" Content="Value, $"/>
-            <TextBox Grid.Column="1" Grid.Row="6" Height="35" x:Name="textBoxValueUSD" 
-                     Text="{Binding Path=ValueUSD, FallbackValue='0'}"/>
+            <Label Grid.Column="1" Grid.Row="5" Content="Value, $" HorizontalAlignment="Right"/>
+            <TextBox Grid.Column="2" Grid.Row="5" Height="28" x:Name="textBoxValueUSD" 
+                     Background="MistyRose" Opacity="0.75" Text="{Binding Path=ValueUSD, FallbackValue='0'}"/>
 
-         
 
-            <TextBox Grid.Column="1" Grid.Row="7" Text="{Binding PictureName}"/>
-            <Button Grid.Column="1" Grid.Row="8" Content="Choose file" Height="30"
-                    Width="Auto" HorizontalAlignment="Right"
-                    Margin="0,2,10,27" Padding="5"
+
+            <TextBox Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="8" Height="22" 
+                     Margin="15,5,10,5" Text="{Binding PictureName}"/>
+            <Button Grid.Column="2" Grid.Row="8" Content="Choose file" Height="30"
+                    Width="64" HorizontalAlignment="Left"
+                    Margin="5,2,0,0" Padding="5"
                     Command="{Binding SelectPictureNameCommand}"/>
-            <Image Grid.Column="1" Grid.Row="8" Width="100" 
+            <Image Grid.Column="1" Grid.Row="6" Grid.RowSpan="2" Width="80" 
                    HorizontalAlignment="Left" Source="{Binding PictureName}"/>
-            
+
             <TextBlock Grid.Column="0" Grid.Row="9" Text="Date update:"/>
             <DatePicker Grid.Column="1" Grid.Row="9" Margin="3,2,0,2" 
                         SelectedDate="{Binding DateUpdate}"/>
-      
+
         </Grid>
     </DockPanel>
 </Window>

@@ -112,7 +112,15 @@ namespace portfolio
 
         private void btnFill_Click(object sender, RoutedEventArgs e)
         {
-            tboxShortName.Text = tboxName.Text.Substring(0, 3).ToUpper();
+            try
+            {
+                tboxShortName.Text = tboxName.Text.Substring(0, 3).ToUpper();
+            }
+            catch
+            {
+                MessageBox.Show("Fill Coin name.");
+
+            }
         }
     }
 }

@@ -24,6 +24,7 @@
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="True">
                     <Setter Property="Background" Value="MediumPurple"/>
+                    <Setter Property="Opacity" Value="0.8"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -50,7 +51,7 @@
         </Style>
     </Window.Resources>
     <Window.Background>
-        <ImageBrush ImageSource="pack://application:,,,/Resources/pastelAbstraction.jpg" Opacity="0.9"></ImageBrush>
+        <ImageBrush ImageSource="pack://application:,,,/Resources/pastelAbstraction.jpg" Opacity="0.8"></ImageBrush>
     </Window.Background>
     <Grid x:Name="gridGeneral" Margin="8. 8. 8. 8.">
         <Grid.ColumnDefinitions>
