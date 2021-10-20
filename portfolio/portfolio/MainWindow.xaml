@@ -98,7 +98,8 @@
                         </Setter>
                     </Style>
                 </TabControl.Resources>
-                <TabItem Header="Coins" ContextMenuOpening="rightClickUpdateTabCoin">
+                <TabItem Header="Coins" ContextMenuOpening="rightClickUpdateTabCoin"
+                         ToolTip="Update - right click" ToolTipService.ShowDuration="1000">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="105*"/>
@@ -111,11 +112,11 @@
 
 
                         <Border Grid.Row="0" Grid.ColumnSpan="2">
-                            <DockPanel >
+                            <DockPanel>
 
                                 <!--<GroupBox  Width="448" DockPanel.Dock="Left">-->
                                 <!--Header="Coin list"-->
-                                <DataGrid
+                                <DataGrid 
                                     Margin="5,5,5,5" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1" 
                                           ItemsSource="{Binding Coins}"
                                           AutoGenerateColumns = "False"
@@ -224,7 +225,9 @@
                         </DockPanel>
                     </Grid>
                 </TabItem>
-                <TabItem x:Name="tiTransactionTabTrans" Header="Transaction" ContextMenuOpening="rightClickUpdateTabTrans">
+                <TabItem x:Name="tiTransactionTabTrans" Header="Transaction" 
+                         ContextMenuOpening="rightClickUpdateTabTrans"
+                         ToolTip="Update - right click" ToolTipService.ShowDuration="1000">
                     <!--<Grid>
                         <Grid.RowDefinitions></Grid.RowDefinitions>
                         <Grid.RowDefinitions></Grid.RowDefinitions>

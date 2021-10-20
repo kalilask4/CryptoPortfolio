@@ -47,14 +47,14 @@ namespace portfolio
 
         private void rightClickUpdateTabCoin(object sender, ContextMenuEventArgs e)
         {
-            MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1500);
+            MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
             //AllTransactions = new ObservableCollection<Transaction>(MainWindowViewModel.TransactionManager.Transactions);
             grCoinsData.Items.Refresh();
         }
 
         private void rightClickUpdateTabTrans(object sender, ContextMenuEventArgs e)
         {
-            MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1500);
+            MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
             //AllTransactions = new ObservableCollection<Transaction>(MainWindowViewModel.TransactionManager.Transactions);
             grTransactionData.Items.Refresh();
         }
