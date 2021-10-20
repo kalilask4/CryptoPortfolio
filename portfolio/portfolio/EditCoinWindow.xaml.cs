@@ -36,6 +36,22 @@ namespace portfolio
             new PropertyMetadata(default(string)));
 
 
+        public string ShortName
+        {
+            get { return (string)GetValue(ShortNameProperty); }
+            set { SetValue(ShortNameProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for
+        //Name.This enables animation, styling, binding, etc.
+        public static readonly DependencyProperty ShortNameProperty = DependencyProperty
+            .Register("ShortName", typeof(string),
+            typeof(EditCoinWindow),
+            new PropertyMetadata(default(string)));
+
+
+
+
         public string PictureName
         {
             get { return (string)GetValue(PictureNameProperty); }

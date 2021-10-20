@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace portfolio.ViewModels
@@ -86,7 +87,9 @@ namespace portfolio.ViewModels
         public ICommand NewCoinCommand => _newCoinCommand ??= new RelayCommand(OnNewCoinExecuted);
         
         private void OnNewCoinExecuted(object id)
-        {
+        {  
+            try
+            {
             var dialog = new EditCoinWindow
             {
                 DateUpdate = DateTime.Now
@@ -101,11 +104,21 @@ namespace portfolio.ViewModels
             var fileName = Path.GetFileName(dialog.PictureName);
             coin.PictureName = fileName;
             transactionManager.AddCoinToTransaction(coin);
+            
+          
             var target = Path.Combine(Directory.GetCurrentDirectory(), "Images", fileName);
-            File.Copy(dialog.PictureName, target);
-
-
+                File.Copy(dialog.PictureName, target);
             Coins.Add(coin);
+            }
+            catch (IOException e)
+            {
+                MessageBox.Show("The picture already exists. Choose another one.");
+                
+            }
+            
+
+
+            
         }
         #endregion
 
