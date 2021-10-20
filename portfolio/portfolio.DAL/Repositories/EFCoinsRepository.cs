@@ -49,7 +49,15 @@ namespace portfolio.DAL.Repositories
             foreach (var include in includes)
                 query = query.Include(include);
 
-            return query?.First(c => c.CoinId == id);
+            try
+            {
+                return query.First(c => c.CoinId == id);
+            }
+            catch
+            {
+                return new Coin();
+            }
+            
         }
 
         public IQueryable<Coin> GetAll()

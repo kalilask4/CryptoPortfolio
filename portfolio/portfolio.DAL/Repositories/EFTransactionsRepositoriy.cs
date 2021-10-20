@@ -57,8 +57,15 @@ namespace portfolio.DAL.Repositories
             
             foreach (var include in includes)
                 query = query.Include(include);
+            try
+            {
+                return query.First(t => t.TransactionId == id);
+            }
+            catch
+            {
+                return new Transaction();
+            }
             
-            return query.First(t => t.TransactionId == id);
         }
 
         public IQueryable<Transaction> GetAll()
