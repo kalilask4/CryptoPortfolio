@@ -62,7 +62,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="1.1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid x:Name="gridData" Grid.RowSpan="2">
+        <Grid x:Name="gridData" Grid.RowSpan="2" Opacity="0.9">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="172*"/>
                 <ColumnDefinition Width="305*"/>
@@ -117,7 +117,7 @@
                                 <!--<GroupBox  Width="448" DockPanel.Dock="Left">-->
                                 <!--Header="Coin list"-->
                                 <DataGrid 
-                                    Margin="5,5,5,5" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1" 
+                                    Margin="5,5,5,20" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1" 
                                           ItemsSource="{Binding Coins}"
                                           AutoGenerateColumns = "False"
                                     SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
@@ -147,15 +147,15 @@
                                                             Binding="{Binding Path=Name}"></DataGridTextColumn>
                                         <DataGridTextColumn Header="" Width="35" 
                                                             Binding="{Binding Path=ShortName}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="Amount"
+                                        <DataGridTextColumn Width="65" Header="Amount"
                                                             Binding="{Binding Path=Amount}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="Purchase price"
+                                        <DataGridTextColumn Width="55" Header="Purchase price"
                                                             Binding="{Binding Path=AveragePurchasePrice, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="Current price"
+                                        <DataGridTextColumn Width="55" Header="Current price"
                                                             Binding="{Binding Path=CurrentPrice, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                        <DataGridTextColumn Width="75" Header="Sum"
+                                        <DataGridTextColumn Width="65" Header="Sum"
                                                             Binding="{Binding Path=Sum, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                        <DataGridTextColumn Width="75" Header="Diff"
+                                        <DataGridTextColumn Width="65" Header="Diff"
                                                             Binding="{Binding Path=Diff, StringFormat={}{0:C}}"></DataGridTextColumn>
                                     </DataGrid.Columns>
 
@@ -212,13 +212,26 @@
                             </ListView.ItemTemplate>
                         </ListView>-->
                         </Border>
-                        <DockPanel Grid.ColumnSpan="2" Margin="0,305,0,0" Grid.RowSpan="2">
+                        <DockPanel Grid.ColumnSpan="2" Margin="0,270,0,0" Grid.RowSpan="2">
                             <GroupBox Header="Coin transactions" Margin="0" Padding="0">
                                 <ListView x:Name="lvTransactions" ItemsSource="{Binding Transactions}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Symbol}"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Symbol}"/>
+                                                <TextBlock Text="  "/>
+                                                <TextBlock Text="{Binding Side}"/>
+                                                <TextBlock Text="  "/>
+                                                <TextBlock Text="{Binding Amount}"/>
+                                                <TextBlock Text="  "/>
+                                                <TextBlock Text="{Binding Priсe, StringFormat={}{0:C}}"/>
+                                                <TextBlock Text="  "/>
+                                                <TextBlock Text="{Binding Sum, StringFormat={}{0:C}}"/>
+                                                <TextBlock Text="  "/>
+                                                <TextBlock Text="{Binding DateUpdate, StringFormat={}{0:dd.MM.yyyy}}"/>
+                                            </StackPanel>
                                         </DataTemplate>
+                                          
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </GroupBox>
@@ -396,9 +409,9 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="st1" Grid.Column="0" Margin="0 100 15 10" VerticalAlignment="Bottom">
-                <Button Height="26" Margin="0,1,15,1" Background="LightGreen" Name="btnInsert" Content="сurrent"/>
-                <Button Height="26" Margin="0,1,15,1" Background="Moccasin" Name="btnFind" Content="by bought price"/>
-                <Button Height="26" Margin="0,1,15,1" Background="LightSalmon" Name="btnUpd" Content="ratio"/>
+                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightGreen" Name="btnInsert" Content="сurrent"/>
+                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="Moccasin" Name="btnFind" Content="by bought price"/>
+                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightSalmon" Name="btnUpd" Content="ratio"/>
             </StackPanel>
             <StackPanel x:Name="st2" Grid.Column="1" Margin="30,15,10,80">
                 <Button x:Name="AddCoin" Content="Add coin" Command="{Binding NewCoinCommand}"/>

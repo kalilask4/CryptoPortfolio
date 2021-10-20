@@ -92,6 +92,7 @@ namespace portfolio
             new PropertyMetadata(default(decimal)));
 
 
+
         public string PictureName
         {
             get { return (string)GetValue(PictureNameProperty); }
