@@ -88,8 +88,7 @@ namespace portfolio.ViewModels
         
         private void OnNewCoinExecuted(object id)
         {  
-            try
-            {
+            
             var dialog = new EditCoinWindow
             {
                 DateUpdate = DateTime.Now
@@ -102,26 +101,25 @@ namespace portfolio.ViewModels
                 DateUpdate = dialog.DateUpdate
             };
             var fileName = Path.GetFileName(dialog.PictureName);
-            coin.PictureName = fileName;
+            if(fileName != null)
+            {
+                coin.PictureName = fileName;
+            }
+            else
+            {
+                coin.PictureName = "no.png";
+            }
+            
             transactionManager.AddCoinToTransaction(coin);
-            
-          
-            var target = Path.Combine(Directory.GetCurrentDirectory(), "Images", fileName);
-                File.Copy(dialog.PictureName, target);
-            Coins.Add(coin);
-            }
-            catch (IOException e)
-            {
-                MessageBox.Show("The picture already exists. Choose another one.");
-                
-            }
-            catch (ArgumentNullException e)
-            {
-                MessageBox.Show("The field for picture cannot be null. Choose one.");
-                
-            }
-            
 
+            if(dialog.PictureName != null)
+            {
+                var target = Path.Combine(Directory.GetCurrentDirectory(), "Images", fileName);
+                File.Copy(dialog.PictureName, target);
+            }
+
+            
+            Coins.Add(coin);
 
             
         }
