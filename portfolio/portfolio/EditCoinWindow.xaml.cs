@@ -112,5 +112,10 @@ namespace portfolio
         {
             InitializeComponent();
         }
+
+        private void btnFill_Click(object sender, RoutedEventArgs e)
+        {
+            tboxShortName.Text = tboxName.Text.Substring(0, 3);
+        }
     }
 }
