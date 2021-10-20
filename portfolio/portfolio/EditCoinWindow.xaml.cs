@@ -155,7 +155,6 @@ namespace portfolio
             try
             {
                 tboxShortName.Text = tboxName.Text.Substring(0, 3).ToUpper();
-                //var d = Convert.ToDecimal(textBoxAmount.Text) * Convert.ToDecimal(textBoxPrice.Text);
                 textBoxValueUSD.Text = (Convert.ToDecimal(textBoxAmount.Text) * Convert.ToDecimal(textBoxPrice.Text)).ToString();
             }
             catch

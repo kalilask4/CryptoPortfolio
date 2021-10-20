@@ -86,3 +86,8 @@ SELECT * FROM Coins WHERE PictureName = 'BLOW.png';
 UPDATE Coins
 SET PictureName=N'AO.png'
 WHERE PictureName is NULL;
+
+UPDATE Transactions
+SET Symbol='hhhxxx'
+where
+TransactionId=4

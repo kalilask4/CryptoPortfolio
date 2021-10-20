@@ -1,4 +1,7 @@
 ﻿using portfolio.Business.Infrastructure;
+using portfolio.Business.Managers;
+using portfolio.Domain.Entities;
+using portfolio.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,23 +32,31 @@ namespace portfolio
         static extern int MessageBoxTimeout(IntPtr hwnd, String text, String title,
                                      uint type, Int16 wLanguageId, Int32 milliseconds);
 
+        public ObservableCollection<Transaction> AllTransactions;
+
         public MainWindow()
         {
             InitializeComponent();
                        
         }
 
-        private void AddCoin_Click(object sender, RoutedEventArgs e)
-        {
+        //private void AddCoin_Click(object sender, RoutedEventArgs e)
+        //{
 
+        //}
+
+        private void rightClickUpdateTabCoin(object sender, ContextMenuEventArgs e)
+        {
+            MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1500);
+            //AllTransactions = new ObservableCollection<Transaction>(MainWindowViewModel.TransactionManager.Transactions);
+            grCoinsData.Items.Refresh();
         }
 
-        
-
-        private void rightClickUpdate(object sender, ContextMenuEventArgs e)
+        private void rightClickUpdateTabTrans(object sender, ContextMenuEventArgs e)
         {
-            MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 2000);
-  
+            MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1500);
+            //AllTransactions = new ObservableCollection<Transaction>(MainWindowViewModel.TransactionManager.Transactions);
+            grTransactionData.Items.Refresh();
         }
     }
 }

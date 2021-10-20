@@ -98,7 +98,7 @@
                         </Setter>
                     </Style>
                 </TabControl.Resources>
-                <TabItem Header="Coins">
+                <TabItem Header="Coins" ContextMenuOpening="rightClickUpdateTabCoin">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="105*"/>
@@ -224,7 +224,7 @@
                         </DockPanel>
                     </Grid>
                 </TabItem>
-                <TabItem x:Name="tiTransaction" Header="Transaction" ContextMenuOpening="rightClickUpdate">
+                <TabItem x:Name="tiTransactionTabTrans" Header="Transaction" ContextMenuOpening="rightClickUpdateTabTrans">
                     <!--<Grid>
                         <Grid.RowDefinitions></Grid.RowDefinitions>
                         <Grid.RowDefinitions></Grid.RowDefinitions>
