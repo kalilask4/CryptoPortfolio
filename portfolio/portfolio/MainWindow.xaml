@@ -33,9 +33,16 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Padding" Value="5"/>
             <Setter Property="FontFamily" Value="Brevia"/>
-            <Setter Property="Background" Value="BlanchedAlmond"/>
+            <Setter Property="Background" Value="#8F8FD2"/>
+            <Setter Property="Foreground" Value="#1B1C3A"/>
+            <Setter Property="BorderBrush" Value="#5C5E9E"/>
             <Setter Property="Opacity" Value="0.78"/>
             <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Button.Effect">
+        <Setter.Value>
+            <DropShadowEffect Color="Black" Direction="320" ShadowDepth="2" BlurRadius="5" Opacity="0.5" />
+        </Setter.Value>
+    </Setter>
         </Style>
         <Style TargetType="Label">
             <Setter Property="Margin" Value="5"/>
@@ -405,7 +412,7 @@
 
         <Grid x:Name="gridPanel" Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition Width="0.7*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="st1" Grid.Column="0" Margin="0 100 15 10" VerticalAlignment="Bottom">
@@ -413,7 +420,7 @@
                 <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="Moccasin" Name="btnFind" Content="by bought price"/>
                 <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightSalmon" Name="btnUpd" Content="ratio"/>
             </StackPanel>
-            <StackPanel x:Name="st2" Grid.Column="0" Margin="20,15,5,60">
+            <StackPanel x:Name="st2" Grid.Column="0" Margin="20,10,0,60">
                 <Button x:Name="AddCoin" Command="{Binding NewCoinCommand}" ToolTip="Add coin" ToolTipService.ShowDuration="2000">
                     <fas:FontAwesome Icon="Brands_Btc" FontSize="12" Width="21" />
                     <Button.Resources>
