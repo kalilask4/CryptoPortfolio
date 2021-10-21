@@ -19,7 +19,7 @@ namespace portfolio.Domain.Entities
         public decimal CurrentPrice { get; set; }
         public decimal ValueUSD { get; set; }
         public decimal AveragePurchasePrice { get; set; }
-        private string pictureName = "EMPTY.png";
+        private string pictureName = "no.png";
         public string PictureName
         {
             get { return pictureName; }

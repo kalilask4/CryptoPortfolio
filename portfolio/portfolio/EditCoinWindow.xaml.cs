@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using portfolio.Command;
+using portfolio.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace portfolio
             typeof(EditCoinWindow),
             new PropertyMetadata(default(string)));
 
-
+        
         public string ShortName
         {
             get { return (string)GetValue(ShortNameProperty); }
@@ -48,7 +49,6 @@ namespace portfolio
             .Register("ShortName", typeof(string),
             typeof(EditCoinWindow),
             new PropertyMetadata(default(string)));
-
 
 
         public decimal Amount
@@ -90,7 +90,6 @@ namespace portfolio
             .Register("ValueUSD", typeof(decimal),
             typeof(EditCoinWindow),
             new PropertyMetadata(default(decimal)));
-
 
 
         public string PictureName
@@ -149,15 +148,16 @@ namespace portfolio
         public EditCoinWindow()
         {
             InitializeComponent();
-
+            
         }
 
         private void btnFill_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                tboxShortName.Text = tboxName.Text.Substring(0, 3).ToUpper();
+                //tboxShortName.Text = tboxName.Text.Substring(0, 3).ToUpper();
                 textBoxValueUSD.Text = (Convert.ToDecimal(textBoxAmount.Text) * Convert.ToDecimal(textBoxPrice.Text)).ToString();
+               
             }
             catch
             {
@@ -170,6 +170,18 @@ namespace portfolio
                // MessageBox.Show("Fill Coin name.");
 
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (tboxName.Text == "")
+            {
+                tboxName.Text = "Coin name";
+                
+            }
+            
+            tboxName.ToolTip = "Type coin name";
+            
         }
     }
 }

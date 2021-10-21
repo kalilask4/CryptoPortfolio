@@ -24,8 +24,8 @@
         <Style TargetType="DataGridCell" >
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="MediumPurple"/>
-                    <Setter Property="Opacity" Value="0.8"/>
+                    <Setter Property="Background" Value="#B09FF5"/>
+                    <Setter Property="Opacity" Value="0.7"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -33,14 +33,20 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Padding" Value="5"/>
             <Setter Property="FontFamily" Value="Brevia"/>
-            <Setter Property="Background" Value="#8F8FD2"/>
-            <Setter Property="Foreground" Value="#1B1C3A"/>
-            <Setter Property="BorderBrush" Value="#5C5E9E"/>
+            <Setter Property="Background">
+                <!--Value="#ECEF8B">-->
+                <Setter.Value>
+                        <!--<ImageBrush ImageSource="pack://application:,,,/Resources/Screenshot_2.png" Opacity="0.9"></ImageBrush>-->
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/btn5.png"  Opacity="0.15"></ImageBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="#170F35"/>
+            <Setter Property="BorderBrush" Value="#5A5180"/>
             <Setter Property="Opacity" Value="0.78"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="Button.Effect">
         <Setter.Value>
-            <DropShadowEffect Color="Black" Direction="320" ShadowDepth="2" BlurRadius="5" Opacity="0.5" />
+            <DropShadowEffect Color="Black" Direction="320" ShadowDepth="2" BlurRadius="5" Opacity="0.7" />
         </Setter.Value>
     </Setter>
         </Style>
@@ -162,9 +168,8 @@
                                         <DataGridTextColumn Width="55" Header="Current price"
                                                             Binding="{Binding Path=CurrentPrice, StringFormat={}{0:C}}"></DataGridTextColumn>
                                         <DataGridTextColumn Width="65" Header="Sum"
-                                                            Binding="{Binding Path=Sum, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                        <DataGridTextColumn Width="65" Header="Diff"
-                                                            Binding="{Binding Path=Diff, StringFormat={}{0:C}}"></DataGridTextColumn>
+                                                            Binding="{Binding Path=ValueUSD, StringFormat={}{0:C}}"></DataGridTextColumn>
+                                        <DataGridTextColumn Width="65" Header="Diff"></DataGridTextColumn>
                                     </DataGrid.Columns>
 
                                 </DataGrid>
@@ -365,9 +370,9 @@
                             <ColumnDefinition Width="35*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                        
-                        <GroupBox Grid.Row="2" Grid.ColumnSpan="3" Header="Last buy transaction" Margin="2,2,2,2" Padding="2">
+                        <!--<GroupBox Grid.Row="2" Grid.ColumnSpan="3" Header="Last buy transaction" Margin="2,2,2,2" Padding="2">
                             <ListView x:Name="lvTransaction" >
-                                <!--ItemsSource="{Binding Buyings}"-->
+                                --><!--ItemsSource="{Binding Buyings}"--><!--
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -380,14 +385,14 @@
                                                 <ColumnDefinition></ColumnDefinition>
                                                 <ColumnDefinition></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
-                                            <!--<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding TransactionId}"/>
+                                            --><!--<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding TransactionId}"/>
                                             <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Amount}"/>
-                                            <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Priсe}"/>-->
+                                            <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Priсe}"/>--><!--
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
-                        </GroupBox>
+                        </GroupBox>-->
 
                       
                     </Grid>
@@ -420,7 +425,7 @@
                 <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="Moccasin" Name="btnFind" Content="by bought price"/>
                 <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightSalmon" Name="btnUpd" Content="ratio"/>
             </StackPanel>
-            <StackPanel x:Name="st2" Grid.Column="0" Margin="20,10,0,60">
+            <StackPanel x:Name="st2" Grid.Column="1" Margin="40,10,20,60">
                 <Button x:Name="AddCoin" Command="{Binding NewCoinCommand}" ToolTip="Add coin" ToolTipService.ShowDuration="2000">
                     <fas:FontAwesome Icon="Brands_Btc" FontSize="12" Width="21" />
                     <Button.Resources>

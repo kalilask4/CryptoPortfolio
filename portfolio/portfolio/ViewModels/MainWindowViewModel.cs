@@ -118,8 +118,17 @@ namespace portfolio.ViewModels
 
             if (dialog.PictureName != null)
             {
+                try
+                {
                 var target = Path.Combine(Directory.GetCurrentDirectory(), "Images", fileName);
                 File.Copy(dialog.PictureName, target);
+                }
+                catch (IOException e)
+                {
+                    MessageBox.Show("This file already exist. Choose another one.");
+                                      
+                }
+                
             }
 
             Coins.Add(coin);
