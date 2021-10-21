@@ -149,6 +149,7 @@ namespace portfolio
         public EditCoinWindow()
         {
             InitializeComponent();
+
         }
 
         private void btnFill_Click(object sender, RoutedEventArgs e)
@@ -160,7 +161,13 @@ namespace portfolio
             }
             catch
             {
-                MessageBox.Show("Fill Coin name.");
+
+                [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
+                static extern int MessageBoxTimeout(IntPtr hwnd, String text, String title,
+                                     uint type, Int16 wLanguageId, Int32 milliseconds);
+                MessageBoxTimeout((System.IntPtr)0, "Fill Coin name.", "Message", 0, 0, 1000);
+
+               // MessageBox.Show("Fill Coin name.");
 
             }
         }

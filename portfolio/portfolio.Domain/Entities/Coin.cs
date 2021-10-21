@@ -13,7 +13,7 @@ namespace portfolio.Domain.Entities
         public int CoinId { get; set; }
         [Required]
         public string Name { get; set; }
-        private string shortName = "OOO";
+        private string shortName;
         [Required]
         public decimal Amount { get; set; }
         public decimal CurrentPrice { get; set; }
@@ -48,7 +48,7 @@ namespace portfolio.Domain.Entities
         public Coin()
         {
             Name = "DefName";
-            //ShortName = "DEF";
+            ShortName = "NO";
             Amount = 0;
             PictureName = ShortName + ".png";
             DateUpdate = DateTime.Now;

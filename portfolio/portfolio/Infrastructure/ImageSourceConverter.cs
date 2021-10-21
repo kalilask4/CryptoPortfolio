@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Globalization;
 using System.IO;
+using System.Windows.Media.Imaging;
+using System.Diagnostics;
 
 namespace portfolio.Infrastructure
 {
@@ -16,20 +18,13 @@ namespace portfolio.Infrastructure
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            try
-            {
-                return Path.Combine(ImageDirectory, (string)value);
-            }
-            catch
-            {
-                return Path.Combine(ImageDirectory, "empty");
-            }
-            
+            return Path.Combine(ImageDirectory, (string)value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
+           
         }
     }
 }

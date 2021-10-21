@@ -91,3 +91,7 @@ UPDATE Transactions
 SET Symbol='hhhxxx'
 where
 TransactionId=5
+
+delete from Coins
+where
+CoinId = 10;

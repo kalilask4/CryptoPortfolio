@@ -12,6 +12,7 @@
   <ItemGroup>
     <None Remove="Images\ADA.png" />
     <None Remove="Images\AXS.png" />
+    <None Remove="Images\BNB.png" />
     <None Remove="Images\CRV.png" />
     <None Remove="Images\DOT.png" />
     <None Remove="Images\ETH.png" />
@@ -20,6 +21,7 @@
     <None Remove="Images\LINK.png" />
     <None Remove="Images\LTC.png" />
     <None Remove="Images\NEO.png" />
+    <None Remove="Images\NO.png" />
     <None Remove="Images\THETA.png" />
     <None Remove="Images\TRX.png" />
     <None Remove="Images\UNI.png" />
@@ -29,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FontAwesome5" Version="2.1.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.37" />
   </ItemGroup>
@@ -44,6 +47,9 @@
     </Content>
     <Content Include="Images\AXS.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\BNB.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\CRV.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -67,6 +73,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\NEO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\NO.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\THETA.png">

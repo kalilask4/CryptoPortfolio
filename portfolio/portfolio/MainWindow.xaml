@@ -6,6 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:portfolio.ViewModels"
         xmlns:inf="clr-namespace:portfolio.Infrastructure"
+        xmlns:fas="http://schemas.fontawesome.com/icons/"
         mc:Ignorable="d"
         Title="Crypto portfolio" Height="450" Width="800">
     <Window.DataContext>
@@ -412,13 +413,20 @@
                 <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="Moccasin" Name="btnFind" Content="by bought price"/>
                 <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightSalmon" Name="btnUpd" Content="ratio"/>
             </StackPanel>
-            <StackPanel x:Name="st2" Grid.Column="1" Margin="30,15,10,60">
-                <Button x:Name="AddCoin" Content="Add coin" Command="{Binding NewCoinCommand}"/>
-                <Button x:Name="AddTransaction" Content="Add transaction"/>
-                <Button x:Name="Edit" Content="Edit" Command="{Binding EditCoinCommand}"/>
-                <Button x:Name="Delete" Content="Delete"/>
+            <StackPanel x:Name="st2" Grid.Column="0" Margin="20,15,5,60">
+                <Button x:Name="AddCoin" Command="{Binding NewCoinCommand}" ToolTip="Add coin" ToolTipService.ShowDuration="2000">
+                    <fas:FontAwesome Icon="Brands_Btc" FontSize="12" Width="21" />
+                </Button>
+                <Button x:Name="AddTransaction" ToolTip="Add Transaction" ToolTipService.ShowDuration="2000">
+                    <fas:FontAwesome Icon="Solid_ExchangeAlt" FontSize="12" Width="21" />
+                </Button>
+                <Button x:Name="Edit"  Command="{Binding EditCoinCommand}" ToolTip="Edit" ToolTipService.ShowDuration="2000">
+                    <fas:FontAwesome Icon="Solid_Edit" FontSize="12" Width="21" />
+                </Button>
+                <Button x:Name="Delete" ToolTip="Delete" ToolTipService.ShowDuration="2000">
+                    <fas:FontAwesome Icon="Solid_Trash" FontSize="12" Width="21" />
+                </Button>
                 <Button Visibility="Hidden" x:Name="Find" Content="Find"/>
-
                 <!--<Button Content="Simple Command" Command="{Binding SimpleCommand}" />-->
                 <!--<Button Name="Update"  Content="Update"/>-->
             </StackPanel>
