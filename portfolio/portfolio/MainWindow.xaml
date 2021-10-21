@@ -416,15 +416,35 @@
             <StackPanel x:Name="st2" Grid.Column="0" Margin="20,15,5,60">
                 <Button x:Name="AddCoin" Command="{Binding NewCoinCommand}" ToolTip="Add coin" ToolTipService.ShowDuration="2000">
                     <fas:FontAwesome Icon="Brands_Btc" FontSize="12" Width="21" />
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
                 </Button>
                 <Button x:Name="AddTransaction" ToolTip="Add Transaction" ToolTipService.ShowDuration="2000">
                     <fas:FontAwesome Icon="Solid_ExchangeAlt" FontSize="12" Width="21" />
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
                 </Button>
                 <Button x:Name="Edit"  Command="{Binding EditCoinCommand}" ToolTip="Edit" ToolTipService.ShowDuration="2000">
                     <fas:FontAwesome Icon="Solid_Edit" FontSize="12" Width="21" />
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
                 </Button>
                 <Button x:Name="Delete" ToolTip="Delete" ToolTipService.ShowDuration="2000">
                     <fas:FontAwesome Icon="Solid_Trash" FontSize="12" Width="21" />
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
                 </Button>
                 <Button Visibility="Hidden" x:Name="Find" Content="Find"/>
                 <!--<Button Content="Simple Command" Command="{Binding SimpleCommand}" />-->
