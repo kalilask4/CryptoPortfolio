@@ -13,6 +13,7 @@ namespace portfolio.Domain.Entities
         public int CoinId { get; set; }
         [Required]
         public string Name { get; set; }
+        //private string name = "EmptyName";
         private string shortName;
         [Required]
         public decimal Amount { get; set; }
@@ -37,6 +38,15 @@ namespace portfolio.Domain.Entities
                 shortName = value;
             }
         }
+
+        //public string Name
+        //{
+        //    get { return name; }
+        //    set
+        //    {
+        //        name = value;
+        //    }
+        //}
 
 
         public DateTime DateUpdate { get; set; }

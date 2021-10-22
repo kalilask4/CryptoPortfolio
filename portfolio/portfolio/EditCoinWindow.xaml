@@ -52,7 +52,7 @@
             </Grid.RowDefinitions>
             <TextBlock Visibility="Hidden" x:Name="tbName" Grid.Column="0" Grid.Row="0" Text="Coin name:"/>
             <TextBox  x:Name="tboxName" Grid.ColumnSpan="3" Grid.Row="0" Text="{Binding Name}"  Margin="62,5,30,2"/>
-            <TextBlock x:Name="tbShortName" Grid.Column="0" Grid.Row="2" Text="Short name:" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="90,0,0,2"/>
+            <TextBlock x:Name="tbShortName" Grid.Column="0" Grid.Row="2" Text="Short name:" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="90,0,0,4"/>
             <TextBox x:Name="tboxShortName" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2"  Margin="93,0,30,9"                     
                      Text="{Binding ShortName}" Background="MistyRose" Opacity="0.75"/>
             <Button x:Name="btnFill" Grid.Row="5" Grid.Column="0" Margin="21,5,141,5" Height="30"

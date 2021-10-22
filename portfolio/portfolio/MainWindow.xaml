@@ -37,7 +37,7 @@
                 <!--Value="#ECEF8B">-->
                 <Setter.Value>
                         <!--<ImageBrush ImageSource="pack://application:,,,/Resources/Screenshot_2.png" Opacity="0.9"></ImageBrush>-->
-                    <ImageBrush ImageSource="pack://application:,,,/Resources/btn5.png"  Opacity="0.15"></ImageBrush>
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/btn5.png"  Opacity="1"></ImageBrush>
                 </Setter.Value>
             </Setter>
             <Setter Property="Foreground" Value="#170F35"/>
@@ -450,7 +450,7 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="Delete" ToolTip="Delete" ToolTipService.ShowDuration="2000">
+                <Button x:Name="Delete" ToolTip="Delete" ToolTipService.ShowDuration="2000" Command="{Binding DelCoinCommand}">
                     <fas:FontAwesome Icon="Solid_Trash" FontSize="12" Width="21" />
                     <Button.Resources>
                         <Style TargetType="Border">

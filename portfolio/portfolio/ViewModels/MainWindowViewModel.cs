@@ -5,6 +5,7 @@ using portfolio.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -50,11 +51,14 @@ namespace portfolio.ViewModels
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
 
-            /*//get list transaction for first coin
+            //get list transaction for first coin
             if (Transactions.Count > 0)
-                OnGetTransactionExecuted(Transactions[0].TransactionId);*/
+                OnGetTransactionExecuted(Transactions[0].TransactionId);
 
         }
+
+
+
 
         #region selected coin 
         private Coin _selectedCoin;
@@ -95,6 +99,7 @@ namespace portfolio.ViewModels
             };
 
             if (dialog.ShowDialog() != true) return;
+
             var coin = new Coin
             {
                 Name = dialog.Name,
@@ -104,6 +109,18 @@ namespace portfolio.ViewModels
                 ValueUSD = dialog.ValueUSD,
                 DateUpdate = dialog.DateUpdate
             };
+
+            if (coin.Name == null)
+            {
+                coin.Name = "Noname";
+            }
+
+            if (coin.ShortName == null)
+            {
+                coin.Name = coin.Name.Substring(0, 3).ToLower();
+            }
+
+
             var fileName = Path.GetFileName(dialog.PictureName);
             if (fileName != null)
             {
@@ -143,13 +160,12 @@ namespace portfolio.ViewModels
 
         private void OnGetTransactionExecuted(object id)
         {
-
-            Transactions?.Clear();
-            var transactions = coinManager.GetTransactionsOfCoin((int)id);
-            foreach (var transaction in transactions)
-            {
-                Transactions?.Add(transaction);
-            }
+                Transactions?.Clear();
+                var transactions = coinManager.GetTransactionsOfCoin((int)id);
+                foreach (var transaction in transactions)
+                {
+                    Transactions?.Add(transaction);
+                }
         }
         #endregion
 
@@ -227,12 +243,13 @@ namespace portfolio.ViewModels
             _selectedCoin.Amount = dialog.Amount;
             _selectedCoin.CurrentPrice = dialog.CurrentPrice;
             _selectedCoin.ValueUSD = dialog.ValueUSD;
-            _selectedCoin.DateUpdate = _selectedCoin.DateUpdate;
+            _selectedCoin.DateUpdate = dialog.DateUpdate;
 
-            //OnGetCoinExecuted(_selectedTransaction.TransactionId);
+            OnGetCoinExecuted(_selectedCoin.CoinId);
             
         }
         #endregion
+
         #endregion
 
     }
