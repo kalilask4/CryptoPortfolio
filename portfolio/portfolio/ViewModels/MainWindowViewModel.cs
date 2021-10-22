@@ -57,9 +57,6 @@ namespace portfolio.ViewModels
 
         }
 
-
-
-
         #region selected coin 
         private Coin _selectedCoin;
         public Coin SelectedCoin
@@ -143,9 +140,7 @@ namespace portfolio.ViewModels
                 catch (IOException e)
                 {
                     MessageBox.Show("This file already exist. Choose another one.");
-                                      
                 }
-                
             }
 
             Coins.Add(coin);
@@ -247,6 +242,26 @@ namespace portfolio.ViewModels
 
             OnGetCoinExecuted(_selectedCoin.CoinId);
             
+        }
+        #endregion
+
+
+        #region Del coin
+        private ICommand _delCoinCommand;
+        public ICommand DelCoinCommand => _delCoinCommand ??= new RelayCommand(OnDelCoinExecuted, DelCoinCanExecute);
+
+
+        // check if can del
+        private bool DelCoinCanExecute(object p) =>
+        _selectedCoin != null;
+
+        private void OnDelCoinExecuted(object id)
+        {
+            var result = MessageBox.Show("Are you sure?", $"Delete coin {_selectedCoin.Name}?", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                coinManager.Delete(_selectedCoin.CoinId); //deleting only coin and relating, not transaction
+            }
         }
         #endregion
 
