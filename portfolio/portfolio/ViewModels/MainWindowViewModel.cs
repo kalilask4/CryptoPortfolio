@@ -75,6 +75,11 @@ namespace portfolio.ViewModels
                     Coin oldCoin = e.OldItems[0] as Coin;
                     MessageBoxTimeout((System.IntPtr)0, $"{oldCoin.Name} deleted.", "Coins", 0, 0, 2000);
                     break;
+                case NotifyCollectionChangedAction.Replace:
+                    Coin replasedCoin = e.OldItems[0] as Coin;
+                    Coin replasingCoin = e.NewItems[0] as Coin;
+                    MessageBoxTimeout((System.IntPtr)0, $"{replasedCoin.Name} replased {replasingCoin.Name}.", "Coins", 0, 0, 2000);
+                    break;
             }
         }
 
