@@ -31,9 +31,7 @@ namespace portfolio.ViewModels
         public ObservableCollection<Transaction> AllTransactions { get; set; }
         public string Title { get => titleCoins; set => titleCoins = value; }
         public string TitleTransactions { get => titleTransactions; set => titleTransactions = value; }
-
         public ObservableCollection<Transaction> TransactionsFromCoin { get; set; }
-
 
         [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
         static extern int MessageBoxTimeout(IntPtr hwnd, String text, String title,
@@ -60,9 +58,6 @@ namespace portfolio.ViewModels
            
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
-
-           
-
         }
 
         private static void Coins_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -210,7 +205,8 @@ namespace portfolio.ViewModels
                 Amount = _selectedCoin.Amount,
                 CurrentPrice = _selectedCoin.CurrentPrice,
                 ValueUSD = _selectedCoin.ValueUSD,
-                DateUpdate = _selectedCoin.DateUpdate
+                DateUpdate = _selectedCoin.DateUpdate,
+                PictureName = _selectedCoin.PictureName
             };
             if (dialog.ShowDialog() != true) return;
 
@@ -220,7 +216,6 @@ namespace portfolio.ViewModels
             // for new picture
             try
             {
-
                 if (!_selectedCoin.PictureName.Equals(dialog?.PictureName))
                 {
 
@@ -235,11 +230,10 @@ namespace portfolio.ViewModels
 
                     _selectedCoin.PictureName = newImage;
                 }
-
             }
             catch
             {
-                _selectedCoin.PictureName = "no.png";
+                _selectedCoin.PictureName = "NO.png";
             }
 
             _selectedCoin.Name = dialog.Name;
@@ -248,17 +242,10 @@ namespace portfolio.ViewModels
             _selectedCoin.CurrentPrice = dialog.CurrentPrice;
             _selectedCoin.ValueUSD = dialog.ValueUSD;
             _selectedCoin.DateUpdate = dialog.DateUpdate;
-
-            //OnGetCoinExecuted(_selectedTransaction.TransactionId);
-            //if (Coins.Count > 0)
-            //    OnGetTransactionExecuted(Coins[0].CoinId);
-            //if (Transactions.Count > 0)
-               // OnGetTransactionExecuted(Coins[0].CoinId);
-
-
+            
+            OnGetTransactionExecuted(_selectedCoin.CoinId);
         }
         #endregion
-
 
         #region Del coin
         private ICommand _delCoinCommand;
@@ -276,15 +263,11 @@ namespace portfolio.ViewModels
             {
                 //coinManager.Delete(_selectedCoin.CoinId); //deleting only coin and relating, not transaction
                 Coins.Remove(_selectedCoin);
-
                 //if (Transactions.Count > 0)
                 //    OnGetCointsExecuted(Groups[0].GroupId);
-
             }
         }
         #endregion
-
         #endregion
-    
     }
 }

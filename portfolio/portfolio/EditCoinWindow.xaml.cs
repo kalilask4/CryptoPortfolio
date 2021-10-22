@@ -181,7 +181,7 @@ namespace portfolio
                 
             }
             
-            tboxName.ToolTip = "Type coin name";
+            //tboxName.ToolTip = "Type coin name";
             
         }
     }
