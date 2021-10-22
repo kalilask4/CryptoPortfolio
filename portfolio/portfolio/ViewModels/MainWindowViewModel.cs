@@ -32,6 +32,9 @@ namespace portfolio.ViewModels
         public string Title { get => titleCoins; set => titleCoins = value; }
         public string TitleTransactions { get => titleTransactions; set => titleTransactions = value; }
 
+        public ObservableCollection<Transaction> TransactionsFromCoin { get; set; }
+
+
         [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
         static extern int MessageBoxTimeout(IntPtr hwnd, String text, String title,
                                     uint type, Int16 wLanguageId, Int32 milliseconds);
@@ -51,22 +54,14 @@ namespace portfolio.ViewModels
             Coins.CollectionChanged += Coins_CollectionChanged;
 
             AllTransactions = new ObservableCollection<Transaction>(transactionManager.Transactions);
-            Transactions = new ObservableCollection<Transaction>(transactionManager.Transactions);
-
-
-
+            //Transactions = new ObservableCollection<Transaction>();
+            TransactionsFromCoin = new ObservableCollection<Transaction>();
+            
+           
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
 
-            /*-----------------------------------------------*/
-            //get list transaction for first coin
-            //if (Coins.Count > 0)
-            //    OnGetTransactionExecuted(Coins[0].CoinId);
-            /*-----------------------------------------------*/
-
-            //get list transaction for first coin
-            //if (Transactions.Count > 0)
-            // OnGetTransactionExecuted(Transactions[0].TransactionId);
+           
 
         }
 
@@ -182,56 +177,19 @@ namespace portfolio.ViewModels
         #endregion
 
         #region Choose coin in list
-        private ICommand _getTransactionsCommand;
-        public ICommand GetTransactionsCommand =>
-         _getTransactionsCommand
+        private ICommand _getTransactionsFromCoinCommand;
+        public ICommand GetTransactionsFromCoinCommand =>
+         _getTransactionsFromCoinCommand
         ??= new RelayCommand(OnGetTransactionExecuted);
 
         private void OnGetTransactionExecuted(object id)
         {
-            Transactions.Clear();
+            TransactionsFromCoin.Clear();
             var transactions = coinManager.GetTransactionsOfCoin((int)id);
             foreach (var transaction in transactions)
-                Transactions.Add(transaction);
+                TransactionsFromCoin.Add(transaction);
         }
         #endregion
-
-        /*----------------------------------------------------------------*/
-        //#region Choose coin from list
-        //private ICommand _getTransactionCommand;
-        //public ICommand GetTransactionCommand =>
-        //    _getTransactionCommand
-        //    ??= new RelayCommand(OnGetTransactionExecuted);
-
-        //private void OnGetTransactionExecuted(object id)
-        //{
-        //        Transactions?.Clear();
-        //        var transactions = coinManager.GetTransactionsOfCoin((int)id);
-        //        foreach (var transaction in transactions)
-        //        {
-        //            Transactions?.Add(transaction);
-        //        }
-        //}
-        //#endregion
-        /*------------------------------------------------------------------*/
-
-        #region Choose transaction from list
-        private ICommand _getCoinCommand;
-        public ICommand GetCoinCommand =>
-            _getCoinCommand
-            ??= new RelayCommand(OnGetCoinExecuted);
-
-        private void OnGetCoinExecuted(object id)
-        {
-            Coins?.Clear();
-            var coins = transactionManager.GetCoinsOfTransaction((int)id);
-            foreach (var coin in coins)
-            {
-                Coins?.Add(coin);
-            }
-        }
-        #endregion
-
 
         #region Edit coin
         private ICommand _editCoinCommand;
@@ -292,7 +250,10 @@ namespace portfolio.ViewModels
             _selectedCoin.DateUpdate = dialog.DateUpdate;
 
             //OnGetCoinExecuted(_selectedTransaction.TransactionId);
-
+            //if (Coins.Count > 0)
+            //    OnGetTransactionExecuted(Coins[0].CoinId);
+            //if (Transactions.Count > 0)
+               // OnGetTransactionExecuted(Coins[0].CoinId);
 
 
         }
@@ -316,7 +277,9 @@ namespace portfolio.ViewModels
                 //coinManager.Delete(_selectedCoin.CoinId); //deleting only coin and relating, not transaction
                 Coins.Remove(_selectedCoin);
 
-   
+                //if (Transactions.Count > 0)
+                //    OnGetCointsExecuted(Groups[0].GroupId);
+
             }
         }
         #endregion

@@ -140,7 +140,7 @@
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="SelectionChanged">
                                             <i:InvokeCommandAction
-                                        Command="{Binding GetTransactionCommand}"
+                                        Command="{Binding GetTransactionsFromCoinCommand}"
                                         CommandParameter="{Binding SelectedCoin.CoinId}">
                                             </i:InvokeCommandAction>
                                         </i:EventTrigger>
@@ -227,7 +227,7 @@
                         </Border>
                         <DockPanel Grid.ColumnSpan="2" Margin="0,270,0,0" Grid.RowSpan="2">
                             <GroupBox Header="Coin transactions" Margin="0" Padding="0">
-                                <ListView x:Name="lvTransactions" ItemsSource="{Binding Transactions}">
+                                <ListView x:Name="lvTransactions" ItemsSource="{Binding TransactionsFromCoin}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -264,7 +264,7 @@
                             <!--<Button Grid.Row="0" x:Name="btnUpdate" Click="btnUpdate_Click" >Update</Button>-->
                             <DataGrid Margin="5,5,5,5" x:Name="grTransactionData" Grid.Row="0" Grid.Column="1" 
                                       ItemsSource="{Binding AllTransactions}" AutoGenerateColumns = "False"
-                                      SelectedItem="{Binding SelectedCoin}">
+                                      SelectedItem="{Binding SelectedTransaction}">
                                 <!--SelectedValue="{Binding SelectedTransaction}" SelectedIndex="0">-->
                                 <!--<i:Interaction.Triggers>
                                     <i:EventTrigger EventName="SelectionChanged">

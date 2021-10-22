@@ -69,7 +69,7 @@ insert into Transactions
 
 insert into CoinTransaction
 (TransactionCoinsCoinId, TransactionsTransactionId) values
-(13,1)
+(2,12)
 
 drop database portfoliotest0
 
