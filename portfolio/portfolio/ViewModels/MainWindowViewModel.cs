@@ -53,13 +53,20 @@ namespace portfolio.ViewModels
             AllTransactions = new ObservableCollection<Transaction>(transactionManager.Transactions);
             Transactions = new ObservableCollection<Transaction>(transactionManager.Transactions);
 
-            //get list transaction for first coin
+
+
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
 
+            /*-----------------------------------------------*/
+            //get list transaction for first coin
+            //if (Coins.Count > 0)
+            //    OnGetTransactionExecuted(Coins[0].CoinId);
+            /*-----------------------------------------------*/
+
             //get list transaction for first coin
             //if (Transactions.Count > 0)
-               // OnGetTransactionExecuted(Transactions[0].TransactionId);
+            // OnGetTransactionExecuted(Transactions[0].TransactionId);
 
         }
 
@@ -161,8 +168,8 @@ namespace portfolio.ViewModels
             {
                 try
                 {
-                var target = Path.Combine(Directory.GetCurrentDirectory(), "Images", fileName);
-                File.Copy(dialog.PictureName, target);
+                    var target = Path.Combine(Directory.GetCurrentDirectory(), "Images", fileName);
+                    File.Copy(dialog.PictureName, target);
                 }
                 catch (IOException e)
                 {
@@ -174,22 +181,39 @@ namespace portfolio.ViewModels
         }
         #endregion
 
-        #region Choose coin from list
-        private ICommand _getTransactionCommand;
-        public ICommand GetTransactionCommand =>
-            _getTransactionCommand
-            ??= new RelayCommand(OnGetTransactionExecuted);
+        #region Choose coin in list
+        private ICommand _getTransactionsCommand;
+        public ICommand GetTransactionsCommand =>
+         _getTransactionsCommand
+        ??= new RelayCommand(OnGetTransactionExecuted);
 
         private void OnGetTransactionExecuted(object id)
         {
-                Transactions?.Clear();
-                var transactions = coinManager.GetTransactionsOfCoin((int)id);
-                foreach (var transaction in transactions)
-                {
-                    Transactions?.Add(transaction);
-                }
+            Transactions.Clear();
+            var transactions = coinManager.GetTransactionsOfCoin((int)id);
+            foreach (var transaction in transactions)
+                Transactions.Add(transaction);
         }
         #endregion
+
+        /*----------------------------------------------------------------*/
+        //#region Choose coin from list
+        //private ICommand _getTransactionCommand;
+        //public ICommand GetTransactionCommand =>
+        //    _getTransactionCommand
+        //    ??= new RelayCommand(OnGetTransactionExecuted);
+
+        //private void OnGetTransactionExecuted(object id)
+        //{
+        //        Transactions?.Clear();
+        //        var transactions = coinManager.GetTransactionsOfCoin((int)id);
+        //        foreach (var transaction in transactions)
+        //        {
+        //            Transactions?.Add(transaction);
+        //        }
+        //}
+        //#endregion
+        /*------------------------------------------------------------------*/
 
         #region Choose transaction from list
         private ICommand _getCoinCommand;
@@ -240,26 +264,26 @@ namespace portfolio.ViewModels
             {
 
                 if (!_selectedCoin.PictureName.Equals(dialog?.PictureName))
-            {
+                {
 
-                // delete old picture
-                File.Delete(Path.Combine(imageFolderPass,
-                _selectedCoin.PictureName));
-                // get new picture
-                var newImage = Path.GetFileName(dialog.PictureName);
-                // copy file to Images
-                File.Copy(dialog.PictureName, Path.Combine(imageFolderPass,
-                newImage));
+                    // delete old picture
+                    File.Delete(Path.Combine(imageFolderPass,
+                    _selectedCoin.PictureName));
+                    // get new picture
+                    var newImage = Path.GetFileName(dialog.PictureName);
+                    // copy file to Images
+                    File.Copy(dialog.PictureName, Path.Combine(imageFolderPass,
+                    newImage));
 
-                _selectedCoin.PictureName = newImage;
+                    _selectedCoin.PictureName = newImage;
+                }
+
             }
-
-        }
             catch
             {
                 _selectedCoin.PictureName = "no.png";
             }
-        
+
             _selectedCoin.Name = dialog.Name;
             _selectedCoin.ShortName = dialog.ShortName;
             _selectedCoin.Amount = dialog.Amount;
@@ -267,8 +291,10 @@ namespace portfolio.ViewModels
             _selectedCoin.ValueUSD = dialog.ValueUSD;
             _selectedCoin.DateUpdate = dialog.DateUpdate;
 
-            OnGetCoinExecuted(_selectedCoin.CoinId);
-            
+            //OnGetCoinExecuted(_selectedTransaction.TransactionId);
+
+
+
         }
         #endregion
 
@@ -290,14 +316,12 @@ namespace portfolio.ViewModels
                 //coinManager.Delete(_selectedCoin.CoinId); //deleting only coin and relating, not transaction
                 Coins.Remove(_selectedCoin);
 
-                //if (Transactions.Count > 0)
-                //    OnGetCointsExecuted(Groups[0].GroupId);
-    
+   
             }
         }
         #endregion
 
         #endregion
-
+    
     }
 }
