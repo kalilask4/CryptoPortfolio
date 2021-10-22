@@ -32,6 +32,10 @@ namespace portfolio.ViewModels
         public string Title { get => titleCoins; set => titleCoins = value; }
         public string TitleTransactions { get => titleTransactions; set => titleTransactions = value; }
 
+        [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
+        static extern int MessageBoxTimeout(IntPtr hwnd, String text, String title,
+                                    uint type, Int16 wLanguageId, Int32 milliseconds);
+
 
         public MainWindowViewModel()
         {
@@ -44,6 +48,8 @@ namespace portfolio.ViewModels
                 DbTestData.SetupData(coinManager, transactionManager);
 
             Coins = new ObservableCollection<Coin>(coinManager.Coins);
+            Coins.CollectionChanged += Coins_CollectionChanged;
+
             AllTransactions = new ObservableCollection<Transaction>(transactionManager.Transactions);
             Transactions = new ObservableCollection<Transaction>(transactionManager.Transactions);
 
@@ -52,10 +58,31 @@ namespace portfolio.ViewModels
                 OnGetTransactionExecuted(Coins[0].CoinId);
 
             //get list transaction for first coin
-            if (Transactions.Count > 0)
-                OnGetTransactionExecuted(Transactions[0].TransactionId);
+            //if (Transactions.Count > 0)
+               // OnGetTransactionExecuted(Transactions[0].TransactionId);
 
         }
+
+        private static void Coins_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    Coin coin = e.NewItems[0] as Coin;
+                    MessageBoxTimeout((System.IntPtr)0, $"{coin.Name} added.", "Coins", 0, 0, 2000);
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    Coin oldCoin = e.OldItems[0] as Coin;
+                    MessageBoxTimeout((System.IntPtr)0, $"{oldCoin.Name} deleted.", "Coins", 0, 0, 2000);
+                    break;
+                case NotifyCollectionChangedAction.Replace:
+                    Coin replasedCoin = e.OldItems[0] as Coin;
+                    Coin replasingCoin = e.NewItems[0] as Coin;
+                    MessageBoxTimeout((System.IntPtr)0, $"{replasedCoin.Name} replased {replasingCoin.Name}.", "Coins", 0, 0, 2000);
+                    break;
+            }
+        }
+
 
         #region selected coin 
         private Coin _selectedCoin;
@@ -260,7 +287,12 @@ namespace portfolio.ViewModels
             var result = MessageBox.Show("Are you sure?", $"Delete coin {_selectedCoin.Name}?", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-                coinManager.Delete(_selectedCoin.CoinId); //deleting only coin and relating, not transaction
+                //coinManager.Delete(_selectedCoin.CoinId); //deleting only coin and relating, not transaction
+                Coins.Remove(_selectedCoin);
+
+                //if (Transactions.Count > 0)
+                //    OnGetCointsExecuted(Groups[0].GroupId);
+    
             }
         }
         #endregion
