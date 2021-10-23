@@ -23,9 +23,9 @@ namespace portfolio.Domain.Entities
         public decimal CurrentPrice { get; set; }
         
         //public decimal ValueUSD { get; set; }
-        public decimal ValueByCurrentPrice { get; set; } //new
-        public decimal ValueByAveragePrice { get; set; } //new
-        
+        public decimal CurrentValue { get; set; } //new. Will change ValueCurrent 
+        public decimal ValueByAverage { get; set; } //new.  Will change ValueAverage
+
         private string pictureName = "no.png";
         public string PictureName
         {
@@ -67,8 +67,8 @@ namespace portfolio.Domain.Entities
             Amount = 0;
             PurchasePrice = 1;
             AveragePrice = 1;
-            ValueByAveragePrice = 1;
-            ValueByCurrentPrice = 1;
+            ValueByAverage = 1;
+            CurrentValue = 1;
             
             PictureName = ShortName + ".png";
             DateUpdate = DateTime.Now;
@@ -81,8 +81,8 @@ namespace portfolio.Domain.Entities
             Name = name + "Tww";
             ShortName = "DNT";
             Amount = 0;
-            ValueByCurrentPrice = 0;
-            ValueByAveragePrice = 0;
+            CurrentValue = 0;
+            ValueByAverage = 0;
             PictureName = ShortName + ".png";
             DateUpdate = DateTime.Now;
             Transactions = new List<Transaction>();
@@ -95,7 +95,7 @@ namespace portfolio.Domain.Entities
         //    ShortName = shortName;
         //    Amount = amount;
         //    CurrentPrice = currentPrice;
-        //    ValueByCurrentPrice = valueByCurrentPrice;
+        //    CurrentValue = valueByCurrentPrice;
         //    ValueByAveragePurchasePrice = valueByAveragePurchasePrice;
         //    PictureName = pictureName;
         //    DateUpdate = dateUpdate;
@@ -104,7 +104,7 @@ namespace portfolio.Domain.Entities
 
         public override string ToString()
         {
-            return $"Id{CoinId} - {ShortName}, amout = {Amount}, {ValueByCurrentPrice} USD.";
+            return $"Id{CoinId} - {ShortName}, amout = {Amount}, {CurrentValue} USD.";
         }
     }
 
