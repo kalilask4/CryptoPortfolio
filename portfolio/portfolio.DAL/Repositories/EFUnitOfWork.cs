@@ -37,8 +37,6 @@ namespace portfolio.DAL.Repositories
         {
         
                 context.SaveChanges();
-          
-           
      
         }
     }

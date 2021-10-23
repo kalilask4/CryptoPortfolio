@@ -95,6 +95,13 @@ namespace portfolio.Business.Infrastructure
 
             var coins = coinManager.Coins.ToArray();
 
+            Coin coin = new Coin("TConstrCoin1", 100, (decimal)1.1, (decimal)1.2);
+            Coin coin2 = new Coin("TConstrCoin2", 200, (decimal)5, (decimal)4.2);
+            List<Coin> coins2 = new List<Coin>();
+            coins2.Add(coin);
+            coins2.Add(coin2);
+            coinManager.AddRange(coins2);
+
             transactionManager.AddCoinToTransaction(coins[2], 0);
             transactionManager.AddCoinToTransaction(coins[0], 0);
             transactionManager.AddCoinToTransaction(coins[5], 3);

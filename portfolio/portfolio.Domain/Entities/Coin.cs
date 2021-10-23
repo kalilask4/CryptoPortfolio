@@ -89,6 +89,23 @@ namespace portfolio.Domain.Entities
             Transactions.Add(transaction);
         }
 
+        public Coin(string name, decimal amount, decimal purchasePrice, decimal currentPrice)
+        {
+            Name = name;
+            ShortName = name.Substring(0,3).ToUpper();
+            Amount = amount;
+            PurchasePrice = purchasePrice;
+            CurrentPrice = currentPrice;
+            AveragePrice = (decimal)(purchasePrice + currentPrice) /(decimal)2.0;
+            CurrentValue = CurrentPrice*amount;
+            AverageValue = amount*AveragePrice;
+            PictureName = ShortName + "png";
+            DateUpdate = DateTime.Today;
+            Transactions = new List<Transaction>();
+        }
+
+      
+
         //public Coin(string name, string shortName, decimal amount, decimal currentPrice, decimal valueByCurrentPrice, decimal valueByAveragePurchasePrice, string pictureName, DateTime dateUpdate)
         //{
         //    Name = name;
@@ -103,7 +120,7 @@ namespace portfolio.Domain.Entities
         //}
 
 
-        public cul
+
 
         public override string ToString()
         {
