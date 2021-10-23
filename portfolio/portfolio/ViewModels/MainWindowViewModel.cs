@@ -132,7 +132,7 @@ namespace portfolio.ViewModels
                 CurrentPrice = dialog.CurrentPrice,
                 
                 CurrentValue = 0,
-                ValueByAverage = 0,
+                AverageValue = 0,
                
                 DateUpdate = dialog.DateUpdate
 
@@ -265,7 +265,7 @@ namespace portfolio.ViewModels
             _selectedCoin.PurchasePrice = 1;
             _selectedCoin.CurrentPrice = dialog.CurrentPrice;
             _selectedCoin.CurrentValue = 0;
-            _selectedCoin.ValueByAverage = 0;
+            _selectedCoin.AverageValue = 0;
             _selectedCoin.DateUpdate = dialog.DateUpdate;
 
             coinManager.Update(SelectedCoin);

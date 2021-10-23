@@ -38,7 +38,7 @@ namespace portfolio.Business.Infrastructure
                     //PurchasePrice = 10  /only for transactions
                     AveragePrice = 150,
                     CurrentPrice = 200,
-                    ValueByAverage = 1500,
+                    AverageValue = 1500,
                     CurrentValue = 2000,
 
         },
@@ -51,7 +51,7 @@ namespace portfolio.Business.Infrastructure
                     //PurchasePrice = 10  /only for transactions
                     AveragePrice = 15,
                     CurrentPrice = 30,
-                    ValueByAverage = 1500,
+                    AverageValue = 1500,
                     CurrentValue = 3000,
                 },
                 new Coin
@@ -62,7 +62,7 @@ namespace portfolio.Business.Infrastructure
                     Amount = 2000,
                     AveragePrice = (decimal)2.5,
                     CurrentPrice = (decimal)1.7,
-                    ValueByAverage = 5000,
+                    AverageValue = 5000,
                     CurrentValue = 3400,
                 },
                 new Coin
@@ -88,7 +88,7 @@ namespace portfolio.Business.Infrastructure
                     Amount = 2000,
                     AveragePrice = (decimal)2.5,
                     CurrentPrice = (decimal)1.7,
-                    ValueByAverage = 5000,
+                    AverageValue = 5000,
                     CurrentValue = 3400,
                 },
             });

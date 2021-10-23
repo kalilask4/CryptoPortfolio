@@ -24,7 +24,7 @@ namespace portfolio.Domain.Entities
         
         //public decimal ValueUSD { get; set; }
         public decimal CurrentValue { get; set; } //new. Will change ValueCurrent 
-        public decimal ValueByAverage { get; set; } //new.  Will change ValueAverage
+        public decimal AverageValue { get; set; } //new.  Will change ValueAverage
 
         private string pictureName = "no.png";
         public string PictureName
@@ -67,7 +67,7 @@ namespace portfolio.Domain.Entities
             Amount = 0;
             PurchasePrice = 1;
             AveragePrice = 1;
-            ValueByAverage = 1;
+            AverageValue = 1;
             CurrentValue = 1;
             
             PictureName = ShortName + ".png";
@@ -82,7 +82,7 @@ namespace portfolio.Domain.Entities
             ShortName = "DNT";
             Amount = 0;
             CurrentValue = 0;
-            ValueByAverage = 0;
+            AverageValue = 0;
             PictureName = ShortName + ".png";
             DateUpdate = DateTime.Now;
             Transactions = new List<Transaction>();
@@ -101,6 +101,9 @@ namespace portfolio.Domain.Entities
         //    DateUpdate = dateUpdate;
         //    Transactions = new List<Transaction>();
         //}
+
+
+        public cul
 
         public override string ToString()
         {
