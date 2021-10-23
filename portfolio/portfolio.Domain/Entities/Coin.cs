@@ -17,9 +17,15 @@ namespace portfolio.Domain.Entities
         private string shortName;
         [Required]
         public decimal Amount { get; set; }
+        
+        public decimal PurchasePrice { get; set; } //new 
+        public decimal AveragePrice { get; set; } //Average purchase price
         public decimal CurrentPrice { get; set; }
-        public decimal ValueUSD { get; set; }
-        public decimal AveragePurchasePrice { get; set; }
+        
+        //public decimal ValueUSD { get; set; }
+        public decimal ValueByCurrentPrice { get; set; } //new
+        public decimal ValueByAveragePrice { get; set; } //new
+        
         private string pictureName = "no.png";
         public string PictureName
         {
@@ -54,12 +60,16 @@ namespace portfolio.Domain.Entities
         public List<Transaction> Transactions { get; set; }
 
 
-
         public Coin()
         {
             Name = "DefName";
-            ShortName = "NO";
+            ShortName = "DN";
             Amount = 0;
+            PurchasePrice = 1;
+            AveragePrice = 1;
+            ValueByAveragePrice = 1;
+            ValueByCurrentPrice = 1;
+            
             PictureName = ShortName + ".png";
             DateUpdate = DateTime.Now;
             Transactions = new List<Transaction>();
@@ -71,28 +81,30 @@ namespace portfolio.Domain.Entities
             Name = name + "Tww";
             ShortName = "DNT";
             Amount = 0;
+            ValueByCurrentPrice = 0;
+            ValueByAveragePrice = 0;
             PictureName = ShortName + ".png";
             DateUpdate = DateTime.Now;
             Transactions = new List<Transaction>();
             Transactions.Add(transaction);
         }
 
-        public Coin(string name, string shortName, decimal amount, decimal currentPrice, decimal valueUSD, string pictureName, DateTime dateUpdate)
-        {
-            Name = name;
-            ShortName = shortName;
-            Amount = amount;
-            CurrentPrice = currentPrice;
-            ValueUSD = valueUSD;
-            PictureName = pictureName;
-            DateUpdate = dateUpdate;
-            Transactions = new List<Transaction>();
-
-        }
+        //public Coin(string name, string shortName, decimal amount, decimal currentPrice, decimal valueByCurrentPrice, decimal valueByAveragePurchasePrice, string pictureName, DateTime dateUpdate)
+        //{
+        //    Name = name;
+        //    ShortName = shortName;
+        //    Amount = amount;
+        //    CurrentPrice = currentPrice;
+        //    ValueByCurrentPrice = valueByCurrentPrice;
+        //    ValueByAveragePurchasePrice = valueByAveragePurchasePrice;
+        //    PictureName = pictureName;
+        //    DateUpdate = dateUpdate;
+        //    Transactions = new List<Transaction>();
+        //}
 
         public override string ToString()
         {
-            return $"Id{CoinId} - {ShortName}, amout = {Amount}";
+            return $"Id{CoinId} - {ShortName}, amout = {Amount}, {ValueByCurrentPrice} USD.";
         }
     }
 

@@ -19,8 +19,6 @@ namespace portfolio.Business.Infrastructure
                     Side = "sell"
                 },
                 new Transaction {
-
-
                 },
                 new Transaction
                 {
@@ -29,26 +27,43 @@ namespace portfolio.Business.Infrastructure
                 }}
                 );
 
-
             coinManager.AddRange(new List<Coin>
             {
                 new Coin
                 {
                     Name = "Litecoin",
                     ShortName = "LTC",
-                    PictureName = "LTC.png"
-                },
+                    PictureName = "LTC.png",
+                    Amount = 10,
+                    //PurchasePrice = 10  /only for transactions
+                    AveragePrice = 150,
+                    CurrentPrice = 200,
+                    ValueByAveragePrice = 1500,
+                    ValueByCurrentPrice = 2000,
+
+        },
                 new Coin
                 {
                     Name = "Tron",
                     ShortName = "TRX",
-                    PictureName = "TRX.png"
+                    PictureName = "TRX.png",
+                    Amount = 100,
+                    //PurchasePrice = 10  /only for transactions
+                    AveragePrice = 15,
+                    CurrentPrice = 30,
+                    ValueByAveragePrice = 1500,
+                    ValueByCurrentPrice = 3000,
                 },
                 new Coin
                 {
                     Name = "Chainlink",
                     ShortName = "LINK",
-                    PictureName = "LINK.png"
+                    PictureName = "LINK.png",
+                    Amount = 2000,
+                    AveragePrice = (decimal)2.5,
+                    CurrentPrice = (decimal)1.7,
+                    ValueByAveragePrice = 5000,
+                    ValueByCurrentPrice = 3400,
                 },
                 new Coin
                 {
@@ -69,7 +84,12 @@ namespace portfolio.Business.Infrastructure
                 {
                     Name = "BNB",
                     ShortName = "BNB",
-                    PictureName = "BNB.png"
+                    PictureName = "BNB.png",
+                    Amount = 2000,
+                    AveragePrice = (decimal)2.5,
+                    CurrentPrice = (decimal)1.7,
+                    ValueByAveragePrice = 5000,
+                    ValueByCurrentPrice = 3400,
                 },
             });
 

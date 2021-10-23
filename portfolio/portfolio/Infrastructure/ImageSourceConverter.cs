@@ -19,6 +19,7 @@ namespace portfolio.Infrastructure
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return Path.Combine(ImageDirectory, (string)value);
+                       
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

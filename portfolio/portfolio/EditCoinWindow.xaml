@@ -76,13 +76,13 @@
             <!--<Label Grid.Column="1" Grid.Row="5" Content="Value, $" HorizontalAlignment="Right"/>-->
             <TextBox Grid.Column="1" Grid.Row="5" x:Name="textBoxValueUSD" Margin="65,5,59,5"
                      Background="MistyRose" Opacity="0.75" Text="{Binding Path=ValueUSD, FallbackValue='0'}" Grid.ColumnSpan="2" RenderTransformOrigin="0.526,0.467"/>
-            <TextBox Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="7" 
+            <TextBox Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="7" Text="{Binding Path=PictureName}"
                      Margin="113,10,10,10" />
             <Button Grid.Column="3" Grid.Row="6" Content="Choose file"
                     Width="87" HorizontalAlignment="Center"
                     Margin="0,6,0,4" Padding="5"
                     Command="{Binding SelectPictureNameCommand}"/>
-            <Image Grid.Row="6" Grid.RowSpan="3" Width="113" 
+            <Image Grid.Row="6" Grid.RowSpan="3" Width="137" 
                    HorizontalAlignment="Center" Source="{Binding PictureName}" Grid.Column="1"/>
             <TextBlock Grid.Column="0" Grid.Row="9" Text="Date update:" HorizontalAlignment="Left" Margin="21,0,0,0" Grid.ColumnSpan="2" Height="16" Width="73"/>
             <DatePicker Grid.Column="1" Grid.Row="9" Margin="47,2,0,2" 

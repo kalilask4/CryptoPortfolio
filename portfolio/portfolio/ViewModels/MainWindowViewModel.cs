@@ -126,9 +126,17 @@ namespace portfolio.ViewModels
                 Name = dialog.Name,
                 ShortName = dialog.ShortName,
                 Amount = dialog.Amount,
+               
+                PurchasePrice = 1, //dialog.PurchasePrice,
+                //AveragePrice = 1,
                 CurrentPrice = dialog.CurrentPrice,
-                ValueUSD = dialog.ValueUSD,
+                
+                ValueByCurrentPrice = 0,
+                ValueByAveragePrice = 0,
+               
                 DateUpdate = dialog.DateUpdate
+
+
             };
 
             if (coin.Name == null)
@@ -179,11 +187,24 @@ namespace portfolio.ViewModels
 
         private void OnGetTransactionExecuted(object id)
         {
-            TransactionsFromCoin.Clear();
-            var transactions = coinManager.GetTransactionsOfCoin((int)id);
-            foreach (var transaction in transactions)
-                TransactionsFromCoin.Add(transaction);
+            //try
+           // {
+                TransactionsFromCoin.Clear();
+            if (id is not null)
+            {
+                var transactions = coinManager.GetTransactionsOfCoin((int)id);
+                foreach (var transaction in transactions)
+                    TransactionsFromCoin.Add(transaction);
+            }
+              //  }
+                
+            //}
+            //catch (NullReferenceException ex)
+            //{
+            //    MessageBox.Show("empty coin ");
+            //}
         }
+
         #endregion
 
         #region Edit coin
@@ -203,47 +224,53 @@ namespace portfolio.ViewModels
                 Name = _selectedCoin.Name,
                 ShortName = _selectedCoin.ShortName,
                 Amount = _selectedCoin.Amount,
+                //PurchasePrice = 1,// _selectedCoin.PurchasePrice, //dialog.PurchasePrice,
                 CurrentPrice = _selectedCoin.CurrentPrice,
-                ValueUSD = _selectedCoin.ValueUSD,
+                //ValueByCurrentPrice = 0,
+                //ValueByAveragePurchasePrice = 0,
                 DateUpdate = _selectedCoin.DateUpdate,
                 PictureName = _selectedCoin.PictureName
             };
             if (dialog.ShowDialog() != true) return;
 
             // to Images
-            var imageFolderPass =
-            Path.Combine(Directory.GetCurrentDirectory(), "Images");
+            var imageFolderPass = Path.Combine(Directory.GetCurrentDirectory(), "Images");
             // for new picture
-            try
-            {
-                if (!_selectedCoin.PictureName.Equals(dialog?.PictureName))
-                {
+            //try
+            //{
+            //MessageBox.Show("1 dialog - " + dialog.PictureName);
+            //MessageBox.Show("2 seelcted - "+ _selectedCoin.PictureName);
 
-                    // delete old picture
-                    File.Delete(Path.Combine(imageFolderPass,
-                    _selectedCoin.PictureName));
-                    // get new picture
-                    var newImage = Path.GetFileName(dialog.PictureName);
-                    // copy file to Images
-                    File.Copy(dialog.PictureName, Path.Combine(imageFolderPass,
-                    newImage));
-
-                    _selectedCoin.PictureName = newImage;
-                }
-            }
-            catch
+            if (!_selectedCoin.PictureName.Equals(dialog?.PictureName))
             {
-                _selectedCoin.PictureName = "NO.png";
+                // delete old picture
+                //_selectedCoin.PictureName = null;
+                File.Delete(Path.Combine(imageFolderPass, _selectedCoin.PictureName));
+                                     // get new picture
+                var newImage = Path.GetFileName(dialog.PictureName);
+                                     // copy file to Images
+                File.Copy(dialog.PictureName, Path.Combine(imageFolderPass, newImage));
+
+                _selectedCoin.PictureName = newImage;
             }
+            //}
+            //catch
+            //{
+            //    _selectedCoin.PictureName = "NO.png";
+            //}
 
             _selectedCoin.Name = dialog.Name;
             _selectedCoin.ShortName = dialog.ShortName;
             _selectedCoin.Amount = dialog.Amount;
+            _selectedCoin.PurchasePrice = 1;
             _selectedCoin.CurrentPrice = dialog.CurrentPrice;
-            _selectedCoin.ValueUSD = dialog.ValueUSD;
+            _selectedCoin.ValueByCurrentPrice = 0;
+            _selectedCoin.ValueByAveragePrice = 0;
             _selectedCoin.DateUpdate = dialog.DateUpdate;
-            
+
+            coinManager.Update(SelectedCoin);
             OnGetTransactionExecuted(_selectedCoin.CoinId);
+                        
         }
         #endregion
 
@@ -261,10 +288,9 @@ namespace portfolio.ViewModels
             var result = MessageBox.Show("Are you sure?", $"Delete coin {_selectedCoin.Name}?", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-                //coinManager.Delete(_selectedCoin.CoinId); //deleting only coin and relating, not transaction
-                Coins.Remove(_selectedCoin);
-                //if (Transactions.Count > 0)
-                //    OnGetCointsExecuted(Groups[0].GroupId);
+                coinManager.Delete(_selectedCoin.CoinId); //deleting only coin and relating, not transaction
+                OnGetTransactionExecuted(_selectedCoin.CoinId);
+                //Coins.Remove(SelectedCoin);
             }
         }
         #endregion

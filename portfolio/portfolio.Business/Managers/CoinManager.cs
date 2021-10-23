@@ -45,7 +45,6 @@ namespace portfolio.Business.Managers
         }
         #endregion
 
-
         public void AddRange(List<Coin> coin)
         {
             coin.ForEach(c => coinRepository.Create(c));
@@ -76,7 +75,7 @@ namespace portfolio.Business.Managers
         //!! need fix - Buyings
         public void RemoveTransactionFromCoin(Transaction transaction, int coinId)
         {
-            var coin = coinRepository.Get(coinId, "Buyings");
+            var coin = coinRepository.Get(coinId);
             coin.Transactions.Remove(transaction);
             coinRepository.Update(coin);
             transaction.TransactionCoins.Remove(coin);
