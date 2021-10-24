@@ -8,7 +8,7 @@
         xmlns:inf="clr-namespace:portfolio.Infrastructure"
         xmlns:fas="http://schemas.fontawesome.com/icons/"
         mc:Ignorable="d"
-        Title="Crypto portfolio" Height="450" Width="800">
+        Title="Crypto portfolio" Height="500" Width="850">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
@@ -69,7 +69,7 @@
     </Window.Background>
     <Grid x:Name="gridGeneral" Margin="8. 8. 8. 8.">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.55*"></ColumnDefinition>
+            <ColumnDefinition Width="1.9*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -120,8 +120,8 @@
                             <ColumnDefinition Width="361*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition Height="80"></RowDefinition>
+                            <RowDefinition Height="2.2*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
                         </Grid.RowDefinitions>
 
 
@@ -157,19 +157,23 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTextColumn Header="Coin" Width="55"
-                                                            Binding="{Binding Path=Name}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="" Width="35" 
-                                                            Binding="{Binding Path=ShortName}"></DataGridTextColumn>
+                                        <!--<DataGridTextColumn Header="Coin" Width="55"
+                                                            Binding="{Binding Path=Name}"></DataGridTextColumn>-->
+                                        <DataGridTextColumn Header="" Width="35" Binding="{Binding Path=ShortName}"></DataGridTextColumn>
                                         <DataGridTextColumn Width="65" Header="Amount"
                                                             Binding="{Binding Path=Amount}"></DataGridTextColumn>
-                                        <DataGridTextColumn Width="55" Header="Purchase price"
-                                                            Binding="{Binding Path=AveragePurchasePrice, StringFormat={}{0:C}}"></DataGridTextColumn>
+                                        <DataGridTextColumn Width="55" Header="Average purchase price"
+                                                            Binding="{Binding Path=AveragePrice, StringFormat={}{0:C}}"></DataGridTextColumn>
                                         <DataGridTextColumn Width="55" Header="Current price"
                                                             Binding="{Binding Path=CurrentPrice, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                        <DataGridTextColumn Width="65" Header="Sum"
-                                                            Binding="{Binding Path=ValueUSD, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                        <DataGridTextColumn Width="65" Header="Diff"></DataGridTextColumn>
+                                        <DataGridTextColumn Width="65" Header="Value by bougth"
+                                                            Binding="{Binding Path=AverageValue, StringFormat={}{0:C}}"></DataGridTextColumn>
+                                        <DataGridTextColumn Width="65" Header="Value current"
+                                                            Binding="{Binding Path=CurrentValue, StringFormat={}{0:C}}"></DataGridTextColumn>
+                                        <DataGridTextColumn x:Name="tcProfitUSD" Width="60" Header="Profit, $"
+                                                            Binding="{Binding Path=ProfitUSD, StringFormat={}{0:C2}}"></DataGridTextColumn>
+                                        <DataGridTextColumn x:Name="tcProfitPers" Width="65" Header="Profit, %"
+                                                            Binding="{Binding Path=ProfitPers, StringFormat={}{0:P2}}"></DataGridTextColumn>
                                     </DataGrid.Columns>
 
                                 </DataGrid>
