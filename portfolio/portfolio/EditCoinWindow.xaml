@@ -67,15 +67,23 @@
                      Text="{Binding Amount, FallbackValue='0'}" Margin="13,2,10,0"/>
             <Label Grid.Row="2" Grid.Column="2" Content="Current price, $" HorizontalAlignment="Left" Margin="35,28,0,2" Width="90" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
             <TextBox Grid.Column="3" Grid.Row="3" x:Name="textBoxCurrentPrice"
-                     ToolTip="Last brocker price" ToolTipService.ShowDuration="1000"
+                     ToolTip="Set last brocker price" ToolTipService.ShowDuration="1000"
                      Text="{Binding Amount, FallbackValue='0'}" Margin="13,2,30,0"/>
             <Label Grid.Column="0" Grid.Row="4" Content="Price, $" HorizontalAlignment="Left" Margin="21,0,0,0" Width="49"/>
             <TextBox Grid.Column="1" Grid.Row="4" x:Name="textBoxPrice" 
                      ToolTip="Purchase price" ToolTipService.ShowDuration="1000"
                      Text="{Binding Path=CurrentPrice, FallbackValue='0'}" Margin="13,2,10,0"/>
+            <Label Grid.Column="2" Grid.Row="4" Content="AveragePrice, $" HorizontalAlignment="Left" Margin="15,0,0,0" Width="92"/>
+            <TextBlock Grid.Column="3" Grid.Row="4" x:Name="textBoxAveragePrice" 
+                     ToolTip="Average price" ToolTipService.ShowDuration="1000"
+                     Text="{Binding Path=AveragePrice}" Margin="13,5,10,0"/>
             <!--<Label Grid.Column="1" Grid.Row="5" Content="Value, $" HorizontalAlignment="Right"/>-->
             <TextBox Grid.Column="1" Grid.Row="5" x:Name="textBoxValueUSD" Margin="65,5,59,5"
                      Background="MistyRose" Opacity="0.75" Text="{Binding Path=ValueUSD, FallbackValue='0'}" Grid.ColumnSpan="2" RenderTransformOrigin="0.526,0.467"/>
+
+
+
+
             <TextBox Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="7" Text="{Binding Path=PictureName}"
                      Margin="113,10,10,10" />
             <Button Grid.Column="3" Grid.Row="6" Content="Choose file"
