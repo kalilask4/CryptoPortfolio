@@ -93,18 +93,49 @@ namespace portfolio.Domain.Entities
         {
             Name = name;
             ShortName = name.Substring(0,3).ToUpper();
-            Amount = amount;
+            Amount = culcAmount(amount);
             PurchasePrice = purchasePrice;
             CurrentPrice = currentPrice;
-            AveragePrice = (decimal)(purchasePrice + currentPrice) /(decimal)2.0;
-            CurrentValue = CurrentPrice*amount;
-            AverageValue = amount*AveragePrice;
+
+            AveragePrice = culcAveragePrice(purchasePrice);
+            CurrentValue = culcCurrentValue(amount, currentPrice);
+
+            AverageValue = culcAverageValue(amount, purchasePrice);
             PictureName = ShortName + "png";
             DateUpdate = DateTime.Today;
             Transactions = new List<Transaction>();
         }
 
-      
+        public decimal culcAmount(decimal amount)
+        {
+            return this.Amount + amount;
+        }
+
+
+        public decimal culcAveragePrice(decimal purchasePrice)
+        {
+            if (this.AveragePrice != 0)
+            {
+                return (purchasePrice + this.AveragePrice) / (decimal)2.0;
+            }
+            return purchasePrice;
+        }
+
+        public decimal culcCurrentValue(decimal amount, decimal currentPrice)
+        {
+            return this.Amount*currentPrice;
+        }
+
+        public decimal culcAverageValue(decimal amount, decimal purchasePrice)
+        {
+
+            if (this.AveragePrice != 0)
+            {
+                return this.culcAveragePrice(purchasePrice) * amount;
+            }
+            return (this.Amount + amount) * purchasePrice; 
+            }
+        }
 
         //public Coin(string name, string shortName, decimal amount, decimal currentPrice, decimal valueByCurrentPrice, decimal valueByAveragePurchasePrice, string pictureName, DateTime dateUpdate)
         //{
@@ -122,11 +153,11 @@ namespace portfolio.Domain.Entities
 
 
 
-        public override string ToString()
-        {
-            return $"Id{CoinId} - {ShortName}, amout = {Amount}, {CurrentValue} USD.";
-        }
+        //public override string ToString()
+        //{
+        //    return $"Id{CoinId} - {ShortName}, amout = {Amount}, {CurrentValue} USD.";
+        //}
     }
 
 
-}
+

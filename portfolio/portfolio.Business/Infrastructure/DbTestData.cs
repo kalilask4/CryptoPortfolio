@@ -91,15 +91,27 @@ namespace portfolio.Business.Infrastructure
                     AverageValue = 5000,
                     CurrentValue = 3400,
                 },
+                new Coin
+                {
+                    Name = "4testconstr",
+                    Amount = 10,
+                    PurchasePrice = (decimal)5,
+                    CurrentPrice = (decimal)4.2,
+
+                },
+                new Coin("5testconstr", 10, (decimal)5, (decimal)4.2)
+
             });
 
             var coins = coinManager.Coins.ToArray();
 
-            Coin coin = new Coin("TConstrCoin1", 100, (decimal)1.1, (decimal)1.2);
-            Coin coin2 = new Coin("TConstrCoin2", 200, (decimal)5, (decimal)4.2);
+            Coin coin = new Coin("1testconstr", 100, (decimal)1.1, (decimal)1.2);
+            Coin coin2 = new Coin("2testConstr", 200, (decimal)5, (decimal)4.2);
+            Coin coin3 = new Coin("3testconstr", 10, (decimal)5, (decimal)4.2);
             List<Coin> coins2 = new List<Coin>();
             coins2.Add(coin);
             coins2.Add(coin2);
+            coins2.Add(coin3);
             coinManager.AddRange(coins2);
 
             transactionManager.AddCoinToTransaction(coins[2], 0);
