@@ -18,13 +18,16 @@ namespace portfolio.Domain.Entities
         [Required]
         public decimal Amount { get; set; }
         
-        public decimal PurchasePrice { get; set; } //new 
+        public decimal PurchasePrice { get; set; } //last purchase price
         public decimal AveragePrice { get; set; } //Average purchase price
-        public decimal CurrentPrice { get; set; }
+        public decimal CurrentPrice { get; set; } 
         
         //public decimal ValueUSD { get; set; }
-        public decimal CurrentValue { get; set; } //new. Will change ValueCurrent 
-        public decimal AverageValue { get; set; } //new.  Will change ValueAverage
+        public decimal CurrentValue { get; set; }
+        public decimal AverageValue { get; set; }
+
+        public decimal ProfitUSD { get; set; }
+        public decimal ProfitPers { get; set; }
 
         private string pictureName = "no.png";
         public string PictureName
@@ -99,8 +102,12 @@ namespace portfolio.Domain.Entities
 
             AveragePrice = culcAveragePrice(purchasePrice);
             CurrentValue = culcCurrentValue(amount, currentPrice);
-
             AverageValue = culcAverageValue(amount, purchasePrice);
+
+            ProfitUSD = CurrentValue - AverageValue;
+            ProfitPers = (CurrentValue - AverageValue) / CurrentPrice;
+
+
             PictureName = ShortName + "png";
             DateUpdate = DateTime.Today;
             Transactions = new List<Transaction>();

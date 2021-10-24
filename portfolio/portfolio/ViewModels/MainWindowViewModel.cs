@@ -58,6 +58,8 @@ namespace portfolio.ViewModels
            
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
+
+            
         }
 
         private static void Coins_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

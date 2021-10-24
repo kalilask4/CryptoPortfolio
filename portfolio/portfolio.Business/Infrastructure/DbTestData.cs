@@ -91,7 +91,7 @@ namespace portfolio.Business.Infrastructure
                     AverageValue = 5000,
                     CurrentValue = 3400,
                 },
-                new Coin
+                new Coin                                     //created with empty constructor, after fields changed
                 {
                     Name = "4testconstr",
                     Amount = 10,
@@ -99,7 +99,7 @@ namespace portfolio.Business.Infrastructure
                     CurrentPrice = (decimal)4.2,
 
                 },
-                new Coin("5testconstr", 10, (decimal)5, (decimal)4.2)
+                new Coin("5testconstr", 10, (decimal)5, (decimal)4.2) //created with not empty constructor, methods was called
 
             });
 
