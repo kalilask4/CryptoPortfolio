@@ -52,7 +52,7 @@
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
             <TextBlock Visibility="Hidden" x:Name="tbName" Grid.Column="0" Text="Coin name:" HorizontalAlignment="Left" Margin="30,0,0,0" Grid.ColumnSpan="2" Height="16" Width="63"/>
-            <TextBox  x:Name="tboxName" Grid.ColumnSpan="4" Grid.Row="0" Text="{Binding Name}"  Margin="46,5,30,2"
+            <TextBox  x:Name="tboxName" Grid.ColumnSpan="4" Grid.Row="0" Text="{Binding Name, FallbackValue='New coin'}"  Margin="46,5,30,2"
                       ToolTip="Fill coin name" ToolTipService.ShowDuration="1000"/>
             <TextBlock x:Name="tbShortName" Grid.Column="1" Grid.Row="1" Text="Short name:" HorizontalAlignment="Left" Margin="13,19,0,0" VerticalAlignment="Top" Width="78" Height="16" Grid.RowSpan="2"/>
             <TextBox x:Name="tboxShortName" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1"  Margin="10,14,69,15"                     
@@ -68,11 +68,13 @@
             <Label Grid.Row="2" Grid.Column="2" Content="Current price, $" HorizontalAlignment="Left" Margin="35,28,0,2" Width="90" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
             <TextBox Grid.Column="3" Grid.Row="3" x:Name="textBoxCurrentPrice"
                      ToolTip="Set last brocker price" ToolTipService.ShowDuration="1000"
-                     Text="{Binding Amount, FallbackValue='0'}" Margin="13,2,30,0"/>
+                     Text="{Binding CurrentPrice}" Margin="13,2,30,0"/>
             <Label Grid.Column="0" Grid.Row="4" Content="Price, $" HorizontalAlignment="Left" Margin="21,0,0,0" Width="49"/>
-            <TextBox Grid.Column="1" Grid.Row="4" x:Name="textBoxPrice" 
-                     ToolTip="Purchase price" ToolTipService.ShowDuration="1000"
-                     Text="{Binding Path=CurrentPrice, FallbackValue='0'}" Margin="13,2,10,0"/>
+            <TextBox x:Name="tbPurchasePrice" Grid.Column="1" Grid.Row="4"  
+                     Text="{Binding PurchasePrice}" Margin="13,2,10,0"
+                     ToolTip="Purchase price" ToolTipService.ShowDuration="1000"/>
+            
+            
             <Label Grid.Column="2" Grid.Row="4" Content="AveragePrice, $" HorizontalAlignment="Left" Margin="15,0,0,0" Width="92"/>
             <TextBlock Grid.Column="3" Grid.Row="4" x:Name="textBoxAveragePrice" 
                      ToolTip="Average price" ToolTipService.ShowDuration="1000"
