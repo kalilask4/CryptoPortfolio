@@ -78,18 +78,35 @@ namespace portfolio
             new PropertyMetadata(default(decimal)));
 
 
-        public decimal ValueUSD
+
+
+
+        public decimal PurchasePrice
         {
-            get { return (decimal)GetValue(ValueUSDProperty); }
-            set { SetValue(ValueUSDProperty, value); }
+            get { return (decimal)GetValue(PurchasePriceProperty); }
+            set { SetValue(PurchasePriceProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for
         //Name.This enables animation, styling, binding, etc.
-        public static readonly DependencyProperty ValueUSDProperty = DependencyProperty
-            .Register("ValueUSD", typeof(decimal),
+        public static readonly DependencyProperty PurchasePriceProperty = DependencyProperty
+            .Register("PurchasePrice", typeof(decimal),
             typeof(EditCoinWindow),
             new PropertyMetadata(default(decimal)));
+
+
+        //public decimal ValueUSD
+        //{
+        //    get { return (decimal)GetValue(ValueUSDProperty); }
+        //    set { SetValue(ValueUSDProperty, value); }
+        //}
+
+        //// Using a DependencyProperty as the backing store for
+        ////Name.This enables animation, styling, binding, etc.
+        //public static readonly DependencyProperty ValueUSDProperty = DependencyProperty
+        //    .Register("ValueUSD", typeof(decimal),
+        //    typeof(EditCoinWindow),
+        //    new PropertyMetadata(default(decimal)));
 
 
         public string PictureName
@@ -157,7 +174,7 @@ namespace portfolio
             try
             {
                 //tboxShortName.Text = tboxName.Text.Substring(0, 3).ToUpper();
-                textBoxValueUSD.Text = (Convert.ToDecimal(textBoxAmount.Text) * Convert.ToDecimal(textBoxPrice.Text)).ToString();
+                textBoxValueUSD.Text = (Convert.ToDecimal(textBoxAmount.Text) * Convert.ToDecimal(tbPurchasePrice.Text)).ToString();
                
             }
             catch
@@ -177,8 +194,9 @@ namespace portfolio
         {
             if (tboxName.Text == "")
             {
-                tboxName.Text = "Coin name";
-                
+                //tboxName.Text = "Type coin name";
+                tboxShortName.Text = "Type short coin name";
+
             }
             
             //tboxName.ToolTip = "Type coin name";
