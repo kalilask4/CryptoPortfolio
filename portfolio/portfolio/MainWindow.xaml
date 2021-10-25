@@ -8,7 +8,8 @@
         xmlns:inf="clr-namespace:portfolio.Infrastructure"
         xmlns:fas="http://schemas.fontawesome.com/icons/"
         mc:Ignorable="d"
-        Title="Crypto portfolio" Height="500" Width="850">
+        Title="Crypto portfolio" Height="600" Width="1100"
+        WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
@@ -148,11 +149,11 @@
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
                                         <DataGridTextColumn Header="" Width="35" Binding="{Binding Path=ShortName}"></DataGridTextColumn>
-                                        <DataGridTextColumn Width="65" Header="Amount"
+                                        <DataGridTextColumn Width="70" Header="Amount"
                                                             Binding="{Binding Path=Amount}"></DataGridTextColumn>
-                                        <DataGridTextColumn Width="55" Header="Average purchase price"
+                                        <DataGridTextColumn Width="auto" Header="Average purchase price"
                                                             Binding="{Binding Path=AveragePrice, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                        <DataGridTextColumn Width="55" Header="Current price"
+                                        <DataGridTextColumn Width="auto" Header="Current price"
                                                             Binding="{Binding Path=CurrentPrice, StringFormat={}{0:C}}"></DataGridTextColumn>
                                         <DataGridTextColumn Width="65" Header="Value by bougth"
                                                             Binding="{Binding Path=AverageValue, StringFormat={}{0:C}}"></DataGridTextColumn>
@@ -166,9 +167,9 @@
                                 </DataGrid>
                             </DockPanel>
                         </Border>
-                        <DockPanel Grid.ColumnSpan="2" Margin="0,270,0,0" Grid.RowSpan="2">
+                        <DockPanel  Grid.Row ="1" Grid.ColumnSpan="2" Margin="0,0,0,0" Grid.RowSpan="2">
                             <GroupBox Header="Coin transactions" Margin="0" Padding="0">
-                                <ListView x:Name="lvTransactions" ItemsSource="{Binding TransactionsFromCoin}">
+                                <ListView x:Name="lvTransactions" ItemsSource="{Binding TransactionsFromCoin}" Background="Beige">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">

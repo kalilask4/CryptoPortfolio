@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="" Height="450" Width="400"
-        WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <DockPanel Background="Beige">
         <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,7,0,0" 
                    Text="Edit coin" FontWeight="Bold" FontSize="15"/>
@@ -51,7 +51,7 @@
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
-            <TextBlock Visibility="Hidden" x:Name="tbName" Grid.Column="0" Text="Coin name:" HorizontalAlignment="Left" Margin="30,0,0,0" Grid.ColumnSpan="2" Height="16" Width="63"/>
+            <!--<TextBlock Visibility="Hidden" x:Name="tbName" Grid.Column="0" Text="Coin name:" HorizontalAlignment="Left" Margin="30,0,0,0" Grid.ColumnSpan="2" Height="16" Width="63"/>-->
             <TextBox  x:Name="tboxName" Grid.ColumnSpan="4" Grid.Row="0" Text="{Binding Name, FallbackValue='New coin'}"  Margin="46,5,30,2"
                       ToolTip="Fill coin name" ToolTipService.ShowDuration="1000"/>
             <TextBlock x:Name="tbShortName" Grid.Column="1" Grid.Row="1" Text="Short name:" HorizontalAlignment="Left" Margin="13,19,0,0" VerticalAlignment="Top" Width="78" Height="16" Grid.RowSpan="2"/>
