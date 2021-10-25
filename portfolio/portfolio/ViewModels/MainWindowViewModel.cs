@@ -208,6 +208,7 @@ namespace portfolio.ViewModels
                 Amount = _selectedCoin.Amount,
                 PurchasePrice = _selectedCoin.PurchasePrice, 
                 CurrentPrice = _selectedCoin.CurrentPrice,
+                AveragePrice = _selectedCoin.AveragePrice,
                 DateUpdate = _selectedCoin.DateUpdate,
                 PictureName = _selectedCoin.PictureName
             };

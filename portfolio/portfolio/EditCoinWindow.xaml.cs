@@ -78,6 +78,20 @@ namespace portfolio
             new PropertyMetadata(default(decimal)));
 
 
+        public decimal AveragePrice
+        {
+            get { return (decimal)GetValue(AveragePriceProperty); }
+            set { SetValue(AveragePriceProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for
+        //Name.This enables animation, styling, binding, etc.
+        public static readonly DependencyProperty AveragePriceProperty = DependencyProperty
+            .Register("AveragePrice", typeof(decimal),
+            typeof(EditCoinWindow),
+            new PropertyMetadata(default(decimal)));
+
+
 
 
 
