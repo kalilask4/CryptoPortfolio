@@ -43,13 +43,10 @@ namespace portfolio
             set { SetValue(ShortNameProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for
-        //Name.This enables animation, styling, binding, etc.
         public static readonly DependencyProperty ShortNameProperty = DependencyProperty
             .Register("ShortName", typeof(string),
             typeof(EditCoinWindow),
             new PropertyMetadata(default(string)));
-
 
         public decimal Amount
         {
@@ -57,8 +54,6 @@ namespace portfolio
             set { SetValue(AmountProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for
-        //Name.This enables animation, styling, binding, etc.
         public static readonly DependencyProperty AmountProperty = DependencyProperty
             .Register("Amount", typeof(decimal),
             typeof(EditCoinWindow),
@@ -70,13 +65,10 @@ namespace portfolio
             set { SetValue(CurrentPriceProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for
-        //Name.This enables animation, styling, binding, etc.
         public static readonly DependencyProperty CurrentPriceProperty = DependencyProperty
             .Register("CurrentPrice", typeof(decimal),
             typeof(EditCoinWindow),
             new PropertyMetadata(default(decimal)));
-
 
         public decimal AveragePrice
         {
@@ -84,16 +76,10 @@ namespace portfolio
             set { SetValue(AveragePriceProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for
-        //Name.This enables animation, styling, binding, etc.
         public static readonly DependencyProperty AveragePriceProperty = DependencyProperty
             .Register("AveragePrice", typeof(decimal),
             typeof(EditCoinWindow),
             new PropertyMetadata(default(decimal)));
-
-
-
-
 
         public decimal PurchasePrice
         {
@@ -101,27 +87,10 @@ namespace portfolio
             set { SetValue(PurchasePriceProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for
-        //Name.This enables animation, styling, binding, etc.
         public static readonly DependencyProperty PurchasePriceProperty = DependencyProperty
             .Register("PurchasePrice", typeof(decimal),
             typeof(EditCoinWindow),
             new PropertyMetadata(default(decimal)));
-
-
-        //public decimal ValueUSD
-        //{
-        //    get { return (decimal)GetValue(ValueUSDProperty); }
-        //    set { SetValue(ValueUSDProperty, value); }
-        //}
-
-        //// Using a DependencyProperty as the backing store for
-        ////Name.This enables animation, styling, binding, etc.
-        //public static readonly DependencyProperty ValueUSDProperty = DependencyProperty
-        //    .Register("ValueUSD", typeof(decimal),
-        //    typeof(EditCoinWindow),
-        //    new PropertyMetadata(default(decimal)));
-
 
         public string PictureName
         {
@@ -135,7 +104,6 @@ namespace portfolio
             typeof(EditCoinWindow), 
             new PropertyMetadata(default(string)));
 
-
         public DateTime DateUpdate
         {
             get { return (DateTime)GetValue(DateUpdateProperty); }
@@ -148,6 +116,13 @@ namespace portfolio
             typeof(EditCoinWindow), 
             new PropertyMetadata(default(DateTime)));
 
+
+
+        public EditCoinWindow()
+        {
+            InitializeComponent();
+
+        }
 
 
         private ICommand _selectPictureNameCommand;
@@ -172,16 +147,7 @@ namespace portfolio
             this.DialogResult = true;
             this.Close();
         }
-
-
         #endregion
-
-        public EditCoinWindow()
-        {
-            InitializeComponent();
-            
-        }
-
 
         private void btnFill_Click(object sender, RoutedEventArgs e)
         {
@@ -210,11 +176,9 @@ namespace portfolio
             {
                 //tboxName.Text = "Type coin name";
                 tboxShortName.Text = "Type short coin name";
-
             }
             
             //tboxName.ToolTip = "Type coin name";
-            
         }
     }
 }
