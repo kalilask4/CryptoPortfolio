@@ -11,15 +11,13 @@ namespace portfolio.Domain.Entities
     {
         [Key]
         public int CoinId { get; set; }
-        //[Required]
-        //public string Name { get; set; }
         private string name = "No name coin";
         private string shortName = "NONAME" ;
         [Required]
         public decimal Amount { get; set; }
         
-        public decimal PurchasePrice { get; set; } //last purchase price
-        public decimal AveragePrice { get; set; } //Average purchase price
+        public decimal PurchasePrice { get; set; }//last purchase price
+        public decimal AveragePrice { get; set; }//Average purchase price
         public decimal CurrentPrice { get; set; } 
         
         public decimal CurrentValue { get; set; }
@@ -186,9 +184,6 @@ namespace portfolio.Domain.Entities
         //    DateUpdate = dateUpdate;
         //    Transactions = new List<Transaction>();
         //}
-
-
-
 
         //public override string ToString()
         //{

@@ -82,11 +82,6 @@ namespace portfolio.ViewModels
             }
         }
 
-        public void DoNothing()
-        {
-        }
-
-
         #region selected coin 
         private Coin _selectedCoin;
         public Coin SelectedCoin
@@ -128,7 +123,6 @@ namespace portfolio.ViewModels
             if (dialog.ShowDialog() != true) return;
 
             
-
             var coin = new Coin
             {
 
@@ -145,17 +139,6 @@ namespace portfolio.ViewModels
 
 
             };
-
-           /* if (coin.Name == null)
-            {
-                coin.Name = "Noname";
-            }
-
-            if (coin.ShortName == null)
-            {
-                coin.Name = coin.Name.Substring(0, 3).ToLower();
-            }
-           */
 
             var fileName = Path.GetFileName(dialog.PictureName);
             if (fileName != null)
