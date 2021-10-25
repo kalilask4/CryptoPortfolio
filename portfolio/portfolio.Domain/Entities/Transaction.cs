@@ -9,17 +9,15 @@ namespace portfolio.Domain.Entities
         [Key]
         public int TransactionId { get; set; }
         public string Symbol { get; set; } //like Name exs BTNBTC
-        [Required]
-        private string side = "transfer";
-        private static readonly List<string> sideType = new() { "buy", "sell", "transfer" };
-        
         public decimal Amount { get; set; }
         public decimal Priсe { get; set; }
         public decimal Sum { get; set; }
         public DateTime DateUpdate { get; set; }
         // навигационное свойство
         public List<Coin> TransactionCoins { get; set; }
-        
+        [Required]
+        private string side = "transfer";
+        public static readonly List<string> sideType = new() { "transfer", "buy", "sell"};
         public string Side
         {
             get { return side; }

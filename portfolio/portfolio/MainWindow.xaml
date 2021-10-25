@@ -143,25 +143,25 @@
                                                 <DataTemplate>
                                                     <Image 
                                                         Stretch="Fill" 
-                                                        Width="20" Height="20" 
+                                                        Width="23" Height="23" 
                                                         Source="{Binding PictureName, Converter={StaticResource ImageSourceConverter}, Mode=TwoWay}"/>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTextColumn Header="" Width="35" Binding="{Binding Path=ShortName}"></DataGridTextColumn>
-                                        <DataGridTextColumn Width="70" Header="Amount"
+                                        <DataGridTextColumn Header="Coin" Width="65" Binding="{Binding Path=ShortName}"></DataGridTextColumn>
+                                        <DataGridTextColumn Width="100" Header="Amount"
                                                             Binding="{Binding Path=Amount}"></DataGridTextColumn>
-                                        <DataGridTextColumn Width="auto" Header="Average purchase price"
+                                        <DataGridTextColumn Width="70" Header="Average purchase price"
                                                             Binding="{Binding Path=AveragePrice, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                        <DataGridTextColumn Width="auto" Header="Current price"
+                                        <DataGridTextColumn Width="70" Header="Current price"
                                                             Binding="{Binding Path=CurrentPrice, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                        <DataGridTextColumn Width="65" Header="Value by bougth"
+                                        <DataGridTextColumn Width="70" Header="Value by bougth"
                                                             Binding="{Binding Path=AverageValue, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                        <DataGridTextColumn Width="65" Header="Value current"
+                                        <DataGridTextColumn Width="90" Header="Value current"
                                                             Binding="{Binding Path=CurrentValue, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                        <DataGridTextColumn x:Name="tcProfitUSD" Width="60" Header="Profit, $"
+                                        <DataGridTextColumn x:Name="tcProfitUSD" Width="70" Header="Profit, $"
                                                             Binding="{Binding Path=ProfitUSD, StringFormat={}{0:C2}}"></DataGridTextColumn>
-                                        <DataGridTextColumn x:Name="tcProfitPers" Width="65" Header="Profit, %"
+                                        <DataGridTextColumn x:Name="tcProfitPers" Width="70" Header="Profit, %"
                                                             Binding="{Binding Path=ProfitPers, StringFormat={}{0:P2}}"></DataGridTextColumn>
                                     </DataGrid.Columns>
                                 </DataGrid>
