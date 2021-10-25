@@ -275,7 +275,16 @@
                 <ColumnDefinition Width="0.7*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel x:Name="st1" Grid.Column="0" Margin="0 100 15 10" VerticalAlignment="Bottom">
+            <StackPanel x:Name="st1" Grid.Column="0" Margin="5 10 5 5" >
+                <!--VerticalAlignment="Bottom"-->
+                <Button x:Name="Culc" ToolTip="Culculate" ToolTipService.ShowDuration="2000" Command="{Binding CulcCoinCommand}">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
+                    <fas:FontAwesome Icon="Solid_calculator" FontSize="12" Width="21" />
+                </Button>
                 <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightGreen" Name="btnInsert" Content="сurrent"/>
                 <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="Moccasin" Name="btnFind" Content="by bought price"/>
                 <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightSalmon" Name="btnUpd" Content="ratio"/>
@@ -306,14 +315,15 @@
                     </Button.Resources>
                 </Button>
                 <Button x:Name="Delete" ToolTip="Delete" ToolTipService.ShowDuration="2000" Command="{Binding DelCoinCommand}">
-                    <fas:FontAwesome Icon="Solid_Trash" FontSize="12" Width="21" />
                     <Button.Resources>
-                        <Style TargetType="Border">
+                        <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="3"/>
                         </Style>
                     </Button.Resources>
+                    <fas:FontAwesome Icon="Solid_Trash" FontSize="12" Width="21" />
                 </Button>
                 <Button Visibility="Hidden" x:Name="Find" Content="Find"/>
+                <!--<Button Name="Update"  Content="Update"/>-->
             </StackPanel>
         </Grid>
     </Grid>

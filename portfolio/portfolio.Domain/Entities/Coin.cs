@@ -133,7 +133,16 @@ namespace portfolio.Domain.Entities
             Transactions = new List<Transaction>();
         }
 
-      
+        public void calculateValues()
+        {
+
+            CurrentValue = Amount * CurrentPrice;
+            AverageValue = Amount * AveragePrice;
+            ProfitUSD = CurrentValue - AverageValue;
+            ProfitUSD = (CurrentValue - AverageValue) / Amount;
+        }
+
+
         public decimal culcAmount(decimal amount)
         {
             return this.Amount + amount;

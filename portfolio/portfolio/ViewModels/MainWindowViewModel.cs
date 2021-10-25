@@ -223,9 +223,8 @@ namespace portfolio.ViewModels
                 Name = _selectedCoin.Name,
                 ShortName = _selectedCoin.ShortName,
                 Amount = _selectedCoin.Amount,
-                
+                PurchasePrice = _selectedCoin.PurchasePrice, 
                 CurrentPrice = _selectedCoin.CurrentPrice,
-               
                 DateUpdate = _selectedCoin.DateUpdate,
                 PictureName = _selectedCoin.PictureName
             };
@@ -290,6 +289,23 @@ namespace portfolio.ViewModels
                 OnGetTransactionExecuted(_selectedCoin.CoinId);
                 //Coins.Remove(SelectedCoin);
             }
+        }
+        #endregion
+
+        #region Calculate coin Values
+        private ICommand _culcCoinCommand;
+        public ICommand CulcCoinCommand => _culcCoinCommand ??= new RelayCommand(OnCulcCoinExecuted, CulcCoinCanExecute);
+
+
+        // check if can del
+        private bool CulcCoinCanExecute(object p) =>
+        _selectedCoin != null;
+
+        private void OnCulcCoinExecuted(object id)
+        {
+            _selectedCoin.calculateValues();
+            coinManager.Update(SelectedCoin);
+            OnGetTransactionExecuted(_selectedCoin.CoinId);
         }
         #endregion
         #endregion
