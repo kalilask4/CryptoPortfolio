@@ -82,6 +82,10 @@ namespace portfolio.ViewModels
             }
         }
 
+        public void DoNothing()
+        {
+        }
+
 
         #region selected coin 
         private Coin _selectedCoin;
@@ -123,25 +127,26 @@ namespace portfolio.ViewModels
 
             if (dialog.ShowDialog() != true) return;
 
+            
+
             var coin = new Coin
             {
+
                 Name = dialog.Name,
                 ShortName = dialog.ShortName,
                 Amount = dialog.Amount,
-               
-                PurchasePrice = 1, //dialog.PurchasePrice,
-                //AveragePrice = 1,
+                PurchasePrice = dialog.PurchasePrice,
                 CurrentPrice = dialog.CurrentPrice,
-                
-                CurrentValue = 0,
-                AverageValue = 0,
+                AveragePrice = dialog.PurchasePrice,
+                //CurrentValue = 0,
+                //AverageValue = 0,
                
                 DateUpdate = dialog.DateUpdate
 
 
             };
 
-            if (coin.Name == null)
+           /* if (coin.Name == null)
             {
                 coin.Name = "Noname";
             }
@@ -150,7 +155,7 @@ namespace portfolio.ViewModels
             {
                 coin.Name = coin.Name.Substring(0, 3).ToLower();
             }
-
+           */
 
             var fileName = Path.GetFileName(dialog.PictureName);
             if (fileName != null)
@@ -189,8 +194,6 @@ namespace portfolio.ViewModels
 
         private void OnGetTransactionExecuted(object id)
         {
-            //try
-           // {
                 TransactionsFromCoin.Clear();
             if (id is not null)
             {
@@ -198,13 +201,7 @@ namespace portfolio.ViewModels
                 foreach (var transaction in transactions)
                     TransactionsFromCoin.Add(transaction);
             }
-              //  }
-                
-            //}
-            //catch (NullReferenceException ex)
-            //{
-            //    MessageBox.Show("empty coin ");
-            //}
+             
         }
 
         #endregion
@@ -226,10 +223,9 @@ namespace portfolio.ViewModels
                 Name = _selectedCoin.Name,
                 ShortName = _selectedCoin.ShortName,
                 Amount = _selectedCoin.Amount,
-                //PurchasePrice = 1,// _selectedCoin.PurchasePrice, //dialog.PurchasePrice,
+                
                 CurrentPrice = _selectedCoin.CurrentPrice,
-                //CurrentValue = 0,
-                //ValueByAveragePurchasePrice = 0,
+               
                 DateUpdate = _selectedCoin.DateUpdate,
                 PictureName = _selectedCoin.PictureName
             };

@@ -11,10 +11,10 @@ namespace portfolio.Domain.Entities
     {
         [Key]
         public int CoinId { get; set; }
-        [Required]
-        public string Name { get; set; }
-        //private string name = "EmptyName";
-        private string shortName;
+        //[Required]
+        //public string Name { get; set; }
+        private string name = "No name coin";
+        private string shortName = "NONAME" ;
         [Required]
         public decimal Amount { get; set; }
         
@@ -22,7 +22,6 @@ namespace portfolio.Domain.Entities
         public decimal AveragePrice { get; set; } //Average purchase price
         public decimal CurrentPrice { get; set; } 
         
-        //public decimal ValueUSD { get; set; }
         public decimal CurrentValue { get; set; }
         public decimal AverageValue { get; set; }
 
@@ -38,24 +37,34 @@ namespace portfolio.Domain.Entities
                 pictureName = value;
             }
         }
+
         public string ShortName
-        //{ get; set; }
+    
         {
             get { return shortName; }
             set
             {
-                shortName = value;
+                if (value != null)
+                {
+                    shortName = value;
+                }
+                    
             }
         }
 
-        //public string Name
-        //{
-        //    get { return name; }
-        //    set
-        //    {
-        //        name = value;
-        //    }
-        //}
+
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                if(value != null)
+                {
+                    name = value;
+                }
+                
+            }
+        }
 
 
         public DateTime DateUpdate { get; set; }
@@ -65,16 +74,27 @@ namespace portfolio.Domain.Entities
 
         public Coin()
         {
-            Name = "DefName";
-            ShortName = "DN";
-            Amount = 0;
-            PurchasePrice = 1;
-            AveragePrice = 1;
-            AverageValue = 1;
-            CurrentValue = 1;
-            
-            PictureName = ShortName + ".png";
-            DateUpdate = DateTime.Now;
+
+            AveragePrice = PurchasePrice;
+            //Name = "DefName";
+            //ShortName = "DN";
+            //Amount = 0;
+            //PurchasePrice = 1;
+            //AveragePrice = this.CurrentPrice;
+
+            //AverageValue = this.Amount * this.AveragePrice;
+            //CurrentValue = this.Amount * this.CurrentPrice;
+
+            //ProfitUSD = CurrentValue - AverageValue;
+            //try
+            //{
+            //    ProfitPers = ProfitUSD / Amount;
+            //}
+            //catch { }
+
+
+            //PictureName = this.ShortName + ".png";
+            //DateUpdate = DateTime.Now;
             Transactions = new List<Transaction>();
         }
 
@@ -113,6 +133,7 @@ namespace portfolio.Domain.Entities
             Transactions = new List<Transaction>();
         }
 
+      
         public decimal culcAmount(decimal amount)
         {
             return this.Amount + amount;
