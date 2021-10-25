@@ -298,7 +298,7 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="AddTransaction" ToolTip="Add Transaction" ToolTipService.ShowDuration="2000">
+                <Button x:Name="AddTransaction" Command="{Binding NewTransactionCommand}" ToolTip="Add Transaction" ToolTipService.ShowDuration="2000">
                     <fas:FontAwesome Icon="Solid_ExchangeAlt" FontSize="12" Width="21" />
                     <Button.Resources>
                         <Style TargetType="Border">
@@ -306,7 +306,7 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="Edit"  Command="{Binding EditCoinCommand}" ToolTip="Edit" ToolTipService.ShowDuration="2000">
+                <Button x:Name="Edit" Command="{Binding EditCoinCommand}" ToolTip="Edit" ToolTipService.ShowDuration="2000">
                     <fas:FontAwesome Icon="Solid_Edit" FontSize="12" Width="21" />
                     <Button.Resources>
                         <Style TargetType="Border">

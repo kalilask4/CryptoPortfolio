@@ -14,12 +14,10 @@ using System.Windows.Shapes;
 
 namespace portfolio
 {
-    /// <summary>
-    /// Логика взаимодействия для EditTransaction.xaml
-    /// </summary>
-    public partial class EditTransaction : Window
+
+    public partial class EditTransactionWindow : Window
     {
-        public EditTransaction()
+        public EditTransactionWindow()
         {
             InitializeComponent();
         }

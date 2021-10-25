@@ -292,6 +292,45 @@ namespace portfolio.ViewModels
             OnGetTransactionExecuted(_selectedCoin.CoinId);
         }
         #endregion
+
+
+        #region Add transaction
+        private ICommand _newTransactionCommand;
+        public ICommand NewTransactionCommand => _newTransactionCommand ??= new RelayCommand(OnNewTransactionExecuted);
+
+        private void OnNewTransactionExecuted(object id)
+        {
+
+            var dialog = new EditTransactionWindow
+            {
+                //Symbol
+                //coinDebet
+                //coinCredid
+                //Amount
+                //Price
+                //Sum
+                //side
+                //DateUpdate = DateTime.Now
+            };
+
+            if (dialog.ShowDialog() != true) return;
+
+            var transaction = new Transaction
+            {
+                //Symbol
+                //coinDebet
+                //coinCredid
+                //Amount
+                //Price
+                //Sum
+                //side
+                //DateUpdate = DateTime.Now
+            };
+
+            //coinManager.AddTransactionToCoin(transaction, debetCoinId, creditCoinId);
+            //Transactions.Add(transactoin);
+        }
+        #endregion
         #endregion
     }
 }
