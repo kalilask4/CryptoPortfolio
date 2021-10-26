@@ -170,26 +170,34 @@ namespace portfolio.Domain.Entities
             }
             return (this.Amount + amount) * purchasePrice; 
             }
+
+        public override string ToString()
+        {
+            return CoinId.ToString() + " " + ShortName?.ToString();
         }
-
-        //public Coin(string name, string shortName, decimal amount, decimal currentPrice, decimal valueByCurrentPrice, decimal valueByAveragePurchasePrice, string pictureName, DateTime dateUpdate)
-        //{
-        //    Name = name;
-        //    ShortName = shortName;
-        //    Amount = amount;
-        //    CurrentPrice = currentPrice;
-        //    CurrentValue = valueByCurrentPrice;
-        //    ValueByAveragePurchasePrice = valueByAveragePurchasePrice;
-        //    PictureName = pictureName;
-        //    DateUpdate = dateUpdate;
-        //    Transactions = new List<Transaction>();
-        //}
-
-        //public override string ToString()
-        //{
-        //    return $"Id{CoinId} - {ShortName}, amout = {Amount}, {CurrentValue} USD.";
-        //}
     }
+
+    //public Coin(string name, string shortName, decimal amount, decimal currentPrice, decimal valueByCurrentPrice, decimal valueByAveragePurchasePrice, string pictureName, DateTime dateUpdate)
+    //{
+    //    Name = name;
+    //    ShortName = shortName;
+    //    Amount = amount;
+    //    CurrentPrice = currentPrice;
+    //    CurrentValue = valueByCurrentPrice;
+    //    ValueByAveragePurchasePrice = valueByAveragePurchasePrice;
+    //    PictureName = pictureName;
+    //    DateUpdate = dateUpdate;
+    //    Transactions = new List<Transaction>();
+    //}
+
+    //public override string ToString()
+    //{
+    //    return $"Id{CoinId} - {ShortName}, amout = {Amount}, {CurrentValue} USD.";
+    //}
+
+
+
+}
 
 
 

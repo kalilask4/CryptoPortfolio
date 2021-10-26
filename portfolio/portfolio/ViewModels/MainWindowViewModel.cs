@@ -25,7 +25,7 @@ namespace portfolio.ViewModels
         private string titleTransactions = "Transaction Window";
 
         #region Public properties
-        public ObservableCollection<Coin> Coins { get; set; }
+        public static ObservableCollection<Coin> Coins { get; set; }
         public ObservableCollection<Transaction> Transactions { get; set; }
         public ObservableCollection<Transaction> TransactionsForCoin { get; set; }
         public ObservableCollection<Transaction> AllTransactions { get; set; }
@@ -36,6 +36,8 @@ namespace portfolio.ViewModels
         [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
         static extern int MessageBoxTimeout(IntPtr hwnd, String text, String title,
                                     uint type, Int16 wLanguageId, Int32 milliseconds);
+
+
 
 
         public MainWindowViewModel()
@@ -59,7 +61,10 @@ namespace portfolio.ViewModels
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
 
-            
+        
+
+
+
         }
 
         private static void Coins_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -300,24 +305,22 @@ namespace portfolio.ViewModels
 
         private void OnNewTransactionExecuted(object id)
         {
+            //var coins = coinManager.Coins;
+            //.ToList();
 
             var dialog = new EditTransactionWindow
             {
-                //Symbol
-                //coinDebet
-                //coinCredid
-                //Amount
-                //Price
-                //Sum
-                //side
-                //DateUpdate = DateTime.Now
             };
-
+                
             if (dialog.ShowDialog() != true) return;
 
             var transaction = new Transaction
             {
-                //Symbol
+
+                Side=dialog.Side,
+                Symbol = dialog.DebetCoin.Name,
+
+
                 //coinDebet
                 //coinCredid
                 //Amount
@@ -326,9 +329,8 @@ namespace portfolio.ViewModels
                 //side
                 //DateUpdate = DateTime.Now
             };
-
-            //coinManager.AddTransactionToCoin(transaction, debetCoinId, creditCoinId);
-            //Transactions.Add(transactoin);
+            coinManager.AddTransactionToCoin(transaction, 1, 2);
+          
         }
         #endregion
         #endregion
