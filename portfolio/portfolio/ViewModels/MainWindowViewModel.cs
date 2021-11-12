@@ -73,7 +73,7 @@ namespace portfolio.ViewModels
             {
                 case NotifyCollectionChangedAction.Add:
                     Coin coin = e.NewItems[0] as Coin;
-                    MessageBoxTimeout((System.IntPtr)0, $"{coin.Name} added.", "Coins", 0, 0, 2000);
+                    MessageBoxTimeout((System.IntPtr)0, $"{coin.Name} - {coin.ShortName} added.", "Coins", 0, 0, 2000);
                     break;
                 case NotifyCollectionChangedAction.Remove:
                     Coin oldCoin = e.OldItems[0] as Coin;
@@ -132,7 +132,7 @@ namespace portfolio.ViewModels
             {
 
                 Name = dialog.Name,
-                ShortName = dialog.ShortName,
+                ShortName = dialog.ShortName.ToLower(),
                 Amount = dialog.Amount,
                 PurchasePrice = dialog.PurchasePrice,
                 CurrentPrice = dialog.CurrentPrice,
@@ -312,6 +312,8 @@ namespace portfolio.ViewModels
             {
             };
                 
+           
+
             if (dialog.ShowDialog() != true) return;
 
             var transaction = new Transaction
@@ -321,16 +323,9 @@ namespace portfolio.ViewModels
                 Symbol = dialog.DebetCoin.Name,
 
 
-                //coinDebet
-                //coinCredid
-                //Amount
-                //Price
-                //Sum
-                //side
-                //DateUpdate = DateTime.Now
             };
             coinManager.AddTransactionToCoin(transaction, 1, 2);
-          
+         
         }
         #endregion
         #endregion

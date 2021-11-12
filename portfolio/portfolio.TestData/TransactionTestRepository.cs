@@ -41,7 +41,7 @@ namespace portfolio.TestData
                         coins[r.Next()],
                     },
                     Amount = r.Next(1, 10),
-                    Priсe = r.Next(1, 100000),
+                    Price = r.Next(1, 100000),
                     DateUpdate = DateTime.Now + TimeSpan.FromDays(r.Next(10, 20)),
                 };
 

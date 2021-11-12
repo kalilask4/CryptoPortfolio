@@ -9,26 +9,7 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="EditTransaction" Height="450" Width="400"
         WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
-    <!--CenterOwner"--> 
-    <!--<Window.Resources>
-        <Style TargetType="Label">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="FontFamily" Value="Brevia Light"/>
-            <Setter Property="FontSize" Value="16"/>
-        </Style>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="FontFamily" Value="Brevia"/>
-            <Setter Property="Background" Value="BlanchedAlmond"/>
-            <Setter Property="Opacity" Value="0.78"/>
-            <Setter Property="FontSize" Value="16"/>
-        </Style>
-    </Window.Resources>-->
-
-
-
+   
     <DockPanel Background="Beige">
         <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,7,0,0" 
                    Text="Edit transaction" FontWeight="Bold" FontSize="15"/>
@@ -77,9 +58,8 @@
                  Text="{Binding Side}" SelectedIndex="0"/>
             <Label Content="Choose coins:" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
 
-            
-            
-            <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
+
+            <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
                 <ComboBox x:Name="cBoxCoinDebet" Margin="10,10,10,10"
                            ItemsSource="{Binding Coins}" SelectedItem="{Binding SelectedCoin}"
                           SelectedIndex="0" SelectedValuePath="CoinId"
@@ -91,7 +71,7 @@
             <StackPanel Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2">
                 <ComboBox x:Name="cBoxCoinCredit" Margin="10,10,10,10"
                            ItemsSource="{Binding Coins}" SelectedItem="{Binding SelectedCoin}"
-                          SelectedIndex="0" SelectedValuePath="CoinId"
+                          SelectedIndex="1" SelectedValuePath="CoinId"
                           />
 
                 <!--<TextBlock Name="tbDeskCoinDebet" Text="{Binding ElementName=cBoxCoinDebet, Path=Text}"></TextBlock>-->
@@ -104,8 +84,7 @@
 
             <Label Grid.Column="0" Grid.Row="5" Content="Sum"/>
             <Label Grid.Column="1" Grid.Row="5" Height="35" x:Name="textBoxSum"/>
-            <Button x:Name="btnCulculateSum" Grid.Row="5" Grid.Column="2" Margin="5,5,5,0" Height="43" VerticalAlignment="Top" Click="btnCulculateSum_Click">Culculate</Button>
-
+            <Button x:Name="btnCulculateSum" Grid.Row="5" Grid.Column="2" Margin="5,5,5,0" Height="43" VerticalAlignment="Top">Culculate</Button>
 
             
         </Grid>

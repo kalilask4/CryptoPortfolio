@@ -44,9 +44,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\ADA.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Images\AXS.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
