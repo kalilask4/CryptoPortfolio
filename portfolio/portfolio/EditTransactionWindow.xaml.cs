@@ -66,9 +66,8 @@ namespace portfolio
 
             cBoxSide.ItemsSource = Transaction.sideType;
             cBoxCoinDebet.ItemsSource = MainWindowViewModel.Coins;
-         
+   
         }
-
 
         private ICommand _okCommand;
         public ICommand OkCommand =>
@@ -83,8 +82,12 @@ namespace portfolio
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-          
         }
 
+     
+
+
+
+       
     }
 }

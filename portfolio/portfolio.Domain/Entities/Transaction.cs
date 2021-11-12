@@ -10,7 +10,7 @@ namespace portfolio.Domain.Entities
         public int TransactionId { get; set; }
         public string Symbol { get; set; } //like Name exs BTNBTC
         public decimal Amount { get; set; }
-        public decimal Priсe { get; set; }
+        public decimal Price { get; set; } //Price
         public decimal Sum { get; set; }
         public DateTime DateUpdate { get; set; }
         // навигационное свойство
@@ -33,7 +33,7 @@ namespace portfolio.Domain.Entities
             Symbol = coin.ShortName;
             Side = this.Side;
             Amount = 0;
-            Priсe = 0;
+            Price = 0;
             DateUpdate = DateTime.Now;
             TransactionCoins = new List<Coin>(2);
             TransactionCoins.Add(coin);
@@ -44,7 +44,7 @@ namespace portfolio.Domain.Entities
             Symbol = "DefaultSymbol";
             Side = "buy";
             Amount = 0;
-            Priсe = 0;
+            Price = 0;
             DateUpdate = DateTime.Now; 
             TransactionCoins = new List<Coin>(2);
         }
