@@ -37,9 +37,6 @@ namespace portfolio.ViewModels
         static extern int MessageBoxTimeout(IntPtr hwnd, String text, String title,
                                     uint type, Int16 wLanguageId, Int32 milliseconds);
 
-
-
-
         public MainWindowViewModel()
         {
             factory = new ManagersFactory("DefaultConnection");
@@ -60,10 +57,6 @@ namespace portfolio.ViewModels
            
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
-
-        
-
-
 
         }
 
@@ -132,7 +125,7 @@ namespace portfolio.ViewModels
             {
 
                 Name = dialog.Name,
-                ShortName = dialog.ShortName.ToLower(),
+                ShortName = dialog.ShortName.ToUpper(),
                 Amount = dialog.Amount,
                 PurchasePrice = dialog.PurchasePrice,
                 CurrentPrice = dialog.CurrentPrice,
@@ -143,6 +136,14 @@ namespace portfolio.ViewModels
                 DateUpdate = dialog.DateUpdate
 
 
+            };
+
+            var transaction = new Transaction
+            {
+                Symbol = coin.ShortName,
+                Side = "transfer",
+                Amount = coin.Amount,
+                Price = coin.PurchasePrice,
             };
 
             var fileName = Path.GetFileName(dialog.PictureName);
@@ -156,6 +157,7 @@ namespace portfolio.ViewModels
             }
 
             transactionManager.AddCoinToTransaction(coin);
+            
 
             if (dialog.PictureName != null)
             {
@@ -169,8 +171,11 @@ namespace portfolio.ViewModels
                     MessageBox.Show("This file already exist. Choose another one.");
                 }
             }
-
+            
+    
+            //Transactions.Add(transaction);
             Coins.Add(coin);
+            coinManager.AddTransactionToCoin(transaction, coin.CoinId);
         }
         #endregion
 
