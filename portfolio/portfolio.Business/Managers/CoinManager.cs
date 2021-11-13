@@ -72,6 +72,16 @@ namespace portfolio.Business.Managers
             unitOfWork.SaveChanges();
         }
 
+        public void AddTransactionToCoin(Transaction transaction, int debetCoinId)
+        {
+            var debetCoin = coinRepository.Get(debetCoinId);
+            debetCoin.Transactions.Add(transaction);
+            if (debetCoin.CoinId <= 0)
+                coinRepository.Create(debetCoin);
+            else coinRepository.Update(debetCoin);
+            transaction.TransactionCoins.Add(debetCoin);
+            unitOfWork.SaveChanges();
+        }
    
         public void RemoveTransactionFromCoin(Transaction transaction, int coinId)
         {
