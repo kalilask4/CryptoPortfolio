@@ -25,17 +25,29 @@ namespace portfolio.ViewModels
         private string titleTransactions = "Transaction Window";
 
         #region Public properties
+
         public static ObservableCollection<Coin> Coins { get; set; }
         public ObservableCollection<Transaction> Transactions { get; set; }
         public ObservableCollection<Transaction> TransactionsForCoin { get; set; }
         public ObservableCollection<Transaction> AllTransactions { get; set; }
-        public string Title { get => titleCoins; set => titleCoins = value; }
-        public string TitleTransactions { get => titleTransactions; set => titleTransactions = value; }
+
+        public string Title
+        {
+            get => titleCoins;
+            set => titleCoins = value;
+        }
+
+        public string TitleTransactions
+        {
+            get => titleTransactions;
+            set => titleTransactions = value;
+        }
+
         public ObservableCollection<Transaction> TransactionsFromCoin { get; set; }
 
         [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
         static extern int MessageBoxTimeout(IntPtr hwnd, String text, String title,
-                                    uint type, Int16 wLanguageId, Int32 milliseconds);
+            uint type, Int16 wLanguageId, Int32 milliseconds);
 
         public MainWindowViewModel()
         {
@@ -53,11 +65,10 @@ namespace portfolio.ViewModels
             AllTransactions = new ObservableCollection<Transaction>(transactionManager.Transactions);
             //Transactions = new ObservableCollection<Transaction>();
             TransactionsFromCoin = new ObservableCollection<Transaction>();
-            
-           
+
+
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
-
         }
 
         private static void Coins_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -66,53 +77,56 @@ namespace portfolio.ViewModels
             {
                 case NotifyCollectionChangedAction.Add:
                     Coin coin = e.NewItems[0] as Coin;
-                    MessageBoxTimeout((System.IntPtr)0, $"{coin.Name} - {coin.ShortName} added.", "Coins", 0, 0, 2000);
+                    MessageBoxTimeout((System.IntPtr) 0, $"{coin.Name} - {coin.ShortName} added.", "Coins", 0, 0, 2000);
                     break;
                 case NotifyCollectionChangedAction.Remove:
                     Coin oldCoin = e.OldItems[0] as Coin;
-                    MessageBoxTimeout((System.IntPtr)0, $"{oldCoin.Name} deleted.", "Coins", 0, 0, 2000);
+                    MessageBoxTimeout((System.IntPtr) 0, $"{oldCoin.Name} deleted.", "Coins", 0, 0, 2000);
                     break;
                 case NotifyCollectionChangedAction.Replace:
                     Coin replasedCoin = e.OldItems[0] as Coin;
                     Coin replasingCoin = e.NewItems[0] as Coin;
-                    MessageBoxTimeout((System.IntPtr)0, $"{replasedCoin.Name} replased {replasingCoin.Name}.", "Coins", 0, 0, 2000);
+                    MessageBoxTimeout((System.IntPtr) 0, $"{replasedCoin.Name} replased {replasingCoin.Name}.", "Coins",
+                        0, 0, 2000);
                     break;
             }
         }
 
-        #region selected coin 
+        #region selected coin
+
         private Coin _selectedCoin;
+
         public Coin SelectedCoin
         {
             get => _selectedCoin;
-            set
-            {
-                Set(ref _selectedCoin, value);
-            }
+            set { Set(ref _selectedCoin, value); }
         }
+
         #endregion
 
-        #region selected transaction 
+        #region selected transaction
+
         private Transaction _selectedTransaction;
+
         public Transaction SelectedTransaction
         {
             get => _selectedTransaction;
-            set
-            {
-                Set(ref _selectedTransaction, value);
-            }
+            set { Set(ref _selectedTransaction, value); }
         }
+
         #endregion
+
         #endregion
 
         #region Command
+
         #region Add coin
+
         private ICommand _newCoinCommand;
         public ICommand NewCoinCommand => _newCoinCommand ??= new RelayCommand(OnNewCoinExecuted);
 
         private void OnNewCoinExecuted(object id)
         {
-
             var dialog = new EditCoinWindow
             {
                 DateUpdate = DateTime.Now
@@ -120,10 +134,9 @@ namespace portfolio.ViewModels
 
             if (dialog.ShowDialog() != true) return;
 
-            
+
             var coin = new Coin
             {
-
                 Name = dialog.Name,
                 ShortName = dialog.ShortName.ToUpper(),
                 Amount = dialog.Amount,
@@ -132,10 +145,8 @@ namespace portfolio.ViewModels
                 AveragePrice = dialog.PurchasePrice,
                 //CurrentValue = 0,
                 //AverageValue = 0,
-               
+
                 DateUpdate = dialog.DateUpdate
-
-
             };
 
             var transaction = new Transaction
@@ -157,7 +168,7 @@ namespace portfolio.ViewModels
             }
 
             transactionManager.AddCoinToTransaction(coin);
-            
+
 
             if (dialog.PictureName != null)
             {
@@ -171,43 +182,47 @@ namespace portfolio.ViewModels
                     MessageBox.Show("This file already exist. Choose another one.");
                 }
             }
-            
-    
+
+
             //Transactions.Add(transaction);
             Coins.Add(coin);
             coinManager.AddTransactionToCoin(transaction, coin.CoinId);
         }
+
         #endregion
 
         #region Choose coin in list
+
         private ICommand _getTransactionsFromCoinCommand;
+
         public ICommand GetTransactionsFromCoinCommand =>
-         _getTransactionsFromCoinCommand
-        ??= new RelayCommand(OnGetTransactionExecuted);
+            _getTransactionsFromCoinCommand
+                ??= new RelayCommand(OnGetTransactionExecuted);
 
         private void OnGetTransactionExecuted(object id)
         {
-                TransactionsFromCoin.Clear();
+            TransactionsFromCoin.Clear();
             if (id is not null)
             {
-                var transactions = coinManager.GetTransactionsOfCoin((int)id);
+                var transactions = coinManager.GetTransactionsOfCoin((int) id);
                 foreach (var transaction in transactions)
                     TransactionsFromCoin.Add(transaction);
             }
-             
         }
 
         #endregion
 
         #region Edit coin
+
         private ICommand _editCoinCommand;
+
         public ICommand EditCoinCommand =>
-        _editCoinCommand ??= new RelayCommand(OnEditCoinExecuted, EditCoinCanExecute);
+            _editCoinCommand ??= new RelayCommand(OnEditCoinExecuted, EditCoinCanExecute);
 
 
         // check if can edit
         private bool EditCoinCanExecute(object p) =>
-        _selectedCoin != null;
+            _selectedCoin != null;
 
         private void OnEditCoinExecuted(object id)
         {
@@ -216,7 +231,7 @@ namespace portfolio.ViewModels
                 Name = _selectedCoin.Name,
                 ShortName = _selectedCoin.ShortName,
                 Amount = _selectedCoin.Amount,
-                PurchasePrice = _selectedCoin.PurchasePrice, 
+                PurchasePrice = _selectedCoin.PurchasePrice,
                 CurrentPrice = _selectedCoin.CurrentPrice,
                 AveragePrice = _selectedCoin.AveragePrice,
                 DateUpdate = _selectedCoin.DateUpdate,
@@ -227,28 +242,25 @@ namespace portfolio.ViewModels
             // to Images
             var imageFolderPass = Path.Combine(Directory.GetCurrentDirectory(), "Images");
             // for new picture
-            //try
-            //{
-            //MessageBox.Show("1 dialog - " + dialog.PictureName);
-            //MessageBox.Show("2 seelcted - "+ _selectedCoin.PictureName);
-
-            if (!_selectedCoin.PictureName.Equals(dialog?.PictureName))
+            try
             {
-                // delete old picture
-                //_selectedCoin.PictureName = null;
-                File.Delete(Path.Combine(imageFolderPass, _selectedCoin.PictureName));
-                                     // get new picture
-                var newImage = Path.GetFileName(dialog.PictureName);
-                                     // copy file to Images
-                File.Copy(dialog.PictureName, Path.Combine(imageFolderPass, newImage));
+                if (!_selectedCoin.PictureName.Equals(dialog.PictureName))
+                {
+                    // delete old picture
+                    //_selectedCoin.PictureName = null;
+                    File.Delete(Path.Combine(imageFolderPass, _selectedCoin.PictureName));
+                    // get new picture
+                    var newImage = Path.GetFileName(dialog.PictureName);
+                    // copy file to Images
+                    File.Copy(dialog.PictureName, Path.Combine(imageFolderPass, newImage));
 
-                _selectedCoin.PictureName = newImage;
+                    _selectedCoin.PictureName = newImage;
+                }
             }
-            //}
-            //catch
-            //{
-            //    _selectedCoin.PictureName = "NO.png";
-            //}
+            catch
+            {
+                _selectedCoin.PictureName = dialog.PictureName;
+            }
 
             _selectedCoin.Name = dialog.Name;
             _selectedCoin.ShortName = dialog.ShortName;
@@ -261,18 +273,19 @@ namespace portfolio.ViewModels
 
             coinManager.Update(SelectedCoin);
             OnGetTransactionExecuted(_selectedCoin.CoinId);
-                        
         }
+
         #endregion
 
         #region Del coin
+
         private ICommand _delCoinCommand;
         public ICommand DelCoinCommand => _delCoinCommand ??= new RelayCommand(OnDelCoinExecuted, DelCoinCanExecute);
 
 
         // check if can del
         private bool DelCoinCanExecute(object p) =>
-        _selectedCoin != null;
+            _selectedCoin != null;
 
         private void OnDelCoinExecuted(object id)
         {
@@ -284,16 +297,20 @@ namespace portfolio.ViewModels
                 Coins.Remove(SelectedCoin);
             }
         }
+
         #endregion
 
         #region Calculate coin Values
+
         private ICommand _culcCoinCommand;
-        public ICommand CulcCoinCommand => _culcCoinCommand ??= new RelayCommand(OnCulcCoinExecuted, CulcCoinCanExecute);
+
+        public ICommand CulcCoinCommand =>
+            _culcCoinCommand ??= new RelayCommand(OnCulcCoinExecuted, CulcCoinCanExecute);
 
 
         // check if can del
         private bool CulcCoinCanExecute(object p) =>
-        _selectedCoin != null;
+            _selectedCoin != null;
 
         private void OnCulcCoinExecuted(object id)
         {
@@ -301,10 +318,12 @@ namespace portfolio.ViewModels
             coinManager.Update(SelectedCoin);
             OnGetTransactionExecuted(_selectedCoin.CoinId);
         }
+
         #endregion
 
 
         #region Add transaction
+
         private ICommand _newTransactionCommand;
         public ICommand NewTransactionCommand => _newTransactionCommand ??= new RelayCommand(OnNewTransactionExecuted);
 
@@ -316,23 +335,20 @@ namespace portfolio.ViewModels
             var dialog = new EditTransactionWindow
             {
             };
-                
-           
+
 
             if (dialog.ShowDialog() != true) return;
 
             var transaction = new Transaction
             {
-
-                Side=dialog.Side,
+                Side = dialog.Side,
                 Symbol = dialog.DebetCoin.Name,
-
-
             };
             coinManager.AddTransactionToCoin(transaction, 1, 2);
-         
         }
+
         #endregion
+
         #endregion
     }
 }
