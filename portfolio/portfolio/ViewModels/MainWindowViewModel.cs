@@ -281,7 +281,7 @@ namespace portfolio.ViewModels
             {
                 coinManager.Delete(_selectedCoin.CoinId); //deleting only coin and relating, not transaction
                 OnGetTransactionExecuted(_selectedCoin.CoinId);
-                //Coins.Remove(SelectedCoin);
+                Coins.Remove(SelectedCoin);
             }
         }
         #endregion
