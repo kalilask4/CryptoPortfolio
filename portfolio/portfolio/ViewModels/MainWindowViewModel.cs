@@ -143,8 +143,8 @@ namespace portfolio.ViewModels
                 PurchasePrice = dialog.PurchasePrice,
                 CurrentPrice = dialog.CurrentPrice,
                 AveragePrice = dialog.PurchasePrice,
-                //CurrentValue = 0,
-                //AverageValue = 0,
+                CurrentValue = dialog.CurrentPrice * dialog.Amount,
+                AverageValue = dialog.PurchasePrice * dialog.Amount,
 
                 DateUpdate = dialog.DateUpdate
             };
@@ -265,7 +265,6 @@ namespace portfolio.ViewModels
             _selectedCoin.Name = dialog.Name;
             _selectedCoin.ShortName = dialog.ShortName;
             _selectedCoin.Amount = dialog.Amount;
-            
             _selectedCoin.PurchasePrice = dialog.PurchasePrice;
             _selectedCoin.CurrentPrice = dialog.CurrentPrice;
             _selectedCoin.CurrentValue = dialog.Amount * dialog.CurrentPrice;
