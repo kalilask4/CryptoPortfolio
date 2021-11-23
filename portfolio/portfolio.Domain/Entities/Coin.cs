@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Windows;
 
 namespace portfolio.Domain.Entities
 {
@@ -72,6 +71,7 @@ namespace portfolio.Domain.Entities
 
         public Coin()
         {
+            Trace.WriteLine($"constr 1");
 
             AveragePrice = PurchasePrice;
             //Name = "DefName";
@@ -99,6 +99,7 @@ namespace portfolio.Domain.Entities
         //for SetupData for test
         public Coin(string name, Transaction transaction)
         {
+            Trace.WriteLine($"constr 2");
             Name = name + "Tww";
             ShortName = "DNT";
             Amount = 0;
@@ -112,6 +113,7 @@ namespace portfolio.Domain.Entities
 
         public Coin(string name, decimal amount, decimal purchasePrice, decimal currentPrice)
         {
+            Trace.WriteLine($"constr 3");
             Name = name;
             ShortName = name.Substring(0,3).ToUpper();
             Amount = culcAmount(amount);

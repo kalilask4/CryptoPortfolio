@@ -265,10 +265,11 @@ namespace portfolio.ViewModels
             _selectedCoin.Name = dialog.Name;
             _selectedCoin.ShortName = dialog.ShortName;
             _selectedCoin.Amount = dialog.Amount;
-            _selectedCoin.PurchasePrice = 1;
+            
+            _selectedCoin.PurchasePrice = dialog.PurchasePrice;
             _selectedCoin.CurrentPrice = dialog.CurrentPrice;
-            _selectedCoin.CurrentValue = 0;
-            _selectedCoin.AverageValue = 0;
+            _selectedCoin.CurrentValue = dialog.Amount * dialog.CurrentPrice;
+            _selectedCoin.AverageValue = dialog.Amount * dialog.PurchasePrice;
             _selectedCoin.DateUpdate = dialog.DateUpdate;
 
             coinManager.Update(SelectedCoin);

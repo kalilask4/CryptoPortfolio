@@ -165,7 +165,7 @@ namespace portfolio
                                      uint type, Int16 wLanguageId, Int32 milliseconds);
                 MessageBoxTimeout((System.IntPtr)0, "Fill Coin name.", "Message", 0, 0, 1000);
 
-               // MessageBox.Show("Fill Coin name.");
+               //MessageBox.Show("Fill Coin name.");
 
             }
         }
