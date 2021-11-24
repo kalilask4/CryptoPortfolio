@@ -96,15 +96,11 @@ namespace portfolio.Business.Managers
         
         public Coin calculateValues(int coinId)
         {
-            [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
-            static extern int MessageBoxTimeout(IntPtr hwnd, String text, String title,
-                uint type, Int16 wLanguageId, Int32 milliseconds);
-            MessageBoxTimeout((System.IntPtr)0, "culc", "Message", 0, 0, 1000);
-
-            //Trace.WriteLine("culc");
-            
             var coin = coinRepository.Get(coinId);
-            var newCoin = coin;
+            //var newCoin = coin;
+            //coin.Name = "!clone"; объект передается по ссылке, не по значению - реализовать ICloneable
+            Coin newCoin;
+                newCoin = (Coin)coin.Clone();
             newCoin.CurrentValue = coin.Amount * coin.CurrentPrice;
             newCoin.AverageValue = coin.Amount * coin.AveragePrice;
             newCoin.ProfitUSD = coin.CurrentValue - coin.AverageValue;

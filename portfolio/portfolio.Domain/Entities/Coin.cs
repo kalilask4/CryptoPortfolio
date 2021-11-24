@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Windows;
+using portfolio.Domain.Interfaces;
 
 namespace portfolio.Domain.Entities
 {
-    public class Coin
+    public class Coin: ICoinCloneable
     {
         [Key]
         public int CoinId { get; set; }
@@ -26,6 +27,8 @@ namespace portfolio.Domain.Entities
         public decimal ProfitPers { get; set; }
 
         private string pictureName = "no.png";
+        //private ICoinCloneable _coinCloneableImplementation;
+
         public string PictureName
         {
             get { return pictureName; }
@@ -135,7 +138,6 @@ namespace portfolio.Domain.Entities
 
         public void calculateValues()
         {
-
             CurrentValue = Amount * CurrentPrice;
             AverageValue = Amount * AveragePrice;
             ProfitUSD = CurrentValue - AverageValue;
@@ -176,6 +178,33 @@ namespace portfolio.Domain.Entities
         public override string ToString()
         {
             return CoinId.ToString() + " " + ShortName?.ToString();
+        }
+
+        public Coin Clone()
+        {
+           
+       // public static Coin Clone(Coin coin)
+        //{
+            return new Coin
+            {
+                CoinId = this.CoinId,
+                Name = this.Name,
+                ShortName = this.ShortName,
+                Amount = this.Amount,
+               
+                PurchasePrice = this.PurchasePrice,
+                CurrentPrice = this.CurrentPrice,
+                AveragePrice = this.AveragePrice,
+                
+                CurrentValue = this.CurrentValue,
+                AverageValue = this.AverageValue,
+                
+                ProfitUSD = this.ProfitUSD,
+                ProfitPers = this.ProfitPers,
+                
+                pictureName = this.pictureName,
+            };
+            
         }
     }
 
