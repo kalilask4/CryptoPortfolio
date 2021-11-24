@@ -94,6 +94,7 @@ namespace portfolio.Business.Managers
             unitOfWork.SaveChanges();
         }       
         
+        //сделать отдельные функции для расчета каждого значения
         public Coin calculateValues(int coinId)
         {
             var coin = coinRepository.Get(coinId);
@@ -114,6 +115,21 @@ namespace portfolio.Business.Managers
             return newCoin;
         }
 
+
+        //Have to add:
+        //check ValueCurrent
+        //check ValueByBought
+        public Coin countProfit(int coinId)
+        {
+            var newCoin = coinRepository.Get(coinId);
+            newCoin.ProfitUSD = newCoin.Amount * newCoin.CurrentPrice - newCoin.Amount * newCoin.AveragePrice;
+            newCoin.ProfitPerс = newCoin.ProfitUSD/newCoin.AverageValue * 10;
+            return newCoin;
+        }
+        
+        
+
+        
         public ICollection<Transaction> GetTransactionsOfCoin(int coinId) => transactionRepository
             .Find(transaction => transaction.TransactionCoins.Contains(GetById(coinId)))
             .ToList();

@@ -314,11 +314,9 @@ namespace portfolio.ViewModels
 
         private void OnCulcCoinExecuted(object id)
         {
-            Coin newCoin;
-            newCoin = coinManager.calculateValues(_selectedCoin.CoinId);
+            var newCoin = coinManager.countProfit(_selectedCoin.CoinId);
             coinManager.Update(newCoin);
             OnGetTransactionExecuted(_selectedCoin.CoinId);
-            
             //grCoinsData.Items.Refresh(); //rightClickUpdateTabCoin
         }
 
