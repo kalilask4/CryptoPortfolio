@@ -302,10 +302,10 @@ namespace portfolio.ViewModels
 
         #region Calculate coin Values
 
-        private ICommand _culcCoinCommand;
+        private ICommand _countCoinCommand;
 
-        public ICommand CulcCoinCommand =>
-            _culcCoinCommand ??= new RelayCommand(OnCulcCoinExecuted, CulcCoinCanExecute);
+        public ICommand CountCoinCommand =>
+            _countCoinCommand ??= new RelayCommand(OnCulcCoinExecuted, CulcCoinCanExecute);
 
 
         // check if can del
@@ -314,9 +314,12 @@ namespace portfolio.ViewModels
 
         private void OnCulcCoinExecuted(object id)
         {
-            _selectedCoin.calculateValues();
-            coinManager.Update(SelectedCoin);
+            Coin newCoin;
+            newCoin = coinManager.calculateValues(_selectedCoin.CoinId);
+            coinManager.Update(newCoin);
             OnGetTransactionExecuted(_selectedCoin.CoinId);
+            
+            //grCoinsData.Items.Refresh(); //rightClickUpdateTabCoin
         }
 
         #endregion

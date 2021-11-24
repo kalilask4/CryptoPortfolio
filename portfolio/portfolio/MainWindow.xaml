@@ -44,10 +44,10 @@
             <Setter Property="Opacity" Value="0.78"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="Button.Effect">
-        <Setter.Value>
-            <DropShadowEffect Color="Black" Direction="320" ShadowDepth="2" BlurRadius="5" Opacity="0.7" />
-        </Setter.Value>
-    </Setter>
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="2" BlurRadius="5" Opacity="0.7" />
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style TargetType="Label">
             <Setter Property="Margin" Value="5"/>
@@ -278,50 +278,57 @@
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="st1" Grid.Column="0" Margin="5 10 5 5" >
                 <!--VerticalAlignment="Bottom"-->
-                <Button x:Name="Culc" ToolTip="Culculate" ToolTipService.ShowDuration="2000" Command="{Binding CulcCoinCommand}">
+                <Button Height="35" Width="92" x:Name="Count" ToolTip="Count" ToolTipService.ShowDuration="2000" 
+                        Command="{Binding CountCoinCommand}">
                     <Button.Resources>
+                        <!--<TextBox Text="Culc"/>-->
                         <Style TargetType="{x:Type Border}">
+                            <!--<Setter Property="TextBlock.Text" Value="Culc"/>-->
                             <Setter Property="CornerRadius" Value="3"/>
                         </Style>
                     </Button.Resources>
-                    <fas:FontAwesome Icon="Solid_calculator" FontSize="12" Width="21" />
+                    <!--<Button.Content>
+                        <TextBlock>ttt</TextBlock>
+                    </Button.Content>-->
+                    <fas:FontAwesome Icon="Solid_calculator" FontSize="17" Width="21"/>
+
                 </Button>
-                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightGreen" Name="btnInsert" Content="сurrent"/>
-                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="Moccasin" Name="btnFind" Content="by bought price"/>
-                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightSalmon" Name="btnUpd" Content="ratio"/>
+                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightGreen" x:Name="btnInsert" Content="сurrent"/>
+                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="Moccasin" x:Name="btnFind" Content="by bought price"/>
+                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightSalmon" x:Name="btnUpd" Content="ratio"/>
             </StackPanel>
-            <StackPanel x:Name="st2" Grid.Column="1" Margin="40,10,20,60">
-                <Button x:Name="AddCoin" Command="{Binding NewCoinCommand}" ToolTip="Add coin" ToolTipService.ShowDuration="2000">
-                    <fas:FontAwesome Icon="Brands_Btc" FontSize="12" Width="21" />
+            <StackPanel x:Name="st2" Grid.Column="1" Margin="40,10,20,26">
+                <Button x:Name="AddCoin" Command="{Binding NewCoinCommand}" ToolTip="Add coin" ToolTipService.ShowDuration="2000" Width="125">
+                    <fas:FontAwesome Icon="Brands_Btc" FontSize="17" Width="21" />
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="3"/>
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="AddTransaction" Command="{Binding NewTransactionCommand}" ToolTip="Add Transaction" ToolTipService.ShowDuration="2000">
-                    <fas:FontAwesome Icon="Solid_ExchangeAlt" FontSize="12" Width="21" />
+                <Button x:Name="AddTransaction" Command="{Binding NewTransactionCommand}" ToolTip="Add Transaction" ToolTipService.ShowDuration="2000" Width="125">
+                    <fas:FontAwesome Icon="Solid_ExchangeAlt" FontSize="17" Width="21" />
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="3"/>
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="Edit" Command="{Binding EditCoinCommand}" ToolTip="Edit" ToolTipService.ShowDuration="2000">
-                    <fas:FontAwesome Icon="Solid_Edit" FontSize="12" Width="21" />
+                <Button x:Name="Edit" Command="{Binding EditCoinCommand}" ToolTip="Edit" ToolTipService.ShowDuration="2000" Width="125">
+                    <fas:FontAwesome Icon="Solid_Edit" FontSize="17" Width="21" />
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="3"/>
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="Delete" ToolTip="Delete" ToolTipService.ShowDuration="2000" Command="{Binding DelCoinCommand}">
+                <Button x:Name="Delete" ToolTip="Delete" ToolTipService.ShowDuration="2000" Command="{Binding DelCoinCommand}" Width="125">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="3"/>
                         </Style>
                     </Button.Resources>
-                    <fas:FontAwesome Icon="Solid_Trash" FontSize="12" Width="21" />
+                    <fas:FontAwesome Icon="Solid_Trash" FontSize="17" Width="21" />
                 </Button>
                 <Button Visibility="Hidden" x:Name="Find" Content="Find"/>
                 <!--<Button Name="Update"  Content="Update"/>-->

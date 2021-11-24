@@ -47,6 +47,8 @@ namespace portfolio
         {
             MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
             //AllTransactions = new ObservableCollection<Transaction>(MainWindowViewModel.TransactionManager.Transactions);
+            //command - update coins profit - main window
+
             grCoinsData.Items.Refresh();
         }
 

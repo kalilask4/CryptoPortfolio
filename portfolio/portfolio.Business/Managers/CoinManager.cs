@@ -2,6 +2,7 @@
 using portfolio.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -91,6 +92,30 @@ namespace portfolio.Business.Managers
             transaction.TransactionCoins.Remove(coin);
             transactionRepository.Update(transaction);
             unitOfWork.SaveChanges();
+        }       
+        
+        public Coin calculateValues(int coinId)
+        {
+            [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
+            static extern int MessageBoxTimeout(IntPtr hwnd, String text, String title,
+                uint type, Int16 wLanguageId, Int32 milliseconds);
+            MessageBoxTimeout((System.IntPtr)0, "culc", "Message", 0, 0, 1000);
+
+            //Trace.WriteLine("culc");
+            
+            var coin = coinRepository.Get(coinId);
+            var newCoin = coin;
+            newCoin.CurrentValue = coin.Amount * coin.CurrentPrice;
+            newCoin.AverageValue = coin.Amount * coin.AveragePrice;
+            newCoin.ProfitUSD = coin.CurrentValue - coin.AverageValue;
+            newCoin.ProfitUSD = (coin.CurrentValue - coin.AverageValue) / coin.Amount;
+            
+            // coin.Transactions.Remove(transaction);
+             coinRepository.Update(newCoin);
+            // transaction.TransactionCoins.Remove(coin);
+            // transactionRepository.Update(transaction);
+            unitOfWork.SaveChanges();
+            return newCoin;
         }
 
         public ICollection<Transaction> GetTransactionsOfCoin(int coinId) => transactionRepository
