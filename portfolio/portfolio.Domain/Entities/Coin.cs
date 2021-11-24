@@ -24,7 +24,7 @@ namespace portfolio.Domain.Entities
         public decimal AverageValue { get; set; }
 
         public decimal ProfitUSD { get; set; }
-        public decimal ProfitPers { get; set; }
+        public decimal ProfitPerс { get; set; }
 
         private string pictureName = "no.png";
         //private ICoinCloneable _coinCloneableImplementation;
@@ -89,7 +89,7 @@ namespace portfolio.Domain.Entities
             //ProfitUSD = CurrentValue - AverageValue;
             //try
             //{
-            //    ProfitPers = ProfitUSD / Amount;
+            //    ProfitPerс = ProfitUSD / Amount;
             //}
             //catch { }
 
@@ -128,7 +128,7 @@ namespace portfolio.Domain.Entities
             AverageValue = culcAverageValue(amount, purchasePrice);
 
             ProfitUSD = CurrentValue - AverageValue;
-            ProfitPers = (CurrentValue - AverageValue) / CurrentPrice;
+            ProfitPerс = (CurrentValue - AverageValue) / CurrentPrice;
 
 
             PictureName = ShortName + "png";
@@ -200,7 +200,7 @@ namespace portfolio.Domain.Entities
                 AverageValue = this.AverageValue,
                 
                 ProfitUSD = this.ProfitUSD,
-                ProfitPers = this.ProfitPers,
+                ProfitPerс = this.ProfitPerс,
                 
                 pictureName = this.pictureName,
             };

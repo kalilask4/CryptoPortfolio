@@ -161,8 +161,8 @@
                                                             Binding="{Binding Path=CurrentValue, StringFormat={}{0:C}}"></DataGridTextColumn>
                                         <DataGridTextColumn x:Name="tcProfitUSD" Width="70" Header="Profit, $"
                                                             Binding="{Binding Path=ProfitUSD, StringFormat={}{0:C2}}"></DataGridTextColumn>
-                                        <DataGridTextColumn x:Name="tcProfitPers" Width="70" Header="Profit, %"
-                                                            Binding="{Binding Path=ProfitPers, StringFormat={}{0:P2}}"></DataGridTextColumn>
+                                        <DataGridTextColumn x:Name="tcProfitPerc" Width="70" Header="Profit, %"
+                                                            Binding="{Binding Path=ProfitPerс, StringFormat={}{0:P2}}"></DataGridTextColumn>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </DockPanel>
