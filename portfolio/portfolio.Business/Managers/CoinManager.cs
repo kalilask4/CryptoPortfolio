@@ -117,22 +117,16 @@ namespace portfolio.Business.Managers
             return newCoin;
         }
 
-
-        //Have to add:
-        //check ValueCurrent
-        //check ValueByBought
-        public Coin count(int coinId)
+        public Coin Recount(int coinId)
         {
             var newCoin = coinRepository.Get(coinId);
-                newCoin.ProfitUSD = newCoin.Amount * newCoin.CurrentPrice - newCoin.Amount * newCoin.AveragePrice;
-                newCoin.ProfitPerс = newCoin.ProfitUSD / newCoin.AverageValue * 10;
+            newCoin.AverageValue = newCoin.Amount * newCoin.AveragePrice;
+            newCoin.CurrentValue = newCoin.Amount * newCoin.CurrentPrice;
+            newCoin.ProfitUSD = newCoin.Amount * newCoin.CurrentPrice - newCoin.Amount * newCoin.AveragePrice;
+            newCoin.ProfitPerс = newCoin.ProfitUSD / newCoin.AverageValue * 10;
 
                 return newCoin;
         }
-        
-        //public bool checkValueCurrent()
-        
-        
         
 
         

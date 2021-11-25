@@ -317,7 +317,7 @@ namespace portfolio.ViewModels
             //Coin newCoin = coinManager.GetById((int)id);
             try
             {   
-                Coin newCoin = coinManager.count(_selectedCoin.CoinId);
+                Coin newCoin = coinManager.Recount(_selectedCoin.CoinId);
                 coinManager.Update(newCoin);
             }
                 
