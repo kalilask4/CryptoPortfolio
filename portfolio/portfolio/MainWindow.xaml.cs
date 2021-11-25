@@ -73,6 +73,8 @@ namespace portfolio
                 MessageBox.Show("A handled exception just occurred: " + ex.Message, "Exception Sample",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            
+            s.Trim();
         }
     }
 }
