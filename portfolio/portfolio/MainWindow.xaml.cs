@@ -58,7 +58,6 @@ namespace portfolio
             //AllTransactions = new ObservableCollection<Transaction>(MainWindowViewModel.TransactionManager.Transactions);
             grTransactionData.Items.Refresh();
         }
-
       
 
         private void btnTestException_Click(object sender, RoutedEventArgs e)
@@ -75,6 +74,11 @@ namespace portfolio
             }
             
             s.Trim();
+        }
+
+        private void LTransactionsItems_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            grCoinsData.SelectedItem = null;
         }
     }
 }

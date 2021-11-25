@@ -192,9 +192,13 @@
                         </DockPanel>
                     </Grid>
                 </TabItem>
-                <TabItem x:Name="tiTransactionTabTrans" Header="Transaction" 
-                         ContextMenuOpening="rightClickUpdateTabTrans"
-                         ToolTip="Update - right click" ToolTipService.ShowDuration="1000">
+                <TabItem x:Name="tiTransactionTabTrans" >
+                         <TabItem.Header>
+                             <Label Content = "Transaction" Name="lTransactionsItems"
+                                    MouseLeftButtonDown= "LTransactionsItems_OnMouseLeftButtonDown"
+                                    />
+                         </TabItem.Header>
+                        
                     <Border>
                         <DockPanel Grid.Row="0">
                             <DataGrid Margin="5,5,5,5" x:Name="grTransactionData" Grid.Row="0" Grid.Column="1" 
@@ -215,7 +219,8 @@
                             </DataGrid>
                         </DockPanel>
                     </Border>
-                </TabItem>
+               
+                    </TabItem>
             </TabControl>
         </Grid>
         <Grid x:Name="gridStatistic" Grid.Column="1" Grid.Row="0">
