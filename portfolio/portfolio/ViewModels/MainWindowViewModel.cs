@@ -314,11 +314,25 @@ namespace portfolio.ViewModels
 
         private void OnCulcCoinExecuted(object id)
         {
-            var newCoin = coinManager.countProfit(_selectedCoin.CoinId);
-            coinManager.Update(newCoin);
-            OnGetTransactionExecuted(_selectedCoin.CoinId);
+            //Coin newCoin = coinManager.GetById((int)id);
+            try
+            {   
+                Coin newCoin = coinManager.count(_selectedCoin.CoinId);
+                coinManager.Update(newCoin);
+            }
+                
+                catch (IOException e)
+            {
+                MessageBox.Show("Values: Amount, Average price and Current price must be field.");
+            }
+            //if (newCoin is not null){
+                
+            //coinManager.Update(newCoin);
+            
+            OnGetTransactionExecuted(_selectedCoin.CoinId);}
             //grCoinsData.Items.Refresh(); //rightClickUpdateTabCoin
-        }
+        
+    
 
         #endregion
 

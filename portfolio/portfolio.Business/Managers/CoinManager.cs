@@ -3,10 +3,12 @@ using portfolio.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace portfolio.Business.Managers
 {
@@ -119,13 +121,17 @@ namespace portfolio.Business.Managers
         //Have to add:
         //check ValueCurrent
         //check ValueByBought
-        public Coin countProfit(int coinId)
+        public Coin count(int coinId)
         {
             var newCoin = coinRepository.Get(coinId);
-            newCoin.ProfitUSD = newCoin.Amount * newCoin.CurrentPrice - newCoin.Amount * newCoin.AveragePrice;
-            newCoin.ProfitPerс = newCoin.ProfitUSD/newCoin.AverageValue * 10;
-            return newCoin;
+                newCoin.ProfitUSD = newCoin.Amount * newCoin.CurrentPrice - newCoin.Amount * newCoin.AveragePrice;
+                newCoin.ProfitPerс = newCoin.ProfitUSD / newCoin.AverageValue * 10;
+
+                return newCoin;
         }
+        
+        //public bool checkValueCurrent()
+        
         
         
 
@@ -134,4 +140,6 @@ namespace portfolio.Business.Managers
             .Find(transaction => transaction.TransactionCoins.Contains(GetById(coinId)))
             .ToList();
     }
+
+
 }

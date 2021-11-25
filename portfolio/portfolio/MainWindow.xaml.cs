@@ -58,5 +58,21 @@ namespace portfolio
             //AllTransactions = new ObservableCollection<Transaction>(MainWindowViewModel.TransactionManager.Transactions);
             grTransactionData.Items.Refresh();
         }
+
+      
+
+        private void btnTestException_Click(object sender, RoutedEventArgs e)
+        {
+            string s = null;
+            try
+            {
+                s.Trim();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("A handled exception just occurred: " + ex.Message, "Exception Sample",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
     }
 }
