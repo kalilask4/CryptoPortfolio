@@ -95,27 +95,6 @@ namespace portfolio.Business.Managers
             transactionRepository.Update(transaction);
             unitOfWork.SaveChanges();
         }       
-        
-        //сделать отдельные функции для расчета каждого значения
-        public Coin calculateValues(int coinId)
-        {
-            var coin = coinRepository.Get(coinId);
-            //var newCoin = coin;
-            //coin.Name = "!clone"; объект передается по ссылке, не по значению - реализовать ICloneable
-            Coin newCoin;
-                newCoin = (Coin)coin.Clone();
-            newCoin.CurrentValue = coin.Amount * coin.CurrentPrice;
-            newCoin.AverageValue = coin.Amount * coin.AveragePrice;
-            newCoin.ProfitUSD = coin.CurrentValue - coin.AverageValue;
-            newCoin.ProfitUSD = (coin.CurrentValue - coin.AverageValue) / coin.Amount;
-            
-            // coin.Transactions.Remove(transaction);
-             coinRepository.Update(newCoin);
-            // transaction.TransactionCoins.Remove(coin);
-            // transactionRepository.Update(transaction);
-            unitOfWork.SaveChanges();
-            return newCoin;
-        }
 
         //Recount only one coin. Recount all have to add 
         public Coin Recount(int coinId)
@@ -129,12 +108,8 @@ namespace portfolio.Business.Managers
                 return newCoin;
         }
         
-
-        
         public ICollection<Transaction> GetTransactionsOfCoin(int coinId) => transactionRepository
             .Find(transaction => transaction.TransactionCoins.Contains(GetById(coinId)))
             .ToList();
     }
-
-
 }

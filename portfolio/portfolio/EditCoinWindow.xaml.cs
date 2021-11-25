@@ -35,7 +35,6 @@ namespace portfolio
             .Register("Name", typeof(string),
             typeof(EditCoinWindow),
             new PropertyMetadata(default(string)));
-
         
         public string ShortName
         {
@@ -116,14 +115,11 @@ namespace portfolio
             typeof(EditCoinWindow), 
             new PropertyMetadata(default(DateTime)));
 
-
-
         public EditCoinWindow()
         {
             InitializeComponent();
 
         }
-
 
         private ICommand _selectPictureNameCommand;
         public ICommand SelectPictureNameCommand =>
@@ -164,9 +160,7 @@ namespace portfolio
                 static extern int MessageBoxTimeout(IntPtr hwnd, String text, String title,
                                      uint type, Int16 wLanguageId, Int32 milliseconds);
                 MessageBoxTimeout((System.IntPtr)0, "Fill Coin name.", "Message", 0, 0, 1000);
-
                //MessageBox.Show("Fill Coin name.");
-
             }
         }
 
