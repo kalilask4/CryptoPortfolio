@@ -333,7 +333,7 @@
                 <Button Visibility="Hidden" x:Name="Find" Content="Find"/>
                 <!--<Button Name="Update"  Content="Update"/>-->
             </StackPanel>
-            <Button Margin="103,229,180,26" Background="LightCoral" x:Name="btnTestException" Content="Bad act" Click="btnTestException_Click" Grid.ColumnSpan="2" />
+            <Button Visibility="Hidden" Margin="103,229,180,26" Background="LightCoral" x:Name="btnTestException" Content="Bad act" Click="btnTestException_Click" Grid.ColumnSpan="2" />
         </Grid>
     </Grid>
 </Window>
