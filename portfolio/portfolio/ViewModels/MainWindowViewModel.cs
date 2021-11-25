@@ -316,7 +316,8 @@ namespace portfolio.ViewModels
         {
             Coin newCoin = coinManager.Recount(_selectedCoin.CoinId);
             coinManager.Update(newCoin);
-           
+            MessageBoxTimeout((System.IntPtr) 0, $"{_selectedCoin.Name} - {_selectedCoin.ShortName} recounted. " +
+                                                 $"\n Update - right click", "Coins", 0, 0, 3000);
             OnGetTransactionExecuted(_selectedCoin.CoinId);
             //grCoinsData.Items.Refresh(); //rightClickUpdateTabCoin
         }
