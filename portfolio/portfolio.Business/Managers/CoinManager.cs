@@ -117,6 +117,7 @@ namespace portfolio.Business.Managers
             return newCoin;
         }
 
+        //Recount only one coin. Recount all have to add 
         public Coin Recount(int coinId)
         {
             var newCoin = coinRepository.Get(coinId);
