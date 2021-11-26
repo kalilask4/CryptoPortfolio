@@ -66,6 +66,7 @@ namespace portfolio
 
             cBoxSide.ItemsSource = Transaction.sideType;
             cBoxCoinDebet.ItemsSource = MainWindowViewModel.Coins;
+            cBoxCoinCredit.ItemsSource = MainWindowViewModel.Coins;
    
         }
 
@@ -84,10 +85,9 @@ namespace portfolio
 
         }
 
-     
-
-
-
-       
+        private void btnCulculateSum_Click(object sender, RoutedEventArgs e)
+        {
+            textBoxSum.Text = (Convert.ToDecimal(textBoxAmount.Text) * Convert.ToDecimal(textBoxPrice.Text)).ToString();
+        }
     }
 }

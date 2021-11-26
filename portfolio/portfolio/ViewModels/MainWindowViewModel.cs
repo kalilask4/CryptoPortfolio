@@ -123,7 +123,8 @@ namespace portfolio.ViewModels
         #region Add coin
 
         private ICommand _newCoinCommand;
-        public ICommand NewCoinCommand => _newCoinCommand ??= new RelayCommand(OnNewCoinExecuted);
+        public ICommand NewCoinCommand =>
+            _newCoinCommand ??= new RelayCommand(OnNewCoinExecuted);
 
         private void OnNewCoinExecuted(object id)
         {
@@ -215,7 +216,6 @@ namespace portfolio.ViewModels
         #region Edit coin
 
         private ICommand _editCoinCommand;
-
         public ICommand EditCoinCommand =>
             _editCoinCommand ??= new RelayCommand(OnEditCoinExecuted, EditCoinCanExecute);
 
@@ -328,26 +328,34 @@ namespace portfolio.ViewModels
         #region Add transaction
 
         private ICommand _newTransactionCommand;
-        public ICommand NewTransactionCommand => _newTransactionCommand ??= new RelayCommand(OnNewTransactionExecuted);
+        public ICommand NewTransactionCommand =>
+            _newTransactionCommand ??= new RelayCommand(OnNewTransactionExecuted);
 
+        
         private void OnNewTransactionExecuted(object id)
         {
-            //var coins = coinManager.Coins;
-            //.ToList();
-
             var dialog = new EditTransactionWindow
             {
             };
 
-
             if (dialog.ShowDialog() != true) return;
 
+            Coin debetCoin = dialog.cBoxCoinCredit.SelectedItem as Coin;
+            
             var transaction = new Transaction
             {
+                DateUpdate = DateTime.Now,
                 Side = dialog.Side,
-                Symbol = dialog.DebetCoin.Name,
+                Symbol = debetCoin != null ? debetCoin.ShortName : "empty DebetCoin",
+                Amount = 1,
+                Price = 2,
+                TransactionCoins = new List<Coin>(2)
+                {
+                   //TransactionCoins.Add(coin); 
+                }
             };
             coinManager.AddTransactionToCoin(transaction, 1, 2);
+            //Transactions.Add(transaction);
         }
 
         #endregion

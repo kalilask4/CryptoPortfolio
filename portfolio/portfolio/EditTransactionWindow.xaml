@@ -51,43 +51,33 @@
             </Grid.ColumnDefinitions>
 
             <Label Margin="35,10,58,10" Grid.Row="0" Grid.ColumnSpan="2" Content="Transaction side"/>
-            <!--<Label Margin="68,0,5,19" Grid.Row="0" Grid.Column="2" Content="*To add coin without exchagge use transh and choose one coin" Grid.ColumnSpan="2" Grid.RowSpan="2"/>-->
 
             <TextBlock TextWrapping="Wrap" FontSize="9" FontStyle="Italic" Margin="76,2,5,0" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2">
                 *To add coin without exchange use transh and choose one coin
             </TextBlock>
-
+            
             <ComboBox x:Name="cBoxSide" Margin="51,10,41,0" Grid.Row="0" Grid.Column="1" Height="25" VerticalAlignment="Top"
                  Text="{Binding Side}" SelectedIndex="0" Grid.ColumnSpan="2"/>
             <Label Content="Choose coins:" HorizontalAlignment="Left" Grid.Column="1" Margin="10,10,0,42" Grid.RowSpan="2" Grid.Row="1"/>
 
-
             <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
-                <ComboBox x:Name="cBoxCoinDebet" Margin="10,10,10,10"
-                           ItemsSource="{Binding Coins}" SelectedItem="{Binding SelectedCoin}"
-                          SelectedIndex="0" SelectedValuePath="CoinId"
-                          />
-
-                <!--<TextBlock Name="tbDeskCoinDebet" Text="{Binding ElementName=cBoxCoinDebet, Path=Text}"></TextBlock>-->
+                <ComboBox x:Name="cBoxCoinDebet" Margin="10,10,10,10" ItemsSource="{Binding Coins}" SelectedItem="{Binding SelectedCoin}"
+                          SelectedIndex="0" SelectedValuePath="CoinId"/>
             </StackPanel>
 
             <StackPanel Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2">
-                <ComboBox x:Name="cBoxCoinCredit" Margin="10,10,10,10"
-                           ItemsSource="{Binding Coins}" SelectedItem="{Binding SelectedCoin}"
-                          SelectedIndex="1" SelectedValuePath="CoinId"
-                          />
-
-                <!--<TextBlock Name="tbDeskCoinDebet" Text="{Binding ElementName=cBoxCoinDebet, Path=Text}"></TextBlock>-->
+                <ComboBox x:Name="cBoxCoinCredit" Margin="10,10,10,10" ItemsSource="{Binding Coins}" SelectedItem="{Binding SelectedCoin}"
+                          SelectedValuePath="CoinId"/>
             </StackPanel>
 
             <Label Grid.Row="4" Grid.Column="0" Margin="35 5 0 0" Content="Amount" />
-            <TextBox Grid.Column="1" Grid.Row="4" Height="35" Margin="-10 3 5 3" x:Name="textBoxAmount" Text="{Binding Path=Amount}"/>
+            <TextBox Grid.Column="1" Grid.Row="4" Height="35" Margin="10,7,5,6" x:Name="textBoxAmount" Text="{Binding Path=Amount}"/>
             <Label Grid.Column="2" Grid.Row="4" Margin="35 5 0 0 " Content="Price"/>
-            <TextBox Grid.Column="3" Grid.Row="4" Margin="-15 3 10 3" Height="35" x:Name="textBoxPrice" Text="{Binding Path=Price}"/>
+            <TextBox Grid.Column="3" Grid.Row="4" Margin="5,7,10,6" Height="35" x:Name="textBoxPrice" Text="{Binding Path=Price}"/>
 
             <Label Grid.Column="0" Grid.Row="5" Margin="35 5 0 0" Content="Sum"/>
-            <Label Grid.Column="1" Grid.Row="5" Height="35" Margin="-10 3 5 3" x:Name="textBoxSum"/>
-            <Button x:Name="btnCulculateSum" Grid.Row="5" Grid.Column="2" Margin="5,0,5,0" Height="28" VerticalAlignment="Center" Content="Count"/>
+            <TextBox Grid.Column="1" Grid.Row="5" Height="35" Margin="5,7,5,7" x:Name="textBoxSum"/>
+            <Button x:Name="btnCulculateSum" Grid.Row="5" Grid.Column="2" Margin="5,0,5,0" Height="28" VerticalAlignment="Center" Content="Count" Click="btnCulculateSum_Click"/>
 
 
         </Grid>
