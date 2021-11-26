@@ -340,22 +340,28 @@ namespace portfolio.ViewModels
 
             if (dialog.ShowDialog() != true) return;
 
-            Coin debetCoin = dialog.cBoxCoinCredit.SelectedItem as Coin;
             
-            var transaction = new Transaction
-            {
-                DateUpdate = DateTime.Now,
-                Side = dialog.Side,
-                Symbol = debetCoin != null ? debetCoin.ShortName : "empty DebetCoin",
-                Amount = 1,
-                Price = 2,
-                TransactionCoins = new List<Coin>(2)
-                {
-                   //TransactionCoins.Add(coin); 
-                }
-            };
-            coinManager.AddTransactionToCoin(transaction, 1, 2);
-            //Transactions.Add(transaction);
+            Coin debetCoin = (Coin) dialog.cBoxCoinDebet.SelectedItem;
+            Coin creditCoin = (Coin) dialog.cBoxCoinCredit.SelectedItem;
+            MessageBox.Show(debetCoin.ToString());
+            
+             var transaction = new Transaction
+             {
+                 DateUpdate = DateTime.Now,
+                 Side = dialog.Side,
+                 Symbol = debetCoin != null ? debetCoin.ShortName : "empty DebetCoin",
+                 Amount = 1, //dialog.textBoxAmount.Text,
+                 Price = 2,
+                 TransactionCoins = new List<Coin>(2)
+                 {
+                     debetCoin, 
+                     debetCoin,
+                    // TransactionCoins.Add(debetCoin); 
+                 }
+             };
+            
+            MessageBox.Show(transaction.ToString());
+            coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId, 2);
         }
 
         #endregion
