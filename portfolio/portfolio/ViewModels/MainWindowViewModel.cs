@@ -168,7 +168,7 @@ namespace portfolio.ViewModels
                 coin.PictureName = "no.png";
             }
 
-            transactionManager.AddCoinToTransaction(coin);
+           
 
 
             if (dialog.PictureName != null)
@@ -184,7 +184,7 @@ namespace portfolio.ViewModels
                 }
             }
 
-
+            transactionManager.AddCoinToTransaction(coin);
             //Transactions.Add(transaction);
             Coins.Add(coin);
             coinManager.AddTransactionToCoin(transaction, coin.CoinId);
@@ -324,7 +324,6 @@ namespace portfolio.ViewModels
       
         #endregion
 
-
         #region Add transaction
 
         private ICommand _newTransactionCommand;
@@ -344,24 +343,30 @@ namespace portfolio.ViewModels
             Coin debetCoin = (Coin) dialog.cBoxCoinDebet.SelectedItem;
             Coin creditCoin = (Coin) dialog.cBoxCoinCredit.SelectedItem;
             MessageBox.Show(debetCoin.ToString());
-            
+
+          
              var transaction = new Transaction
-             {
-                 DateUpdate = DateTime.Now,
-                 Side = dialog.Side,
-                 Symbol = debetCoin != null ? debetCoin.ShortName : "empty DebetCoin",
-                 Amount = 1, //dialog.textBoxAmount.Text,
-                 Price = 2,
-                 TransactionCoins = new List<Coin>(2)
-                 {
-                     debetCoin, 
-                     debetCoin,
-                    // TransactionCoins.Add(debetCoin); 
-                 }
-             };
+                          {
+                              DateUpdate = DateTime.Now,
+                              Side = dialog.Side,
+                              Symbol = debetCoin != null ? debetCoin.ShortName + creditCoin.ShortName : "empty DebetCoin",
+                              Amount = 1, //dialog.textBoxAmount.Text,
+                              Price = 2,
+                              TransactionCoins = new List<Coin>(2)
+                              {
+                                  debetCoin, 
+                                  debetCoin,
+                                 // TransactionCoins.Add(debetCoin); 
+                              }
+                          };   
+           
+           
+             
             
             MessageBox.Show(transaction.ToString());
-            coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId, 2);
+            AllTransactions.Add(transaction);
+            //transactionManager.AddCoinToTransaction(debetCoin);
+            coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId, creditCoin.CoinId);
         }
 
         #endregion

@@ -192,7 +192,7 @@
                         </DockPanel>
                     </Grid>
                 </TabItem>
-                <TabItem x:Name="tiTransactionTabTrans" >
+                <TabItem x:Name="tiTransactionTabTrans" ContextMenuOpening="rightClickUpdateTabTrans">
                          <TabItem.Header>
                              <Label Content = "Transaction" Name="lTransactionsItems"
                                     MouseLeftButtonDown= "LTransactionsItems_OnMouseLeftButtonDown"
@@ -201,9 +201,19 @@
                         
                     <Border>
                         <DockPanel Grid.Row="0">
-                            <DataGrid Margin="5,5,5,5" x:Name="grTransactionData" Grid.Row="0" Grid.Column="1" 
-                                      ItemsSource="{Binding AllTransactions}" AutoGenerateColumns = "False"
-                                      SelectedItem="{Binding SelectedTransaction}">
+                            <DataGrid 
+                                Margin="5,5,5,5" x:Name="grTransactionData" 
+                                ItemsSource="{Binding AllTransactions}" 
+                                AutoGenerateColumns = "False" 
+                                SelectedItem="{Binding SelectedTransaction}">
+                                <!-- <i:Interaction.Triggers> -->
+                                <!--     <i:EventTrigger EventName="SelectionChanged"> -->
+                                <!--         <i:InvokeCommandAction -->
+                                <!--             Command="{Binding GetCoinsFromTransactionCommand}" -->
+                                <!--             CommandParameter="{Binding SelectedTransaction.TransactionId}"> -->
+                                <!--         </i:InvokeCommandAction> -->
+                                <!--     </i:EventTrigger> -->
+                                <!-- </i:Interaction.Triggers> -->
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Transaction" Width="95"
                                                             Binding="{Binding Path=Symbol}"></DataGridTextColumn>
