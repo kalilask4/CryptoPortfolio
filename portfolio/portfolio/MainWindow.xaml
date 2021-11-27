@@ -193,12 +193,12 @@
                     </Grid>
                 </TabItem>
                 <TabItem x:Name="tiTransactionTab" ContextMenuOpening="rightClickUpdateTabTrans">
-                         <TabItem.Header>
-                             <Label Content = "Transaction" Name="lTransactionsItems"
+                    <TabItem.Header>
+                        <Label Content = "Transaction" Name="lTransactionsItems"
                                     MouseLeftButtonDown= "LTransactionsItems_OnMouseLeftButtonDown"
                                     />
-                         </TabItem.Header>
-                        
+                    </TabItem.Header>
+
                     <Border>
                         <DockPanel Grid.Row="0">
                             <DataGrid 
@@ -229,12 +229,12 @@
                             </DataGrid>
                         </DockPanel>
                     </Border>
-               
-                    </TabItem>
+
+                </TabItem>
             </TabControl>
         </Grid>
         <Grid x:Name="gridStatistic" Grid.Column="1" Grid.Row="0">
-            <TabControl Margin="10" BorderBrush="Gainsboro">
+            <TabControl Margin="10,10,10,36" BorderBrush="Gainsboro">
                 <TabControl.Background>
                     <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.75"></ImageBrush>
                 </TabControl.Background>
@@ -266,55 +266,36 @@
                     </Style>
                 </TabControl.Resources>
                 <TabItem Header="Desc">
-                    <Grid >
+                    <Grid Height="164" >
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="0.4*"></RowDefinition>
-                            <RowDefinition Height="0.4*" ></RowDefinition>
-                            <RowDefinition Height="3*" ></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*" ></RowDefinition>
+                            <RowDefinition Height="1*" ></RowDefinition>
+                            <RowDefinition Height="1*" ></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                            <ColumnDefinition Width="33*"/>
-                            <ColumnDefinition Width="35*"></ColumnDefinition>
-                            <ColumnDefinition Width="35*"></ColumnDefinition>
-                            <ColumnDefinition Width="35*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1.2*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0">Start price, $</TextBlock>
+
+
                     </Grid>
                 </TabItem>
-                <TabItem Header="Second">
-                    <TextBlock>test2</TextBlock>
+                <TabItem Header="Custom calculator">
+                    <TextBlock>content</TextBlock>
                 </TabItem>
             </TabControl>
         </Grid>
-        <Grid x:Name="gridPanel" Grid.Column="1" Grid.Row="1">
+        <Grid x:Name="gridPanel" Grid.ColumnSpan="2" Margin="710,251,0,0" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel x:Name="st1" Grid.Column="0" Margin="5 10 5 5" >
-                <!--VerticalAlignment="Bottom"-->
-                <Button Height="35" Width="92" x:Name="Count" ToolTip="Count" ToolTipService.ShowDuration="2000" 
-                        Command="{Binding CountCoinCommand}">
-                    <Button.Resources>
-                        <!--<TextBox Text="Culc"/>-->
-                        <Style TargetType="{x:Type Border}">
-                            <!--<Setter Property="TextBlock.Text" Value="Culc"/>-->
-                            <Setter Property="CornerRadius" Value="3"/>
-                        </Style>
-                    </Button.Resources>
-                    <!--<Button.Content>
-                        <TextBlock>ttt</TextBlock>
-                    </Button.Content>-->
-                    <fas:FontAwesome Icon="Solid_calculator" FontSize="17" Width="21"/>
-
-                </Button>
-                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightGreen" x:Name="btnInsert" Content="сurrent"/>
-                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="Moccasin" x:Name="btnFind" Content="by bought price"/>
-                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightSalmon" x:Name="btnUpd" Content="ratio"/>
-            </StackPanel>
-            <StackPanel x:Name="st2" Grid.Column="1" Margin="40,10,20,26">
-                <Button x:Name="AddCoin" Command="{Binding NewCoinCommand}" ToolTip="Add coin" ToolTipService.ShowDuration="2000" Width="125">
-                    <fas:FontAwesome Icon="Brands_Btc" FontSize="17" Width="21" />
+            <StackPanel x:Name="st1" Grid.Column="1" Margin="5 10 5 5" >
+                <Button x:Name="AddTransaction1" Command="{Binding NewTransactionCommand}" ToolTip="Add Transaction" ToolTipService.ShowDuration="2000" Width="125">
+                    <fas:FontAwesome Icon="Solid_ExchangeAlt" FontSize="17" Width="21" />
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="3"/>
@@ -329,6 +310,59 @@
                         </Style>
                     </Button.Resources>
                 </Button>
+                <!--VerticalAlignment="Bottom"-->
+                <!--VerticalAlignment="Bottom"-->
+                <!--<Button Height="35" Width="92" x:Name="Count0" ToolTip="Count" ToolTipService.ShowDuration="2000" 
+                        Command="{Binding CountCoinCommand}">
+                    <Button.Resources>
+                        --><!--<TextBox Text="Culc"/>--><!--
+                        <Style TargetType="{x:Type Border}">
+                            --><!--<Setter Property="TextBlock.Text" Value="Culc"/>--><!--
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
+                    --><!--<Button.Content>
+                        <TextBlock>ttt</TextBlock>
+                    </Button.Content>--><!--
+                    <fas:FontAwesome Icon="Solid_calculator" FontSize="17" Width="21"/>
+
+                </Button>-->
+                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightGreen" x:Name="btnInsert" Content="сurrent"/>
+                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="Moccasin" x:Name="btnFind" Content="by bought price"/>
+                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightSalmon" x:Name="btnUpd" Content="ratio"/>
+            </StackPanel>
+            <StackPanel x:Name="st2" Grid.Column="0" Margin="25,10,10,26">
+                <Button Width="125" x:Name="Count" ToolTip="Count" ToolTipService.ShowDuration="2000" 
+                        Command="{Binding CountCoinCommand}">
+                    <Button.Resources>
+                        <!--<TextBox Text="Culc"/>-->
+                        <Style TargetType="{x:Type Border}">
+                            <!--<Setter Property="TextBlock.Text" Value="Culc"/>-->
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
+                    <!--<Button.Content>
+                        <TextBlock>ttt</TextBlock>
+                    </Button.Content>-->
+                    <fas:FontAwesome Icon="Solid_calculator" FontSize="17" Width="21"/>
+                </Button>
+                <Button x:Name="AddCoin" Command="{Binding NewCoinCommand}" ToolTip="Add coin" ToolTipService.ShowDuration="2000"
+                        Width="125">
+                    <fas:FontAwesome Icon="Brands_Btc" FontSize="17" Width="21" />
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <!--<Button x:Name="AddTransactiondel" Command="{Binding NewTransactionCommand}" ToolTip="Add Transaction" ToolTipService.ShowDuration="2000" Width="125">
+                    <fas:FontAwesome Icon="Solid_ExchangeAlt" FontSize="17" Width="21" />
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>-->
                 <Button x:Name="Edit" Command="{Binding EditCoinCommand}" ToolTip="Edit" ToolTipService.ShowDuration="2000" Width="125">
                     <fas:FontAwesome Icon="Solid_Edit" FontSize="17" Width="21" />
                     <Button.Resources>
@@ -348,7 +382,7 @@
                 <Button Visibility="Hidden" x:Name="Find" Content="Find"/>
                 <!--<Button Name="Update"  Content="Update"/>-->
             </StackPanel>
-            <Button Margin="103,229,180,26" Background="LightCoral" x:Name="btnTestException" Content="Bad act" Click="btnTestException_Click" Grid.ColumnSpan="2" />
+            <Button Margin="101,258,180,26" Background="LightCoral" x:Name="btnTestException" Content="Bad act" Click="btnTestException_Click" Grid.ColumnSpan="2" />
         </Grid>
     </Grid>
 </Window>
