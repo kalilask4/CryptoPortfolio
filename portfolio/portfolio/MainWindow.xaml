@@ -62,6 +62,14 @@
             <Setter Property="Background" Value="LightBlue"/>
             <Setter Property="FontSize" Value="13"/>
         </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontFamily" Value="Brevia"/>
+            <!--<Setter Property="Background" Value="LightBlue"/>-->
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="DimGray"></Setter>
+        </Style>
     </Window.Resources>
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/Resources/pastelAbstraction.jpg" Opacity="0.8"></ImageBrush>
@@ -266,19 +274,28 @@
                     </Style>
                 </TabControl.Resources>
                 <TabItem Header="Desc">
-                    <Grid Height="164" >
+                    <Grid Height="164" Margin="10">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="0.3*"></RowDefinition>
                             <RowDefinition Height="1*" ></RowDefinition>
                             <RowDefinition Height="1*" ></RowDefinition>
                             <RowDefinition Height="1*" ></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="1.35*"></ColumnDefinition>
+                            <ColumnDefinition Width="1.55*"/>
+                            <ColumnDefinition Width="0.6*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Row="0" Grid.Column="0">Start price, $</TextBlock>
+                        <!--<TextBlock Grid.Row="0" Grid.ColumnSpan="2">Start price, $</TextBlock>-->
+                        <TextBlock Grid.Row="1" Grid.Column="0">Start price, $</TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="0">Current price, $</TextBlock>
+                        <TextBlock Grid.Row="3" Grid.Column="0">Profit, $</TextBlock>
+
+                        <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbStartPrice"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbCurrentPrice"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" x:Name="tbProfit"/>
+
+
 
 
                     </Grid>
