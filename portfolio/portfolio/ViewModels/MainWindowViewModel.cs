@@ -60,19 +60,29 @@ namespace portfolio.ViewModels
                 DbTestData.SetupData(coinManager, transactionManager);
 
             Coins = new ObservableCollection<Coin>(coinManager.Coins);
-            Coins.CollectionChanged += Coins_CollectionChanged;
+            Coins.CollectionChanged += CoinsOnCollectionChanged;
 
             AllTransactions = new ObservableCollection<Transaction>(transactionManager.Transactions);
-            
+            AllTransactions.CollectionChanged += AllTransactionsOnCollectionChanged;
             //Transactions = new ObservableCollection<Transaction>();
             TransactionsFromCoin = new ObservableCollection<Transaction>();
-
 
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
         }
 
-        private static void Coins_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private void AllTransactionsOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    Transaction transaction = e.NewItems[0] as Transaction;
+                    MessageBoxTimeout((System.IntPtr) 0, $"{transaction.Symbol} added.", "Transaction", 0, 0, 2000);
+                    break;
+            }
+        }
+
+        private static void CoinsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
             {
