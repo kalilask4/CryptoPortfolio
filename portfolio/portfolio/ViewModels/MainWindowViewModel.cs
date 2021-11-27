@@ -28,20 +28,23 @@ namespace portfolio.ViewModels
 
         public static ObservableCollection<Coin> Coins { get; set; }
         //public ObservableCollection<Transaction> Transactions { get; set; }
-        public ObservableCollection<Transaction> TransactionsForCoin { get; set; }
+        //public ObservableCollection<Transaction> TransactionsForCoin { get; set; }
         public ObservableCollection<Transaction> AllTransactions { get; set; }
+        public decimal startPrice { get; set; }
+        public decimal currentPrice { get; set; }
+        public decimal profit { get; set; }
 
-        public string Title
-        {
-            get => titleCoins;
-            set => titleCoins = value;
-        }
-
-        public string TitleTransactions
-        {
-            get => titleTransactions;
-            set => titleTransactions = value;
-        }
+        // public string Title
+        // {
+        //     get => titleCoins;
+        //     set => titleCoins = value;
+        // }
+        //
+        // public string TitleTransactions
+        // {
+        //     get => titleTransactions;
+        //     set => titleTransactions = value;
+        // }
 
         public ObservableCollection<Transaction> TransactionsFromCoin { get; set; }
 
@@ -371,13 +374,30 @@ namespace portfolio.ViewModels
                               }
                           };   
            
-           
-             
-            
             MessageBox.Show(transaction.ToString());
             AllTransactions.Add(transaction);
             //transactionManager.AddCoinToTransaction(debetCoin);
             coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId, debetCoin.CoinId);
+        }
+
+        #endregion
+        
+         #region Full recount
+
+        private ICommand _fullRecountCommand;
+        public ICommand FullRecountCommand =>
+            _fullRecountCommand ??= new RelayCommand(OnFullRecountExecuted);
+
+        private void OnFullRecountExecuted(object id)
+        {
+            startPrice = 0; //coinManager.FullRecount();
+            foreach (var coin in Coins)
+            {
+                startPrice += coin.CurrentValue;
+            }
+            MessageBox.Show(startPrice.ToString());
+
+          
         }
 
         #endregion

@@ -30,7 +30,7 @@ namespace portfolio
         static extern int MessageBoxTimeout(IntPtr hwnd, String text, String title,
                                      uint type, Int16 wLanguageId, Int32 milliseconds);
 
-        public ObservableCollection<Transaction> AllTransactions;
+        //public ObservableCollection<Transaction> AllTransactions;
 
         public MainWindow()
         {
@@ -38,11 +38,7 @@ namespace portfolio
                        
         }
 
-        //private void AddCoin_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //}
-
+      
         private void rightClickUpdateTabCoin(object sender, ContextMenuEventArgs e)
         {
             MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
@@ -79,6 +75,12 @@ namespace portfolio
         private void LTransactionsItems_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             grCoinsData.SelectedItem = null;
+        }
+  
+        private void btnFullRecount_Click(object sender, RoutedEventArgs e)
+        {
+            
+
         }
     }
 }

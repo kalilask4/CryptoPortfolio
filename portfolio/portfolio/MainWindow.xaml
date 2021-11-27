@@ -56,17 +56,16 @@
             <Setter Property="FontSize" Value="12"/>
         </Style>
         <Style TargetType="TextBox">
-            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Margin" Value="5,0,5,7"/>
             <Setter Property="Padding" Value="5"/>
             <Setter Property="FontFamily" Value="Brevia"/>
             <Setter Property="Background" Value="LightBlue"/>
             <Setter Property="FontSize" Value="13"/>
         </Style>
         <Style TargetType="TextBlock">
-            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
             <Setter Property="Padding" Value="5"/>
             <Setter Property="FontFamily" Value="Brevia"/>
-            <!--<Setter Property="Background" Value="LightBlue"/>-->
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Foreground" Value="DimGray"></Setter>
         </Style>
@@ -280,24 +279,28 @@
                             <RowDefinition Height="1*" ></RowDefinition>
                             <RowDefinition Height="1*" ></RowDefinition>
                             <RowDefinition Height="1*" ></RowDefinition>
+                            <RowDefinition Height="1*" ></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1.35*"></ColumnDefinition>
-                            <ColumnDefinition Width="1.55*"/>
+                            <ColumnDefinition Width="1.4*"></ColumnDefinition>
+                            <ColumnDefinition Width="1.75*"/>
                             <ColumnDefinition Width="0.6*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <!--<TextBlock Grid.Row="0" Grid.ColumnSpan="2">Start price, $</TextBlock>-->
-                        <TextBlock Grid.Row="1" Grid.Column="0">Start price, $</TextBlock>
-                        <TextBlock Grid.Row="2" Grid.Column="0">Current price, $</TextBlock>
-                        <TextBlock Grid.Row="3" Grid.Column="0">Profit, $</TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Right">Start price, $</TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="0" TextAlignment="Right">Current price, $</TextBlock>
+                        <TextBlock Grid.Row="3" Grid.Column="0" TextAlignment="Right">Profit, $</TextBlock>
 
-                        <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbStartPrice"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbStartPrice"
+                                 Text="{Binding Path=ValueUSD, FallbackValue='0'}"
+                                 />
                         <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbCurrentPrice"/>
                         <TextBox Grid.Row="3" Grid.Column="1" x:Name="tbProfit"/>
 
-
-
-
+                        <Button x:Name="btnFullRecount" ToolTip="Calculate" ToolTipService.ShowDuration="1000"
+                                Grid.Row="4" Grid.ColumnSpan="2" Margin="15,8,75,-3" 
+                                Background="Aquamarine" Opacity="0.75" Click="btnFullRecount_Click"
+                                Command="{Binding FullRecountCommand}">Full recount</Button>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Custom calculator">
