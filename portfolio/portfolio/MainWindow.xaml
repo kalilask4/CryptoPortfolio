@@ -192,7 +192,7 @@
                         </DockPanel>
                     </Grid>
                 </TabItem>
-                <TabItem x:Name="tiTransactionTabTrans" ContextMenuOpening="rightClickUpdateTabTrans">
+                <TabItem x:Name="tiTransactionTab" ContextMenuOpening="rightClickUpdateTabTrans">
                          <TabItem.Header>
                              <Label Content = "Transaction" Name="lTransactionsItems"
                                     MouseLeftButtonDown= "LTransactionsItems_OnMouseLeftButtonDown"

@@ -27,7 +27,7 @@ namespace portfolio.ViewModels
         #region Public properties
 
         public static ObservableCollection<Coin> Coins { get; set; }
-        public ObservableCollection<Transaction> Transactions { get; set; }
+        //public ObservableCollection<Transaction> Transactions { get; set; }
         public ObservableCollection<Transaction> TransactionsForCoin { get; set; }
         public ObservableCollection<Transaction> AllTransactions { get; set; }
 
@@ -63,6 +63,7 @@ namespace portfolio.ViewModels
             Coins.CollectionChanged += Coins_CollectionChanged;
 
             AllTransactions = new ObservableCollection<Transaction>(transactionManager.Transactions);
+            
             //Transactions = new ObservableCollection<Transaction>();
             TransactionsFromCoin = new ObservableCollection<Transaction>();
 
@@ -349,7 +350,7 @@ namespace portfolio.ViewModels
                           {
                               DateUpdate = DateTime.Now,
                               Side = dialog.Side,
-                              Symbol = debetCoin != null ? debetCoin.ShortName + creditCoin.ShortName : "empty DebetCoin",
+                              Symbol = debetCoin != null ? debetCoin.ShortName + creditCoin?.ShortName : "empty DebetCoin",
                               Amount = 1, //dialog.textBoxAmount.Text,
                               Price = 2,
                               TransactionCoins = new List<Coin>(2)
@@ -366,7 +367,7 @@ namespace portfolio.ViewModels
             MessageBox.Show(transaction.ToString());
             AllTransactions.Add(transaction);
             //transactionManager.AddCoinToTransaction(debetCoin);
-            coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId, creditCoin.CoinId);
+            coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId, debetCoin.CoinId);
         }
 
         #endregion
