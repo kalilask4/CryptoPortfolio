@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using portfolio.Business;
 
 namespace portfolio.ViewModels
 {
@@ -20,7 +21,7 @@ namespace portfolio.ViewModels
         ManagersFactory factory;
         CoinManager coinManager;
         TransactionManager transactionManager;
-
+        
         private string titleCoins = "Coin Window";
         private string titleTransactions = "Transaction Window";
 
@@ -30,22 +31,7 @@ namespace portfolio.ViewModels
         //public ObservableCollection<Transaction> Transactions { get; set; }
         //public ObservableCollection<Transaction> TransactionsForCoin { get; set; }
         public ObservableCollection<Transaction> AllTransactions { get; set; }
-        public decimal startPrice { get; set; }
-        public decimal currentPrice { get; set; }
-        public decimal profit { get; set; }
-
-        // public string Title
-        // {
-        //     get => titleCoins;
-        //     set => titleCoins = value;
-        // }
-        //
-        // public string TitleTransactions
-        // {
-        //     get => titleTransactions;
-        //     set => titleTransactions = value;
-        // }
-
+        public ObservableCollection<PortfolioIndicator> PortfolioIndicators { get; set; }
         public ObservableCollection<Transaction> TransactionsFromCoin { get; set; }
 
         [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
@@ -69,9 +55,29 @@ namespace portfolio.ViewModels
             AllTransactions.CollectionChanged += AllTransactionsOnCollectionChanged;
             //Transactions = new ObservableCollection<Transaction>();
             TransactionsFromCoin = new ObservableCollection<Transaction>();
+            
+            PortfolioIndicators = new ObservableCollection<PortfolioIndicator>();
+            var startPrice = new PortfolioIndicator
+            {
+                IndicatorName = "Start price"
+            };
+            PortfolioIndicators.Add(startPrice);
+            var currentPrice = new PortfolioIndicator
+            {
+                IndicatorName = "Current price"
+            };
+            PortfolioIndicators.Add(currentPrice);
+            var profit = new PortfolioIndicator
+            {
+                IndicatorName = "Profit"
+            };
+            PortfolioIndicators.Add(profit);
+            //CollectionChanged
 
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
+            
+   
         }
 
         private void AllTransactionsOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
@@ -149,7 +155,6 @@ namespace portfolio.ViewModels
 
             if (dialog.ShowDialog() != true) return;
 
-
             var coin = new Coin
             {
                 Name = dialog.Name,
@@ -160,7 +165,6 @@ namespace portfolio.ViewModels
                 AveragePrice = dialog.PurchasePrice,
                 CurrentValue = dialog.CurrentPrice * dialog.Amount,
                 AverageValue = dialog.PurchasePrice * dialog.Amount,
-
                 DateUpdate = dialog.DateUpdate
             };
 
@@ -181,9 +185,6 @@ namespace portfolio.ViewModels
             {
                 coin.PictureName = "no.png";
             }
-
-           
-
 
             if (dialog.PictureName != null)
             {
@@ -333,7 +334,6 @@ namespace portfolio.ViewModels
             MessageBoxTimeout((System.IntPtr) 0, $"{_selectedCoin.Name} - {_selectedCoin.ShortName} recounted. " +
                                                  $"\n Update - right click", "Coins", 0, 0, 3000);
             OnGetTransactionExecuted(_selectedCoin.CoinId);
-            //grCoinsData.Items.Refresh(); //rightClickUpdateTabCoin
         }
       
         #endregion
@@ -373,7 +373,7 @@ namespace portfolio.ViewModels
                                  // TransactionCoins.Add(debetCoin); 
                               }
                           };   
-           
+            
             MessageBox.Show(transaction.ToString());
             AllTransactions.Add(transaction);
             //transactionManager.AddCoinToTransaction(debetCoin);
@@ -390,14 +390,27 @@ namespace portfolio.ViewModels
 
         private void OnFullRecountExecuted(object id)
         {
-            startPrice = 0; //coinManager.FullRecount();
+            PortfolioIndicator startPriceIndicator = new PortfolioIndicator();
+            startPriceIndicator.IndicatorName = "Start price";
+            startPriceIndicator.Value = 0;
+            decimal startPrice = 0;
             foreach (var coin in Coins)
             {
                 startPrice += coin.CurrentValue;
             }
-            MessageBox.Show(startPrice.ToString());
-
-          
+            startPriceIndicator.Value = startPrice;
+            foreach (var ind in PortfolioIndicators)
+            {
+                MessageBox.Show(ind.IndicatorName.Equals(startPriceIndicator.IndicatorName).ToString());
+                if (ind.IndicatorName.Equals(startPriceIndicator.IndicatorName))
+                {
+                    ind.Value = startPrice;
+                }
+            }
+            
+            MessageBox.Show(PortfolioIndicators.First().ToString());
+            //PortfolioIndicators.Add(startPriceIndicator);
+            
         }
 
         #endregion

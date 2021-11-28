@@ -11,6 +11,9 @@
         public  string IndicatorName { get; set; }
         public decimal Value { get; set; }
 
-     
+        public override string ToString()
+        {
+            return $"Name {this.IndicatorName} value {this.Value}";
+        }
     }
 }
