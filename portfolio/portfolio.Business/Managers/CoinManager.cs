@@ -108,22 +108,6 @@ namespace portfolio.Business.Managers
                 return newCoin;
         }
         
-        
-        public int FullRecount()
-        {
-            int startPrice, currentPrice, profit;
-            startPrice = 0;
-           //var result[] = [0,0,0];
-            
-            // var newCoin = coinRepository.Get(coinId);
-            // newCoin.AverageValue = newCoin.Amount * newCoin.AveragePrice;
-            // newCoin.CurrentValue = newCoin.Amount * newCoin.CurrentPrice;
-            // newCoin.ProfitUSD = newCoin.Amount * newCoin.CurrentPrice - newCoin.Amount * newCoin.AveragePrice;
-            // newCoin.ProfitPerс = newCoin.ProfitUSD / newCoin.AverageValue * 10;
-        
-            return startPrice;
-        }
-        
         public ICollection<Transaction> GetTransactionsOfCoin(int coinId) => transactionRepository
             .Find(transaction => transaction.TransactionCoins.Contains(GetById(coinId)))
             .ToList();

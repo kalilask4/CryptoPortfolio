@@ -46,27 +46,14 @@ namespace portfolio
         private void rightClickUpdateTabCoin(object sender, ContextMenuEventArgs e)
         {
             MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
-            //AllTransactions = new ObservableCollection<Transaction>(MainWindowViewModel.TransactionManager.Transactions);
-            //command - update coins profit - main window
-
             grCoinsData.Items.Refresh();
-           // dgPortfolioIndicators.Items.Refresh();
-            //dgPortfolioPerformance.Items.Refresh();
-            // TextBox.TextProperty.Up
-            // tbStartPrice.TextP
-            //
+           
         }
 
         private void rightClickUpdateTabTrans(object sender, ContextMenuEventArgs e)
         {
             MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
-            //AllTransactions = new ObservableCollection<Transaction>(MainWindowViewModel.TransactionManager.Transactions);
             grTransactionData.Items.Refresh();
-            
-            
-                
-                //ItemsSource.re();
-
         }
       
 
@@ -90,10 +77,5 @@ namespace portfolio
         {
             grCoinsData.SelectedItem = null;
         }
-  
-        // private void btnFullRecount_Click(object sender, RoutedEventArgs e)
-        // {
-        //
-        // }
-    }
+  }
 }
