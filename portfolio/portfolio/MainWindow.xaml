@@ -275,32 +275,61 @@
                 <TabItem Header="Desc">
                     <Grid Height="164" Margin="10">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="0.3*"></RowDefinition>
+                            <RowDefinition Height="4*"></RowDefinition>
                             <RowDefinition Height="1*" ></RowDefinition>
-                            <RowDefinition Height="1*" ></RowDefinition>
-                            <RowDefinition Height="1*" ></RowDefinition>
-                            <RowDefinition Height="1*" ></RowDefinition>
-                        </Grid.RowDefinitions>
+                            </Grid.RowDefinitions>
+                        <!-- <Grid.RowDefinitions> -->
+                        <!--     <RowDefinition Height="0.3*"></RowDefinition> -->
+                        <!--     <RowDefinition Height="1*" ></RowDefinition> -->
+                        <!--     <RowDefinition Height="1*" ></RowDefinition> -->
+                        <!--     <RowDefinition Height="1*" ></RowDefinition> -->
+                        <!--     <RowDefinition Height="1*" ></RowDefinition> -->
+                        <!-- </Grid.RowDefinitions> -->
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1.4*"></ColumnDefinition>
-                            <ColumnDefinition Width="1.75*"/>
-                            <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"/>
+                            <!-- <ColumnDefinition Width="0.6*"></ColumnDefinition> -->
                         </Grid.ColumnDefinitions>
                         <!--<TextBlock Grid.Row="0" Grid.ColumnSpan="2">Start price, $</TextBlock>-->
-                        <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Right">Start price, $</TextBlock>
-                        <TextBlock Grid.Row="2" Grid.Column="0" TextAlignment="Right">Current price, $</TextBlock>
-                        <TextBlock Grid.Row="3" Grid.Column="0" TextAlignment="Right">Profit, $</TextBlock>
-
-                        <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbStartPrice"
-                                 Text="{Binding Path=ValueUSD, FallbackValue='0'}"
-                                 />
-                        <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbCurrentPrice"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" x:Name="tbProfit"/>
-
-                        <Button x:Name="btnFullRecount" ToolTip="Calculate" ToolTipService.ShowDuration="1000"
-                                Grid.Row="4" Grid.ColumnSpan="2" Margin="15,8,75,-3" 
-                                Background="Aquamarine" Opacity="0.75" Click="btnFullRecount_Click"
+                        <!-- <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Right">Start price, $</TextBlock> -->
+                        <!-- <TextBlock Grid.Row="2" Grid.Column="0" TextAlignment="Right">Current price, $</TextBlock> -->
+                        <!-- <TextBlock Grid.Row="3" Grid.Column="0" TextAlignment="Right">Profit, $</TextBlock> -->
+                        <!-- -->
+                        <!-- <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbCurrentPrice"/> -->
+                        <!-- <TextBox Grid.Row="3" Grid.Column="1" x:Name="tbProfit"/> -->
+                        <!-- <DataGrid Name="dgPortfolioPerformance" -->
+                        <!--           ItemsSource="{Binding PortfolioIndicators}" -->
+                        <!--           AutoGenerateColumns = "False" -->
+                        <!--           > -->
+                            
+                            <DataGrid 
+                                BorderBrush="Aquamarine"
+                                       Margin="5,5,5,20" x:Name="dgPortfolioIndicators" 
+                                       ItemsSource="{Binding PortfolioIndicators}"
+                                       AutoGenerateColumns = "False"
+                                       SelectedValue="{Binding SelectedCoin}" SelectedIndex="0"
+                                       >
+                                <DataGrid.Columns>
+                                   
+                                          <DataGridTextColumn Header="Indicator" Width="65" Binding="{Binding Path=IndicatorName}"></DataGridTextColumn>
+                                   
+                                                <DataGridTextColumn Width="100" Header="Amount"
+                                                                    Binding="{Binding Path=Value}"></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            
+                    </DataGrid>
+                    <Button x:Name="btnFullRecount" ToolTip="Recount start portfolio price, current and profit"
+                                ToolTipService.ShowDuration="1000"
+                                Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="15,8,75,-3" 
+                                Height="45" Width="65"
+                                Background="Aquamarine" Opacity="0.75"
                                 Command="{Binding FullRecountCommand}">Full recount</Button>
+
+
+                        
+                        
+                        
+
                     </Grid>
                 </TabItem>
                 <TabItem Header="Custom calculator">
