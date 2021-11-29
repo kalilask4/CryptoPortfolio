@@ -410,7 +410,7 @@ namespace portfolio.ViewModels
             decimal startPrice = 0;
             foreach (var coin in Coins)
             {
-                startPrice += coin.CurrentValue;
+                startPrice += coin.AverageValue;
             }
             startPriceIndicator.Value = startPrice;
             foreach (var ind in PortfolioIndicators)
@@ -424,6 +424,27 @@ namespace portfolio.ViewModels
             
             //MessageBox.Show(PortfolioIndicators.First().ToString());
             //PortfolioIndicators.Add(startPriceIndicator);
+            
+            
+            PortfolioIndicator currentPriceIndicator = new PortfolioIndicator();
+            currentPriceIndicator.IndicatorName = "Current price";
+            currentPriceIndicator.Value = 0;
+            decimal currentPrice = 0;
+            foreach (var coin in Coins)
+            {
+                currentPrice += coin.CurrentValue;
+            }
+            currentPriceIndicator.Value = currentPrice;
+            foreach (var ind in PortfolioIndicators)
+            {
+                //MessageBox.Show(ind.IndicatorName.Equals(startPriceIndicator.IndicatorName).ToString());
+                if (ind.IndicatorName.Equals(currentPriceIndicator.IndicatorName))
+                {
+                    ind.Value = currentPrice;
+                }
+            }
+            
+            
             
         }
 
