@@ -90,11 +90,6 @@ namespace portfolio.ViewModels
                     PortfolioIndicator replasingIndicator = e.NewItems[0] as PortfolioIndicator;
                     MessageBoxTimeout((System.IntPtr) 0, $"{replasedIndicator.IndicatorName} recounted.", "Indicators",
                         0, 0, 2000);
-                    //
-                    // Coin replasedCoin = e.OldItems[0] as Coin;
-                    // Coin replasingCoin = e.NewItems[0] as Coin;
-                    // MessageBoxTimeout((System.IntPtr) 0, $"{replasedCoin.Name} replased {replasingCoin.Name}.", "Coins",
-                    //     0, 0, 2000);
                     break;
             }
         }

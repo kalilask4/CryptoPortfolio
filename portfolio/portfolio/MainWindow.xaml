@@ -11,38 +11,38 @@
         Title="Crypto portfolio" Height="600" Width="1100"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Window.DataContext>
     <Window.Resources>
-        <inf:ImageSourceConverter x:Key="ImageSourceConverter"/>
+        <inf:ImageSourceConverter x:Key="ImageSourceConverter" />
         <Style TargetType="DataGrid">
-            <Setter Property="RowBackground" Value="Beige"></Setter>
-            <Setter Property="Background" Value="LightGoldenrodYellow"/>
-            <Setter Property="Foreground" Value="DimGray"/>
-            <Setter Property="BorderBrush" Value="LightSteelBlue"></Setter>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="RowBackground" Value="Beige" />
+            <Setter Property="Background" Value="LightGoldenrodYellow" />
+            <Setter Property="Foreground" Value="DimGray" />
+            <Setter Property="BorderBrush" Value="LightSteelBlue" />
+            <Setter Property="BorderThickness" Value="1" />
         </Style>
-        <Style TargetType="DataGridCell" >
+        <Style TargetType="DataGridCell">
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="#B09FF5"/>
-                    <Setter Property="Opacity" Value="0.7"/>
+                    <Setter Property="Background" Value="#B09FF5" />
+                    <Setter Property="Opacity" Value="0.7" />
                 </Trigger>
             </Style.Triggers>
         </Style>
         <Style TargetType="Button">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="FontFamily" Value="Brevia"/>
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="FontFamily" Value="Brevia" />
             <Setter Property="Background">
                 <Setter.Value>
-                    <ImageBrush ImageSource="pack://application:,,,/Resources/btn5.png"  Opacity="1"></ImageBrush>
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/btn5.png" Opacity="1" />
                 </Setter.Value>
             </Setter>
-            <Setter Property="Foreground" Value="#170F35"/>
-            <Setter Property="BorderBrush" Value="#5A5180"/>
-            <Setter Property="Opacity" Value="0.78"/>
-            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#170F35" />
+            <Setter Property="BorderBrush" Value="#5A5180" />
+            <Setter Property="Opacity" Value="0.78" />
+            <Setter Property="FontSize" Value="12" />
             <Setter Property="Button.Effect">
                 <Setter.Value>
                     <DropShadowEffect Color="Black" Direction="320" ShadowDepth="2" BlurRadius="5" Opacity="0.7" />
@@ -50,60 +50,59 @@
             </Setter>
         </Style>
         <Style TargetType="Label">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="FontFamily" Value="Brevia Light"/>
-            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="FontFamily" Value="Brevia Light" />
+            <Setter Property="FontSize" Value="12" />
         </Style>
         <Style TargetType="TextBox">
-            <Setter Property="Margin" Value="5,0,5,7"/>
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="FontFamily" Value="Brevia"/>
-            <Setter Property="Background" Value="LightBlue"/>
-            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Margin" Value="5,0,5,7" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="FontFamily" Value="Brevia" />
+            <Setter Property="Background" Value="LightBlue" />
+            <Setter Property="FontSize" Value="13" />
         </Style>
         <Style TargetType="TextBlock">
-            <Setter Property="Margin" Value="5,5,5,5"/>
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="FontFamily" Value="Brevia"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="Foreground" Value="DimGray"></Setter>
+            <Setter Property="Margin" Value="5,5,5,5" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="FontFamily" Value="Brevia" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Foreground" Value="DimGray" />
         </Style>
-        
-        
     </Window.Resources>
     <Window.Background>
-        <ImageBrush ImageSource="pack://application:,,,/Resources/pastelAbstraction.jpg" Opacity="0.8"></ImageBrush>
+        <ImageBrush ImageSource="pack://application:,,,/Resources/pastelAbstraction.jpg" Opacity="0.8" />
     </Window.Background>
     <Grid x:Name="gridGeneral" Margin="8. 8. 8. 8.">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.9*"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="1.9*" />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="1.1*"></RowDefinition>
+            <RowDefinition />
+            <RowDefinition Height="1.1*" />
         </Grid.RowDefinitions>
         <Grid x:Name="gridData" Grid.RowSpan="2" Opacity="0.9">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="172*"/>
-                <ColumnDefinition Width="305*"/>
+                <ColumnDefinition Width="172*" />
+                <ColumnDefinition Width="305*" />
             </Grid.ColumnDefinitions>
             <TabControl Margin="5,0,0,5" BorderBrush="Gainsboro" Grid.ColumnSpan="2">
                 <TabControl.Background>
-                    <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.75"></ImageBrush>
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.75" />
                 </TabControl.Background>
                 <TabControl.Resources>
                     <Style TargetType="TabItem">
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="TabItem">
-                                    <Border Name="Border" BorderThickness="0,0,0,0" BorderBrush="LemonChiffon" CornerRadius="4,4,0,0" Margin="2,0">
+                                    <Border Name="Border" BorderThickness="0,0,0,0" BorderBrush="LemonChiffon"
+                                            CornerRadius="4,4,0,0" Margin="2,0">
                                         <ContentPresenter x:Name="ContentSite"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        ContentSource="Header"
-                                        Margin="10,2"/>
+                                                          VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center"
+                                                          ContentSource="Header"
+                                                          Margin="10,2" />
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsSelected" Value="True">
@@ -124,75 +123,75 @@
                          ToolTip="Update - right click" ToolTipService.ShowDuration="1000">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="105*"/>
-                            <ColumnDefinition Width="361*"/>
+                            <ColumnDefinition Width="105*" />
+                            <ColumnDefinition Width="361*" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="2.2*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="2.2*" />
+                            <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
                         <Border Grid.Row="0" Grid.ColumnSpan="2">
                             <DockPanel>
-                                <DataGrid 
-                                    Margin="5,5,5,20" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1" 
-                                          ItemsSource="{Binding Coins}"
-                                          AutoGenerateColumns = "False"
+                                <DataGrid
+                                    Margin="5,5,5,20" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1"
+                                    ItemsSource="{Binding Coins}"
+                                    AutoGenerateColumns="False"
                                     SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="SelectionChanged">
                                             <i:InvokeCommandAction
-                                        Command="{Binding GetTransactionsFromCoinCommand}"
-                                        CommandParameter="{Binding SelectedCoin.CoinId}">
-                                            </i:InvokeCommandAction>
+                                                Command="{Binding GetTransactionsFromCoinCommand}"
+                                                CommandParameter="{Binding SelectedCoin.CoinId}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                     <DataGrid.Columns>
                                         <DataGridTemplateColumn>
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Image 
-                                                        Stretch="Fill" 
-                                                        Width="23" Height="23" 
-                                                        Source="{Binding PictureName, Converter={StaticResource ImageSourceConverter}, Mode=TwoWay}"/>
+                                                    <Image
+                                                        Stretch="Fill"
+                                                        Width="23" Height="23"
+                                                        Source="{Binding PictureName, Converter={StaticResource ImageSourceConverter}, Mode=TwoWay}" />
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTextColumn Header="Coin" Width="65" Binding="{Binding Path=ShortName}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Coin" Width="65" Binding="{Binding Path=ShortName}" />
                                         <DataGridTextColumn Width="100" Header="Amount"
-                                                            Binding="{Binding Path=Amount}"></DataGridTextColumn>
+                                                            Binding="{Binding Path=Amount}" />
                                         <DataGridTextColumn Width="70" Header="Average purchase price"
-                                                            Binding="{Binding Path=AveragePrice, StringFormat={}{0:C}}"></DataGridTextColumn>
+                                                            Binding="{Binding Path=AveragePrice, StringFormat={}{0:C}}" />
                                         <DataGridTextColumn Width="70" Header="Current price"
-                                                            Binding="{Binding Path=CurrentPrice, StringFormat={}{0:C}}"></DataGridTextColumn>
+                                                            Binding="{Binding Path=CurrentPrice, StringFormat={}{0:C}}" />
                                         <DataGridTextColumn Width="70" Header="Value by bougth"
-                                                            Binding="{Binding Path=AverageValue, StringFormat={}{0:C}}"></DataGridTextColumn>
+                                                            Binding="{Binding Path=AverageValue, StringFormat={}{0:C}}" />
                                         <DataGridTextColumn Width="90" Header="Value current"
-                                                            Binding="{Binding Path=CurrentValue, StringFormat={}{0:C}}"></DataGridTextColumn>
+                                                            Binding="{Binding Path=CurrentValue, StringFormat={}{0:C}}" />
                                         <DataGridTextColumn x:Name="tcProfitUSD" Width="70" Header="Profit, $"
-                                                            Binding="{Binding Path=ProfitUSD, StringFormat={}{0:C2}}"></DataGridTextColumn>
+                                                            Binding="{Binding Path=ProfitUSD, StringFormat={}{0:C2}}" />
                                         <DataGridTextColumn x:Name="tcProfitPerc" Width="70" Header="Profit, %"
-                                                            Binding="{Binding Path=ProfitPerс, StringFormat={}{0:P2}}"></DataGridTextColumn>
+                                                            Binding="{Binding Path=ProfitPerс, StringFormat={}{0:P2}}" />
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </DockPanel>
                         </Border>
-                        <DockPanel  Grid.Row ="1" Grid.ColumnSpan="2" Margin="0,0,0,0" Grid.RowSpan="2">
+                        <DockPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,0" Grid.RowSpan="2">
                             <GroupBox Header="Coin transactions" Margin="0" Padding="0">
-                                <ListView x:Name="lvTransactions" ItemsSource="{Binding TransactionsFromCoin}" Background="Beige">
+                                <ListView x:Name="lvTransactions" ItemsSource="{Binding TransactionsFromCoin}"
+                                          Background="Beige">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding Symbol}"/>
-                                                <TextBlock Text="  "/>
-                                                <TextBlock Text="{Binding Side}"/>
-                                                <TextBlock Text="  "/>
-                                                <TextBlock Text="{Binding Amount}"/>
-                                                <TextBlock Text="  "/>
-                                                <TextBlock Text="{Binding Priсe, StringFormat={}{0:C}}"/>
-                                                <TextBlock Text="  "/>
-                                                <TextBlock Text="{Binding Sum, StringFormat={}{0:C}}"/>
-                                                <TextBlock Text="  "/>
-                                                <TextBlock Text="{Binding DateUpdate, StringFormat={}{0:dd.MM.yyyy}}"/>
+                                                <TextBlock Text="{Binding Symbol}" />
+                                                <TextBlock Text="  " />
+                                                <TextBlock Text="{Binding Side}" />
+                                                <TextBlock Text="  " />
+                                                <TextBlock Text="{Binding Amount}" />
+                                                <TextBlock Text="  " />
+                                                <TextBlock Text="{Binding Priсe, StringFormat={}{0:C}}" />
+                                                <TextBlock Text="  " />
+                                                <TextBlock Text="{Binding Sum, StringFormat={}{0:C}}" />
+                                                <TextBlock Text="  " />
+                                                <TextBlock Text="{Binding DateUpdate, StringFormat={}{0:dd.MM.yyyy}}" />
                                             </StackPanel>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
@@ -203,28 +202,24 @@
                 </TabItem>
                 <TabItem x:Name="tiTransactionTab" ContextMenuOpening="rightClickUpdateTabTrans">
                     <TabItem.Header>
-                        <Label Content = "Transaction" Name="lTransactionsItems"
-                                    MouseLeftButtonDown= "LTransactionsItems_OnMouseLeftButtonDown"
-                                    />
+                        <Label Content="Transaction" Name="lTransactionsItems"
+                               MouseLeftButtonDown="LTransactionsItems_OnMouseLeftButtonDown" />
                     </TabItem.Header>
                     <Border>
                         <DockPanel Grid.Row="0">
-                            <DataGrid 
-                                Margin="5,5,5,5" x:Name="grTransactionData" 
-                                ItemsSource="{Binding AllTransactions}" 
-                                AutoGenerateColumns = "False" 
+                            <DataGrid
+                                Margin="5,5,5,5" x:Name="grTransactionData"
+                                ItemsSource="{Binding AllTransactions}"
+                                AutoGenerateColumns="False"
                                 SelectedItem="{Binding SelectedTransaction}">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Transaction" Width="95"
-                                                            Binding="{Binding Path=Symbol}"></DataGridTextColumn>
-                                    <DataGridTextColumn Header="Amount"
-                                                            Binding="{Binding Path=Amount}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Transaction" Width="95" Binding="{Binding Path=Symbol}" />
+                                    <DataGridTextColumn Header="Amount" Binding="{Binding Path=Amount}" />
                                     <DataGridTextColumn Header="Price"
-                                                            Binding="{Binding Path=Priсe, StringFormat={}{0:C}}"></DataGridTextColumn>
+                                                        Binding="{Binding Path=Priсe, StringFormat={}{0:C}}" />
                                     <DataGridTextColumn Width="75" Header="Sum"
-                                                            Binding="{Binding Path=Sum, StringFormat={}{0:C}}"></DataGridTextColumn>
-                                    <DataGridTextColumn Header="side" Width="35"
-                                                            Binding="{Binding Path=Side}"></DataGridTextColumn>
+                                                        Binding="{Binding Path=Sum, StringFormat={}{0:C}}" />
+                                    <DataGridTextColumn Header="side" Width="35" Binding="{Binding Path=Side}" />
                                 </DataGrid.Columns>
                             </DataGrid>
                         </DockPanel>
@@ -235,19 +230,20 @@
         <Grid x:Name="gridStatistic" Grid.Column="1" Grid.Row="0">
             <TabControl Margin="10,10,10,36" BorderBrush="Gainsboro">
                 <TabControl.Background>
-                    <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.75"></ImageBrush>
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/light-yellow.jpg" Opacity="0.75" />
                 </TabControl.Background>
                 <TabControl.Resources>
                     <Style TargetType="TabItem">
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="TabItem">
-                                    <Border Name="Border" BorderThickness="0,0,0,0" BorderBrush="LemonChiffon" CornerRadius="4,4,0,0" Margin="2,0">
+                                    <Border Name="Border" BorderThickness="0,0,0,0" BorderBrush="LemonChiffon"
+                                            CornerRadius="4,4,0,0" Margin="2,0">
                                         <ContentPresenter x:Name="ContentSite"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        ContentSource="Header"
-                                        Margin="10,2"/>
+                                                          VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center"
+                                                          ContentSource="Header"
+                                                          Margin="10,2" />
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsSelected" Value="True">
@@ -267,48 +263,50 @@
                 <TabItem Header="Desc">
                     <Grid Margin="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="6*"></RowDefinition>
-                            <RowDefinition Height="1.4*" ></RowDefinition>
-                            </Grid.RowDefinitions>
+                            <RowDefinition Height="6*" />
+                            <RowDefinition Height="1.4*" />
+                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="6*"></ColumnDefinition>
-                            <ColumnDefinition Width="0.1*"/>
+                            <ColumnDefinition Width="6*" />
+                            <ColumnDefinition Width="0.1*" />
                         </Grid.ColumnDefinitions>
-                            <DataGrid BorderBrush="CornflowerBlue"
-                                       Margin="2,2,2,2" x:Name="dgPortfolioIndicators" 
-                                       ItemsSource="{Binding PortfolioIndicators}"
-                                       AutoGenerateColumns = "False"
-                                       SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
-                                <DataGrid.CellStyle>
-                                    <Style TargetType="DataGridCell" >
-                                        <Setter Property="BorderThickness" Value="0,0,0,0"/>
-                                        <Setter Property="BorderBrush" Value="LightGoldenrodYellow"/>
-                                        <Setter Property="Background" Value="#CCCCFF"/>
-                                        <Setter Property="Foreground" Value="MidnightBlue"/> 
-                                        <Setter Property="Opacity" Value="0.75"/> 
-                                        <Setter Property="Height" Value="38"></Setter>
-                                        <Setter Property="FontSize" Value="16"></Setter>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsSelected" Value="True">
-                                                <Setter Property="Background" Value="CornflowerBlue"/>
-                                                <Setter Property="Foreground" Value="LightGoldenrodYellow"/>
-                                                <Setter Property="BorderBrush" Value="LightGoldenrodYellow"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </DataGrid.CellStyle>
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Indicator" Width="160" Binding="{Binding Path=IndicatorName}">
-                                    </DataGridTextColumn>
-                                    <DataGridTextColumn Width="140" Header="Amount, $" Binding="{Binding Path=Value}"></DataGridTextColumn>
-                                </DataGrid.Columns>
-                    </DataGrid>
-                    <Button x:Name="btnFullRecount" ToolTip="Recount start portfolio price, current and profit"
+                        <DataGrid BorderBrush="CornflowerBlue"
+                                  Margin="2,2,2,2" x:Name="dgPortfolioIndicators"
+                                  ItemsSource="{Binding PortfolioIndicators}"
+                                  AutoGenerateColumns="False"
+                                  SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
+                            <DataGrid.CellStyle>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="BorderThickness" Value="0,0,0,0" />
+                                    <Setter Property="BorderBrush" Value="LightGoldenrodYellow" />
+                                    <Setter Property="Background" Value="#CCCCFF" />
+                                    <Setter Property="Foreground" Value="MidnightBlue" />
+                                    <Setter Property="Opacity" Value="0.75" />
+                                    <Setter Property="Height" Value="38" />
+                                    <Setter Property="FontSize" Value="16" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="CornflowerBlue" />
+                                            <Setter Property="Foreground" Value="LightGoldenrodYellow" />
+                                            <Setter Property="BorderBrush" Value="LightGoldenrodYellow" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.CellStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Indicator" Width="160"
+                                                    Binding="{Binding Path=IndicatorName}" />
+                                <DataGridTextColumn Width="140" Header="Amount, $" Binding="{Binding Path=Value}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="btnFullRecount" ToolTip="Recount start portfolio price, current and profit"
                                 ToolTipService.ShowDuration="1000"
                                 Grid.Column="0" Grid.Row="1" Margin="12, 0, 100, 0" HorizontalAlignment="Left"
                                 Height="26" Width="105" FontSize="14"
                                 Background="#CCCCFF"
-                                Command="{Binding FullRecountCommand}">Full recount</Button>
+                                Command="{Binding FullRecountCommand}">
+                            Full recount
+                        </Button>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Custom calculator">
@@ -318,68 +316,77 @@
         </Grid>
         <Grid x:Name="gridPanel" Grid.ColumnSpan="2" Margin="710,251,0,0" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <StackPanel x:Name="st1" Grid.Column="1" Margin="5 10 5 5" >
-                <Button x:Name="AddTransaction1" Command="{Binding NewTransactionCommand}" ToolTip="Add Transaction" ToolTipService.ShowDuration="2000" Width="125">
+            <StackPanel x:Name="st1" Grid.Column="1" Margin="5 10 5 5">
+                <Button x:Name="AddTransaction1" Command="{Binding NewTransactionCommand}" ToolTip="Add Transaction"
+                        ToolTipService.ShowDuration="2000" Width="125">
                     <fas:FontAwesome Icon="Solid_ExchangeAlt" FontSize="17" Width="21" />
                     <Button.Resources>
                         <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="3"/>
+                            <Setter Property="CornerRadius" Value="3" />
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="AddTransaction" Command="{Binding NewTransactionCommand}" ToolTip="Add Transaction" ToolTipService.ShowDuration="2000" Width="125">
+                <Button x:Name="AddTransaction" Command="{Binding NewTransactionCommand}" ToolTip="Add Transaction"
+                        ToolTipService.ShowDuration="2000" Width="125">
                     <fas:FontAwesome Icon="Solid_ExchangeAlt" FontSize="17" Width="21" />
                     <Button.Resources>
                         <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="3"/>
+                            <Setter Property="CornerRadius" Value="3" />
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightGreen" x:Name="btnInsert" Content="сurrent"/>
-                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="Moccasin" x:Name="btnFind" Content="by bought price"/>
-                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightSalmon" x:Name="btnUpd" Content="ratio"/>
+                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightGreen" x:Name="btnInsert"
+                        Content="сurrent" />
+                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="Moccasin" x:Name="btnFind"
+                        Content="by bought price" />
+                <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightSalmon" x:Name="btnUpd"
+                        Content="ratio" />
             </StackPanel>
             <StackPanel x:Name="st2" Grid.Column="0" Margin="25,10,10,26">
-                <Button Width="125" x:Name="Count" ToolTip="Count" ToolTipService.ShowDuration="2000" 
+                <Button Width="125" x:Name="Count" ToolTip="Count" ToolTipService.ShowDuration="2000"
                         Command="{Binding CountCoinCommand}">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="3"/>
+                            <Setter Property="CornerRadius" Value="3" />
                         </Style>
                     </Button.Resources>
-                    <fas:FontAwesome Icon="Solid_calculator" FontSize="17" Width="21"/>
+                    <fas:FontAwesome Icon="Solid_calculator" FontSize="17" Width="21" />
                 </Button>
-                <Button x:Name="AddCoin" Command="{Binding NewCoinCommand}" ToolTip="Add coin" ToolTipService.ShowDuration="2000"
+                <Button x:Name="AddCoin" Command="{Binding NewCoinCommand}" ToolTip="Add coin"
+                        ToolTipService.ShowDuration="2000"
                         Width="125">
                     <fas:FontAwesome Icon="Brands_Btc" FontSize="17" Width="21" />
                     <Button.Resources>
                         <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="3"/>
+                            <Setter Property="CornerRadius" Value="3" />
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="Edit" Command="{Binding EditCoinCommand}" ToolTip="Edit" ToolTipService.ShowDuration="2000" Width="125">
+                <Button x:Name="Edit" Command="{Binding EditCoinCommand}" ToolTip="Edit"
+                        ToolTipService.ShowDuration="2000" Width="125">
                     <fas:FontAwesome Icon="Solid_Edit" FontSize="17" Width="21" />
                     <Button.Resources>
                         <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="3"/>
+                            <Setter Property="CornerRadius" Value="3" />
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="Delete" ToolTip="Delete" ToolTipService.ShowDuration="2000" Command="{Binding DelCoinCommand}" Width="125">
+                <Button x:Name="Delete" ToolTip="Delete" ToolTipService.ShowDuration="2000"
+                        Command="{Binding DelCoinCommand}" Width="125">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="3"/>
+                            <Setter Property="CornerRadius" Value="3" />
                         </Style>
                     </Button.Resources>
                     <fas:FontAwesome Icon="Solid_Trash" FontSize="17" Width="21" />
                 </Button>
-                <Button Visibility="Hidden" x:Name="Find" Content="Find"/>
+                <Button Visibility="Hidden" x:Name="Find" Content="Find" />
             </StackPanel>
-            <Button Margin="101,258,180,26" Background="LightCoral" x:Name="btnTestException" Content="Bad act" Click="btnTestException_Click" Grid.ColumnSpan="2" />
+            <Button Margin="101,258,180,26" Background="LightCoral" x:Name="btnTestException" Content="Bad act"
+                    Click="btnTestException_Click" Grid.ColumnSpan="2" />
         </Grid>
     </Grid>
 </Window>
