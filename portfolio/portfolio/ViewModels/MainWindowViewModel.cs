@@ -57,6 +57,8 @@ namespace portfolio.ViewModels
             TransactionsFromCoin = new ObservableCollection<Transaction>();
             
             PortfolioIndicators = new ObservableCollection<PortfolioIndicator>();
+            PortfolioIndicators.CollectionChanged += PortfolioIndicatorsOnCollectionChanged;
+            
             var startPrice = new PortfolioIndicator
             {
                 IndicatorName = "Start price"
@@ -76,8 +78,25 @@ namespace portfolio.ViewModels
 
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
-            
    
+        }
+
+        private void PortfolioIndicatorsOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Replace:
+                    PortfolioIndicator replasedIndicator = e.OldItems[0] as PortfolioIndicator;
+                    PortfolioIndicator replasingIndicator = e.NewItems[0] as PortfolioIndicator;
+                    MessageBoxTimeout((System.IntPtr) 0, $"{replasedIndicator.IndicatorName} recounted.", "Indicators",
+                        0, 0, 2000);
+                    //
+                    // Coin replasedCoin = e.OldItems[0] as Coin;
+                    // Coin replasingCoin = e.NewItems[0] as Coin;
+                    // MessageBoxTimeout((System.IntPtr) 0, $"{replasedCoin.Name} replased {replasingCoin.Name}.", "Coins",
+                    //     0, 0, 2000);
+                    break;
+            }
         }
 
         private void AllTransactionsOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
@@ -401,14 +420,14 @@ namespace portfolio.ViewModels
             startPriceIndicator.Value = startPrice;
             foreach (var ind in PortfolioIndicators)
             {
-                MessageBox.Show(ind.IndicatorName.Equals(startPriceIndicator.IndicatorName).ToString());
+                //MessageBox.Show(ind.IndicatorName.Equals(startPriceIndicator.IndicatorName).ToString());
                 if (ind.IndicatorName.Equals(startPriceIndicator.IndicatorName))
                 {
                     ind.Value = startPrice;
                 }
             }
             
-            MessageBox.Show(PortfolioIndicators.First().ToString());
+            //MessageBox.Show(PortfolioIndicators.First().ToString());
             //PortfolioIndicators.Add(startPriceIndicator);
             
         }
