@@ -367,11 +367,9 @@ namespace portfolio.ViewModels
 
             if (dialog.ShowDialog() != true) return;
 
-            
             Coin debetCoin = (Coin) dialog.cBoxCoinDebet.SelectedItem;
             Coin creditCoin = (Coin) dialog.cBoxCoinCredit.SelectedItem;
             MessageBox.Show(debetCoin.ToString());
-
           
              var transaction = new Transaction
                           {
@@ -387,7 +385,6 @@ namespace portfolio.ViewModels
                                  // TransactionCoins.Add(debetCoin); 
                               }
                           };   
-            
             MessageBox.Show(transaction.ToString());
             AllTransactions.Add(transaction);
             //transactionManager.AddCoinToTransaction(debetCoin);
@@ -415,16 +412,11 @@ namespace portfolio.ViewModels
             startPriceIndicator.Value = startPrice;
             foreach (var ind in PortfolioIndicators)
             {
-                //MessageBox.Show(ind.IndicatorName.Equals(startPriceIndicator.IndicatorName).ToString());
                 if (ind.IndicatorName.Equals(startPriceIndicator.IndicatorName))
                 {
                     ind.Value = startPrice;
                 }
             }
-            
-            //MessageBox.Show(PortfolioIndicators.First().ToString());
-            //PortfolioIndicators.Add(startPriceIndicator);
-            
             
             PortfolioIndicator currentPriceIndicator = new PortfolioIndicator();
             currentPriceIndicator.IndicatorName = "Current price";
@@ -437,10 +429,20 @@ namespace portfolio.ViewModels
             currentPriceIndicator.Value = currentPrice;
             foreach (var ind in PortfolioIndicators)
             {
-                //MessageBox.Show(ind.IndicatorName.Equals(startPriceIndicator.IndicatorName).ToString());
                 if (ind.IndicatorName.Equals(currentPriceIndicator.IndicatorName))
                 {
                     ind.Value = currentPrice;
+                }
+            }
+            
+            PortfolioIndicator profit = new PortfolioIndicator();
+            profit.IndicatorName = "Profit";
+            profit.Value = currentPriceIndicator.Value - startPriceIndicator.Value; 
+            foreach (var ind in PortfolioIndicators)
+            {
+                if (ind.IndicatorName.Equals(profit.IndicatorName))
+                {
+                    ind.Value = profit.Value;
                 }
             }
             
