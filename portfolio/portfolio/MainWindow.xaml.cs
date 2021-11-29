@@ -47,6 +47,7 @@ namespace portfolio
         {
             MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
             grCoinsData.Items.Refresh();
+            dgPortfolioIndicators.Items.Refresh();
            
         }
 
