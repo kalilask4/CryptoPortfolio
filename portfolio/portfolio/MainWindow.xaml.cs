@@ -17,6 +17,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 
 namespace portfolio
@@ -30,18 +32,26 @@ namespace portfolio
         static extern int MessageBoxTimeout(IntPtr hwnd, String text, String title,
                                      uint type, Int16 wLanguageId, Int32 milliseconds);
 
-        //public ObservableCollection<Transaction> AllTransactions;
-
         public MainWindow()
         {
             InitializeComponent();
-                       
         }
+        
+        private void pipChart_DataClick(object sender, LiveCharts.ChartPoint chartPoint)
+        {
+            var chart = (LiveCharts.Wpf.PieChart)chartPoint.ChartView;
 
-        //private void AddCoin_Click(object sender, RoutedEventArgs e)
-        //{
 
-        //}
+            //clear selected slice
+            foreach(PieSeries series in chart.Series)
+            {
+                series.PushOut = 0;
+
+                var selectedSeries = (PieSeries)chartPoint.SeriesView;
+                selectedSeries.PushOut = 10;
+            }
+
+        }
 
         private void rightClickUpdateTabCoin(object sender, ContextMenuEventArgs e)
         {

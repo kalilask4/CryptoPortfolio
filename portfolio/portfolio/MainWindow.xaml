@@ -7,6 +7,7 @@
         xmlns:vm="clr-namespace:portfolio.ViewModels"
         xmlns:inf="clr-namespace:portfolio.Infrastructure"
         xmlns:fas="http://schemas.fontawesome.com/icons/"
+        xmlns:wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         Title="Crypto portfolio" Height="600" Width="1100"
         WindowStartupLocation="CenterScreen">
@@ -98,11 +99,8 @@
                                 <ControlTemplate TargetType="TabItem">
                                     <Border Name="Border" BorderThickness="0,0,0,0" BorderBrush="LemonChiffon"
                                             CornerRadius="4,4,0,0" Margin="2,0">
-                                        <ContentPresenter x:Name="ContentSite"
-                                                          VerticalAlignment="Center"
-                                                          HorizontalAlignment="Center"
-                                                          ContentSource="Header"
-                                                          Margin="10,2" />
+                                        <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center" ContentSource="Header" Margin="10,2" />
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsSelected" Value="True">
@@ -119,21 +117,21 @@
                         </Setter>
                     </Style>
                 </TabControl.Resources>
-                <TabItem Header="Coins" ContextMenuOpening="rightClickUpdateTabCoin"
-                         ToolTip="Update - right click" ToolTipService.ShowDuration="1000">
+                <TabItem Header="Coins" ContextMenuOpening="rightClickUpdateTabCoin" ToolTip="Update - right click" ToolTipService.ShowDuration="1000">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="105*" />
-                            <ColumnDefinition Width="361*" />
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="225*" />
+                            <ColumnDefinition Width="225*" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2.2*" />
                             <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
-                        <Border Grid.Row="0" Grid.ColumnSpan="2">
+                        <Border Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2">
                             <DockPanel>
                                 <DataGrid
-                                    Margin="5,5,5,20" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1"
+                                    Margin="5,5,5,12" x:Name="grCoinsData" Grid.Row="0" Grid.Column="1"
                                     ItemsSource="{Binding Coins}"
                                     AutoGenerateColumns="False"
                                     SelectedValue="{Binding SelectedCoin}" SelectedIndex="0">
@@ -145,14 +143,34 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                     <DataGrid.Columns>
+                                        <!-- <DataGridTemplateColumn> -->
+                                        <!--     <DataGridTemplateColumn.CellTemplate> -->
+                                        <!--         <DataTemplate> -->
+                                        <!--             <Button Width="15" Height="15" Content="1" > -->
+                                        <!--                 <Button.InputBindings> -->
+                                        <!--                     ~1~ <MouseBinding MouseAction="LeftClick" Command="CoinPerformance"></MouseBinding> @1@ -->
+                                        <!--                      -->
+                                        <!--                  </Button.InputBindings> -->
+                                        <!--             </Button> -->
+                                        <!--         </DataTemplate> -->
+                                        <!--     </DataGridTemplateColumn.CellTemplate> -->
+                                        <!-- </DataGridTemplateColumn> -->
                                         <DataGridTemplateColumn>
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Image
                                                         Stretch="Fill"
                                                         Width="23" Height="23"
-                                                        Source="{Binding PictureName, Converter={StaticResource ImageSourceConverter}, Mode=TwoWay}" />
+                                                        Source="{Binding PictureName, 
+                                                        Converter={StaticResource ImageSourceConverter}, Mode=TwoWay}">
+                                                        <!-- <Button> -->
+                                                        <!--           <Button.InputBindings> -->
+                                                        <!--               <MouseBinding MouseAction="LeftClick" Command="CoinPerformance"></MouseBinding> -->
+                                                        <!--           </Button.InputBindings> -->
+                                                        <!-- </Button> -->
+                                                    </Image>
                                                 </DataTemplate>
+                                
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
                                         <DataGridTextColumn Header="Coin" Width="65" Binding="{Binding Path=ShortName}" />
@@ -174,7 +192,7 @@
                                 </DataGrid>
                             </DockPanel>
                         </Border>
-                        <DockPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,0" Grid.RowSpan="2">
+                        <DockPanel Grid.Column="1" Grid.Row="1" Margin="0,0,0,0" Grid.RowSpan="2">
                             <GroupBox Header="Coin transactions" Margin="0" Padding="0">
                                 <ListView x:Name="lvTransactions" ItemsSource="{Binding TransactionsFromCoin}"
                                           Background="Beige">
@@ -197,6 +215,35 @@
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </GroupBox>
+                        </DockPanel>
+                        <DockPanel Grid.Column="2" Grid.Row="1">
+                            <GroupBox Header="Coin profile">
+                                <!-- <chartingToolkit:Chart Name="mcChart0" Width="400" Height="250"  -->
+                                <!--                        Background="YellowGreen"  -->
+                                <!--                        Foreground="DarkBlue"  -->
+                                <!--                        Title="Area Chart"  -->
+                                <!--                        LegendTitle="Month Rating"> -->
+
+                                <wpf:PieChart Name="pipChart0" LegendLocation="Bottom" DataClick="pipChart_DataClick"
+                                              Hoverable="False"
+                                              DataTooltip="{x:Null}"
+                                              >
+                                    <wpf:PieChart.Series>
+                                
+                                        <wpf:PieSeries Title="sdfxfr" DataLabels="True" LabelPoint="{Binding Path=PointLabel }"
+                                                       Values="3" />
+                                        <wpf:PieSeries Title="Charles" DataLabels="True" LabelPoint="{Binding PointLabel}"
+                                                   Values="4" />
+                                        <wpf:PieSeries Title="Frida" DataLabels="True" LabelPoint="{Binding PointLabel}"
+                                                   Values="6" />
+                                        <wpf:PieSeries Title="Frederic" DataLabels="True" LabelPoint="{Binding PointLabel}"
+                                                   Values="2" />
+                                    </wpf:PieChart.Series>
+                                </wpf:PieChart>
+<!-- </chartingToolkit:Chart> -->
+                            </GroupBox>
+
+
                         </DockPanel>
                     </Grid>
                 </TabItem>
@@ -309,7 +356,7 @@
                         </Button>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Custom calculator">
+                <TabItem Visibility="Hidden" Header="Custom calculator">
                     <TextBlock>content</TextBlock>
                 </TabItem>
             </TabControl>

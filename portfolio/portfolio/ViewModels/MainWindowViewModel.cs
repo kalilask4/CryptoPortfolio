@@ -11,19 +11,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Input;
+using LiveCharts;
 using portfolio.Business;
 
 namespace portfolio.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        public Func<ChartPoint, string> PointLabel { get; set; }
+        
         ManagersFactory factory;
         CoinManager coinManager;
         TransactionManager transactionManager;
         
         private string titleCoins = "Coin Window";
         private string titleTransactions = "Transaction Window";
+        private string titleCoinPerformance = "Coin Performance Window";
 
         #region Public properties
 
@@ -50,6 +55,8 @@ namespace portfolio.ViewModels
 
             Coins = new ObservableCollection<Coin>(coinManager.Coins);
             Coins.CollectionChanged += CoinsOnCollectionChanged;
+
+            PointLabel = chartPoint => string.Format("{0}({1:p})", Coins.First().CurrentValue, chartPoint.Participation);
 
             AllTransactions = new ObservableCollection<Transaction>(transactionManager.Transactions);
             AllTransactions.CollectionChanged += AllTransactionsOnCollectionChanged;
@@ -80,7 +87,8 @@ namespace portfolio.ViewModels
                 OnGetTransactionExecuted(Coins[0].CoinId);
    
         }
-
+        
+       
         private void PortfolioIndicatorsOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
