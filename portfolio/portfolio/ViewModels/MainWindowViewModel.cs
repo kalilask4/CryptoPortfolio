@@ -20,11 +20,6 @@ namespace portfolio.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        // public Func<ChartPoint, string> PointLabel { get; set; }
-        // public Func<ChartPoint, string> CoinPointLabel { get; set; }
-        // public Func<ChartPoint, string> CoinPointLabelValue { get; set; }
-        // public Func<ChartPoint, string> CoinPointLabelName { get; set; }
-        
         ManagersFactory factory;
         CoinManager coinManager;
         TransactionManager transactionManager;
@@ -58,20 +53,7 @@ namespace portfolio.ViewModels
 
             Coins = new ObservableCollection<Coin>(coinManager.Coins);
             Coins.CollectionChanged += CoinsOnCollectionChanged;
-
-            // PointLabel = chartPoint => string.Format("{0}({1:p})", Coins.First().CurrentValue, chartPoint.Participation);
-            //
-            //
-            // CoinPointLabel = point => string.Format("{0}({1:p})", point.X, point.Participation);
-            //
-            // CoinPointLabelValue = chartPoint => string.Format("{0}({1:p})", Coins.First().CurrentValue, chartPoint.Participation);
-            // CoinPointLabelName = chartPoint => string.Format("{0}({1:p})", Coins.First().Name, chartPoint.Participation);
-            // var CoinPointLabelValue0 = "10"; 
-                //(int)(Coins.First().CurrentValue);
-            
-            
-            
-            
+          
             AllTransactions = new ObservableCollection<Transaction>(transactionManager.Transactions);
             AllTransactions.CollectionChanged += AllTransactionsOnCollectionChanged;
             //Transactions = new ObservableCollection<Transaction>();
@@ -99,9 +81,7 @@ namespace portfolio.ViewModels
 
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
-   
         }
-        
        
         private void PortfolioIndicatorsOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
         {

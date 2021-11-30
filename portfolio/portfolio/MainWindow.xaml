@@ -7,16 +7,12 @@
         xmlns:vm="clr-namespace:portfolio.ViewModels"
         xmlns:inf="clr-namespace:portfolio.Infrastructure"
         xmlns:fas="http://schemas.fontawesome.com/icons/"
-      
-        xmlns:DVC="clr-namespace:System;assembly=DotNetProjects.DataVisualization.Toolkit"
-        xmlns:DV="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit"
-        xmlns:wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         Title="Crypto portfolio" Height="600" Width="1100"
         WindowStartupLocation="CenterScreen"
-    xmlns:datavis="clr-namespace:System.Windows.Controls.DataVisualization;assembly=DotNetProjects.DataVisualization.Toolkit"
-    xmlns:Custom="{15D9F35E-7F75-4EE3-B7CA-E2986495A3FF}">
+        xmlns:datavis="clr-namespace:System.Windows.Controls.DataVisualization;assembly=DotNetProjects.DataVisualization.Toolkit"
+        xmlns:Custom="{15D9F35E-7F75-4EE3-B7CA-E2986495A3FF}">
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
@@ -315,57 +311,6 @@
                                 </chartingToolkit:Chart> 
              </Grid>       
                     </TabItem>
-                
-                <!-- <TabItem x:Name="CoinsProfileTab2" ContextMenuOpening="rightClickUpdateTabTrans"> -->
-                <!--     <TabItem.Header> -->
-                <!--         <Label Content="Coin profile"/> -->
-                <!--     </TabItem.Header> -->
-                <!--     <Grid> -->
-                <!--         <Grid.Resources>   -->
-                <!--         </Grid.Resources>   -->
-                <!--         <DockPanel > -->
-                <!--             <GroupBox Header="Coin profile"> -->
-                <!--                       <wpf:PieChart  -->
-                <!--                           Name="pipChart1" LegendLocation="Right"  -->
-                <!--                           DataClick="pipChart_DataClick" -->
-                <!--                           Hoverable="False" -->
-                <!--                           DataTooltip="{x:Null}" -->
-                <!--                            -->
-                <!--                           > -->
-                <!--                           <wpf:PieChart.Series> -->
-                <!--                               ~1~ <wpf:PieSeries Title="Coins" @1@ -->
-                <!--                               ~1~                Resources="{Binding Coins}" @1@ -->
-                <!--                               ~1~                Values="{Binding Path=CurrentValue}" @1@ -->
-                <!--                               ~1~                /> @1@ -->
-                <!--                                   ~1~ @1@ -->
-                <!--                                   ~1~ IndependentValueBinding = "{Binding Path=Name}" @1@ -->
-                <!--                                   ~1~ DependentValueBinding="{Binding Path=CurrentValue}"/> @1@ -->
-                <!--                                    -->
-                <!--                                   ~1~ DataLabels="True" LabelPoint="{Binding Path=PointLabel }" @1@ -->
-                <!--                                   ~1~            Values="3" /> @1@ -->
-                <!--                                -->
-                <!--                         ~1~        @1@ -->
-                <!--                                -->
-                <!--                               -->
-                <!--                         ~1~ <wpf:PieSeries Title="Charles" DataLabels="True" LabelPoint="{Binding CoinPointLabel.Name}"  @1@ -->
-                <!--                         ~1~                 Values="4" />  @1@ -->
-                <!--                         <wpf:PieSeries Title="{Binding CoinPointLabelName}" DataLabels="True" LabelPoint="{Binding PointLabel}" -->
-                <!--                                        Values="{Binding CoinPointLabelValue0}" /> -->
-                <!--                         <wpf:PieSeries Title="Frederic" DataLabels="True" LabelPoint="{Binding PointLabel}" -->
-                <!--                                        Values="2" />      -->
-                <!--                               <wpf:PieSeries Title="Frederic22" DataLabels="True" LabelPoint="{Binding PointLabel}" -->
-                <!--                                              Values="22" /> -->
-                <!--                     </wpf:PieChart.Series> -->
-                <!--                 </wpf:PieChart> -->
-                <!--                 ~1~ </chartingToolkit:Chart> @1@ -->
-                <!--             </GroupBox> -->
-                <!-- -->
-                <!-- -->
-                <!--         </DockPanel> -->
-                <!-- -->
-                <!--     </Grid>        -->
-                <!-- </TabItem> -->
-        
             </TabControl>
         </Grid>
         <Grid x:Name="gridStatistic" Grid.Column="1" Grid.Row="0">
