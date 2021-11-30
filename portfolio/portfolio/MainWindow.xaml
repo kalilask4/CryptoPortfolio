@@ -7,6 +7,10 @@
         xmlns:vm="clr-namespace:portfolio.ViewModels"
         xmlns:inf="clr-namespace:portfolio.Infrastructure"
         xmlns:fas="http://schemas.fontawesome.com/icons/"
+      
+        xmlns:DVC="clr-namespace:System;assembly=DotNetProjects.DataVisualization.Toolkit"
+        xmlns:DV="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit"
         xmlns:wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         Title="Crypto portfolio" Height="600" Width="1100"
@@ -255,6 +259,31 @@
                         </DockPanel>
                     </Border>
                 </TabItem>
+                <TabItem x:Name="CoinsProfileTab" ContextMenuOpening="rightClickUpdateTabTrans">
+                    <TabItem.Header>
+                        <Label Content="Coin profile"/>
+                    </TabItem.Header>
+                    <Grid>
+                    <Grid.Resources>  
+                        <!-- <Coins x:Key="Coins" />   -->
+                    </Grid.Resources>  
+                        <DockPanel Grid.Column="0" Grid.Row="0">
+                            <GroupBox Header="Coin profile">
+                                <chartingToolkit:Chart Canvas.Top="80" Canvas.Left="10" Name="mcChart" Width="auto" Height="auto" Background="LightSteelBlue">  
+                                    <chartingToolkit:Chart.Series>  
+                                        <chartingToolkit:PieSeries Title="Coins" 
+                                                                   ItemsSource="{Binding Coins}"
+                                                                   IndependentValueBinding = "{Binding Path=Name}"
+                                                                   DependentValueBinding="{Binding Path=CurrentValue}"
+                                                                   >
+                                        </chartingToolkit:PieSeries>  
+                                    </chartingToolkit:Chart.Series>  
+                                </chartingToolkit:Chart> 
+                            </GroupBox>
+                        </DockPanel>
+             </Grid>       
+                    </TabItem>
+        
             </TabControl>
         </Grid>
         <Grid x:Name="gridStatistic" Grid.Column="1" Grid.Row="0">
