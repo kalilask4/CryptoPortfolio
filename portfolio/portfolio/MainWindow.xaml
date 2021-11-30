@@ -143,18 +143,6 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                     <DataGrid.Columns>
-                                        <!-- <DataGridTemplateColumn> -->
-                                        <!--     <DataGridTemplateColumn.CellTemplate> -->
-                                        <!--         <DataTemplate> -->
-                                        <!--             <Button Width="15" Height="15" Content="1" > -->
-                                        <!--                 <Button.InputBindings> -->
-                                        <!--                     ~1~ <MouseBinding MouseAction="LeftClick" Command="CoinPerformance"></MouseBinding> @1@ -->
-                                        <!--                      -->
-                                        <!--                  </Button.InputBindings> -->
-                                        <!--             </Button> -->
-                                        <!--         </DataTemplate> -->
-                                        <!--     </DataGridTemplateColumn.CellTemplate> -->
-                                        <!-- </DataGridTemplateColumn> -->
                                         <DataGridTemplateColumn>
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
@@ -163,11 +151,6 @@
                                                         Width="23" Height="23"
                                                         Source="{Binding PictureName, 
                                                         Converter={StaticResource ImageSourceConverter}, Mode=TwoWay}">
-                                                        <!-- <Button> -->
-                                                        <!--           <Button.InputBindings> -->
-                                                        <!--               <MouseBinding MouseAction="LeftClick" Command="CoinPerformance"></MouseBinding> -->
-                                                        <!--           </Button.InputBindings> -->
-                                                        <!-- </Button> -->
                                                     </Image>
                                                 </DataTemplate>
                                 
