@@ -72,35 +72,23 @@
             <Setter Property="FontSize" Value="16" />
             <Setter Property="Foreground" Value="DimGray" />
         </Style>
-        <Style x:Key="PieSeriesDataPointStyle1" TargetType="{x:Type chartingToolkit:PieDataPoint}">
-            <Setter Property="Background" Value="Orange"/>
-            <Setter Property="BorderBrush" Value="White"/>
-            <Setter Property="BorderThickness" Value="1"/>
+        <Style x:Key="PieSeriesLegendItemStyle1" TargetType="{x:Type chartingToolkit:LegendItem}">
             <Setter Property="IsTabStop" Value="False"/>
-            <!--<Setter Property="RatioStringFormat">
-                --><!--<Setter.Value>
-                    <Custom:p2/>
-                </Setter.Value>--><!--
-            </Setter>-->
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type chartingToolkit:PieDataPoint}">
-                        <Grid x:Name="Root" Opacity="0">
-                            <Path x:Name="Slice" Data="{TemplateBinding Geometry}" Fill="{TemplateBinding Background}" StrokeMiterLimit="1" Stroke="{TemplateBinding BorderBrush}">
-                                <Path.ToolTip>
-                                    <StackPanel>
-                                        <ContentControl Content="{TemplateBinding FormattedDependentValue}"/>
-                                        <ContentControl Content="{TemplateBinding FormattedRatio}"/>
-                                    </StackPanel>
-                                </Path.ToolTip>
-                            </Path>
-                            <Path x:Name="SelectionHighlight" Data="{TemplateBinding GeometrySelection}" Fill="Red" IsHitTestVisible="False" Opacity="0" StrokeMiterLimit="1"/>
-                            <Path x:Name="MouseOverHighlight" Data="{TemplateBinding GeometryHighlight}" Fill="White" IsHitTestVisible="False" Opacity="0" StrokeMiterLimit="1"/>
-                        </Grid>
+                    <ControlTemplate TargetType="{x:Type chartingToolkit:LegendItem}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Fill="{Binding Background}" Height="17" Margin="0,5,5,0" StrokeThickness="1" Stroke="DarkSeaGreen" Width="17"/>
+                                <datavis:Title Content="{TemplateBinding Content}" Foreground="#000033" Margin="0,5,5,0"/>
+                            </StackPanel>
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+        
+        
     </Window.Resources>
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/Resources/pastelAbstraction.jpg" Opacity="0.8" />
@@ -293,24 +281,19 @@
                     <TabItem.Header>
                         <Label Content="Coin profile"/>
                     </TabItem.Header>
-                    <Grid>
-                                <chartingToolkit:Chart Width="auto" Height="auto" Canvas.Top="auto" Canvas.Left="auto" 
-                                                       Name="mcChart" 
-                                                       Background="WhiteSmoke">
-                                    <!--Background="LightSteelBlue">-->
-                                      <!-- Width="auto" Height="auto"  -->
-                                    <chartingToolkit:Chart.Series>
-                                        <!--DataPointStyle="{DynamicResource PieSeriesDataPointStyle1}"-->
+                    <Grid >
+                        <chartingToolkit:Chart Name="mcChart" Width="auto" Height="auto">
+                            <chartingToolkit:Chart.Series> 
                                 <chartingToolkit:PieSeries 
-                                              Title="Coins" 
-                                              ItemsSource="{Binding Coins}"
-                                              IndependentValueBinding = "{Binding Path=Name}"
-                                              DependentValueBinding="{Binding Path=CurrentValue}"   >
-                                        </chartingToolkit:PieSeries>  
-                                    </chartingToolkit:Chart.Series>  
-                                </chartingToolkit:Chart> 
-             </Grid>       
-                    </TabItem>
+                                    LegendItemStyle="{DynamicResource PieSeriesLegendItemStyle1}" 
+                                    Title="Coins" ItemsSource="{Binding Coins}"
+                                    IndependentValueBinding = "{Binding Path=Name}"
+                                    DependentValueBinding="{Binding Path=CurrentValue}" Margin="0,0,0,0">
+                                </chartingToolkit:PieSeries>  
+                            </chartingToolkit:Chart.Series>  
+                        </chartingToolkit:Chart> 
+                    </Grid>       
+                </TabItem>
             </TabControl>
         </Grid>
         <Grid x:Name="gridStatistic" Grid.Column="1" Grid.Row="0">
