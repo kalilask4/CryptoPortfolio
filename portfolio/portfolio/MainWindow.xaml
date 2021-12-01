@@ -223,7 +223,7 @@
                         </DockPanel>                      
                     </Grid>
                 </TabItem>
-                <TabItem x:Name="tiTransactionTab" ContextMenuOpening="rightClickUpdateTabTrans">
+                <TabItem x:Name="tiTransactionTab" ContextMenuOpening="rightClickUpdateTabTransaction">
                     <TabItem.Header>
                         <Label Content="Transaction" Name="lTransactionsItems"
                                MouseLeftButtonDown="LTransactionsItems_OnMouseLeftButtonDown" />
@@ -248,7 +248,7 @@
                         </DockPanel>
                     </Border>
                 </TabItem>
-                <TabItem x:Name="CoinsProfileTab" ContextMenuOpening="rightClickUpdateTabTrans">
+                <TabItem x:Name="CoinsProfileTab" ContextMenuOpening="rightClickUpdateTabTransaction">
                     <TabItem.Header>
                         <Label Content="Coins profile"/>
                     </TabItem.Header>

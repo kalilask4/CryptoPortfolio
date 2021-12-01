@@ -59,10 +59,11 @@ namespace portfolio
             dgPortfolioIndicators.Items.Refresh();
         }
 
-        private void rightClickUpdateTabTrans(object sender, ContextMenuEventArgs e)
+        private void rightClickUpdateTabTransaction(object sender, ContextMenuEventArgs e)
         {
             MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
             grTransactionData.Items.Refresh();
+            dgPortfolioIndicators.Items.Refresh();
         }
       
         private void LTransactionsItems_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
