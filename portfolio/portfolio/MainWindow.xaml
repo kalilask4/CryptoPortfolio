@@ -220,36 +220,7 @@
                         </DockPanel>
                         <DockPanel Grid.Column="2" Grid.Row="1">
                            <!-- coin profile using api binance or coinmarcetcup -->
-                        </DockPanel>
-<!--                         <DockPanel Grid.Column="2" Grid.Row="1"> -->
-<!--                             <GroupBox Header="Coin profile"> -->
-<!--                                 ~1~ <chartingToolkit:Chart Name="mcChart0" Width="400" Height="250"  @1@ -->
-<!--                                 ~1~                        Background="YellowGreen"  @1@ -->
-<!--                                 ~1~                        Foreground="DarkBlue"  @1@ -->
-<!--                                 ~1~                        Title="Area Chart"  @1@ -->
-<!--                                 ~1~                        LegendTitle="Month Rating"> @1@ -->
-<!-- -->
-<!--                                 <wpf:PieChart Name="pipChart0" LegendLocation="Bottom" DataClick="pipChart_DataClick" -->
-<!--                                               Hoverable="False" -->
-<!--                                               DataTooltip="{x:Null}" -->
-<!--                                               > -->
-<!--                                     <wpf:PieChart.Series> -->
-<!--                                  -->
-<!--                                         <wpf:PieSeries Title="sdfxfr" DataLabels="True" LabelPoint="{Binding Path=PointLabel }" -->
-<!--                                                        Values="3" /> -->
-<!--                                         <wpf:PieSeries Title="Charles" DataLabels="True" LabelPoint="{Binding PointLabel}" -->
-<!--                                                    Values="4" /> -->
-<!--                                         <wpf:PieSeries Title="Frida" DataLabels="True" LabelPoint="{Binding PointLabel}" -->
-<!--                                                    Values="6" /> -->
-<!--                                         <wpf:PieSeries Title="Frederic" DataLabels="True" LabelPoint="{Binding PointLabel}" -->
-<!--                                                    Values="2" /> -->
-<!--                                     </wpf:PieChart.Series> -->
-<!--                                 </wpf:PieChart> -->
-<!-- ~1~ </chartingToolkit:Chart> @1@ -->
-<!--                             </GroupBox> -->
-<!-- -->
-<!-- -->
-<!--                         </DockPanel> -->
+                        </DockPanel>                      
                     </Grid>
                 </TabItem>
                 <TabItem x:Name="tiTransactionTab" ContextMenuOpening="rightClickUpdateTabTrans">
@@ -279,7 +250,7 @@
                 </TabItem>
                 <TabItem x:Name="CoinsProfileTab" ContextMenuOpening="rightClickUpdateTabTrans">
                     <TabItem.Header>
-                        <Label Content="Coin profile"/>
+                        <Label Content="Coins profile"/>
                     </TabItem.Header>
                     <Grid >
                         <chartingToolkit:Chart Name="mcChart" Width="auto" Height="auto">
@@ -454,8 +425,6 @@
                 </Button>
                 <Button Visibility="Hidden" x:Name="Find" Content="Find" />
             </StackPanel>
-            <Button Margin="101,258,180,26" Background="LightCoral" x:Name="btnTestException" Content="Bad act"
-                    Click="btnTestException_Click" Grid.ColumnSpan="2" />
         </Grid>
     </Grid>
 </Window>

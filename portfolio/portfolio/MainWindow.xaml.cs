@@ -46,7 +46,6 @@ namespace portfolio
             foreach(PieSeries series in chart.Series)
             {
                 series.PushOut = 0;
-
                 var selectedSeries = (PieSeries)chartPoint.SeriesView;
                 selectedSeries.PushOut = 10;
             }
@@ -58,7 +57,6 @@ namespace portfolio
             MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
             grCoinsData.Items.Refresh();
             dgPortfolioIndicators.Items.Refresh();
-           
         }
 
         private void rightClickUpdateTabTrans(object sender, ContextMenuEventArgs e)
@@ -67,23 +65,6 @@ namespace portfolio
             grTransactionData.Items.Refresh();
         }
       
-
-        private void btnTestException_Click(object sender, RoutedEventArgs e)
-        {
-            string s = null;
-            try
-            {
-                s.Trim();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("A handled exception just occurred: " + ex.Message, "Exception Sample",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            
-            s.Trim();
-        }
-
         private void LTransactionsItems_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             grCoinsData.SelectedItem = null;
