@@ -68,18 +68,20 @@ namespace portfolio
             ;
             cBoxCoinDebet.ItemsSource = MainWindowViewModel.Coins;
             cBoxCoinCredit.ItemsSource = MainWindowViewModel.Coins;
+            tbNote.Text =  "*Add exchange - choose buy or sell and coins";
    
         }
         
         public EditTransactionWindow(object id)
         {
             InitializeComponent();
-
-            //MessageBox.Show(id.ToString());
             cBoxSide.ItemsSource = Transaction.sideType.GetRange(0,1);
             cBoxCoinDebet.ItemsSource = MainWindowViewModel.Coins;
-            cBoxCoinCredit.ItemsSource = MainWindowViewModel.Coins;
-   
+            cBoxCoinCredit.Visibility = Visibility.Collapsed;// .Hidden;
+            tbNote.Text =  "*To add coin without exchange - transfer and only one coin";
+            lPrice.Content = "Market price (opt)";
+            
+
         }
 
         private ICommand _okCommand;

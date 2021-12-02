@@ -410,7 +410,7 @@ namespace portfolio.ViewModels
         {
            var dialog = new EditTransactionWindow(id);
            
-         MessageBox.Show(id.ToString());
+            //MessageBox.Show(id.ToString());
                 
             if (dialog.ShowDialog() != true) return;
         

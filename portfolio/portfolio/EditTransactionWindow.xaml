@@ -52,8 +52,9 @@
 
             <Label Margin="35,10,58,10" Grid.Row="0" Grid.ColumnSpan="2" Content="Transaction side"/>
 
-            <TextBlock TextWrapping="Wrap" FontSize="9" FontStyle="Italic" Margin="76,2,5,0" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2">
-                *To add coin without exchange - transfer and only one coin
+            <TextBlock Name="tbNote" TextWrapping="Wrap" FontSize="9" FontStyle="Italic" Margin="76,2,5,0" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" 
+                       Text="">
+               
             </TextBlock>
             
             <ComboBox x:Name="cBoxSide" Margin="51,10,41,0" Grid.Row="0" Grid.Column="1" 
@@ -64,18 +65,18 @@
             <Label Content="Choose coins:" HorizontalAlignment="Left" Grid.Column="1" Margin="10,10,0,42" Grid.RowSpan="2" Grid.Row="1"/>
 
             <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
-                <ComboBox x:Name="cBoxCoinDebet" Margin="10,10,10,10" ItemsSource="{Binding Coins}" SelectedItem="{Binding SelectedCoin}"
+                <ComboBox x:Name="cBoxCoinDebet" Margin="35,10,10,10" ItemsSource="{Binding Coins}" SelectedItem="{Binding SelectedCoin}"
                           SelectedIndex="0" SelectedValuePath="CoinId"/>
             </StackPanel>
 
             <StackPanel Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2">
-                <ComboBox x:Name="cBoxCoinCredit" Margin="10,10,10,10" ItemsSource="{Binding Coins}" SelectedItem="{Binding SelectedCoin}"
-                          SelectedValuePath="CoinId"/>
+                <ComboBox x:Name="cBoxCoinCredit" Margin="10,10,20,10" ItemsSource="{Binding Coins}" SelectedItem="{Binding SelectedCoin}"
+                          SelectedIndex="0" SelectedValuePath="CoinId"/>
             </StackPanel>
 
             <Label Grid.Row="4" Grid.Column="0" Margin="35 5 0 0" Content="Amount" />
             <TextBox Grid.Column="1" Grid.Row="4" Height="35" Margin="10,7,5,6" x:Name="textBoxAmount" Text="{Binding Path=Amount}"/>
-            <Label Grid.Column="2" Grid.Row="4" Margin="35 5 0 0 " Content="Price"/>
+            <Label Name="lPrice" Grid.Column="2" Grid.Row="4" Margin="5 5 0 0 " Content="Purchase Price"/>
             <TextBox Grid.Column="3" Grid.Row="4" Margin="5,7,10,6" Height="35" x:Name="textBoxPrice" Text="{Binding Path=Price}"/>
 
             <Label Grid.Column="0" Grid.Row="5" Margin="35 5 0 0" Content="Sum"/>
