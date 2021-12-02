@@ -17,9 +17,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using LiveCharts;
-using LiveCharts.Wpf;
-
 
 namespace portfolio
 {
@@ -37,21 +34,6 @@ namespace portfolio
             InitializeComponent();
         }
         
-        private void pipChart_DataClick(object sender, LiveCharts.ChartPoint chartPoint)
-        {
-            var chart = (LiveCharts.Wpf.PieChart)chartPoint.ChartView;
-
-
-            //clear selected slice
-            foreach(PieSeries series in chart.Series)
-            {
-                series.PushOut = 0;
-                var selectedSeries = (PieSeries)chartPoint.SeriesView;
-                selectedSeries.PushOut = 10;
-            }
-
-        }
-
         private void rightClickUpdateTabCoin(object sender, ContextMenuEventArgs e)
         {
             MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);

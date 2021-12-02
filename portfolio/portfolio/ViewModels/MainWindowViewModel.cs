@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Input;
-using LiveCharts;
 using portfolio.Business;
 
 namespace portfolio.ViewModels

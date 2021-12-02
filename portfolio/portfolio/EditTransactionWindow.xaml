@@ -64,6 +64,7 @@
                       SelectedIndex="0"/>
             <Label Content="Choose coins:" HorizontalAlignment="Left" Grid.Column="1" Margin="10,10,0,42" Grid.RowSpan="2" Grid.Row="1"/>
 
+            
             <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
                 <ComboBox x:Name="cBoxCoinDebet" Margin="35,10,10,10" ItemsSource="{Binding Coins}" SelectedItem="{Binding SelectedCoin}"
                           SelectedIndex="0" SelectedValuePath="CoinId"/>

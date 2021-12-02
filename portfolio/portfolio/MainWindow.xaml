@@ -87,8 +87,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
-        
     </Window.Resources>
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/Resources/pastelAbstraction.jpg" Opacity="0.8" />
@@ -119,8 +117,7 @@
                                     <Border Name="Border" BorderThickness="0,0,0,0" BorderBrush="LemonChiffon"
                                             CornerRadius="4,4,0,0" Margin="2,0">
                                         <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center"
-                                                          HorizontalAlignment="Center" ContentSource="Header" Margin="10,2" />
-                                    </Border>
+                                                          HorizontalAlignment="Center" ContentSource="Header" Margin="10,2" /></Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsSelected" Value="True">
                                             <Setter TargetName="Border" Property="Background" Value="LemonChiffon" />
@@ -172,7 +169,6 @@
                                                         Converter={StaticResource ImageSourceConverter}, Mode=TwoWay}">
                                                     </Image>
                                                 </DataTemplate>
-                                
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
                                         <DataGridTextColumn Header="Coin" Width="65" Binding="{Binding Path=ShortName}" />
@@ -238,10 +234,8 @@
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Transaction" Width="95" Binding="{Binding Path=Symbol}" />
                                     <DataGridTextColumn Header="Amount" Binding="{Binding Path=Amount}" />
-                                    <DataGridTextColumn Header="Price"
-                                                        Binding="{Binding Path=Priсe, StringFormat={}{0:C}}" />
-                                    <DataGridTextColumn Width="75" Header="Sum"
-                                                        Binding="{Binding Path=Sum, StringFormat={}{0:C}}" />
+                                    <DataGridTextColumn Header="Price" Binding="{Binding Path=Priсe, StringFormat={}{0:C}}" />
+                                    <DataGridTextColumn Width="75" Header="Sum" Binding="{Binding Path=Sum, StringFormat={}{0:C}}" />
                                     <DataGridTextColumn Header="side" Width="35" Binding="{Binding Path=Side}" />
                                 </DataGrid.Columns>
                             </DataGrid>
@@ -334,8 +328,7 @@
                                 </Style>
                             </DataGrid.CellStyle>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Indicator" Width="160"
-                                                    Binding="{Binding Path=IndicatorName}" />
+                                <DataGridTextColumn Header="Indicator" Width="160" Binding="{Binding Path=IndicatorName}" />
                                 <DataGridTextColumn Width="140" Header="Amount, $" Binding="{Binding Path=Value}" />
                             </DataGrid.Columns>
                         </DataGrid>
