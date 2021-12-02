@@ -63,8 +63,9 @@ namespace portfolio
         public EditTransactionWindow()
         {
             InitializeComponent();
-            
-            cBoxSide.ItemsSource = Transaction.sideType;
+
+            cBoxSide.ItemsSource = Transaction.sideType.GetRange(1,2);
+            ;
             cBoxCoinDebet.ItemsSource = MainWindowViewModel.Coins;
             cBoxCoinCredit.ItemsSource = MainWindowViewModel.Coins;
    
@@ -75,7 +76,7 @@ namespace portfolio
             InitializeComponent();
 
             //MessageBox.Show(id.ToString());
-            cBoxSide.ItemsSource = Transaction.sideType;
+            cBoxSide.ItemsSource = Transaction.sideType.GetRange(0,1);
             cBoxCoinDebet.ItemsSource = MainWindowViewModel.Coins;
             cBoxCoinCredit.ItemsSource = MainWindowViewModel.Coins;
    
