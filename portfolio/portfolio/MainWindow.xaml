@@ -360,7 +360,9 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="st1" Grid.Column="1" Margin="5 10 5 5">
-                <Button x:Name="AddTransaction1" Command="{Binding NewTransactionCommand}" ToolTip="Add Transaction"
+                <Button x:Name="AddTransferTransaction" 
+                        Command="{Binding NewTransferTransactionCommand}" ToolTip="Add Transaction"
+                        CommandParameter="transfer"
                         ToolTipService.ShowDuration="2000" Width="125">
                     <fas:FontAwesome Icon="Solid_ExchangeAlt" FontSize="17" Width="21" />
                     <Button.Resources>
@@ -369,7 +371,8 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="AddTransaction" Command="{Binding NewTransactionCommand}" ToolTip="Add Transaction"
+                <Button x:Name="AddTransaction" 
+                        Command="{Binding NewTransactionCommand}" ToolTip="Add Transaction"
                         ToolTipService.ShowDuration="2000" Width="125">
                     <fas:FontAwesome Icon="Solid_ExchangeAlt" FontSize="17" Width="21" />
                     <Button.Resources>

@@ -363,8 +363,10 @@ namespace portfolio.ViewModels
         
         private void OnNewTransactionExecuted(object id)
         {
-            var dialog = new EditTransactionWindow
+            
+              var dialog = new EditTransactionWindow
             {
+                
             };
 
             if (dialog.ShowDialog() != true) return;
@@ -394,6 +396,29 @@ namespace portfolio.ViewModels
         }
 
         #endregion
+        
+        
+        #region Add Transfer transaction
+        
+        
+        private ICommand _newTransferTransactionCommand;
+        public ICommand NewTransferTransactionCommand =>
+            _newTransferTransactionCommand ??= new RelayCommand(OnNewTransferTransactionExecuted);
+        
+        
+        private void OnNewTransferTransactionExecuted(object id)
+        {
+           var dialog = new EditTransactionWindow(id);
+           
+         MessageBox.Show(id.ToString());
+          
+                
+            if (dialog.ShowDialog() != true) return;
+        
+        }
+        
+        #endregion
+        
         
          #region Full recount
 

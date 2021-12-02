@@ -63,7 +63,18 @@ namespace portfolio
         public EditTransactionWindow()
         {
             InitializeComponent();
+            
+            cBoxSide.ItemsSource = Transaction.sideType;
+            cBoxCoinDebet.ItemsSource = MainWindowViewModel.Coins;
+            cBoxCoinCredit.ItemsSource = MainWindowViewModel.Coins;
+   
+        }
+        
+        public EditTransactionWindow(object id)
+        {
+            InitializeComponent();
 
+            //MessageBox.Show(id.ToString());
             cBoxSide.ItemsSource = Transaction.sideType;
             cBoxCoinDebet.ItemsSource = MainWindowViewModel.Coins;
             cBoxCoinCredit.ItemsSource = MainWindowViewModel.Coins;
@@ -82,7 +93,8 @@ namespace portfolio
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+           // textBoxSum.Text = e.ToString();
+           cBoxSide.SelectedItem = 0;
         }
 
         private void btnCulculateSum_Click(object sender, RoutedEventArgs e)
