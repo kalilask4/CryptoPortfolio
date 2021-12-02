@@ -70,7 +70,7 @@
             </StackPanel>
 
             <StackPanel Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2">
-                <ComboBox x:Name="cBoxCoinCredit" Margin="10,10,20,10" ItemsSource="{Binding Coins}" SelectedItem="{Binding SelectedCoin}"
+                <ComboBox x:Name="cBoxCoinCredit" Margin="10,10,10,20" ItemsSource="{Binding Coins}" SelectedItem="{Binding SelectedCoin}"
                           SelectedIndex="0" SelectedValuePath="CoinId"/>
             </StackPanel>
 
