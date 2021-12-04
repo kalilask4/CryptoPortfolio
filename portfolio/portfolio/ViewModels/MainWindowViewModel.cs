@@ -363,10 +363,7 @@ namespace portfolio.ViewModels
         private void OnNewTransactionExecuted(object id)
         {
             
-              var dialog = new EditTransactionWindow
-            {
-                
-            };
+            var dialog = new EditTransactionWindow{};
 
             if (dialog.ShowDialog() != true) return;
 
@@ -408,10 +405,24 @@ namespace portfolio.ViewModels
         private void OnNewTransferTransactionExecuted(object id)
         {
            var dialog = new EditTransactionWindow(id);
-           
-            //MessageBox.Show(id.ToString());
                 
             if (dialog.ShowDialog() != true) return;
+            
+            Coin debetCoin = (Coin) dialog.cBoxCoinDebet.SelectedItem;
+            var transaction = new Transaction
+            {
+                DateUpdate = DateTime.Now,
+                Side = dialog.Side,
+                Symbol = debetCoin?.ShortName,
+                Amount = dialog.Amount,
+                Price = dialog.PurchasePrice,
+                TransactionCoins = new List<Coin>()
+                {
+                    debetCoin, 
+                }
+            };   
+            
+            coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId);
         
         }
         

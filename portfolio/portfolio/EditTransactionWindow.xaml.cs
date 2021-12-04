@@ -58,6 +58,27 @@ namespace portfolio
             new PropertyMetadata(default(string)));
 
 
+        public decimal Amount
+        {
+            get { return (decimal)GetValue(AmountProperty); }
+            set { SetValue(AmountProperty, value); }
+        }
+
+        public static readonly DependencyProperty AmountProperty = DependencyProperty
+            .Register("Amount", typeof(decimal),
+                typeof(EditTransactionWindow),
+                new PropertyMetadata(default(decimal)));
+        
+        public decimal PurchasePrice
+        {
+            get { return (decimal)GetValue(PurchasePriceProperty); }
+            set { SetValue(PurchasePriceProperty, value); }
+        }
+        public static readonly DependencyProperty PurchasePriceProperty = DependencyProperty
+            .Register("PurchasePrice", typeof(decimal),
+                typeof(EditCoinWindow),
+                new PropertyMetadata(default(decimal)));
+        
         #endregion
         
         public EditTransactionWindow()
@@ -65,7 +86,6 @@ namespace portfolio
             InitializeComponent();
 
             cBoxSide.ItemsSource = Transaction.sideType.GetRange(1,2);
-            ;
             cBoxCoinDebet.ItemsSource = MainWindowViewModel.Coins;
             cBoxCoinCredit.ItemsSource = MainWindowViewModel.Coins;
             tbNote.Text =  "*Add exchange - choose buy or sell and coins";
@@ -77,10 +97,12 @@ namespace portfolio
             InitializeComponent();
             cBoxSide.ItemsSource = Transaction.sideType.GetRange(0,1);
             cBoxCoinDebet.ItemsSource = MainWindowViewModel.Coins;
-            cBoxCoinCredit.Visibility = Visibility.Collapsed;// .Hidden;
+            cBoxCoinCredit.Visibility = Visibility.Collapsed;
             tbNote.Text =  "*To add coin without exchange - transfer and only one coin";
             lPrice.Content = "Market price (opt)";
-            
+            cBoxCoinDebet.Width = 220;
+
+
 
         }
 
