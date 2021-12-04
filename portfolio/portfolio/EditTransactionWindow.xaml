@@ -65,22 +65,21 @@
             <Label Content="Choose coins:" HorizontalAlignment="Left" Grid.Column="1" Margin="10,10,0,42" Grid.RowSpan="2" Grid.Row="1"/>
 
             <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Center" Orientation="Horizontal">
-                <StackPanel Width="170">
-                    <ComboBox x:Name="cBoxCoinDebet" Margin="15,10,10,15" ItemsSource="{Binding Coins}"
+                    <ComboBox x:Name="cBoxCoinDebet" Margin="20,10,10,25" ItemsSource="{Binding Coins}"
+                              SelectedItem="{Binding SelectedCoin}"
+                              SelectedIndex="0" SelectedValuePath="CoinId" HorizontalAlignment="Center"
+                              FontSize="11" Width="150"/>
+                    <ComboBox x:Name="cBoxCoinCredit" Margin="20,10,10,25" ItemsSource="{Binding Coins}"
                               SelectedItem="{Binding SelectedCoin}"
                               SelectedIndex="0" SelectedValuePath="CoinId" 
-                              FontSize="11"/>
-                </StackPanel>
-                <StackPanel Width="170">
-                    <ComboBox x:Name="cBoxCoinCredit" Margin="15,10,10,15" ItemsSource="{Binding Coins}"
-                              SelectedItem="{Binding SelectedCoin}"
-                              SelectedIndex="0" SelectedValuePath="CoinId" 
-                              FontSize="11"/>
-                </StackPanel>
+                              FontSize="11" HorizontalAlignment="Center" Width="150"/>
             </StackPanel>
 
             <Label Grid.Row="4" Grid.Column="0" Margin="35 5 0 0" Content="Amount" />
-            <TextBox Grid.Column="1" Grid.Row="4" Height="35" Margin="10,7,5,6" x:Name="textBoxAmount" Text="{Binding Path=Amount}"/>
+            
+            <TextBox x:Name="textBoxAmount" Grid.Column="1" Grid.Row="4" Height="35" Margin="10,7,5,6" 
+                     Text="{Binding Path=Amount}"/>
+            
             <Label Name="lPrice" Grid.Column="2" Grid.Row="4" Margin="5 5 0 0 " Content="Purchase Price"/>
             <TextBox Grid.Column="3" Grid.Row="4" Margin="5,7,10,6" Height="35" x:Name="textBoxPrice" Text="{Binding Path=Price}"/>
 
