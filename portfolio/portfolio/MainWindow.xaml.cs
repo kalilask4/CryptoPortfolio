@@ -39,6 +39,7 @@ namespace portfolio
             MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
             grCoinsData.Items.Refresh();
             dgPortfolioIndicators.Items.Refresh();
+            grTransactionData.Items.Refresh();
         }
 
         private void rightClickUpdateTabTransaction(object sender, ContextMenuEventArgs e)
@@ -46,6 +47,7 @@ namespace portfolio
             MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
             grTransactionData.Items.Refresh();
             dgPortfolioIndicators.Items.Refresh();
+            grCoinsData.Items.Refresh();
         }
       
         private void LTransactionsItems_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

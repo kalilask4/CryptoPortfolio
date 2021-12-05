@@ -394,41 +394,6 @@ namespace portfolio.ViewModels
         #endregion
         
         
-        #region Add Transfer transaction
-        
-        
-        private ICommand _newTransferTransactionCommand;
-        public ICommand NewTransferTransactionCommand =>
-            _newTransferTransactionCommand ??= new RelayCommand(OnNewTransferTransactionExecuted);
-        
-        
-        private void OnNewTransferTransactionExecuted(object id)
-        {
-           var dialog = new EditTransactionWindow(id);
-                
-            if (dialog.ShowDialog() != true) return;
-            
-            Coin debetCoin = (Coin) dialog.cBoxCoinDebet.SelectedItem;
-            var transaction = new Transaction
-            {
-                DateUpdate = DateTime.Now,
-                Side = dialog.Side,
-                Symbol = debetCoin?.ShortName,
-                Amount = dialog.Amount,
-                Price = dialog.PurchasePrice,
-                TransactionCoins = new List<Coin>()
-                {
-                    debetCoin, 
-                }
-            };   
-            
-            coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId);
-        
-        }
-        
-        #endregion
-        
-        
          #region Full recount
 
         private ICommand _fullRecountCommand;
@@ -488,6 +453,46 @@ namespace portfolio.ViewModels
 
         #endregion
 
+        
+        #region Add Transfer transaction
+        
+        
+        private ICommand _newTransferTransactionCommand;
+        public ICommand NewTransferTransactionCommand =>
+            _newTransferTransactionCommand ??= new RelayCommand(OnNewTransferTransactionExecuted);
+        
+        
+        private void OnNewTransferTransactionExecuted(object id)
+        {
+            var dialog = new EditTransactionWindow(id);
+                
+            if (dialog.ShowDialog() != true) return;
+            
+            //Coin debetCoin = (Coin) dialog.cBoxCoinDebet.SelectedItem;
+            Coin debetCoin = coinManager.GetById(((Coin) dialog.cBoxCoinDebet.SelectedItem).CoinId);
+            var transaction = new Transaction
+            {
+                DateUpdate = DateTime.Now,
+                Side = dialog.Side,
+                Symbol = debetCoin?.ShortName,
+                Amount = dialog.Amount,
+                Price = dialog.PurchasePrice,
+                TransactionCoins = new List<Coin>()
+                {
+                    debetCoin, 
+                }
+            };
+            // debetCoin - have to add transaction
+            transactionManager.CreateTransaction(transaction);
+            coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId);
+            
+           // coinManager.Update(debetCoin);
+            //coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId);
+        
+        }
+        
+        #endregion
+        
         #endregion
     }
 }

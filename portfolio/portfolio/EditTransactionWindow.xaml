@@ -18,8 +18,6 @@
                     Command="{Binding OkCommand}"/>
             <Button Content="Cancel" Margin="10,0" IsCancel="True"/>
         </UniformGrid>
-
-
         <Grid>
             <Grid.Resources>
                 <Style TargetType="TextBlock">
@@ -52,31 +50,29 @@
 
             <Label Margin="35,10,58,10" Grid.Row="0" Grid.ColumnSpan="2" Content="Transaction side"/>
 
-            <TextBlock Name="tbNote" TextWrapping="Wrap" FontSize="9" FontStyle="Italic" Margin="76,2,5,0" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" 
-                       Text="">
-               
+            <TextBlock Name="tbNote" TextWrapping="Wrap" FontSize="9" FontStyle="Italic" 
+                       Margin="76,2,5,0" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Text="">
             </TextBlock>
             
             <ComboBox x:Name="cBoxSide" Margin="51,10,41,0" Grid.Row="0" Grid.Column="1" 
-                      Height="25" VerticalAlignment="Top"
-                      Text="{Binding Side}" 
-                       Grid.ColumnSpan="2"
-                      SelectedIndex="0"/>
+                      Height="25" VerticalAlignment="Top" Text="{Binding Side}" 
+                       Grid.ColumnSpan="2" SelectedIndex="0"/>
             <Label Content="Choose coins:" HorizontalAlignment="Left" Grid.Column="1" Margin="10,10,0,42" Grid.RowSpan="2" Grid.Row="1"/>
 
             <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Center" Orientation="Horizontal">
-                    <ComboBox x:Name="cBoxCoinDebet" Margin="20,10,10,25" ItemsSource="{Binding Coins}"
+                    <ComboBox x:Name="cBoxCoinDebet" Margin="20,10,10,25" 
+                              ItemsSource="{Binding Coins}"
                               SelectedItem="{Binding SelectedCoin}"
                               SelectedIndex="0" SelectedValuePath="CoinId" HorizontalAlignment="Center"
                               FontSize="11" Width="150"/>
-                    <ComboBox x:Name="cBoxCoinCredit" Margin="20,10,10,25" ItemsSource="{Binding Coins}"
+                    <ComboBox x:Name="cBoxCoinCredit" Margin="20,10,10,25" 
+                              ItemsSource="{Binding Coins}"
                               SelectedItem="{Binding SelectedCoin}"
                               SelectedIndex="0" SelectedValuePath="CoinId" 
                               FontSize="11" HorizontalAlignment="Center" Width="150"/>
             </StackPanel>
 
             <Label Grid.Row="4" Grid.Column="0" Margin="35 5 0 0" Content="Amount" />
-            
             <TextBox x:Name="textBoxAmount" Grid.Column="1" Grid.Row="4" Height="35" Margin="10,7,5,6" 
                      Text="{Binding Path=Amount}"/>
             
@@ -85,9 +81,9 @@
 
             <Label Grid.Column="0" Grid.Row="5" Margin="35 5 0 0" Content="Sum"/>
             <TextBox Grid.Column="1" Grid.Row="5" Height="35" Margin="5,7,5,7" x:Name="textBoxSum"/>
-            <Button x:Name="btnCulculateSum" Grid.Row="5" Grid.Column="2" Margin="5,0,5,0" Height="28" VerticalAlignment="Center" Content="Count" Click="btnCulculateSum_Click"/>
 
-
+            <Button x:Name="btnCulculateSum" Grid.Row="5" Grid.Column="2" Margin="5,0,5,0" Height="28" 
+                    VerticalAlignment="Center" Content="Count" Click="btnCulculateSum_Click"/>
         </Grid>
     </DockPanel>
 </Window>
