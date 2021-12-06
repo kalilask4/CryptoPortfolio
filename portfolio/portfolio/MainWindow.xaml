@@ -347,13 +347,22 @@
                     </Grid>
                 </TabItem>
                 <TabItem Header="Settings">
-                 
-                    <StackPanel>
-                        <TextBlock>content</TextBlock>
-                        <TextBlock>Danger Zone</TextBlock>
-                        <Button Foreground="DarkRed">Delete all the data</Button>
-                    </StackPanel>
-           
+                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="1.5*"></RowDefinition>
+                    </Grid.RowDefinitions> 
+                     <Grid.ColumnDefinitions>
+                         <ColumnDefinition Width="2*"></ColumnDefinition>
+                         <ColumnDefinition Width="1.8*"></ColumnDefinition>
+                     </Grid.ColumnDefinitions>
+                     
+                     <TextBlock>content</TextBlock>
+                           <StackPanel Grid.Row="1" Grid.Column="1" Background="Coral" Opacity="0.85" >
+                                             <TextBlock HorizontalAlignment="Center" Foreground="Red">Danger Zone</TextBlock>
+                                             <Button Margin="0" HorizontalAlignment="Center" Width="125" Height="35" FontSize="13" BorderBrush="#DC4E4E" Foreground="DarkRed">Delete all the data</Button>
+                                         </StackPanel>
+                 </Grid>
                 </TabItem>
                 <TabItem Visibility="Hidden" Header="Custom calculator">
                     <TextBlock>content</TextBlock>
