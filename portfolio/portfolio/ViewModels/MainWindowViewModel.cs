@@ -307,17 +307,17 @@ namespace portfolio.ViewModels
 
         #endregion
 
-        #region Del coin
+        #region Delete coin
 
-        private ICommand _delCoinCommand;
-        public ICommand DelCoinCommand => _delCoinCommand ??= new RelayCommand(OnDelCoinExecuted, DelCoinCanExecute);
+        private ICommand _deleteCoinCommand;
+        public ICommand DeleteCoinCommand => _deleteCoinCommand ??= new RelayCommand(OnDeleteCoinExecuted, DeleteCoinCanExecute);
 
 
         // check if can del
-        private bool DelCoinCanExecute(object p) =>
+        private bool DeleteCoinCanExecute(object p) =>
             _selectedCoin != null;
 
-        private void OnDelCoinExecuted(object id)
+        private void OnDeleteCoinExecuted(object id)
         {
             var result = MessageBox.Show("Are you sure?", $"Delete coin {_selectedCoin.Name}?", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
@@ -493,17 +493,17 @@ namespace portfolio.ViewModels
         
         #endregion
         
-        #region Del coin
+        #region Delete coin
 
-        private ICommand _delTransactionCommand;
-        public ICommand DelTransactionCommand => _delTransactionCommand ??= new RelayCommand(OnDelTransactionExecuted, DelTransactionCanExecute);
+        private ICommand _deleteTransactionCommand;
+        public ICommand DelTransactionCommand => _deleteTransactionCommand ??= new RelayCommand(OnDeleteTransactionExecuted, DeleteTransactionCanExecute);
 
 
-        // check if can del
-        private bool DelTransactionCanExecute(object p) =>
+        // check if can delete
+        private bool DeleteTransactionCanExecute(object p) =>
             _selectedCoin != null;
 
-        private void OnDelTransactionExecuted(object id)
+        private void OnDeleteTransactionExecuted(object id)
         {
             var result = MessageBox.Show("Are you sure?", $"Delete Transaction {_selectedTransaction.Symbol}?", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)

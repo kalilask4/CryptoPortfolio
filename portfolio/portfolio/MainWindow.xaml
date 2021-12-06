@@ -358,7 +358,7 @@
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="st1" Grid.Column="1" Margin="5,10,5,71">
                 <Button x:Name="AddTransferTransaction" 
-                        Command="{Binding NewTransferTransactionCommand}" ToolTip="Add Transaction"
+                        Command="{Binding NewTransferTransactionCommand}" ToolTip="Add transfer-transaction"
                         CommandParameter="transfer"
                         ToolTipService.ShowDuration="2000" Width="125">
                     <fas:FontAwesome Icon="Solid_replyall" FontSize="17" Width="21" />
@@ -369,7 +369,7 @@
                     </Button.Resources>
                 </Button>
                 <Button x:Name="AddTransaction" 
-                        Command="{Binding NewTransactionCommand}" ToolTip="Add Transaction"
+                        Command="{Binding NewTransactionCommand}" ToolTip="Add transaction"
                         ToolTipService.ShowDuration="2000" Width="125">
                     <fas:FontAwesome Icon="Solid_ExchangeAlt" FontSize="17" Width="21" />
                     <Button.Resources>
@@ -378,14 +378,14 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="DeleteTransaction" ToolTip="Delete Transaction" ToolTipService.ShowDuration="2000"
+                <Button x:Name="DeleteTransaction" ToolTip="Delete transaction" ToolTipService.ShowDuration="2000"
                         Command="{Binding DelTransactionCommand}" Width="125">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="3" />
                         </Style>
                     </Button.Resources>
-                    <fas:FontAwesome Icon="Solid_Trash" FontSize="17" Width="21" />
+                    <fas:FontAwesome Icon="Solid_Dumpster" FontSize="17" Width="21" />
                 </Button>
                 <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightGreen" x:Name="btnInsert"
                         Content="сurrent" />
@@ -414,7 +414,7 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="Edit" Command="{Binding EditCoinCommand}" ToolTip="Edit"
+                <Button x:Name="Edit" Command="{Binding EditCoinCommand}" ToolTip="Edit coin"
                         ToolTipService.ShowDuration="2000" Width="125">
                     <fas:FontAwesome Icon="Solid_Edit" FontSize="17" Width="21" />
                     <Button.Resources>
@@ -423,8 +423,8 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="Delete" ToolTip="Delete" ToolTipService.ShowDuration="2000"
-                        Command="{Binding DelCoinCommand}" Width="125">
+                <Button x:Name="Delete" ToolTip="Delete coin" ToolTipService.ShowDuration="2000"
+                        Command="{Binding DeleteCoinCommand}" Width="125">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="3" />
