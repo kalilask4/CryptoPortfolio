@@ -483,13 +483,10 @@ namespace portfolio.ViewModels
                     debetCoin, 
                 }
             };
-            // debetCoin - have to add transaction
+            debetCoin?.recalcByTransfer(dialog.Amount, dialog.PurchasePrice);
+            coinManager.Update(debetCoin);
             transactionManager.CreateTransaction(transaction);
             coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId);
-            
-           // coinManager.Update(debetCoin);
-            //coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId);
-        
         }
         
         #endregion

@@ -74,7 +74,7 @@ namespace portfolio.Domain.Entities
 
         public Coin()
         {
-            Trace.WriteLine($"constr 1");
+            //Trace.WriteLine($"constr 1");
 
             AveragePrice = PurchasePrice;
             //Name = "DefName";
@@ -102,7 +102,7 @@ namespace portfolio.Domain.Entities
         //for SetupData for test
         public Coin(string name, Transaction transaction)
         {
-            Trace.WriteLine($"constr 2");
+            //Trace.WriteLine($"constr 2");
             Name = name + "Tww";
             ShortName = "DNT";
             Amount = 0;
@@ -116,7 +116,7 @@ namespace portfolio.Domain.Entities
 
         public Coin(string name, decimal amount, decimal purchasePrice, decimal currentPrice)
         {
-            Trace.WriteLine($"constr 3");
+            //Trace.WriteLine($"constr 3");
             Name = name;
             ShortName = name.Substring(0,3).ToUpper();
             Amount = culcAmount(amount);
@@ -130,18 +130,33 @@ namespace portfolio.Domain.Entities
             ProfitUSD = CurrentValue - AverageValue;
             ProfitPerс = (CurrentValue - AverageValue) / CurrentPrice;
 
-
             PictureName = ShortName + "png";
             DateUpdate = DateTime.Today;
             Transactions = new List<Transaction>();
         }
 
+        public void recalcByTransfer(decimal amountTransfer, decimal priceTransfer)
+        {
+            AveragePrice = (AveragePrice + priceTransfer) / 2;
+          // Trace.WriteLine($"Amount before {Amount}");
+            Amount += amountTransfer;
+            //Trace.WriteLine($"Amount after {Amount}");
+            PurchasePrice = priceTransfer;
+            AverageValue = Amount * AveragePrice;
+            CurrentValue = Amount * CurrentPrice;
+            ProfitUSD = CurrentValue - AverageValue;
+            ProfitPerс = (CurrentValue - AverageValue) / Amount;
+            
+            
+        }
+        
+        
         public void calculateValues()
         {
             CurrentValue = Amount * CurrentPrice;
             AverageValue = Amount * AveragePrice;
             ProfitUSD = CurrentValue - AverageValue;
-            ProfitUSD = (CurrentValue - AverageValue) / Amount;
+            ProfitPerс = (CurrentValue - AverageValue) / Amount;
         }
 
 
@@ -177,7 +192,12 @@ namespace portfolio.Domain.Entities
 
         public override string ToString()
         {
-            return CoinId.ToString() + " " + ShortName?.ToString();
+            return $"{ShortName}" ;
+        }
+        
+        public string FullToString()
+        {
+            return $"{ShortName} {Name} amount {Amount} average price {AveragePrice} profit {ProfitUSD}" ;
         }
 
         public Coin Clone()
