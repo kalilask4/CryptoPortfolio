@@ -298,7 +298,7 @@
                         </Setter>
                     </Style>
                 </TabControl.Resources>
-                <TabItem Header="Desc">
+                <TabItem Header="Portfolio profile">
                     <Grid Margin="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="6*" />
@@ -345,6 +345,15 @@
                             Full recount
                         </Button>
                     </Grid>
+                </TabItem>
+                <TabItem Header="Settings">
+                 
+                    <StackPanel>
+                        <TextBlock>content</TextBlock>
+                        <TextBlock>Danger Zone</TextBlock>
+                        <Button Foreground="DarkRed">Delete all the data</Button>
+                    </StackPanel>
+           
                 </TabItem>
                 <TabItem Visibility="Hidden" Header="Custom calculator">
                     <TextBlock>content</TextBlock>

@@ -210,7 +210,7 @@ namespace portfolio.ViewModels
                 }
                 catch (IOException e)
                 {
-                    MessageBox.Show("This file already exist. Choose another one.");
+                    MessageBox.Show("This file already exist. Choose another one. \n (Select coin, click button Edit)");
                 }
             }
 
@@ -325,6 +325,7 @@ namespace portfolio.ViewModels
                 coinManager.Delete(_selectedCoin.CoinId); //deleting only coin and relating, not transaction
                 OnGetTransactionExecuted(_selectedCoin.CoinId);
                 Coins.Remove(SelectedCoin);
+                //MessageBoxTimeout((System.IntPtr) 0, $"No coin selected", "Coins", 0, 0, 2000);
             }
         }
 
@@ -493,7 +494,7 @@ namespace portfolio.ViewModels
         
         #endregion
         
-        #region Delete coin
+        #region Delete transaction
 
         private ICommand _deleteTransactionCommand;
         public ICommand DelTransactionCommand => _deleteTransactionCommand ??= new RelayCommand(OnDeleteTransactionExecuted, DeleteTransactionCanExecute);
