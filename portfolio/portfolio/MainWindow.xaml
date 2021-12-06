@@ -221,16 +221,19 @@
                 </TabItem>
                 <TabItem x:Name="tiTransactionTab" ContextMenuOpening="rightClickUpdateTabTransaction">
                     <TabItem.Header>
-                        <Label Content="Transaction" Name="lTransactionsItems"
-                               MouseLeftButtonDown="LTransactionsItems_OnMouseLeftButtonDown" />
+                        <Label Content="Transaction" Name="lTransactionsItems"/>
+                               <!-- MouseLeftButtonDown="LTransactionsItems_OnMouseLeftButtonDown"  -->
                     </TabItem.Header>
+                    
                     <Border>
                         <DockPanel Grid.Row="0">
                             <DataGrid
                                 Margin="5,5,5,5" x:Name="grTransactionData"
                                 ItemsSource="{Binding AllTransactions}"
                                 AutoGenerateColumns="False"
-                                SelectedItem="{Binding SelectedTransaction}">
+                                SelectedItem="{Binding SelectedTransaction}"
+                                SelectedIndex="0"
+                                >
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Transaction" Width="95" Binding="{Binding Path=Symbol}" />
                                     <DataGridTextColumn Header="Amount" Binding="{Binding Path=Amount}" />
@@ -375,6 +378,15 @@
                         </Style>
                     </Button.Resources>
                 </Button>
+                <Button x:Name="DeleteTransaction" ToolTip="Delete Transaction" ToolTipService.ShowDuration="2000"
+                        Command="{Binding DelTransactionCommand}" Width="125">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3" />
+                        </Style>
+                    </Button.Resources>
+                    <fas:FontAwesome Icon="Solid_Trash" FontSize="17" Width="21" />
+                </Button>
                 <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="LightGreen" x:Name="btnInsert"
                         Content="сurrent" />
                 <Button Visibility="Hidden" Height="26" Margin="0,1,15,1" Background="Moccasin" x:Name="btnFind"
@@ -420,6 +432,8 @@
                     </Button.Resources>
                     <fas:FontAwesome Icon="Solid_Trash" FontSize="17" Width="21" />
                 </Button>
+                
+                
                 <Button Visibility="Hidden" x:Name="Find" Content="Find" />
             </StackPanel>
         </Grid>

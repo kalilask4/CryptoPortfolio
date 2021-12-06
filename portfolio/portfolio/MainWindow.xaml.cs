@@ -53,6 +53,7 @@ namespace portfolio
         private void LTransactionsItems_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             grCoinsData.SelectedItem = null;
+            //grTransactionData.SelectedIndex = 0;
         }
   }
 }

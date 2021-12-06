@@ -37,7 +37,7 @@ namespace portfolio.Business.Managers
             unitOfWork.SaveChanges();
         }
         
-        public bool DeleteTransaction(int id)
+        public bool Delete(int id)
         {
             var result = transactionRepository.Delete(id);
             if (!result) return false;

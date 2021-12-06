@@ -493,6 +493,29 @@ namespace portfolio.ViewModels
         
         #endregion
         
+        #region Del coin
+
+        private ICommand _delTransactionCommand;
+        public ICommand DelTransactionCommand => _delTransactionCommand ??= new RelayCommand(OnDelTransactionExecuted, DelTransactionCanExecute);
+
+
+        // check if can del
+        private bool DelTransactionCanExecute(object p) =>
+            _selectedCoin != null;
+
+        private void OnDelTransactionExecuted(object id)
+        {
+            var result = MessageBox.Show("Are you sure?", $"Delete Transaction {_selectedTransaction.Symbol}?", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                transactionManager.Delete(_selectedTransaction.TransactionId); //deleting only transaction
+                OnGetTransactionExecuted(_selectedTransaction.TransactionId);
+                AllTransactions.Remove(SelectedTransaction);
+            }
+        }
+
+        #endregion
+        
         #endregion
     }
 }

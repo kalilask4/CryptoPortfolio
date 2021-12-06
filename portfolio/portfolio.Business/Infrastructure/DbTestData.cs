@@ -127,14 +127,6 @@ namespace portfolio.Business.Infrastructure
 
             var coins = coinManager.Coins.ToArray();
             
-            
-            
-            
-            
-            
-            
-            
-            //
             // Coin coin = new Coin("1testconstr", 100, (decimal)1.1, (decimal)1.2);
             // Coin coin2 = new Coin("2testConstr", 200, (decimal)5, (decimal)4.2);
             // Coin coin3 = new Coin("3testconstr", 10, (decimal)5, (decimal)4.2);
