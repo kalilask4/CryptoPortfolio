@@ -10,9 +10,9 @@ namespace portfolio.Domain.Entities
     {
         [Key]
         public int TransactionId { get; set; }
-        public string Symbol { get; set; } //like Name exs BTNBTC
+        public string Symbol { get; set; } 
         public decimal Amount { get; set; }
-        public decimal Price { get; set; } //Price
+        public decimal Price { get; set; } 
         public decimal Sum { get; set; }
         public DateTime DateUpdate { get; set; }
         // навигационное свойство
@@ -51,18 +51,6 @@ namespace portfolio.Domain.Entities
             TransactionCoins = new List<Coin>(2);
         }
 
-        //for SetupData for test
-        /*public Transaction(Coin coin)
-        {
-            Symbol = coin.ShortName;
-            Side = "transfer";
-            Amount = 0;
-            Priсe = 0;
-            DateUpdate = DateTime.Now;
-            TransactionCoins = new List<Coin>(2);
-            TransactionCoins.Add(coin);
-        }*/
-
         public void recalcByTransfer(decimal amount, decimal price)
         {
             Amount += amount;
@@ -71,7 +59,7 @@ namespace portfolio.Domain.Entities
         }
         public override string ToString()
         {
-            return $"Id {TransactionId} {Symbol} {Side}";
+            return $"{Symbol} {Side} {Sum}";
         }
 
     }

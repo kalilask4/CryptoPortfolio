@@ -30,8 +30,6 @@ namespace portfolio.ViewModels
         #region Public properties
 
         public static ObservableCollection<Coin> Coins { get; set; }
-        //public ObservableCollection<Transaction> Transactions { get; set; }
-        //public ObservableCollection<Transaction> TransactionsForCoin { get; set; }
         public static ObservableCollection<Transaction> AllTransactions { get; set; }
         public static ObservableCollection<PortfolioIndicator> PortfolioIndicators { get; set; }
         public ObservableCollection<Transaction> TransactionsFromCoin { get; set; }
@@ -136,11 +134,6 @@ namespace portfolio.ViewModels
             get => _selectedCoin;
             set { Set(ref _selectedCoin, value); }
         }
-        
-        // public static Coin stSelectedCoin
-        // {
-        //     get => SelectedCoin;
-        // }
 
         #endregion
 
@@ -369,7 +362,10 @@ namespace portfolio.ViewModels
         private void OnNewTransactionExecuted(object id)
         {
             
-            var dialog = new EditTransactionWindow{};
+            var dialog = new EditTransactionWindow
+            {
+                DebetCoin = _selectedCoin,
+            };
 
             if (dialog.ShowDialog() != true) return;
 
@@ -382,25 +378,32 @@ namespace portfolio.ViewModels
                               DateUpdate = DateTime.Now,
                               Side = dialog.Side,
                               Symbol = debetCoin != null ? debetCoin.ShortName + creditCoin?.ShortName : "empty DebetCoin",
-                              Amount = 1, //dialog.textBoxAmount.Text,
-                              Price = 2,
+                              Amount = dialog.Amount,
+                              Price = dialog.Price,
                               TransactionCoins = new List<Coin>(2)
                               {
                                   debetCoin, 
-                                  debetCoin,
+                                  creditCoin,
                                  // TransactionCoins.Add(debetCoin); 
                               }
                           };   
+             debetCoin?.recalcByTransfer(dialog.Amount, dialog.Price);
+             creditCoin?.recalcByTransfer(dialog.Amount, dialog.Price);
+             coinManager.Update(debetCoin);
+             coinManager.Update(creditCoin);
+             transactionManager.CreateTransaction(transaction);
             MessageBox.Show(transaction.ToString());
-            AllTransactions.Add(transaction);
+          //  debetCoin?.recalcByTransfer(dialog.Amount, dialog.Price);
+            
             //transactionManager.AddCoinToTransaction(debetCoin);
             coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId, debetCoin.CoinId);
+            AllTransactions.Add(transaction);
         }
 
         #endregion
         
         
-         #region Full recount
+        #region Full recount
 
         private ICommand _fullRecountCommand;
         public ICommand FullRecountCommand =>

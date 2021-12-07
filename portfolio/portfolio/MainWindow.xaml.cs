@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -40,6 +41,9 @@ namespace portfolio
             grCoinsData.Items.Refresh();
             dgPortfolioIndicators.Items.Refresh();
             grTransactionData.Items.Refresh();
+            PieSeries p = new PieSeries();
+            p.ToolTip = this.grCoinsData.Name;
+
         }
         
         private void rightClickUpdateTabCoin(object sender, ContextMenuEventArgs e)
@@ -57,6 +61,7 @@ namespace portfolio
         private void Tab_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             _refreshDataShowed();
+            
         }
   }
 }

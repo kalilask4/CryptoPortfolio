@@ -261,7 +261,7 @@
                     <TabItem.Header>
                         <Label Content="Coins profile" MouseLeftButtonDown="Tab_OnMouseLeftButtonDown" />
                     </TabItem.Header>
-                    <Grid Background="WhiteSmoke" Opacity="0.95">
+                    <Grid Name="GrCoinsProfile" Background="WhiteSmoke" Opacity="0.95">
                         <chartingToolkit:Chart Name="mcChart" Width="auto" Height="auto">
                             <chartingToolkit:Chart.Series>
                                 <chartingToolkit:PieSeries
@@ -269,7 +269,8 @@
                                     Title="Coins" ItemsSource="{Binding Coins}"
                                     IndependentValueBinding="{Binding Path=Name}"
                                     DependentValueBinding="{Binding Path=CurrentValue}"
-                                    Margin="0,0,0,0" />
+                                    Margin="0,0,0,0" 
+                                />
                             </chartingToolkit:Chart.Series>
                         </chartingToolkit:Chart>
                     </Grid>
