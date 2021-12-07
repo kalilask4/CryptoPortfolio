@@ -90,7 +90,7 @@ namespace portfolio.ViewModels
                     PortfolioIndicator replasedIndicator = e.OldItems[0] as PortfolioIndicator;
                     PortfolioIndicator replasingIndicator = e.NewItems[0] as PortfolioIndicator;
                     MessageBoxTimeout((System.IntPtr) 0, $"{replasedIndicator.IndicatorName} recounted.", "Indicators",
-                        0, 0, 2000);
+                        0, 0, 1000);
                     break;
             }
         }
@@ -481,14 +481,14 @@ namespace portfolio.ViewModels
                 Side = dialog.Side,
                 Symbol = debetCoin?.ShortName,
                 Amount = dialog.Amount,
-                Price = dialog.PurchasePrice,
+                Price = dialog.Price,
                 TransactionCoins = new List<Coin>()
                 {
                     debetCoin, 
                 }
             };
-            debetCoin?.recalcByTransfer(dialog.Amount, dialog.PurchasePrice);
-            transaction?.recalcByTransfer(dialog.Amount, dialog.PurchasePrice);
+            debetCoin?.recalcByTransfer(dialog.Amount, dialog.Price);
+            transaction?.recalcByTransfer(dialog.Amount, dialog.Price);
             coinManager.Update(debetCoin);
             transactionManager.CreateTransaction(transaction);
             coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId);

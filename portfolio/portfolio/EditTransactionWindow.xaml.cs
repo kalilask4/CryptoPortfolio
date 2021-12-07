@@ -74,13 +74,13 @@ namespace portfolio
                 typeof(EditTransactionWindow),
                 new PropertyMetadata(default(decimal)));
         
-        public decimal PurchasePrice
+        public decimal Price
         {
-            get { return (decimal)GetValue(PurchasePriceProperty); }
-            set { SetValue(PurchasePriceProperty, value); }
+            get { return (decimal)GetValue(PriceProperty); }
+            set { SetValue(PriceProperty, value); }
         }
-        public static readonly DependencyProperty PurchasePriceProperty = DependencyProperty
-            .Register("PurchasePrice", typeof(decimal),
+        public static readonly DependencyProperty PriceProperty = DependencyProperty
+            .Register("Price", typeof(decimal),
                 typeof(EditCoinWindow),
                 new PropertyMetadata(default(decimal)));
 

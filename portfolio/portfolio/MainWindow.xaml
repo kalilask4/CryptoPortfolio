@@ -245,13 +245,13 @@
                                 SelectedItem="{Binding SelectedTransaction}"
                                 SelectedIndex="0">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Transaction" Width="95" Binding="{Binding Path=Symbol}" />
-                                    <DataGridTextColumn Header="Amount" Binding="{Binding Path=Amount}" />
-                                    <DataGridTextColumn Header="Price"
-                                                        Binding="{Binding Path=Priсe, StringFormat={}{0:C}}" />
-                                    <DataGridTextColumn Width="75" Header="Sum"
+                                    <DataGridTextColumn Header="Transaction" Width="1*" Binding="{Binding Path=Symbol}" />
+                                    <DataGridTextColumn Header="Amount" Width="1*" Binding="{Binding Path=Amount}" />
+                                    <DataGridTextColumn Header="Price" Width="1*"
+                                                        Binding="{Binding Path=Price, StringFormat={}{0:C}}" />
+                                    <DataGridTextColumn Width="1*" Header="Sum"
                                                         Binding="{Binding Path=Sum, StringFormat={}{0:C}}" />
-                                    <DataGridTextColumn Header="side" Width="35" Binding="{Binding Path=Side}" />
+                                    <DataGridTextColumn Header="side" Width="1*" Binding="{Binding Path=Side}" />
                                 </DataGrid.Columns>
                             </DataGrid>
                         </DockPanel>
