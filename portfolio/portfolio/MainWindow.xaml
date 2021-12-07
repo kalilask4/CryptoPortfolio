@@ -73,14 +73,19 @@
             <Setter Property="Foreground" Value="DimGray" />
         </Style>
         <Style x:Key="PieSeriesLegendItemStyle1" TargetType="{x:Type chartingToolkit:LegendItem}">
-            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type chartingToolkit:LegendItem}">
-                        <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
                             <StackPanel Orientation="Horizontal">
-                                <Rectangle Fill="{Binding Background}" Height="17" Margin="0,5,5,0" StrokeThickness="1" Stroke="DarkSeaGreen" Width="17"/>
-                                <datavis:Title Content="{TemplateBinding Content}" Foreground="#000033" Margin="0,5,5,0"/>
+                                <Rectangle Fill="{Binding Background}" Height="17" 
+                                           Margin="0,5,5,0" StrokeThickness="1"
+                                           Stroke="DarkSeaGreen" Width="17" />
+                                <datavis:Title Content="{TemplateBinding Content}" Foreground="#000033"
+                                               Margin="0,5,5,0" />
                             </StackPanel>
                         </Border>
                     </ControlTemplate>
@@ -117,7 +122,9 @@
                                     <Border Name="Border" BorderThickness="0,0,0,0" BorderBrush="LemonChiffon"
                                             CornerRadius="4,4,0,0" Margin="2,0">
                                         <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center"
-                                                          HorizontalAlignment="Center" ContentSource="Header" Margin="10,2" /></Border>
+                                                          HorizontalAlignment="Center" ContentSource="Header"
+                                                          Margin="10,2" />
+                                    </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsSelected" Value="True">
                                             <Setter TargetName="Border" Property="Background" Value="LemonChiffon" />
@@ -133,10 +140,10 @@
                         </Setter>
                     </Style>
                 </TabControl.Resources>
-                <TabItem ContextMenuOpening="rightClickUpdateTabCoin" 
+                <TabItem ContextMenuOpening="rightClickUpdateTabCoin"
                          ToolTip="Update - right click" ToolTipService.ShowDuration="1000">
                     <TabItem.Header>
-                        <Label Content="Coins" MouseLeftButtonDown="Tab_OnMouseLeftButtonDown"/>
+                        <Label Content="Coins" MouseLeftButtonDown="Tab_OnMouseLeftButtonDown" />
                     </TabItem.Header>
 
                     <Grid>
@@ -171,8 +178,8 @@
                                                         Stretch="Fill"
                                                         Width="23" Height="23"
                                                         Source="{Binding PictureName, 
-                                                        Converter={StaticResource ImageSourceConverter}, Mode=TwoWay}">
-                                                    </Image>
+                                                        Converter={StaticResource ImageSourceConverter}, 
+                                                        Mode=TwoWay}" />
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
@@ -205,11 +212,11 @@
                                                 <TextBlock Text="{Binding Symbol}" />
                                                 <TextBlock Text="  " />
                                                 <TextBlock Text="{Binding Side}" />
-                                                <TextBlock Text="  " />
-                                                <TextBlock Text="{Binding Amount}" />
-                                                <TextBlock Text="  " />
-                                                <TextBlock Text="{Binding Priсe, StringFormat={}{0:C}}" />
-                                                <TextBlock Text="  " />
+                                                <!-- <TextBlock Text=" amount " /> -->
+                                                <!-- <TextBlock Text="{Binding Amount}" /> -->
+                                                <!-- <TextBlock Text=", price  " /> -->
+                                                <!-- <TextBlock Text="{Binding Priсe, StringFormat={}{0:C}}" /> -->
+                                                <TextBlock Text=", sum " />
                                                 <TextBlock Text="{Binding Sum, StringFormat={}{0:C}}" />
                                                 <TextBlock Text="  " />
                                                 <TextBlock Text="{Binding DateUpdate, StringFormat={}{0:dd.MM.yyyy}}" />
@@ -220,16 +227,15 @@
                             </GroupBox>
                         </DockPanel>
                         <DockPanel Grid.Column="2" Grid.Row="1">
-                           <!-- coin profile using api binance or coinmarcetcup -->
-                        </DockPanel>                      
+                            <!-- coin profile using api binance or coinmarcetcup -->
+                        </DockPanel>
                     </Grid>
                 </TabItem>
                 <TabItem x:Name="tiTransactionTab">
-                         <!-- ContextMenuOpening="rightClickUpdateTabTransaction"> -->
                     <TabItem.Header>
-                        <Label Content="Transaction" Name="lTransactionsItems" MouseLeftButtonDown="Tab_OnMouseLeftButtonDown"/>
+                        <Label Content="Transaction" Name="lTransactionsItems"
+                               MouseLeftButtonDown="Tab_OnMouseLeftButtonDown" />
                     </TabItem.Header>
-                    
                     <Border>
                         <DockPanel Grid.Row="0">
                             <DataGrid
@@ -237,37 +243,36 @@
                                 ItemsSource="{Binding AllTransactions}"
                                 AutoGenerateColumns="False"
                                 SelectedItem="{Binding SelectedTransaction}"
-                                SelectedIndex="0"
-                                >
+                                SelectedIndex="0">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Transaction" Width="95" Binding="{Binding Path=Symbol}" />
                                     <DataGridTextColumn Header="Amount" Binding="{Binding Path=Amount}" />
-                                    <DataGridTextColumn Header="Price" Binding="{Binding Path=Priсe, StringFormat={}{0:C}}" />
-                                    <DataGridTextColumn Width="75" Header="Sum" Binding="{Binding Path=Sum, StringFormat={}{0:C}}" />
+                                    <DataGridTextColumn Header="Price"
+                                                        Binding="{Binding Path=Priсe, StringFormat={}{0:C}}" />
+                                    <DataGridTextColumn Width="75" Header="Sum"
+                                                        Binding="{Binding Path=Sum, StringFormat={}{0:C}}" />
                                     <DataGridTextColumn Header="side" Width="35" Binding="{Binding Path=Side}" />
                                 </DataGrid.Columns>
                             </DataGrid>
                         </DockPanel>
                     </Border>
                 </TabItem>
-                <TabItem x:Name="CoinsProfileTab" ContextMenuOpening="rightClickUpdateTabTransaction" 
-                         >
+                <TabItem x:Name="CoinsProfileTab" ContextMenuOpening="rightClickUpdateTabTransaction">
                     <TabItem.Header>
-                        <Label Content="Coins profile" MouseLeftButtonDown="Tab_OnMouseLeftButtonDown"/>
+                        <Label Content="Coins profile" MouseLeftButtonDown="Tab_OnMouseLeftButtonDown" />
                     </TabItem.Header>
                     <Grid Background="WhiteSmoke" Opacity="0.95">
                         <chartingToolkit:Chart Name="mcChart" Width="auto" Height="auto">
-                            <chartingToolkit:Chart.Series> 
-                                <chartingToolkit:PieSeries 
-                                    LegendItemStyle="{DynamicResource PieSeriesLegendItemStyle1}" 
+                            <chartingToolkit:Chart.Series>
+                                <chartingToolkit:PieSeries
+                                    LegendItemStyle="{DynamicResource PieSeriesLegendItemStyle1}"
                                     Title="Coins" ItemsSource="{Binding Coins}"
-                                    IndependentValueBinding = "{Binding Path=Name}"
-                                    DependentValueBinding="{Binding Path=CurrentValue}" 
-                                    Margin="0,0,0,0">
-                                </chartingToolkit:PieSeries>  
-                            </chartingToolkit:Chart.Series>  
-                        </chartingToolkit:Chart> 
-                    </Grid>       
+                                    IndependentValueBinding="{Binding Path=Name}"
+                                    DependentValueBinding="{Binding Path=CurrentValue}"
+                                    Margin="0,0,0,0" />
+                            </chartingToolkit:Chart.Series>
+                        </chartingToolkit:Chart>
+                    </Grid>
                 </TabItem>
             </TabControl>
         </Grid>
@@ -338,7 +343,8 @@
                                 </Style>
                             </DataGrid.CellStyle>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Indicator" Width="160" Binding="{Binding Path=IndicatorName}" />
+                                <DataGridTextColumn Header="Indicator" Width="160"
+                                                    Binding="{Binding Path=IndicatorName}" />
                                 <DataGridTextColumn Width="140" Header="Amount, $" Binding="{Binding Path=Value}" />
                             </DataGrid.Columns>
                         </DataGrid>
@@ -353,22 +359,24 @@
                     </Grid>
                 </TabItem>
                 <TabItem Header="Settings">
-                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"></RowDefinition>
-                        <RowDefinition Height="1.5*"></RowDefinition>
-                    </Grid.RowDefinitions> 
-                     <Grid.ColumnDefinitions>
-                         <ColumnDefinition Width="2*"></ColumnDefinition>
-                         <ColumnDefinition Width="1.8*"></ColumnDefinition>
-                     </Grid.ColumnDefinitions>
-                     
-                     <TextBlock>content</TextBlock>
-                           <StackPanel Grid.Row="1" Grid.Column="1" Background="Coral" Opacity="0.85" >
-                                             <TextBlock HorizontalAlignment="Center" Foreground="Red">Danger Zone</TextBlock>
-                                             <Button Margin="0" HorizontalAlignment="Center" Width="125" Height="35" FontSize="13" BorderBrush="#DC4E4E" Foreground="DarkRed">Delete all the data</Button>
-                                         </StackPanel>
-                 </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="1.5*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="1.8*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock>content</TextBlock>
+                        <StackPanel Grid.Row="1" Grid.Column="1" Background="Coral" Opacity="0.85">
+                            <TextBlock HorizontalAlignment="Center" Foreground="Red">Danger Zone</TextBlock>
+                            <Button Margin="0" HorizontalAlignment="Center" Width="125" Height="35" FontSize="13"
+                                    BorderBrush="#DC4E4E" Foreground="DarkRed">
+                                Delete all the data
+                            </Button>
+                        </StackPanel>
+                    </Grid>
                 </TabItem>
                 <TabItem Visibility="Hidden" Header="Custom calculator">
                     <TextBlock>content</TextBlock>
@@ -381,7 +389,7 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="st1" Grid.Column="1" Margin="5,10,5,71">
-                <Button x:Name="AddTransferTransaction" 
+                <Button x:Name="AddTransferTransaction"
                         Command="{Binding NewTransferTransactionCommand}" ToolTip="Add transfer-transaction"
                         CommandParameter="transfer"
                         ToolTipService.ShowDuration="2000" Width="125">
@@ -392,7 +400,7 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="AddTransaction" 
+                <Button x:Name="AddTransaction"
                         Command="{Binding NewTransactionCommand}" ToolTip="Add transaction"
                         ToolTipService.ShowDuration="2000" Width="125">
                     <fas:FontAwesome Icon="Solid_ExchangeAlt" FontSize="17" Width="21" />
@@ -456,8 +464,6 @@
                     </Button.Resources>
                     <fas:FontAwesome Icon="Solid_Trash" FontSize="17" Width="21" />
                 </Button>
-                
-                
                 <Button Visibility="Hidden" x:Name="Find" Content="Find" />
             </StackPanel>
         </Grid>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace portfolio.Domain.Entities
 {
@@ -61,6 +63,12 @@ namespace portfolio.Domain.Entities
             TransactionCoins.Add(coin);
         }*/
 
+        public void recalcByTransfer(decimal amount, decimal price)
+        {
+            Amount += amount;
+            Price = price;
+            Sum = amount * price;
+        }
         public override string ToString()
         {
             return $"Id {TransactionId} {Symbol} {Side}";

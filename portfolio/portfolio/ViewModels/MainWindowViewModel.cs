@@ -475,7 +475,7 @@ namespace portfolio.ViewModels
             if (dialog.ShowDialog() != true) return;
             
             Coin debetCoin = coinManager.GetById(((Coin) dialog.cBoxCoinDebet.SelectedItem).CoinId);
-            var transaction = new Transaction
+            var transaction = new Transaction()
             {
                 DateUpdate = DateTime.Now,
                 Side = dialog.Side,
@@ -488,6 +488,7 @@ namespace portfolio.ViewModels
                 }
             };
             debetCoin?.recalcByTransfer(dialog.Amount, dialog.PurchasePrice);
+            transaction?.recalcByTransfer(dialog.Amount, dialog.PurchasePrice);
             coinManager.Update(debetCoin);
             transactionManager.CreateTransaction(transaction);
             coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId);
