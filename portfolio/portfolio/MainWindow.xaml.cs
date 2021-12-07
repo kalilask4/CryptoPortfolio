@@ -37,7 +37,7 @@ namespace portfolio
 
         private void _refreshDataShowed()
         {
-            MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
+           // MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
             grCoinsData.Items.Refresh();
             dgPortfolioIndicators.Items.Refresh();
             grTransactionData.Items.Refresh();
@@ -55,7 +55,7 @@ namespace portfolio
             MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
         }
       
-        private void LTransactionsItems_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Tab_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             _refreshDataShowed();
         }
