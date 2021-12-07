@@ -133,7 +133,9 @@
                         </Setter>
                     </Style>
                 </TabControl.Resources>
-                <TabItem Header="Coins" ContextMenuOpening="rightClickUpdateTabCoin" ToolTip="Update - right click" ToolTipService.ShowDuration="1000">
+                <TabItem Header="Coins" ContextMenuOpening="rightClickUpdateTabCoin" 
+                         ToolTip="Update - right click" ToolTipService.ShowDuration="1000"
+                         MouseLeftButtonDown="LTransactionsItems_OnMouseLeftButtonDown">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*" />
@@ -221,8 +223,7 @@
                 </TabItem>
                 <TabItem x:Name="tiTransactionTab" ContextMenuOpening="rightClickUpdateTabTransaction">
                     <TabItem.Header>
-                        <Label Content="Transaction" Name="lTransactionsItems"/>
-                               <!-- MouseLeftButtonDown="LTransactionsItems_OnMouseLeftButtonDown"  -->
+                        <Label Content="Transaction" Name="lTransactionsItems" MouseLeftButtonDown="LTransactionsItems_OnMouseLeftButtonDown"/>
                     </TabItem.Header>
                     
                     <Border>
@@ -245,7 +246,7 @@
                         </DockPanel>
                     </Border>
                 </TabItem>
-                <TabItem x:Name="CoinsProfileTab" ContextMenuOpening="rightClickUpdateTabTransaction">
+                <TabItem x:Name="CoinsProfileTab" ContextMenuOpening="rightClickUpdateTabTransaction" MouseLeftButtonDown="LTransactionsItems_OnMouseLeftButtonDown">
                     <TabItem.Header>
                         <Label Content="Coins profile"/>
                     </TabItem.Header>

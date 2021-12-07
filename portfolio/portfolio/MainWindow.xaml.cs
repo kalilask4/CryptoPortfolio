@@ -32,28 +32,32 @@ namespace portfolio
         public MainWindow()
         {
             InitializeComponent();
+            grTransactionData.Items.Refresh();
+        }
+
+        private void _refreshDataShowed()
+        {
+            MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
+            grCoinsData.Items.Refresh();
+            dgPortfolioIndicators.Items.Refresh();
+            grTransactionData.Items.Refresh();
         }
         
         private void rightClickUpdateTabCoin(object sender, ContextMenuEventArgs e)
         {
+            _refreshDataShowed();
             MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
-            grCoinsData.Items.Refresh();
-            dgPortfolioIndicators.Items.Refresh();
-            grTransactionData.Items.Refresh();
         }
 
         private void rightClickUpdateTabTransaction(object sender, ContextMenuEventArgs e)
         {
+            _refreshDataShowed();
             MessageBoxTimeout((System.IntPtr)0, "Updated", "Message", 0, 0, 1000);
-            grTransactionData.Items.Refresh();
-            dgPortfolioIndicators.Items.Refresh();
-            grCoinsData.Items.Refresh();
         }
       
         private void LTransactionsItems_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            grCoinsData.SelectedItem = null;
-            //grTransactionData.SelectedIndex = 0;
+            _refreshDataShowed();
         }
   }
 }

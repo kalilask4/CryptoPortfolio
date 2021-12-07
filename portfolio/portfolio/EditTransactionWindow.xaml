@@ -48,7 +48,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Label Margin="35,10,58,10" Grid.Row="0" Grid.ColumnSpan="2" Content="Transaction side"/>
+            <Label Margin="35,5,58,5" Grid.Row="0" Grid.ColumnSpan="2" Content="Transaction side"/>
 
             <TextBlock Name="tbNote" TextWrapping="Wrap" FontSize="9" FontStyle="Italic" 
                        Margin="76,2,5,0" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Text="">
