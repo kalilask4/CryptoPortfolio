@@ -19,53 +19,46 @@ using System.Windows.Shapes;
 
 namespace portfolio
 {
-
     public partial class EditTransactionWindow : Window
     {
         #region Properties
+
         public string Side
         {
-            get { return (string)GetValue(SideProperty); }
+            get { return (string) GetValue(SideProperty); }
             set { SetValue(SideProperty, value); }
         }
 
         public static readonly DependencyProperty SideProperty = DependencyProperty
             .Register("Side", typeof(string),
-            typeof(EditCoinWindow),
-            new PropertyMetadata(default(string)));
+                typeof(EditCoinWindow),
+                new PropertyMetadata(default(string)));
 
         public ObservableCollection<Coin> Coins
         {
-            get { return (ObservableCollection<Coin>)GetValue(CoinsProperty); }
+            get { return (ObservableCollection<Coin>) GetValue(CoinsProperty); }
             set { SetValue(CoinsProperty, value); }
         }
 
         public static readonly DependencyProperty CoinsProperty = DependencyProperty
             .Register("Coins", typeof(string),
-            typeof(EditCoinWindow),
-            new PropertyMetadata(default(string)));
-
+                typeof(EditCoinWindow),
+                new PropertyMetadata(default(string)));
 
         public Coin DebetCoin
         {
-            get { return (Coin)GetValue(DebetCoinProperty); }
+            get { return (Coin) GetValue(DebetCoinProperty); }
             set { SetValue(DebetCoinProperty, value); }
         }
 
         public static readonly DependencyProperty DebetCoinProperty = DependencyProperty
             .Register("DebetCoin", typeof(Coin),
-            typeof(EditCoinWindow),
-            new PropertyMetadata(default(Coin)));
-        
-        // public static readonly DependencyProperty DebetCoinProperty = DependencyProperty
-        //     .Register("DebetCoin", typeof(string),
-        //         typeof(EditCoinWindow),
-        //         new PropertyMetadata(default(string)));
-
+                typeof(EditCoinWindow),
+                new PropertyMetadata(default(Coin)));
 
         public decimal Amount
         {
-            get { return (decimal)GetValue(AmountProperty); }
+            get { return (decimal) GetValue(AmountProperty); }
             set { SetValue(AmountProperty, value); }
         }
 
@@ -73,45 +66,48 @@ namespace portfolio
             .Register("Amount", typeof(decimal),
                 typeof(EditTransactionWindow),
                 new PropertyMetadata(default(decimal)));
-        
+
         public decimal Price
         {
-            get { return (decimal)GetValue(PriceProperty); }
+            get { return (decimal) GetValue(PriceProperty); }
             set { SetValue(PriceProperty, value); }
         }
+
         public static readonly DependencyProperty PriceProperty = DependencyProperty
             .Register("Price", typeof(decimal),
                 typeof(EditCoinWindow),
                 new PropertyMetadata(default(decimal)));
 
         //public int SelectedCoinId = 5;
-        
+
         #endregion
-        
+
         public EditTransactionWindow()
         {
             InitializeComponent();
-            cBoxSide.ItemsSource = Transaction.sideType.GetRange(1,2);
+            cBoxSide.ItemsSource = Transaction.sideType.GetRange(1, 2);
             cBoxCoinDebet.ItemsSource = MainWindowViewModel.Coins;
             cBoxCoinCredit.ItemsSource = MainWindowViewModel.Coins;
-            tbNote.Text =  "*Add exchange - choose buy or sell and coins";
+            tbNote.Text = "*Add exchange - choose buy or sell and coins";
         }
-        
+
         public EditTransactionWindow(object id)
         {
             InitializeComponent();
-            cBoxSide.ItemsSource = Transaction.sideType.GetRange(0,1);
+            cBoxSide.ItemsSource = Transaction.sideType.GetRange(0, 1);
             cBoxCoinDebet.ItemsSource = MainWindowViewModel.Coins;
             cBoxCoinCredit.Visibility = Visibility.Collapsed;
-            tbNote.Text =  "*To add coin without exchange - transfer and only one coin";
+            tbNote.Text = "*To add coin without exchange - transfer and only one coin";
             lPrice.Content = "Market price (opt)";
             cBoxCoinDebet.Width = 220;
         }
 
         private ICommand _okCommand;
+
         public ICommand OkCommand =>
-        _okCommand
-        ?? new RelayCommand(OnOkExecuted);
+            _okCommand
+            ?? new RelayCommand(OnOkExecuted);
+
         public void OnOkExecuted(object param)
         {
             this.DialogResult = true;

@@ -492,6 +492,7 @@ namespace portfolio.ViewModels
             coinManager.Update(debetCoin);
             transactionManager.CreateTransaction(transaction);
             coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId);
+            AllTransactions.Add(transaction);
         }
         
         #endregion
