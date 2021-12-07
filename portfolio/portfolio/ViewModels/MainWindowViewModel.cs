@@ -32,8 +32,8 @@ namespace portfolio.ViewModels
         public static ObservableCollection<Coin> Coins { get; set; }
         //public ObservableCollection<Transaction> Transactions { get; set; }
         //public ObservableCollection<Transaction> TransactionsForCoin { get; set; }
-        public ObservableCollection<Transaction> AllTransactions { get; set; }
-        public ObservableCollection<PortfolioIndicator> PortfolioIndicators { get; set; }
+        public static ObservableCollection<Transaction> AllTransactions { get; set; }
+        public static ObservableCollection<PortfolioIndicator> PortfolioIndicators { get; set; }
         public ObservableCollection<Transaction> TransactionsFromCoin { get; set; }
 
         [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
@@ -136,6 +136,11 @@ namespace portfolio.ViewModels
             get => _selectedCoin;
             set { Set(ref _selectedCoin, value); }
         }
+        
+        // public static Coin stSelectedCoin
+        // {
+        //     get => SelectedCoin;
+        // }
 
         #endregion
 
@@ -447,9 +452,6 @@ namespace portfolio.ViewModels
                     ind.Value = profit.Value;
                 }
             }
-            
-            
-            
         }
 
         #endregion
@@ -465,11 +467,13 @@ namespace portfolio.ViewModels
         
         private void OnNewTransferTransactionExecuted(object id)
         {
-            var dialog = new EditTransactionWindow(id);
+            var dialog = new EditTransactionWindow(id)
+                {
+                   DebetCoin = _selectedCoin,
+                };
                 
             if (dialog.ShowDialog() != true) return;
             
-            //Coin debetCoin = (Coin) dialog.cBoxCoinDebet.SelectedItem;
             Coin debetCoin = coinManager.GetById(((Coin) dialog.cBoxCoinDebet.SelectedItem).CoinId);
             var transaction = new Transaction
             {
