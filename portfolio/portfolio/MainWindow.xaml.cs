@@ -32,7 +32,6 @@ namespace portfolio
         public MainWindow()
         {
             InitializeComponent();
-            grTransactionData.Items.Refresh();
         }
 
         private void _refreshDataShowed()

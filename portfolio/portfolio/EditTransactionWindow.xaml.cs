@@ -53,9 +53,14 @@ namespace portfolio
         }
 
         public static readonly DependencyProperty DebetCoinProperty = DependencyProperty
-            .Register("DebetCoin", typeof(string),
+            .Register("DebetCoin", typeof(Coin),
             typeof(EditCoinWindow),
-            new PropertyMetadata(default(string)));
+            new PropertyMetadata(default(Coin)));
+        
+        // public static readonly DependencyProperty DebetCoinProperty = DependencyProperty
+        //     .Register("DebetCoin", typeof(string),
+        //         typeof(EditCoinWindow),
+        //         new PropertyMetadata(default(string)));
 
 
         public decimal Amount
@@ -78,18 +83,18 @@ namespace portfolio
             .Register("PurchasePrice", typeof(decimal),
                 typeof(EditCoinWindow),
                 new PropertyMetadata(default(decimal)));
+
+        //public int SelectedCoinId = 5;
         
         #endregion
         
         public EditTransactionWindow()
         {
             InitializeComponent();
-
             cBoxSide.ItemsSource = Transaction.sideType.GetRange(1,2);
             cBoxCoinDebet.ItemsSource = MainWindowViewModel.Coins;
             cBoxCoinCredit.ItemsSource = MainWindowViewModel.Coins;
             tbNote.Text =  "*Add exchange - choose buy or sell and coins";
-   
         }
         
         public EditTransactionWindow(object id)
@@ -101,9 +106,6 @@ namespace portfolio
             tbNote.Text =  "*To add coin without exchange - transfer and only one coin";
             lPrice.Content = "Market price (opt)";
             cBoxCoinDebet.Width = 220;
-
-
-
         }
 
         private ICommand _okCommand;
@@ -118,8 +120,7 @@ namespace portfolio
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           // textBoxSum.Text = e.ToString();
-           cBoxSide.SelectedItem = 0;
+            cBoxCoinDebet.SelectedItem = DebetCoin;
         }
 
         private void btnCulculateSum_Click(object sender, RoutedEventArgs e)

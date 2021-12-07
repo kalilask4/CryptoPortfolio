@@ -13,8 +13,7 @@ namespace portfolio.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged([CallerMemberName] string
-propertyName=null)
+        protected void OnPropertyChanged([CallerMemberName] string propertyName=null)
         {
             PropertyChanged?.Invoke(this, new
            PropertyChangedEventArgs(propertyName));
@@ -28,8 +27,7 @@ propertyName=null)
         /// <param name="value">new value</param>
         /// <param name="propName">property name</param>
         /// <returns></returns>
-        protected bool Set<T>(ref T prop, T value, [CallerMemberName]
-string propName=null)
+        protected bool Set<T>(ref T prop, T value, [CallerMemberName] string propName=null)
         {
             if (Equals(prop, value)) return false;
             prop = value;
