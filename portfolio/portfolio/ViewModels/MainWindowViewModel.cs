@@ -392,7 +392,7 @@ namespace portfolio.ViewModels
              coinManager.Update(debetCoin);
              coinManager.Update(creditCoin);
              transactionManager.CreateTransaction(transaction);
-            MessageBox.Show(transaction.ToString());
+             MessageBox.Show(transaction.ToString());
           //  debetCoin?.recalcByTransfer(dialog.Amount, dialog.Price);
             
             //transactionManager.AddCoinToTransaction(debetCoin);
@@ -485,13 +485,13 @@ namespace portfolio.ViewModels
                 Symbol = debetCoin?.ShortName,
                 Amount = dialog.Amount,
                 Price = dialog.Price,
+                Sum = dialog.Amount*dialog.Amount,
                 TransactionCoins = new List<Coin>()
                 {
                     debetCoin, 
                 }
             };
             debetCoin?.recalcByTransfer(dialog.Amount, dialog.Price);
-            transaction?.recalcByTransfer(dialog.Amount, dialog.Price);
             coinManager.Update(debetCoin);
             transactionManager.CreateTransaction(transaction);
             coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId);

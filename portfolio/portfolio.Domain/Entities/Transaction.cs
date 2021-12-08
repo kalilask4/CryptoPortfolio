@@ -53,13 +53,13 @@ namespace portfolio.Domain.Entities
 
         public void recalcByTransfer(decimal amount, decimal price)
         {
-            Amount += amount;
+            Amount = amount;
             Price = price;
             Sum = amount * price;
         }
         public override string ToString()
         {
-            return $"{Symbol} {Side} {Sum}";
+            return $"{Symbol} {Side} {Amount} {Price} {Sum} ";
         }
 
     }

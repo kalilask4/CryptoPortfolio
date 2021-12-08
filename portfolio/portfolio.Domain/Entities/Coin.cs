@@ -138,9 +138,7 @@ namespace portfolio.Domain.Entities
         public void recalcByTransfer(decimal amountTransfer, decimal priceTransfer)
         {
             AveragePrice = (AveragePrice + priceTransfer) / 2;
-          // Trace.WriteLine($"Amount before {Amount}");
             Amount += amountTransfer;
-            //Trace.WriteLine($"Amount after {Amount}");
             PurchasePrice = priceTransfer;
             AverageValue = Amount * AveragePrice;
             CurrentValue = Amount * CurrentPrice;

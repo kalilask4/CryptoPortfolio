@@ -41,9 +41,6 @@ namespace portfolio
             grCoinsData.Items.Refresh();
             dgPortfolioIndicators.Items.Refresh();
             grTransactionData.Items.Refresh();
-            PieSeries p = new PieSeries();
-            p.ToolTip = this.grCoinsData.Name;
-
         }
         
         private void rightClickUpdateTabCoin(object sender, ContextMenuEventArgs e)
