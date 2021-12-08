@@ -86,7 +86,6 @@ namespace portfolio.ViewModels
             {
                 case NotifyCollectionChangedAction.Replace:
                     PortfolioIndicator replasedIndicator = e.OldItems[0] as PortfolioIndicator;
-                    PortfolioIndicator replasingIndicator = e.NewItems[0] as PortfolioIndicator;
                     MessageBoxTimeout((System.IntPtr) 0, $"{replasedIndicator.IndicatorName} recounted.", "Indicators",
                         0, 0, 1000);
                     break;
@@ -185,8 +184,8 @@ namespace portfolio.ViewModels
             {
                 Symbol = coin.ShortName,
                 Side = "transfer",
-                Amount = coin.Amount,
-                Price = coin.PurchasePrice,
+                Amount = dialog.Amount,
+                Price = dialog.PurchasePrice,
             };
 
             var fileName = Path.GetFileName(dialog.PictureName);
