@@ -41,6 +41,7 @@ namespace portfolio
             grCoinsData.Items.Refresh();
             dgPortfolioIndicators.Items.Refresh();
             grTransactionData.Items.Refresh();
+            lvTransactions.Items.Refresh();
         }
         
         private void rightClickUpdateTabCoin(object sender, ContextMenuEventArgs e)
