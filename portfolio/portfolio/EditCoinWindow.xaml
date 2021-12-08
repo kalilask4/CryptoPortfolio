@@ -9,12 +9,12 @@
         Title="Edit Coin" Height="450" Width="400"
         WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <DockPanel Background="Beige">
-        <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,7,0,0" 
-                    FontWeight="Bold" FontSize="15"/>
+        <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,7,0,0"
+                   FontWeight="Bold" FontSize="15" />
         <UniformGrid DockPanel.Dock="Bottom" Rows="1" HorizontalAlignment="Right" Margin="0,0,0,10">
             <Button Content="Ok" Margin="10,0" Padding="35,5" IsDefault="True" FontWeight="Bold"
-                    Command="{Binding OkCommand}"/>
-            <Button Content="Cancel" Margin="10,0" IsCancel="True"/>
+                    Command="{Binding OkCommand}" />
+            <Button Content="Cancel" Margin="10,0" IsCancel="True" />
         </UniformGrid>
 
         <Grid Margin="3">
@@ -22,81 +22,91 @@
                 <Style TargetType="TextBlock">
                     <Style.Triggers>
                         <Trigger Property="Grid.Column" Value="0">
-                            <Setter Property="HorizontalAlignment" Value="Right"/>
-                            <Setter Property="VerticalAlignment" Value="Center"/>
-                            <Setter Property="FontWeight" Value="Bold"/>
-                            <Setter Property="Margin" Value="0,3"/>
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="Margin" Value="0,3" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
                 <Style TargetType="TextBox">
-                    <Setter Property="Margin" Value="3,2,0,2"/>
+                    <Setter Property="Margin" Value="3,2,0,2" />
                 </Style>
             </Grid.Resources>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="77*"/>
-                <ColumnDefinition Width="93*"/>
-                <ColumnDefinition Width="117*"/>
-                <ColumnDefinition Width="107*"/>
+                <ColumnDefinition Width="77*" />
+                <ColumnDefinition Width="93*" />
+                <ColumnDefinition Width="117*" />
+                <ColumnDefinition Width="107*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
             </Grid.RowDefinitions>
-            <TextBlock x:Name="tbName" Grid.Row="0" Grid.Column="0" Text="Coin name:" HorizontalAlignment="Left" Margin="10,0,0,0" Height="18" Width="73"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" x:Name="tboxName"  Text="{Binding Name, FallbackValue='New coin'}"  Margin="15,5,35,2"
-                      ToolTip="Fill coin name" ToolTipService.ShowDuration="1000"/>
-            <TextBlock x:Name="tbShortName" Grid.Column="1" Grid.Row="1" Text="Short name:" HorizontalAlignment="Left" Margin="13,19,0,0" VerticalAlignment="Top" Width="78" Height="16" Grid.RowSpan="2"/>
-            <TextBox x:Name="tboxShortName" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1"  Margin="10,14,69,15"                     
+            <TextBlock x:Name="tbName" Grid.Row="0" Grid.Column="0" Text="Coin name:" HorizontalAlignment="Left"
+                       Margin="10,0,0,0" Height="18" Width="73" />
+            <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" x:Name="tboxName"
+                     Text="{Binding Name, FallbackValue='New coin'}" Margin="15,5,35,2"
+                     ToolTip="Fill coin name" ToolTipService.ShowDuration="1000" />
+            <TextBlock x:Name="tbShortName" Grid.Column="1" Grid.Row="1" Text="Short name:" HorizontalAlignment="Left"
+                       Margin="13,19,0,0" VerticalAlignment="Top" Width="78" Height="16" Grid.RowSpan="2" />
+            <TextBox x:Name="tboxShortName" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1" Margin="10,14,69,15"
                      Text="{Binding ShortName}" Background="MistyRose" Opacity="0.75" Grid.RowSpan="2"
-                     ToolTip="Fill short coin name" ToolTipService.ShowDuration="1000"/>
+                     ToolTip="Fill short coin name" ToolTipService.ShowDuration="1000" />
             <Button x:Name="btnFill" Grid.Row="5" Grid.Column="0" Margin="21,5,45,5"
                     ToolTip="Calculate" ToolTipService.ShowDuration="1000"
-                    Click="btnFill_Click" Background="MistyRose" Opacity="1" Grid.ColumnSpan="2">Fill sum, $</Button>
-            <Label Grid.Row="3" Grid.Column="0" Content="Amount" HorizontalAlignment="Left" Margin="17,0,0,0" Width="52"/>
+                    Click="btnFill_Click" Background="MistyRose" Opacity="1" Grid.ColumnSpan="2">
+                Fill sum, $
+            </Button>
+            <Label Grid.Row="3" Grid.Column="0" Content="Amount" HorizontalAlignment="Left" Margin="17,0,0,0"
+                   Width="52" />
             <TextBox Grid.Column="1" Grid.Row="3" x:Name="textBoxAmount"
                      ToolTip="Amount buying or transh" ToolTipService.ShowDuration="1000"
-                     Text="{Binding Amount, FallbackValue='0'}" Margin="13,2,10,0"/>
-            <Label Grid.Row="2" Grid.Column="2" Content="Current price, $" HorizontalAlignment="Left" Margin="35,28,0,2" Width="90" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                     Text="{Binding Amount, FallbackValue='0'}" Margin="13,2,10,0" />
+            <Label Grid.Row="2" Grid.Column="2" Content="Current price, $" HorizontalAlignment="Left"
+                   Margin="35,28,0,2" Width="90" Grid.RowSpan="2" Grid.ColumnSpan="2" />
             <TextBox Grid.Column="3" Grid.Row="3" x:Name="textBoxCurrentPrice"
                      ToolTip="Set last brocker price" ToolTipService.ShowDuration="1000"
-                     Text="{Binding CurrentPrice}" Margin="13,2,30,0"/>
-            <Label Grid.Column="0" Grid.Row="4" Content="Price, $" HorizontalAlignment="Left" Margin="21,0,0,0" Width="49"/>
-            <TextBox x:Name="tbPurchasePrice" Grid.Column="1" Grid.Row="4"  
+                     Text="{Binding CurrentPrice}" Margin="13,2,30,0" />
+            <Label Grid.Column="0" Grid.Row="4" Content="Price, $" HorizontalAlignment="Left" Margin="21,0,0,0"
+                   Width="49" />
+            <TextBox x:Name="tbPurchasePrice" Grid.Column="1" Grid.Row="4"
                      Text="{Binding PurchasePrice}" Margin="13,2,10,0"
-                     ToolTip="Purchase price" ToolTipService.ShowDuration="1000"/>
-            
-            
-            <Label Grid.Column="2" Grid.Row="4" Content="AveragePrice, $" HorizontalAlignment="Left" Margin="15,0,0,0" Width="92"/>
-            <TextBlock Grid.Column="3" Grid.Row="4" x:Name="textBoxAveragePrice" 
-                     ToolTip="Average price" ToolTipService.ShowDuration="1000"
-                     Text="{Binding Path=AveragePrice}" Margin="13,5,10,0"/>
+                     ToolTip="Purchase price" ToolTipService.ShowDuration="1000" />
+
+
+            <Label Grid.Column="2" Grid.Row="4" Content="AveragePrice, $" HorizontalAlignment="Left" Margin="15,0,0,0"
+                   Width="92" />
+            <TextBlock Grid.Column="3" Grid.Row="4" x:Name="textBoxAveragePrice"
+                       ToolTip="Average price" ToolTipService.ShowDuration="1000"
+                       Text="{Binding Path=AveragePrice}" Margin="13,5,10,0" />
             <!--<Label Grid.Column="1" Grid.Row="5" Content="Value, $" HorizontalAlignment="Right"/>-->
             <TextBox Grid.Column="1" Grid.Row="5" x:Name="textBoxValueUSD" Margin="65,5,59,5"
-                     Background="MistyRose" Opacity="0.75" Text="{Binding Path=ValueUSD, FallbackValue='0'}" Grid.ColumnSpan="2" RenderTransformOrigin="0.526,0.467"/>
-
-
+                     Background="MistyRose" Opacity="0.75" Text="{Binding Path=ValueUSD, FallbackValue='0'}"
+                     Grid.ColumnSpan="2" RenderTransformOrigin="0.526,0.467" />
 
 
             <TextBox Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="7" Text="{Binding Path=PictureName}"
-                     Margin="113,10,10,10" />
-            <Button Grid.Column="3" Grid.Row="6" Content="Choose file"
-                    Width="87" HorizontalAlignment="Center"
+                     Margin="0,10,0,10" Width="150" />
+            <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="6" Content="Choose file"
+                    Width="150" HorizontalAlignment="Center"
                     Margin="0,6,0,4" Padding="5"
-                    Command="{Binding SelectPictureNameCommand}"/>
-            <Image Grid.Row="6" Grid.RowSpan="3" Width="137" 
-                   HorizontalAlignment="Center" Source="{Binding PictureName}" Grid.Column="1"/>
-            <TextBlock Grid.Column="0" Grid.Row="9" Text="Date update:" HorizontalAlignment="Left" Margin="21,0,0,0" Grid.ColumnSpan="2" Height="16" Width="73"/>
-            <DatePicker Grid.Column="1" Grid.Row="9" Margin="47,2,0,2" 
-                        SelectedDate="{Binding DateUpdate}" Grid.ColumnSpan="2"/>
+                    Command="{Binding SelectPictureNameCommand}" />
+            <Image Grid.Row="6" Grid.RowSpan="3" Width="150" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,0,0"
+                   HorizontalAlignment="Center" Source="{Binding PictureName}" />
+            
+            <TextBlock Grid.Column="0" Grid.Row="9" Text="Date update:" HorizontalAlignment="Left" Margin="21,0,0,0"
+                       Grid.ColumnSpan="2" Height="16" Width="73" />
+            <DatePicker Grid.Column="1" Grid.Row="9" Margin="47,2,0,2"
+                        SelectedDate="{Binding DateUpdate}" Grid.ColumnSpan="2" />
 
         </Grid>
     </DockPanel>

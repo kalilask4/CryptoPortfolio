@@ -9,7 +9,7 @@
         xmlns:fas="http://schemas.fontawesome.com/icons/"
         xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit"
         mc:Ignorable="d"
-        Title="Crypto portfolio" Height="600" Width="1100"
+        Title="Crypto portfolio" Height="600" Width="1100" MinHeight="550" MinWidth="1100"
         WindowStartupLocation="CenterScreen"
         xmlns:datavis="clr-namespace:System.Windows.Controls.DataVisualization;assembly=DotNetProjects.DataVisualization.Toolkit"
         xmlns:Custom="{15D9F35E-7F75-4EE3-B7CA-E2986495A3FF}">
@@ -183,21 +183,26 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTextColumn Header="Coin" Width="65" Binding="{Binding Path=ShortName}" />
-                                        <DataGridTextColumn Width="100" Header="Amount"
-                                                            Binding="{Binding Path=Amount}" />
-                                        <DataGridTextColumn Width="70" Header="Average purchase price"
+                                        <DataGridTextColumn Width="1*" Header="Coin" Binding="{Binding Path=ShortName}" />
+                                        <DataGridTextColumn Width="1.7*" Header="Amount" Binding="{Binding Path=Amount}">
+                                            <!-- <DataGridTextColumn.ElementStyle> -->
+                                            <!--     <Style TargetType="TextBlock"> -->
+                                            <!--         <Setter Property="Background" Value="LightGreen"></Setter> -->
+                                            <!--     </Style> -->
+                                            <!-- </DataGridTextColumn.ElementStyle> -->
+                                            </DataGridTextColumn>
+                                        <DataGridTextColumn Width="1.5*" Header="Average buying price"
                                                             Binding="{Binding Path=AveragePrice, StringFormat={}{0:C}}" />
-                                        <DataGridTextColumn Width="70" Header="Current price"
+                                        <DataGridTextColumn Width="1.5*" Header="Current price"
                                                             Binding="{Binding Path=CurrentPrice, StringFormat={}{0:C}}" />
-                                        <DataGridTextColumn Width="70" Header="Value by bougth"
+                                        <DataGridTextColumn Width="1.7*" Header="Value by buying"
                                                             Binding="{Binding Path=AverageValue, StringFormat={}{0:C}}" />
-                                        <DataGridTextColumn Width="90" Header="Value current"
+                                        <DataGridTextColumn Width="1.7*" Header="Value current"
                                                             Binding="{Binding Path=CurrentValue, StringFormat={}{0:C}}" />
-                                        <DataGridTextColumn x:Name="tcProfitUSD" Width="70" Header="Profit, $"
+                                        <DataGridTextColumn Width="1.3*" x:Name="tcProfitUSD" Header="Profit, $"
                                                             Binding="{Binding Path=ProfitUSD, StringFormat={}{0:C2}}" />
-                                        <DataGridTextColumn x:Name="tcProfitPerc" Width="70" Header="Profit, %"
-                                                            Binding="{Binding Path=ProfitPerс, StringFormat={}{0:P2}}" />
+                                        <DataGridTextColumn Width="1.3*" x:Name="tcProfitPerc" Header="Profit, %"
+                                                            Binding="{Binding Path=ProfitPerс, StringFormat={}{0:P2}}"/>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </DockPanel>
@@ -245,13 +250,14 @@
                                 SelectedItem="{Binding SelectedTransaction}"
                                 SelectedIndex="0">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Transaction" Width="1*" Binding="{Binding Path=Symbol}" />
+                                    <DataGridTextColumn Header="Transaction" Width="0.8*" Binding="{Binding Path=Symbol}" />
                                     <DataGridTextColumn Header="Amount" Width="1*" Binding="{Binding Path=Amount}" />
                                     <DataGridTextColumn Header="Price" Width="1*"
                                                         Binding="{Binding Path=Price, StringFormat={}{0:C}}" />
                                     <DataGridTextColumn Width="1*" Header="Sum"
                                                         Binding="{Binding Path=Sum, StringFormat={}{0:C}}" />
-                                    <DataGridTextColumn Header="side" Width="1*" Binding="{Binding Path=Side}" />
+                                    <DataGridTextColumn Header="Side" Width="0.6*" Binding="{Binding Path=Side}" />
+                                    <DataGridTextColumn Header="Data" Width="1.1*" Binding="{Binding Path=DateUpdate}" />
                                 </DataGrid.Columns>
                             </DataGrid>
                         </DockPanel>
@@ -344,9 +350,9 @@
                                 </Style>
                             </DataGrid.CellStyle>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Indicator" Width="160"
+                                <DataGridTextColumn Header="Indicator" Width="1*"
                                                     Binding="{Binding Path=IndicatorName}" />
-                                <DataGridTextColumn Width="140" Header="Amount, $" Binding="{Binding Path=Value}" />
+                                <DataGridTextColumn Width="1*" Header="Amount, $" Binding="{Binding Path=Value}" />
                             </DataGrid.Columns>
                         </DataGrid>
                         <Button x:Name="btnFullRecount" ToolTip="Recount start portfolio price, current and profit"
@@ -402,7 +408,7 @@
                     </Button.Resources>
                 </Button>
                 <Button x:Name="AddTransaction"
-                        Command="{Binding NewTransactionCommand}" ToolTip="Add transaction"
+                        Command="{Binding NewTransactionCommand}" ToolTip="Add exchange transaction"
                         ToolTipService.ShowDuration="2000" Width="125">
                     <fas:FontAwesome Icon="Solid_ExchangeAlt" FontSize="17" Width="21" />
                     <Button.Resources>
