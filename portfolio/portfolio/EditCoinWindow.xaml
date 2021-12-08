@@ -70,7 +70,7 @@
                    Width="52" />
             <TextBox Grid.Column="1" Grid.Row="3" x:Name="textBoxAmount"
                      ToolTip="Amount buying or transh" ToolTipService.ShowDuration="1000"
-                     Text="" Margin="13,2,10,3" />
+                     Text="{Binding Amount}" Margin="13,2,10,3" />
             <Label Grid.Row="2" Grid.Column="2" Content="Current price, $" HorizontalAlignment="Left"
                    Margin="35,28,0,2" Width="90" Grid.RowSpan="2" Grid.ColumnSpan="2" />
             <TextBox Grid.Column="3" Grid.Row="3" x:Name="textBoxCurrentPrice"
