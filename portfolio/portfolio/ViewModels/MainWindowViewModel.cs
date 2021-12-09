@@ -167,6 +167,17 @@ namespace portfolio.ViewModels
 
             if (dialog.ShowDialog() != true) return;
 
+            
+            var transaction = new Transaction
+            {
+                Symbol = dialog.ShortName.ToUpper(),
+                Side = "transfer",
+                Amount = dialog.Amount,
+                Price = dialog.PurchasePrice,
+                Sum = dialog.Amount*dialog.PurchasePrice,
+                
+            };
+            
             var coin = new Coin
             {
                 Name = dialog.Name,
@@ -177,16 +188,24 @@ namespace portfolio.ViewModels
                 AveragePrice = dialog.PurchasePrice,
                 CurrentValue = dialog.CurrentPrice * dialog.Amount,
                 AverageValue = dialog.PurchasePrice * dialog.Amount,
-                DateUpdate = dialog.DateUpdate
+                DateUpdate = dialog.DateUpdate,
+                Transactions = new List<Transaction>()
+                {
+                    transaction
+                }
+                
             };
 
-            var transaction = new Transaction
-            {
-                Symbol = coin.ShortName,
-                Side = "transfer",
-                Amount = dialog.Amount,
-                Price = dialog.PurchasePrice,
-            };
+            // var transaction = new Transaction
+            // {
+            //     Symbol = coin.ShortName,
+            //     Side = "transfer",
+            //     Amount = dialog.Amount,
+            //     Price = dialog.PurchasePrice,
+            //     Sum = dialog.Amount*dialog.PurchasePrice,
+            //     
+            // };
+            
 
             var fileName = Path.GetFileName(dialog.PictureName);
             if (fileName != null)
@@ -210,11 +229,11 @@ namespace portfolio.ViewModels
                     MessageBox.Show("This file already exist. Choose another one. \n (Select coin, click button Edit)");
                 }
             }
-
-            transactionManager.AddCoinToTransaction(coin);
-            //Transactions.Add(transaction);
+            
+            transaction.TransactionCoins.Add(coin);
+            transactionManager.CreateTransaction(transaction);
             Coins.Add(coin);
-            coinManager.AddTransactionToCoin(transaction, coin.CoinId);
+            AllTransactions.Add(transaction);
         }
 
         #endregion

@@ -271,6 +271,9 @@
                     </TabItem.Header>
                     <Grid Name="GrCoinsProfile" Background="WhiteSmoke" Opacity="0.95">
                         <chartingToolkit:Chart Name="mcChart" Width="auto" Height="auto">
+                           
+
+                            
                             <chartingToolkit:Chart.Series>
                                 <chartingToolkit:PieSeries
                                     LegendItemStyle="{DynamicResource PieSeriesLegendItemStyle1}"
