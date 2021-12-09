@@ -22,7 +22,7 @@ namespace portfolio.ViewModels
         ManagersFactory factory;
         CoinManager coinManager;
         TransactionManager transactionManager;
-        
+
         private string titleCoins = "Coin Window";
         private string titleTransactions = "Transaction Window";
         private string titleCoinPerformance = "Coin Performance Window";
@@ -50,15 +50,14 @@ namespace portfolio.ViewModels
 
             Coins = new ObservableCollection<Coin>(coinManager.Coins);
             Coins.CollectionChanged += CoinsOnCollectionChanged;
-          
+
             AllTransactions = new ObservableCollection<Transaction>(transactionManager.Transactions);
             AllTransactions.CollectionChanged += AllTransactionsOnCollectionChanged;
-            //Transactions = new ObservableCollection<Transaction>();
             TransactionsFromCoin = new ObservableCollection<Transaction>();
-            
+
             PortfolioIndicators = new ObservableCollection<PortfolioIndicator>();
             PortfolioIndicators.CollectionChanged += PortfolioIndicatorsOnCollectionChanged;
-            
+
             var startPrice = new PortfolioIndicator
             {
                 IndicatorName = "Start price"
@@ -79,7 +78,7 @@ namespace portfolio.ViewModels
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
         }
-       
+
         private void PortfolioIndicatorsOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
@@ -155,6 +154,7 @@ namespace portfolio.ViewModels
         #region Add coin
 
         private ICommand _newCoinCommand;
+
         public ICommand NewCoinCommand =>
             _newCoinCommand ??= new RelayCommand(OnNewCoinExecuted);
 
@@ -167,17 +167,16 @@ namespace portfolio.ViewModels
 
             if (dialog.ShowDialog() != true) return;
 
-            
+
             var transaction = new Transaction
             {
                 Symbol = dialog.ShortName.ToUpper(),
                 Side = "transfer",
                 Amount = dialog.Amount,
                 Price = dialog.PurchasePrice,
-                Sum = dialog.Amount*dialog.PurchasePrice,
-                
+                Sum = dialog.Amount * dialog.PurchasePrice,
             };
-            
+
             var coin = new Coin
             {
                 Name = dialog.Name,
@@ -193,7 +192,6 @@ namespace portfolio.ViewModels
                 {
                     transaction
                 }
-                
             };
 
             // var transaction = new Transaction
@@ -205,7 +203,7 @@ namespace portfolio.ViewModels
             //     Sum = dialog.Amount*dialog.PurchasePrice,
             //     
             // };
-            
+
 
             var fileName = Path.GetFileName(dialog.PictureName);
             if (fileName != null)
@@ -229,7 +227,7 @@ namespace portfolio.ViewModels
                     MessageBox.Show("This file already exist. Choose another one. \n (Select coin, click button Edit)");
                 }
             }
-            
+
             transaction.TransactionCoins.Add(coin);
             transactionManager.CreateTransaction(transaction);
             Coins.Add(coin);
@@ -262,6 +260,7 @@ namespace portfolio.ViewModels
         #region Edit coin
 
         private ICommand _editCoinCommand;
+
         public ICommand EditCoinCommand =>
             _editCoinCommand ??= new RelayCommand(OnEditCoinExecuted, EditCoinCanExecute);
 
@@ -326,7 +325,9 @@ namespace portfolio.ViewModels
         #region Delete coin
 
         private ICommand _deleteCoinCommand;
-        public ICommand DeleteCoinCommand => _deleteCoinCommand ??= new RelayCommand(OnDeleteCoinExecuted, DeleteCoinCanExecute);
+
+        public ICommand DeleteCoinCommand =>
+            _deleteCoinCommand ??= new RelayCommand(OnDeleteCoinExecuted, DeleteCoinCanExecute);
 
 
         // check if can del
@@ -363,66 +364,19 @@ namespace portfolio.ViewModels
         {
             Coin newCoin = coinManager.Recount(_selectedCoin.CoinId);
             coinManager.Update(newCoin);
-            MessageBoxTimeout((System.IntPtr) 0, $"{_selectedCoin.Name} - {_selectedCoin.ShortName} recounted. ", "Coins", 0, 0, 3000);
+            MessageBoxTimeout((System.IntPtr) 0, $"{_selectedCoin.Name} - {_selectedCoin.ShortName} recounted. ",
+                "Coins", 0, 0, 3000);
             OnGetTransactionExecuted(_selectedCoin.CoinId);
-        }
-      
-        #endregion
-
-        #region Add transaction
-
-        private ICommand _newTransactionCommand;
-        public ICommand NewTransactionCommand =>
-            _newTransactionCommand ??= new RelayCommand(OnNewTransactionExecuted);
-
-        
-        private void OnNewTransactionExecuted(object id)
-        {
-            
-            var dialog = new EditTransactionWindow
-            {
-                DebetCoin = _selectedCoin,
-            };
-
-            if (dialog.ShowDialog() != true) return;
-
-            Coin debetCoin = (Coin) dialog.cBoxCoinDebet.SelectedItem;
-            Coin creditCoin = (Coin) dialog.cBoxCoinCredit.SelectedItem;
-            MessageBox.Show(debetCoin.ToString());
-          
-             var transaction = new Transaction
-                          {
-                              DateUpdate = DateTime.Now,
-                              Side = dialog.Side,
-                              Symbol = debetCoin != null ? debetCoin.ShortName + creditCoin?.ShortName : "empty DebetCoin",
-                              Amount = dialog.Amount,
-                              Price = dialog.Price,
-                              TransactionCoins = new List<Coin>(2)
-                              {
-                                  debetCoin, 
-                                  creditCoin,
-                                 // TransactionCoins.Add(debetCoin); 
-                              }
-                          };   
-             debetCoin?.recalcByTransfer(dialog.Amount, dialog.Price);
-             creditCoin?.recalcByTransfer(dialog.Amount, dialog.Price);
-             coinManager.Update(debetCoin);
-             coinManager.Update(creditCoin);
-             transactionManager.CreateTransaction(transaction);
-             MessageBox.Show(transaction.ToString());
-          //  debetCoin?.recalcByTransfer(dialog.Amount, dialog.Price);
-            
-            //transactionManager.AddCoinToTransaction(debetCoin);
-            coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId, debetCoin.CoinId);
-            AllTransactions.Add(transaction);
+            //var coin = Coins.FirstOrDefault(c => c.CoinId == _selectedCoin.CoinId);
+            //Coins = new ObservableCollection<Coin>(coinManager.Coins);
         }
 
         #endregion
-        
-        
+
         #region Full recount
 
         private ICommand _fullRecountCommand;
+
         public ICommand FullRecountCommand =>
             _fullRecountCommand ??= new RelayCommand(OnFullRecountExecuted);
 
@@ -436,6 +390,7 @@ namespace portfolio.ViewModels
             {
                 startPrice += coin.AverageValue;
             }
+
             startPriceIndicator.Value = startPrice;
             foreach (var ind in PortfolioIndicators)
             {
@@ -444,7 +399,7 @@ namespace portfolio.ViewModels
                     ind.Value = startPrice;
                 }
             }
-            
+
             PortfolioIndicator currentPriceIndicator = new PortfolioIndicator();
             currentPriceIndicator.IndicatorName = "Current price";
             currentPriceIndicator.Value = 0;
@@ -453,6 +408,7 @@ namespace portfolio.ViewModels
             {
                 currentPrice += coin.CurrentValue;
             }
+
             currentPriceIndicator.Value = currentPrice;
             foreach (var ind in PortfolioIndicators)
             {
@@ -461,10 +417,10 @@ namespace portfolio.ViewModels
                     ind.Value = currentPrice;
                 }
             }
-            
+
             PortfolioIndicator profit = new PortfolioIndicator();
             profit.IndicatorName = "Profit";
-            profit.Value = currentPriceIndicator.Value - startPriceIndicator.Value; 
+            profit.Value = currentPriceIndicator.Value - startPriceIndicator.Value;
             foreach (var ind in PortfolioIndicators)
             {
                 if (ind.IndicatorName.Equals(profit.IndicatorName))
@@ -476,24 +432,71 @@ namespace portfolio.ViewModels
 
         #endregion
 
-        
+        #region Add transaction
+
+        private ICommand _newTransactionCommand;
+
+        public ICommand NewTransactionCommand =>
+            _newTransactionCommand ??= new RelayCommand(OnNewTransactionExecuted);
+
+
+        private void OnNewTransactionExecuted(object id)
+        {
+            var dialog = new EditTransactionWindow
+            {
+                DebetCoin = _selectedCoin,
+            };
+
+            if (dialog.ShowDialog() != true) return;
+
+            Coin debetCoin = (Coin) dialog.cBoxCoinDebet.SelectedItem;
+            Coin creditCoin = (Coin) dialog.cBoxCoinCredit.SelectedItem;
+
+            Coin outDebetCoin;
+            Coin outCreditCoin;
+            Coin.recalcByExchangeTransaction(debetCoin, creditCoin, dialog.Amount, dialog.Price, dialog.Side,
+                out outDebetCoin, out outCreditCoin);
+
+            var transaction = new Transaction
+            {
+                DateUpdate = DateTime.Now,
+                Side = dialog.Side,
+                Symbol = debetCoin != null ? debetCoin.ShortName + creditCoin?.ShortName : "empty DebetCoin",
+                Amount = dialog.Amount,
+                Price = dialog.Price,
+                TransactionCoins = new List<Coin>(2)
+                {
+                    debetCoin,
+                    creditCoin,
+                }
+            };
+
+            coinManager.Update(debetCoin);
+            coinManager.Update(creditCoin);
+            transactionManager.CreateTransaction(transaction);
+            coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId, debetCoin.CoinId);
+            AllTransactions.Add(transaction);
+        }
+
+        #endregion
+
         #region Add Transfer transaction
-        
-        
+
         private ICommand _newTransferTransactionCommand;
+
         public ICommand NewTransferTransactionCommand =>
             _newTransferTransactionCommand ??= new RelayCommand(OnNewTransferTransactionExecuted);
-        
-        
+
+
         private void OnNewTransferTransactionExecuted(object id)
         {
             var dialog = new EditTransactionWindow(id)
-                {
-                   DebetCoin = _selectedCoin,
-                };
-                
+            {
+                DebetCoin = _selectedCoin,
+            };
+
             if (dialog.ShowDialog() != true) return;
-            
+
             Coin debetCoin = coinManager.GetById(((Coin) dialog.cBoxCoinDebet.SelectedItem).CoinId);
             var transaction = new Transaction()
             {
@@ -502,10 +505,10 @@ namespace portfolio.ViewModels
                 Symbol = debetCoin?.ShortName,
                 Amount = dialog.Amount,
                 Price = dialog.Price,
-                Sum = dialog.Amount*dialog.Amount,
+                Sum = dialog.Amount * dialog.Amount,
                 TransactionCoins = new List<Coin>()
                 {
-                    debetCoin, 
+                    debetCoin,
                 }
             };
             debetCoin?.recalcByTransfer(dialog.Amount, dialog.Price);
@@ -514,13 +517,15 @@ namespace portfolio.ViewModels
             coinManager.AddTransactionToCoin(transaction, debetCoin.CoinId);
             AllTransactions.Add(transaction);
         }
-        
+
         #endregion
-        
+
         #region Delete transaction
 
         private ICommand _deleteTransactionCommand;
-        public ICommand DelTransactionCommand => _deleteTransactionCommand ??= new RelayCommand(OnDeleteTransactionExecuted, DeleteTransactionCanExecute);
+
+        public ICommand DelTransactionCommand => _deleteTransactionCommand ??=
+            new RelayCommand(OnDeleteTransactionExecuted, DeleteTransactionCanExecute);
 
 
         // check if can delete
@@ -529,7 +534,8 @@ namespace portfolio.ViewModels
 
         private void OnDeleteTransactionExecuted(object id)
         {
-            var result = MessageBox.Show("Are you sure?", $"Delete Transaction {_selectedTransaction.Symbol}?", MessageBoxButton.YesNo);
+            var result = MessageBox.Show("Are you sure?", $"Delete Transaction {_selectedTransaction.Symbol}?",
+                MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
                 transactionManager.Delete(_selectedTransaction.TransactionId); //deleting only transaction
@@ -539,7 +545,7 @@ namespace portfolio.ViewModels
         }
 
         #endregion
-        
+
         #endregion
     }
 }

@@ -7,19 +7,17 @@ using portfolio.Domain.Interfaces;
 
 namespace portfolio.Domain.Entities
 {
-    public class Coin: ICoinCloneable
+    public class Coin : ICoinCloneable
     {
-        [Key]
-        public int CoinId { get; set; }
+        [Key] public int CoinId { get; set; }
         private string name = "No name coin";
-        private string shortName = "NONAME" ;
-        [Required]
-        public decimal Amount { get; set; }
-        
-        public decimal PurchasePrice { get; set; }//last purchase price
-        public decimal AveragePrice { get; set; }//Average purchase price
-        public decimal CurrentPrice { get; set; } 
-        
+        private string shortName = "NONAME";
+        [Required] public decimal Amount { get; set; }
+
+        public decimal PurchasePrice { get; set; } //last purchase price
+        public decimal AveragePrice { get; set; } //Average purchase price
+        public decimal CurrentPrice { get; set; }
+
         public decimal CurrentValue { get; set; }
         public decimal AverageValue { get; set; }
 
@@ -32,14 +30,11 @@ namespace portfolio.Domain.Entities
         public string PictureName
         {
             get { return pictureName; }
-            set
-            {
-                pictureName = value;
-            }
+            set { pictureName = value; }
         }
 
         public string ShortName
-    
+
         {
             get { return shortName; }
             set
@@ -48,7 +43,7 @@ namespace portfolio.Domain.Entities
                 {
                     shortName = value;
                 }
-                    
+
             }
         }
 
@@ -58,16 +53,17 @@ namespace portfolio.Domain.Entities
             get { return name; }
             set
             {
-                if(value != null)
+                if (value != null)
                 {
                     name = value;
                 }
-                
+
             }
         }
 
 
         public DateTime DateUpdate { get; set; }
+
         // навигационное свойство
         public List<Transaction> Transactions { get; set; }
 
@@ -118,7 +114,7 @@ namespace portfolio.Domain.Entities
         {
             //Trace.WriteLine($"constr 3");
             Name = name;
-            ShortName = name.Substring(0,3).ToUpper();
+            ShortName = name.Substring(0, 3).ToUpper();
             Amount = culcAmount(amount);
             PurchasePrice = purchasePrice;
             CurrentPrice = currentPrice;
@@ -144,11 +140,31 @@ namespace portfolio.Domain.Entities
             CurrentValue = Amount * CurrentPrice;
             ProfitUSD = CurrentValue - AverageValue;
             ProfitPerс = (CurrentValue - AverageValue) / Amount;
-            
-            
         }
-        
-        
+        public static void recalcByExchangeTransaction(
+            Coin debetCoin, Coin creditCoin,
+            decimal dialogAmount, decimal dialogPrice, string dialogSide,
+            out Coin outDebetCoin, out Coin outCreditCoin)
+        {
+            if (dialogSide == "buy")
+            {
+                debetCoin.Amount += dialogAmount;
+                creditCoin.Amount -= dialogPrice;
+            }
+            else if (dialogSide == "sell")
+            {
+                debetCoin.Amount -= dialogAmount;
+                creditCoin.Amount += dialogPrice;
+            }
+            
+            debetCoin.AverageValue = debetCoin.Amount * debetCoin.AveragePrice;
+            creditCoin.AverageValue = creditCoin.Amount * creditCoin.AveragePrice;
+            debetCoin.ProfitUSD = debetCoin.CurrentValue - debetCoin.AverageValue;
+            creditCoin.ProfitUSD = creditCoin.CurrentValue - creditCoin.AverageValue;
+            outDebetCoin = debetCoin;
+            outCreditCoin = creditCoin;
+        }
+            
         public void calculateValues()
         {
             CurrentValue = Amount * CurrentPrice;
@@ -157,12 +173,10 @@ namespace portfolio.Domain.Entities
             ProfitPerс = (CurrentValue - AverageValue) / Amount;
         }
 
-
         public decimal culcAmount(decimal amount)
         {
             return this.Amount + amount;
         }
-
 
         public decimal culcAveragePrice(decimal purchasePrice)
         {
@@ -180,7 +194,6 @@ namespace portfolio.Domain.Entities
 
         public decimal culcAverageValue(decimal amount, decimal purchasePrice)
         {
-
             if (this.AveragePrice != 0)
             {
                 return this.culcAveragePrice(purchasePrice) * amount;
@@ -200,9 +213,6 @@ namespace portfolio.Domain.Entities
 
         public Coin Clone()
         {
-           
-       // public static Coin Clone(Coin coin)
-        //{
             return new Coin
             {
                 CoinId = this.CoinId,
@@ -225,27 +235,6 @@ namespace portfolio.Domain.Entities
             
         }
     }
-
-    //public Coin(string name, string shortName, decimal amount, decimal currentPrice, decimal valueByCurrentPrice, decimal valueByAveragePurchasePrice, string pictureName, DateTime dateUpdate)
-    //{
-    //    Name = name;
-    //    ShortName = shortName;
-    //    Amount = amount;
-    //    CurrentPrice = currentPrice;
-    //    CurrentValue = valueByCurrentPrice;
-    //    ValueByAveragePurchasePrice = valueByAveragePurchasePrice;
-    //    PictureName = pictureName;
-    //    DateUpdate = dateUpdate;
-    //    Transactions = new List<Transaction>();
-    //}
-
-    //public override string ToString()
-    //{
-    //    return $"Id{CoinId} - {ShortName}, amout = {Amount}, {CurrentValue} USD.";
-    //}
-
-
-
 }
 
 
