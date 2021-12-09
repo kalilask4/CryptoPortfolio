@@ -174,7 +174,7 @@
                                         <DataGridTemplateColumn>
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Image
+                                                        <Image
                                                         Stretch="Fill"
                                                         Width="23" Height="23"
                                                         Source="{Binding PictureName, 
@@ -183,13 +183,15 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTextColumn Width="1*" Header="Coin" Binding="{Binding Path=ShortName}" />
+                                        <DataGridTextColumn Width="1*" Header="Coin" Binding="{Binding Path=ShortName}">
+                                            <DataGridTextColumn.CellStyle>
+                                                <Style TargetType="DataGridCell">
+                                                    <Setter Property="ToolTip" 
+                                                            Value="{Binding Name}" />
+                                                </Style>
+                                            </DataGridTextColumn.CellStyle>
+                                        </DataGridTextColumn>
                                         <DataGridTextColumn Width="1.7*" Header="Amount" Binding="{Binding Path=Amount}">
-                                            <!-- <DataGridTextColumn.ElementStyle> -->
-                                            <!--     <Style TargetType="TextBlock"> -->
-                                            <!--         <Setter Property="Background" Value="LightGreen"></Setter> -->
-                                            <!--     </Style> -->
-                                            <!-- </DataGridTextColumn.ElementStyle> -->
                                             </DataGridTextColumn>
                                         <DataGridTextColumn Width="1.5*" Header="Average buying price"
                                                             Binding="{Binding Path=AveragePrice, StringFormat={}{0:C}}" />
