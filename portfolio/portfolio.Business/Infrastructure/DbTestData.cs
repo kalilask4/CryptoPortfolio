@@ -34,7 +34,7 @@ namespace portfolio.Business.Infrastructure
                     Name = "Tether",
                     ShortName = "USDT",
                     PictureName = "USDT.png",
-                    Amount = 100,
+                    Amount = 1000,
                     AveragePrice = 1,
                     CurrentPrice = 1,
                 },
@@ -44,7 +44,8 @@ namespace portfolio.Business.Infrastructure
                     Name = "Bitcoin",
                     ShortName = "BTC",
                     PictureName = "BTC.png",
-                    Amount = 0,
+                    Amount = (decimal) 0.001,
+                    AveragePrice = 50000
                 },
                 
                 new Coin
@@ -52,14 +53,16 @@ namespace portfolio.Business.Infrastructure
                     Name = "Etherium",
                     ShortName = "ETH",
                     PictureName = "ETH.png",
-                    Amount = 0,
+                    Amount = (decimal)0.3,
+                    AveragePrice = 4200
                 },
                 new Coin
                 {
-                    Name = "Binance Coin",
-                    ShortName = "BNB",
-                    PictureName = "BNB.png",
-                    Amount = 0,
+                    Name = "XRP",
+                    ShortName = "XRP",
+                    PictureName = "XRP.png",
+                    Amount = 220,
+                    AveragePrice = (decimal)0.8791
                 },
                 
                 

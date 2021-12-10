@@ -46,7 +46,18 @@ namespace portfolio.ViewModels
 
             //init db
             if (coinManager.Coins.Count() == 0)
-                DbTestData.SetupData(coinManager, transactionManager);
+            {
+              DbTestData.SetupData(coinManager, transactionManager);  
+            }
+            // if (coinManager.Coins.Count() == 0)
+            // {
+            //     var result = MessageBox.Show("Data", $"Add test data?", MessageBoxButton.YesNo);
+            //     if (result == MessageBoxResult.Yes)
+            //     {
+            //         DbTestData.SetupData(coinManager, transactionManager);
+            //
+            //     }
+            // }
 
             Coins = new ObservableCollection<Coin>(coinManager.Coins);
             Coins.CollectionChanged += CoinsOnCollectionChanged;
@@ -74,7 +85,6 @@ namespace portfolio.ViewModels
             };
             PortfolioIndicators.Add(profit);
             //CollectionChanged
-
             if (Coins.Count > 0)
                 OnGetTransactionExecuted(Coins[0].CoinId);
         }
@@ -85,8 +95,8 @@ namespace portfolio.ViewModels
             {
                 case NotifyCollectionChangedAction.Replace:
                     PortfolioIndicator replasedIndicator = e.OldItems[0] as PortfolioIndicator;
-                    MessageBoxTimeout((System.IntPtr) 0, $"{replasedIndicator.IndicatorName} recounted.", "Indicators",
-                        0, 0, 1000);
+                    MessageBoxTimeout((System.IntPtr) 0, $"{replasedIndicator.IndicatorName} recounted.",
+                        "Indicators", 0, 0, 1000);
                     break;
             }
         }
