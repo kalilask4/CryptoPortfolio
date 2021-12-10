@@ -12,21 +12,6 @@ namespace portfolio.Business.Infrastructure
     {
         public static void SetupData(CoinManager coinManager, TransactionManager transactionManager)
         {
-
-            // transactionManager.AddRange(new List<Transaction> {
-            //     new Transaction {
-            //         Symbol = "LTCTRX",
-            //         Side = "sell"
-            //     },
-            //     new Transaction {
-            //     },
-            //     new Transaction
-            //     {
-            //         Symbol = "LINKBNB",
-            //         Side = "sell"
-            //     }}
-            //     );
-
             coinManager.AddRange(new List<Coin>
             {
                 new Coin
@@ -34,29 +19,29 @@ namespace portfolio.Business.Infrastructure
                     Name = "Tether",
                     ShortName = "USDT",
                     PictureName = "USDT.png",
-                    Amount = 1000,
+                    Amount = 100,
                     AveragePrice = 1,
                     CurrentPrice = 1,
                 },
                 
-                new Coin
-                {
-                    Name = "Bitcoin",
-                    ShortName = "BTC",
-                    PictureName = "BTC.png",
-                    Amount = (decimal) 0.001,
-                    AveragePrice = 50000,
-                    CurrentPrice = 48000
-                },
+                // new Coin
+                // {
+                //     Name = "Bitcoin",
+                //     ShortName = "BTC",
+                //     PictureName = "BTC.png",
+                //     Amount = (decimal) 0.0119,
+                //     AveragePrice = 50000,
+                //     CurrentPrice = 48000
+                // },
                 
                 new Coin
                 {
                     Name = "Etherium",
                     ShortName = "ETH",
                     PictureName = "ETH.png",
-                    Amount = (decimal)0.3,
+                    Amount = (decimal)0.036,
                     AveragePrice = 4000,
-                    CurrentPrice = 4500,
+                    CurrentPrice = 4500
                 },
                 new Coin
                 {
@@ -65,130 +50,19 @@ namespace portfolio.Business.Infrastructure
                     PictureName = "XRP.png",
                     Amount = 220,
                     AveragePrice = (decimal)0.8291,
-                    CurrentPrice = (decimal)0.8791
+                    CurrentPrice = (decimal)0.8791,
+                    Transactions = new List<Transaction>()
+                    {
+                        new Transaction(){
+                            Symbol = "XRPUSDT", 
+                            Side = "buy", 
+                            Amount = 28, 
+                            Price = (decimal)0.79,
+                            Sum = 28 * (decimal)0.79,
+                    },},
                 },
-                
-                
-                
-                // new Coin
-                // {
-                //     Name = "Tron",
-                //     ShortName = "TRX",
-                //     PictureName = "TRX.png",
-                //     Amount = 100,
-                //     //PurchasePrice = 10  /only for transactions
-                //     AveragePrice = 15,
-                //     CurrentPrice = 30,
-                //     AverageValue = 1500,
-                //     CurrentValue = 3000,
-                // },
-                // new Coin
-                // {
-                //     Name = "Chainlink",
-                //     ShortName = "LINK",
-                //     PictureName = "LINK.png",
-                //     Amount = 2000,
-                //     AveragePrice = (decimal)2.5,
-                //     CurrentPrice = (decimal)1.7,
-                //     AverageValue = 5000,
-                //     CurrentValue = 3400,
-                // },
-                // new Coin
-                // {
-                // },
-                // new Coin
-                // {
-                //     Name = "Cardano",
-                //     ShortName = "ADA",
-                //     PictureName = "ADA.png"
-                // },
-                // new Coin
-                // {
-                //     Name = "CRV",
-                //     ShortName = "CRV",
-                //     PictureName = "CRV.png"
-                // },
-                // new Coin
-                // {
-                //     Name = "BNB",
-                //     ShortName = "BNB",
-                //     PictureName = "BNB.png",
-                //     Amount = 2000,
-                //     AveragePrice = (decimal)2.5,
-                //     CurrentPrice = (decimal)1.7,
-                //     AverageValue = 5000,
-                //     CurrentValue = 3400,
-                // },
-                // new Coin                                     //created with empty constructor, after fields changed
-                // {
-                //     Name = "4testconstr",
-                //     Amount = 10,
-                //     PurchasePrice = (decimal)5,
-                //     CurrentPrice = (decimal)4.2,
-                //
-                // },
-                // new Coin("5testconstr", 10, (decimal)5, (decimal)4.2) //created with not empty constructor, methods was called
-
             });
-
             var coins = coinManager.Coins.ToArray();
-            
-            // Coin coin = new Coin("1testconstr", 100, (decimal)1.1, (decimal)1.2);
-            // Coin coin2 = new Coin("2testConstr", 200, (decimal)5, (decimal)4.2);
-            // Coin coin3 = new Coin("3testconstr", 10, (decimal)5, (decimal)4.2);
-            // List<Coin> coins2 = new List<Coin>();
-            // coins2.Add(coin);
-            // coins2.Add(coin2);
-            // coins2.Add(coin3);
-            // coinManager.AddRange(coins2);
-
-            // transactionManager.AddCoinToTransaction(coins[2], 0);
-            // transactionManager.AddCoinToTransaction(coins[0], 0);
-            // transactionManager.AddCoinToTransaction(coins[5], 3);
-            //
-            // coinManager.AddTransactionToCoin(
-            //     new Transaction
-            //     {
-            //         Symbol = "LLLXXX",
-            //         Side = "sell"
-            //     },
-            //     0,
-            //     1
-            //     );
-            //
-            // coinManager.AddTransactionToCoin(
-            //     new Transaction
-            //     {
-            //         Symbol = "AAA",
-            //         Side = "transfer"
-            //     },
-            //     2,
-            //     2
-            //     );
-
-
-            //coinManager.AddTransactionToCoin(
-            //    new Transaction{}, 0, 1);
-
-
-            /*coinManager.AddTransactionToCoin(
-                new Transaction
-                {
-                    Symbol = "LTCTRX",
-                    Side = "sell"
-                },
-                0,
-                1
-                );
-            coinManager.AddTransactionToCoin(
-                new Transaction
-                {
-                    Symbol = "LTCLINK",
-                    Side = "buy"
-                },
-                0,
-                2
-                );*/
         }
     }
 }
