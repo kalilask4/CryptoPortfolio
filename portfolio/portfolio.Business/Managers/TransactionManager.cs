@@ -17,50 +17,50 @@ namespace portfolio.Business.Managers
 
         public IEnumerable<Transaction> Transactions
         {
-            get => transactionRepository.GetAll();
+            get => _transactionRepository.GetAll();
         }
 
         #region bacic CRUD operations
         public Transaction CreateTransaction(Transaction transaction)
         {
-            transactionRepository.Create(transaction);
-            unitOfWork.SaveChanges();
+            _transactionRepository.Create(transaction);
+            _unitOfWork.SaveChanges();
             return transaction;
         }
         
         public Transaction GetById(int id)
-            => transactionRepository.Get(id);
+            => _transactionRepository.Get(id);
         
         public void UpdateTransaction(Transaction transaction)
         {
-            transactionRepository.Update(transaction);
-            unitOfWork.SaveChanges();
+            _transactionRepository.Update(transaction);
+            _unitOfWork.SaveChanges();
         }
         
         public bool Delete(int id)
         {
-            var result = transactionRepository.Delete(id);
+            var result = _transactionRepository.Delete(id);
             if (!result) return false;
-            unitOfWork.SaveChanges();
+            _unitOfWork.SaveChanges();
             return true;
         }
         #endregion
 
         public void AddRange(List<Transaction> transactions)
         {
-            transactions.ForEach(transaction => transactionRepository.Create(transaction));
-            unitOfWork.SaveChanges();
+            transactions.ForEach(transaction => _transactionRepository.Create(transaction));
+            _unitOfWork.SaveChanges();
         }
 
         //only for test - transaction should not change like that after creation 
         public void AddCoinToTransaction(Coin coin, int transactionId)
         {
-            var transaction = transactionRepository.Get(transactionId);
+            var transaction = _transactionRepository.Get(transactionId);
             coin.Transactions.Add(transaction);
             if (coin.CoinId <= 0)
-                coinRepository.Create(coin);
-            else coinRepository.Update(coin);
-            unitOfWork.SaveChanges();
+                _coinRepository.Create(coin);
+            else _coinRepository.Update(coin);
+            _unitOfWork.SaveChanges();
         }
 
         public void AddCoinToTransaction(Coin coin)
@@ -68,23 +68,23 @@ namespace portfolio.Business.Managers
             var transaction = new Transaction(coin);
             coin.Transactions.Add(transaction);
             if (coin.CoinId <= 0)
-                coinRepository.Create(coin);
-            else coinRepository.Update(coin);
-            unitOfWork.SaveChanges();
+                _coinRepository.Create(coin);
+            else _coinRepository.Update(coin);
+            _unitOfWork.SaveChanges();
         }
 
         public void RemoveCoinFromTransaction(Coin coin, int transactionId)
         {
-            var transaction = transactionRepository.Get(transactionId);
+            var transaction = _transactionRepository.Get(transactionId);
             transaction.TransactionCoins.Remove(coin);
-            coin.Transactions.Remove(transaction);   //Check it!!
-            transactionRepository.Update(transaction);
-            coinRepository.Update(coin);
-            unitOfWork.SaveChanges();
+            coin.Transactions.Remove(transaction);   
+            _transactionRepository.Update(transaction);
+            _coinRepository.Update(coin);
+            _unitOfWork.SaveChanges();
         }
 
         public ICollection<Coin> GetCoinsOfTransaction(int transactionId) =>
-            coinRepository
+            _coinRepository
             .Find(coin => coin.Transactions.Contains(GetById(transactionId)))
             .ToList();
        

@@ -20,86 +20,85 @@ namespace portfolio.Business.Managers
 
         public IEnumerable<Coin> Coins
         {
-            get => coinRepository.GetAll();
+            get => _coinRepository.GetAll();
         }
 
         #region basic CRUD operations
         public Coin Create()
         {
             Coin coin = new Coin();
-            unitOfWork.SaveChanges();
+            _unitOfWork.SaveChanges();
             return coin;
         }
         
         public bool Delete(int id)
         {
-            var result = coinRepository.Delete(id);
+            var result = _coinRepository.Delete(id);
             if (!result) return false;
-            unitOfWork.SaveChanges();
+            _unitOfWork.SaveChanges();
             return true;
         }
 
-        public Coin GetById(int id) => coinRepository?.Get(id);
+        public Coin GetById(int id) => _coinRepository?.Get(id);
 
         public void Update(Coin coin)
         {
-            coinRepository.Update(coin);
-            unitOfWork.SaveChanges();
+            _coinRepository.Update(coin);
+            _unitOfWork.SaveChanges();
         }
         #endregion
 
         public void AddRange(List<Coin> coin)
         {
-            coin.ForEach(c => coinRepository.Create(c));
-            unitOfWork.SaveChanges();
+            coin.ForEach(c => _coinRepository.Create(c));
+            _unitOfWork.SaveChanges();
         }
         
         public IEnumerable<Coin> Find(Expression<Func<Coin, bool>> predicate) =>
-            coinRepository.Find(predicate);
+            _coinRepository.Find(predicate);
 
 
         public void AddTransactionToCoin(Transaction transaction, int debetCoinId, int creditCoinId)
         {
-            var debetCoin = coinRepository.Get(debetCoinId);
-            var creditCoin = coinRepository.Get(creditCoinId);
+            var debetCoin = _coinRepository.Get(debetCoinId);
+            var creditCoin = _coinRepository.Get(creditCoinId);
             debetCoin.Transactions.Add(transaction);
             creditCoin.Transactions.Add(transaction);
             if (debetCoin.CoinId <= 0)
-                coinRepository.Create(debetCoin);
-            else coinRepository.Update(debetCoin);
+                _coinRepository.Create(debetCoin);
+            else _coinRepository.Update(debetCoin);
             if (creditCoin.CoinId <= 0)
-                coinRepository.Create(creditCoin);
-            else coinRepository.Update(creditCoin);
+                _coinRepository.Create(creditCoin);
+            else _coinRepository.Update(creditCoin);
             transaction.TransactionCoins.Add(debetCoin);
             transaction.TransactionCoins.Add(creditCoin);
-            unitOfWork.SaveChanges();
+            _unitOfWork.SaveChanges();
         }
 
         public void AddTransactionToCoin(Transaction transaction, int debetCoinId)
         {
-            var debetCoin = coinRepository.Get(debetCoinId);
+            var debetCoin = _coinRepository.Get(debetCoinId);
             debetCoin.Transactions.Add(transaction);
             if (debetCoin.CoinId <= 0)
-                coinRepository.Create(debetCoin);
-            else coinRepository.Update(debetCoin);
+                _coinRepository.Create(debetCoin);
+            else _coinRepository.Update(debetCoin);
             transaction.TransactionCoins.Add(debetCoin);
-            unitOfWork.SaveChanges();
+            _unitOfWork.SaveChanges();
         }
    
         public void RemoveTransactionFromCoin(Transaction transaction, int coinId)
         {
-            var coin = coinRepository.Get(coinId);
+            var coin = _coinRepository.Get(coinId);
             coin.Transactions.Remove(transaction);
-            coinRepository.Update(coin);
+            _coinRepository.Update(coin);
             transaction.TransactionCoins.Remove(coin);
-            transactionRepository.Update(transaction);
-            unitOfWork.SaveChanges();
+            _transactionRepository.Update(transaction);
+            _unitOfWork.SaveChanges();
         }       
 
-        //Recount only one coin. Recount all - have to add 
         public Coin Recount(int coinId)
         {
-            var newCoin = coinRepository.Get(coinId);
+            var newCoin = _coinRepository.Get(coinId);
             newCoin.AverageValue = newCoin.Amount * newCoin.AveragePrice;
             newCoin.CurrentValue = newCoin.Amount * newCoin.CurrentPrice;
             newCoin.ProfitUSD = newCoin.Amount * newCoin.CurrentPrice - newCoin.Amount * newCoin.AveragePrice;
@@ -108,7 +107,7 @@ namespace portfolio.Business.Managers
                 return newCoin;
         }
         
-        public ICollection<Transaction> GetTransactionsOfCoin(int coinId) => transactionRepository
+        public ICollection<Transaction> GetTransactionsOfCoin(int coinId) => _transactionRepository
             .Find(transaction => transaction.TransactionCoins.Contains(GetById(coinId)))
             .ToList();
     }

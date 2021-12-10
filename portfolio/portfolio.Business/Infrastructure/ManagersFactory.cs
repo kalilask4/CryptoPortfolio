@@ -14,37 +14,37 @@ namespace portfolio.Business.Infrastructure
 {   
     public class ManagersFactory
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly CoinManager coinManager;
-        private readonly TransactionManager transactionManager;
-        private readonly IConfiguration configuration;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly CoinManager _coinManager;
+        private readonly TransactionManager _transactionManager;
+        private readonly IConfiguration _configuration;
 
         public ManagersFactory()
         {
-            unitOfWork = new TestUnitOfWork();
+            _unitOfWork = new TestUnitOfWork();
         }
 
         public ManagersFactory(string connStringName)
         {
-            configuration = new ConfigurationBuilder()
+            _configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json")
             .Build();
-            var connString = configuration
+            var connString = _configuration
                 .GetConnectionString(connStringName);
-            unitOfWork = new EFUnitOfWork(connString);
+            _unitOfWork = new EFUnitOfWork(connString);
         }
 
         public CoinManager GetCoinManager()
         {
-            return coinManager
-                ?? new CoinManager(unitOfWork);
+            return _coinManager
+                ?? new CoinManager(_unitOfWork);
         }
 
         public TransactionManager GetTransactionManager()
         {
-            return transactionManager
-                ?? new TransactionManager(unitOfWork);
+            return _transactionManager
+                ?? new TransactionManager(_unitOfWork);
         }
     }
 }

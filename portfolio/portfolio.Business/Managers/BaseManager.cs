@@ -10,15 +10,15 @@ namespace portfolio.Business.Managers
 {
     public class BaseManager
     {
-        protected readonly IUnitOfWork unitOfWork;
-        protected readonly IRepository<Coin> coinRepository;
-        protected readonly IRepository<Transaction> transactionRepository;
+        protected readonly IUnitOfWork _unitOfWork;
+        protected readonly IRepository<Coin> _coinRepository;
+        protected readonly IRepository<Transaction> _transactionRepository;
 
         public BaseManager(IUnitOfWork unitOfWork)
         {
-            this.unitOfWork = unitOfWork;
-            coinRepository = unitOfWork.CoinRepository;
-            transactionRepository = unitOfWork.TransactioRepository;
+            _unitOfWork = unitOfWork;
+            _coinRepository = unitOfWork.CoinRepository;
+            _transactionRepository = unitOfWork.TransactioRepository;
         }
     }
 }
