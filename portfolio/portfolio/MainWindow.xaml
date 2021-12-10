@@ -145,7 +145,6 @@
                     <TabItem.Header>
                         <Label Content="Coins" MouseLeftButtonDown="Tab_OnMouseLeftButtonDown" />
                     </TabItem.Header>
-
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*" />
@@ -370,7 +369,7 @@
                         </Button>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Settings">
+                <TabItem Header="Settings" Visibility="Hidden">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*" />

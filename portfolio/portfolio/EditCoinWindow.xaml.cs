@@ -118,7 +118,6 @@ namespace portfolio
         public EditCoinWindow()
         {
             InitializeComponent();
-
         }
 
         private ICommand _selectPictureNameCommand;
@@ -166,13 +165,6 @@ namespace portfolio
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // if (tboxName.Text == "")
-            // {
-                //tboxName.Text = "Type coin name";
-                //tboxShortName.Text = "Type short coin name";
-            //}
-            
-            //tboxName.ToolTip = "Type coin name";
         }
     }
 }

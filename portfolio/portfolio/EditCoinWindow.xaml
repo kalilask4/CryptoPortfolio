@@ -16,7 +16,6 @@
                     Command="{Binding OkCommand}" />
             <Button Content="Cancel" Margin="10,0" IsCancel="True" />
         </UniformGrid>
-
         <Grid Margin="3">
             <Grid.Resources>
                 <Style TargetType="TextBlock">
@@ -81,8 +80,6 @@
             <TextBox x:Name="tbPurchasePrice" Grid.Column="1" Grid.Row="4"
                      Text="{Binding PurchasePrice}" Margin="13,2,10,0"
                      ToolTip="Purchase price" ToolTipService.ShowDuration="1000" />
-
-
             <Label Grid.Column="2" Grid.Row="4" Content="AveragePrice, $" HorizontalAlignment="Left" Margin="15,0,0,0"
                    Width="92" />
             <TextBlock Grid.Column="3" Grid.Row="4" x:Name="textBoxAveragePrice"
@@ -92,8 +89,6 @@
             <TextBox Grid.Column="1" Grid.Row="5" x:Name="textBoxValueUSD" Margin="65,5,59,5"
                      Background="MistyRose" Opacity="0.75" Text="{Binding Path=ValueUSD, FallbackValue='0'}"
                      Grid.ColumnSpan="2" RenderTransformOrigin="0.526,0.467" />
-
-
             <TextBox Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="7" Text="{Binding Path=PictureName}"
                      Margin="0,10,0,10" Width="150" />
             <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="6" Content="Choose file"
@@ -102,12 +97,10 @@
                     Command="{Binding SelectPictureNameCommand}" />
             <Image Grid.Row="6" Grid.RowSpan="3" Width="150" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,0,0"
                    HorizontalAlignment="Center" Source="{Binding PictureName}" />
-            
             <TextBlock Grid.Column="0" Grid.Row="9" Text="Date update:" HorizontalAlignment="Left" Margin="21,0,0,0"
                        Grid.ColumnSpan="2" Height="16" Width="73" />
             <DatePicker Grid.Column="1" Grid.Row="9" Margin="47,2,0,2"
                         SelectedDate="{Binding DateUpdate}" Grid.ColumnSpan="2" />
-
         </Grid>
     </DockPanel>
 </Window>

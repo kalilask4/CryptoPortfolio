@@ -164,7 +164,6 @@ namespace portfolio.ViewModels
         #region Add coin
 
         private ICommand _newCoinCommand;
-
         public ICommand NewCoinCommand =>
             _newCoinCommand ??= new RelayCommand(OnNewCoinExecuted);
 
@@ -375,7 +374,7 @@ namespace portfolio.ViewModels
             Coin newCoin = coinManager.Recount(_selectedCoin.CoinId);
             coinManager.Update(newCoin);
             MessageBoxTimeout((System.IntPtr) 0, $"{_selectedCoin.Name} - {_selectedCoin.ShortName} recounted. ",
-                "Coins", 0, 0, 3000);
+                "Coins", 0, 0, 1000);
             OnGetTransactionExecuted(_selectedCoin.CoinId);
             //var coin = Coins.FirstOrDefault(c => c.CoinId == _selectedCoin.CoinId);
             //Coins = new ObservableCollection<Coin>(coinManager.Coins);
