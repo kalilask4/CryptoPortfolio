@@ -13,47 +13,47 @@ namespace portfolio.DAL.Repositories
 {
     public class EFTransactionsRepositoriy : IRepository<Transaction>
     {
-        private readonly PortfolioContext context;
-        private readonly DbSet<Transaction> transactions;
+        private readonly PortfolioContext _context;
+        private readonly DbSet<Transaction> _transactions;
 
         public EFTransactionsRepositoriy(PortfolioContext context)
         {
-            this.context = context;
-            transactions = context.Transactions;
+            this._context = context;
+            _transactions = context.Transactions;
         }
 
         public void Create(Transaction entity)
         {
-            context.AddAsync(entity);
+            _context.AddAsync(entity);
         }
 
         public bool Delete(int id)
         {
-            var transaction = transactions.Find(id);
+            var transaction = _transactions.Find(id);
             if (transaction == null) 
                 return false;
             if(transaction.TransactionCoins.Count > 0)
             {
                 foreach (var coin in transaction.TransactionCoins)
                 {
-                    context.Coins
+                    _context.Coins
                     .Find(transaction.TransactionCoins[coin.CoinId])
                     .Transactions
                     .Remove(transaction);
                 }
             }
-            transactions.Remove(transaction);
+            _transactions.Remove(transaction);
             return true;
         }
 
         public IQueryable<Transaction> Find(Expression<Func<Transaction, bool>> predicate)
         {
-            return transactions.Where(predicate);
+            return _transactions.Where(predicate);
         }
 
         public Transaction Get(int id, params string[] includes)
         {
-            IQueryable<Transaction> query = transactions;
+            IQueryable<Transaction> query = _transactions;
             
             foreach (var include in includes)
                 query = query.Include(include);
@@ -70,12 +70,12 @@ namespace portfolio.DAL.Repositories
 
         public IQueryable<Transaction> GetAll()
         {
-            return transactions.AsQueryable();
+            return _transactions.AsQueryable();
         }
 
         public void Update(Transaction transaction)
         {
-            transactions.Update(transaction);
+            _transactions.Update(transaction);
         }
     }
 }

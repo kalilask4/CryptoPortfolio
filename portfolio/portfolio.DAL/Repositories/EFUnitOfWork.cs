@@ -12,9 +12,9 @@ namespace portfolio.DAL.Repositories
 {
     public class EFUnitOfWork: IUnitOfWork
     {
-        private readonly PortfolioContext context;
-        private IRepository<Coin> coinRepository;
-        private IRepository<Transaction> transactionRepository;
+        private readonly PortfolioContext _context;
+        private IRepository<Coin> _coinRepository;
+        private IRepository<Transaction> _transactionRepository;
 
         
         public EFUnitOfWork(string connectionString)
@@ -22,22 +22,20 @@ namespace portfolio.DAL.Repositories
             var options = new DbContextOptionsBuilder<PortfolioContext>()
                 .UseSqlServer(connectionString)
                 .Options;
-            context = new PortfolioContext(options);
-            context.Database.EnsureCreated();
+            _context = new PortfolioContext(options);
+            _context.Database.EnsureCreated();
         }
 
         public IRepository<Coin> CoinRepository =>
-            coinRepository ?? new EFCoinsRepository(context);
+            _coinRepository ?? new EFCoinsRepository(_context);
 
         public IRepository<Transaction> TransactioRepository =>
-            transactionRepository ?? new EFTransactionsRepositoriy(context);
+            _transactionRepository ?? new EFTransactionsRepositoriy(_context);
 
 
         public void SaveChanges()
         {
-        
-                context.SaveChanges();
-     
+                _context.SaveChanges();
         }
     }
 }

@@ -14,37 +14,37 @@ namespace portfolio.DAL.Repositories
 {
     public class EFCoinsRepository : IRepository<Coin>
     {
-        private readonly PortfolioContext context;
-        private readonly DbSet<Coin> coins;
+        private readonly PortfolioContext _context;
+        private readonly DbSet<Coin> _coins;
 
         public EFCoinsRepository(PortfolioContext context)
         {
-            this.context = context;
-            coins = context.Coins;
+            this._context = context;
+            _coins = context.Coins;
         }
 
         public void Create(Coin entity)
         {
-            context.AddAsync(entity);
+            _context.AddAsync(entity);
         }
 
         public bool Delete(int id)
         {
-            var coin = coins.Find(id);
+            var coin = _coins.Find(id);
             if (coin == null) return false;
             
-            coins.Remove(coin);
+            _coins.Remove(coin);
             return true;
         }
 
         public IQueryable<Coin> Find(Expression<Func<Coin, bool>> predicate)
         {
-            return coins.Where(predicate);
+            return _coins.Where(predicate);
         }
 
         public Coin Get(int id, params string[] includes)
         {
-            IQueryable<Coin> query = coins;
+            IQueryable<Coin> query = _coins;
 
             foreach (var include in includes)
                 query = query.Include(include);
@@ -62,12 +62,12 @@ namespace portfolio.DAL.Repositories
 
         public IQueryable<Coin> GetAll()
         {
-            return coins.AsQueryable();
+            return _coins.AsQueryable();
         }
 
         public void Update(Coin coin)
         {
-            coins.Update(coin);
+            _coins.Update(coin);
         }
     }
 }
