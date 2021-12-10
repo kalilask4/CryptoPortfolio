@@ -45,7 +45,8 @@ namespace portfolio.Business.Infrastructure
                     ShortName = "BTC",
                     PictureName = "BTC.png",
                     Amount = (decimal) 0.001,
-                    AveragePrice = 50000
+                    AveragePrice = 50000,
+                    CurrentPrice = 48000
                 },
                 
                 new Coin
@@ -54,7 +55,8 @@ namespace portfolio.Business.Infrastructure
                     ShortName = "ETH",
                     PictureName = "ETH.png",
                     Amount = (decimal)0.3,
-                    AveragePrice = 4200
+                    AveragePrice = 4000,
+                    CurrentPrice = 4500,
                 },
                 new Coin
                 {
@@ -62,7 +64,8 @@ namespace portfolio.Business.Infrastructure
                     ShortName = "XRP",
                     PictureName = "XRP.png",
                     Amount = 220,
-                    AveragePrice = (decimal)0.8791
+                    AveragePrice = (decimal)0.8291,
+                    CurrentPrice = (decimal)0.8791
                 },
                 
                 
