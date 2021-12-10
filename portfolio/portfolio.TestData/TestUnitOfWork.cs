@@ -10,8 +10,8 @@ namespace portfolio.TestData
 {
     public class TestUnitOfWork : IUnitOfWork
     {
-        public IRepository<Coin> coinRepository;
-        public IRepository<Transaction> transactioRepository;
+        private IRepository<Coin> coinRepository;
+        private IRepository<Transaction> transactioRepository;
         private List<Coin> coins;
         private List<Transaction> transactions;
 

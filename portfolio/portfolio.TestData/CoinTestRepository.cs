@@ -16,19 +16,19 @@ namespace portfolio.TestData
     /// </summary>
     public class CoinTestRepository : IRepository<Coin>
     {
-        private readonly List<Coin> coins;
+        private readonly List<Coin> _coins;
 
         public CoinTestRepository(List<Coin> coins)
         {
-            this.coins = coins;
+            _coins = coins;
             SetupData(); //generate test data
         }
 
         private static void SetupData()
         {
-            Random r = new Random();
+            var r = new Random();
             var coins = new List<Coin>();
-            Transaction transaction = new Transaction();
+            var transaction = new Transaction();
 
             for (var i = 0; i < 5; i++)
             {
@@ -53,7 +53,7 @@ namespace portfolio.TestData
         public IQueryable<Coin> Find(Expression<Func<Coin, bool>> predicate)
         {
             Func<Coin, bool> filter = predicate.Compile();
-            return coins.Where(filter).AsQueryable();
+            return _coins.Where(filter).AsQueryable();
         }
 
         public Coin Get(int id, params string[] includes)
@@ -63,7 +63,7 @@ namespace portfolio.TestData
 
         public IQueryable<Coin> GetAll()
         {
-            return coins.AsQueryable();
+            return _coins.AsQueryable();
         }
 
         public void Update(Coin entity)

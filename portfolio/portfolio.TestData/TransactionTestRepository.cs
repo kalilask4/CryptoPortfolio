@@ -11,11 +11,11 @@ namespace portfolio.TestData
 {
     public class TransactionTestRepository : IRepository<Transaction>
     {
-        private readonly List<Transaction> transactions;
+        private readonly List<Transaction> _transactions;
 
         public TransactionTestRepository(List<Transaction> transactions)
         {
-            this.transactions = transactions;
+            this._transactions = transactions;
             SetupData(); //generate test data
         }
 
@@ -33,7 +33,7 @@ namespace portfolio.TestData
 
             for (var i = 1; i <= 5; i++)
             {
-                var Transaction = new Transaction
+                var transaction = new Transaction
                 {
                     TransactionCoins = new List<Coin>
                     {
@@ -45,7 +45,7 @@ namespace portfolio.TestData
                     DateUpdate = DateTime.Now + TimeSpan.FromDays(r.Next(10, 20)),
                 };
 
-                transactions.Add(Transaction);
+                _transactions.Add(transaction);
             }
         }
 
@@ -62,17 +62,17 @@ namespace portfolio.TestData
         public IQueryable<Transaction> Find(Expression<Func<Transaction, bool>> predicate)
         {
             Func<Transaction, bool> filter = predicate.Compile();
-            return transactions.Where(filter).AsQueryable();
+            return _transactions.Where(filter).AsQueryable();
         }
 
         public Transaction Get(int id, params string[] includes)
         {
-            return transactions.FirstOrDefault(t => t.TransactionId == id);
+            return _transactions.FirstOrDefault(t => t.TransactionId == id);
         }
 
         public IQueryable<Transaction> GetAll()
         {
-            return transactions.AsQueryable();
+            return _transactions.AsQueryable();
         }
 
         public void Update(Transaction entity)

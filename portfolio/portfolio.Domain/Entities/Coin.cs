@@ -10,8 +10,8 @@ namespace portfolio.Domain.Entities
     public class Coin : ICoinCloneable
     {
         [Key] public int CoinId { get; set; }
-        private string name = "No name coin";
-        private string shortName = "NONAME";
+        private string _name = "No name coin";
+        private string _shortName = "NONAME";
         [Required] public decimal Amount { get; set; }
 
         public decimal PurchasePrice { get; set; } //last purchase price
@@ -24,38 +24,37 @@ namespace portfolio.Domain.Entities
         public decimal ProfitUSD { get; set; }
         public decimal ProfitPerс { get; set; }
 
-        private string pictureName = "no.png";
+        private string _pictureName = "no.png";
         //private ICoinCloneable _coinCloneableImplementation;
 
         public string PictureName
         {
-            get { return pictureName; }
-            set { pictureName = value; }
+            get { return _pictureName; }
+            set { _pictureName = value; }
         }
 
         public string ShortName
 
         {
-            get { return shortName; }
+            get { return _shortName; }
             set
             {
                 if (value != null)
                 {
-                    shortName = value;
+                    _shortName = value;
                 }
 
             }
         }
 
-
         public string Name
         {
-            get { return name; }
+            get { return _name; }
             set
             {
                 if (value != null)
                 {
-                    name = value;
+                    _name = value;
                 }
 
             }
@@ -66,7 +65,6 @@ namespace portfolio.Domain.Entities
 
         // навигационное свойство
         public List<Transaction> Transactions { get; set; }
-
 
         public Coin()
         {
@@ -215,22 +213,22 @@ namespace portfolio.Domain.Entities
         {
             return new Coin
             {
-                CoinId = this.CoinId,
-                Name = this.Name,
-                ShortName = this.ShortName,
-                Amount = this.Amount,
+                CoinId = CoinId,
+                Name = Name,
+                ShortName = ShortName,
+                Amount = Amount,
                
-                PurchasePrice = this.PurchasePrice,
-                CurrentPrice = this.CurrentPrice,
-                AveragePrice = this.AveragePrice,
+                PurchasePrice = PurchasePrice,
+                CurrentPrice = CurrentPrice,
+                AveragePrice = AveragePrice,
                 
-                CurrentValue = this.CurrentValue,
-                AverageValue = this.AverageValue,
+                CurrentValue = CurrentValue,
+                AverageValue = AverageValue,
                 
-                ProfitUSD = this.ProfitUSD,
-                ProfitPerс = this.ProfitPerс,
+                ProfitUSD = ProfitUSD,
+                ProfitPerс = ProfitPerс,
                 
-                pictureName = this.pictureName,
+                _pictureName = _pictureName,
             };
             
         }

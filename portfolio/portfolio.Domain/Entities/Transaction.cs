@@ -18,22 +18,22 @@ namespace portfolio.Domain.Entities
         // навигационное свойство
         public List<Coin> TransactionCoins { get; set; }
         [Required]
-        private string side = "transfer";
+        private string _side = "transfer";
         public static readonly List<string> sideType = new() { "transfer", "buy", "sell"};
         public string Side
         {
-            get { return side; }
+            get { return _side; }
             set
             {
                 if (sideType.Contains(value))
-                    side = value;
+                    _side = value;
             }
         }
 
         public Transaction(Coin coin)
         {
             Symbol = coin.ShortName;
-            Side = this.Side;
+            Side = Side;
             Amount = 0;
             Price = 0;
             DateUpdate = DateTime.Now;
@@ -50,13 +50,7 @@ namespace portfolio.Domain.Entities
             DateUpdate = DateTime.Now; 
             TransactionCoins = new List<Coin>(2);
         }
-
-        public void recalcByTransfer(decimal amount, decimal price)
-        {
-            Amount = amount;
-            Price = price;
-            Sum = amount * price;
-        }
+        
         public override string ToString()
         {
             return $"{Symbol} {Side} {Amount} {Price} {Sum} ";
