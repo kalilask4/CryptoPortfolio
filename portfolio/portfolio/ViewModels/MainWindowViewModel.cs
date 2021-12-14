@@ -473,6 +473,7 @@ namespace portfolio.ViewModels
                 Symbol = debetCoin != null ? debetCoin.ShortName + creditCoin?.ShortName : "empty DebetCoin",
                 Amount = dialog.Amount,
                 Price = dialog.Price,
+                Sum = dialog.Amount * dialog.Price,
                 TransactionCoins = new List<Coin>(2)
                 {
                     debetCoin,
@@ -514,7 +515,7 @@ namespace portfolio.ViewModels
                 Symbol = debetCoin?.ShortName,
                 Amount = dialog.Amount,
                 Price = dialog.Price,
-                Sum = dialog.Amount * dialog.Amount,
+                Sum = dialog.Amount * dialog.Price,
                 TransactionCoins = new List<Coin>()
                 {
                     debetCoin,
