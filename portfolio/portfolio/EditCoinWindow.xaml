@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:portfolio"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="Edit Coin" Height="450" Width="400"
+        Title="Coin" Height="450" Width="400"
         WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <DockPanel Background="Beige">
         <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,7,0,0"
